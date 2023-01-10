@@ -20,7 +20,7 @@ namespace ProjectSolitude.Infrastructure.SaveLoad
 
         public void SaveProgress()
         {
-            foreach (ISavedProgressWriter progressWriter in _gameFactory.ProgressWriter)
+            foreach (ISavedProgressWriter progressWriter in _gameFactory.ProgressWriters)
                 progressWriter.UpdateProgress(_persistentProgressService.PlayerProgress);
             
             PlayerPrefs.SetString(ProgressKey,_persistentProgressService.PlayerProgress.ToJson());

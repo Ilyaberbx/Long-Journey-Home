@@ -2021,6 +2021,7 @@ MonoBehaviour:
   _attackCoolDown: 3
   _checkPoint: {fileID: 2072568118080944821}
   _rotationToPlayerDuration: 0.7
+  _damage: 3
 --- !u!95 &3734775969355451150
 Animator:
   serializedVersion: 3

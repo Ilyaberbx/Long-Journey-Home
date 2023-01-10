@@ -9,13 +9,13 @@ namespace ProjectSolitude.Infrastructure
     public interface IGameFactory : IService
     {
         List<ISavedProgressReader> ProgressReaders { get; }
-        List<ISavedProgressWriter> ProgressWriter { get; }
+        List<ISavedProgressWriter> ProgressWriters { get; }
         
         GameObject HeroGameObject { get;}
         
         event Action OnHeroCreated;
         GameObject CreatePlayer(Vector3 at);
-        void CreateHud();
+        GameObject CreateHud();
         void CleanUp();
     }
 }

@@ -10,7 +10,7 @@ namespace ProjectSolitude.Infrastructure
     {
         private readonly IAssetProvider _assetProvider;
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-        public List<ISavedProgressWriter> ProgressWriter { get; } = new List<ISavedProgressWriter>();
+        public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
         
         public GameObject HeroGameObject { get; private set; }
         
@@ -29,13 +29,13 @@ namespace ProjectSolitude.Infrastructure
             return HeroGameObject;
         }
 
-        public void CreateHud()
+        public GameObject CreateHud()
             => InstantiateRegistered(AssetsPath.HudPath);
 
         public void CleanUp()
         {
             ProgressReaders.Clear();
-            ProgressWriter.Clear();
+            ProgressWriters.Clear();
         }
         
         private GameObject InstantiateRegistered(string path, Vector3 at)
@@ -60,7 +60,7 @@ namespace ProjectSolitude.Infrastructure
         private void Register(ISavedProgressReader obj)
         {
             if(obj is ISavedProgressWriter writer)
-                ProgressWriter.Add(writer);
+                ProgressWriters.Add(writer);
             
             ProgressReaders.Add(obj);
         }

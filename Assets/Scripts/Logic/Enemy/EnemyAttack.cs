@@ -16,6 +16,7 @@ namespace ProjectSolitude.Logic
         [SerializeField] private float _attackCoolDown;
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
+        [SerializeField] private float _damage;
 
         private IGameFactory _gameFactory;
         private Transform _playerTransform;
@@ -50,7 +51,8 @@ namespace ProjectSolitude.Logic
         {
             if (Hit(out Collider collider))
             {
-                Debug.Log("Attack");
+                var health = collider.transform.GetComponent<HeroHealth>();
+                health.TakeDamage(_damage);
                 PhysicsDebug.DrawDebug(_checkPoint.Position, _checkPoint.Radius, 1f);
             }
         }
@@ -67,7 +69,7 @@ namespace ProjectSolitude.Logic
                 Physics.OverlapSphereNonAlloc(_checkPoint.Position, _checkPoint.Radius, _colliders, _layerMask);
 
             collider = _colliders.FirstOrDefault();
-
+            
             return hitsCount > 0;
         }
 

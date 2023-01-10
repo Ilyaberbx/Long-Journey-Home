@@ -10,7 +10,7 @@ namespace ProjectSolitude.Extensions
 
         public static Vector3 AsUnityVector(this Vector3Data vector3data)
             => new Vector3(vector3data.X, vector3data.Y, vector3data.Y);
-        public static T ToDeserialized<T>(this string json ) 
+        public static T ToDeserialized<T>(this string json) 
             => JsonUtility.FromJson<T>(json);
 
         public static string ToJson(this object obj)

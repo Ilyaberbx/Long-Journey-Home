@@ -33,10 +33,18 @@ namespace ProjectSolitude.Infrastructure
         private void LoadProgressOrInitNew()
         {
             _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
-                                              ?? new PlayerProgress(MainScene);
+                                              ?? DefaultProgress();
         }
 
-       
+        private static PlayerProgress DefaultProgress()
+        {
+            PlayerProgress progress = new PlayerProgress(MainScene);
+
+            progress.HealthState.MaxHP = 30f;
+            progress.HealthState.ResetHp();
+
+            return progress;
+        }
     }
     
 }

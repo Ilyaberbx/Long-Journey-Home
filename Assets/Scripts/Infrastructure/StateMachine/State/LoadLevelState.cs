@@ -4,6 +4,7 @@ using ProjectSolitude.Infrastructure.PersistentProgress;
 using ProjectSolitude.Infrastructure.SceneManagment;
 using ProjectSolitude.Interfaces;
 using ProjectSolitude.Logic;
+using UI;
 using UnityEngine;
 
 namespace ProjectSolitude.Infrastructure
@@ -51,11 +52,25 @@ namespace ProjectSolitude.Infrastructure
 
         private void InitGameWorld()
         {
-            var initPoint = GameObject.FindGameObjectWithTag(PlayerInitPointTag);
-            _gameFactory.CreatePlayer(initPoint.transform.position);
-            _gameFactory.CreateHud();
-
+            var player = InitPlayer();
+            InitHud(player);
             CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
+        }
+
+        private void InitHud(GameObject player)
+        {
+            GameObject hud = _gameFactory.CreateHud();
+
+            UIActor uiActor = hud.GetComponent<UIActor>();
+
+            uiActor.Construct(player.GetComponent<HeroHealth>());
+        }
+
+        private GameObject InitPlayer()
+        {
+            var initPoint = GameObject.FindGameObjectWithTag(PlayerInitPointTag);
+            GameObject player = _gameFactory.CreatePlayer(initPoint.transform.position);
+            return player;
         }
 
         private void CameraFollowPlayer(Transform target)
