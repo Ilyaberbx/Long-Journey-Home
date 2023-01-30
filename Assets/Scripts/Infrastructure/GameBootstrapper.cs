@@ -1,8 +1,11 @@
-using ProjectSolitude.Interfaces;
-using ProjectSolitude.Logic;
+using System;
+using Infrastructure.Services;
+using Infrastructure.StateMachine.State;
+using Interfaces;
+using Logic;
 using UnityEngine;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure
 {
     public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
     {
@@ -14,7 +17,13 @@ namespace ProjectSolitude.Infrastructure
             _game = new Game(this, _loadingCurtain);
             _game.StateMachine.Enter<BootstrapState>();
 
-            DontDestroyOnLoad(this); 
+            DontDestroyOnLoad(this);
         }
+
+        private void OnApplicationQuit()
+            => SafetySave();
+
+        private void SafetySave()
+            => ServiceLocator.Container.Single<ISaveLoadService>().SaveProgress();
     }
 }

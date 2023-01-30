@@ -1,6 +1,8 @@
-﻿using ProjectSolitude.Data;
+﻿using Data;
+using Interfaces;
+using ProjectSolitude.Data;
 
-namespace ProjectSolitude.Infrastructure.PersistentProgress
+namespace Infrastructure.Services.PersistentProgress
 {
     public class PersistentProgressService : IPersistentProgressService
     {

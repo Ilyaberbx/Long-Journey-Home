@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace ProjectSolitude.Editor
+namespace Editor
 {
     public static class Tools
     {

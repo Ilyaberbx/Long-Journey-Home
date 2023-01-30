@@ -1,10 +1,10 @@
-﻿using ProjectSolitude.Data;
+﻿using Data;
+using Interfaces;
+using ProjectSolitude.Data;
 using ProjectSolitude.Extensions;
-using ProjectSolitude.Infrastructure.PersistentProgress;
-using ProjectSolitude.Interfaces;
 using UnityEngine;
 
-namespace ProjectSolitude.Infrastructure.SaveLoad
+namespace Infrastructure.Services.SaveLoad
 {
     public class SaveLoadService : ISaveLoadService
     {

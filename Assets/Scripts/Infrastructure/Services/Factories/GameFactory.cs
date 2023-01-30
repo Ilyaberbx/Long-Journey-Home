@@ -1,32 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using ProjectSolitude.Infrastructure.AssetManagment;
-using ProjectSolitude.Interfaces;
+﻿using System.Collections.Generic;
+using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.StaticData;
+using Interfaces;
+using Logic;
+using Logic.Enemy;
+using StaticData;
+using UI;
 using UnityEngine;
+using UnityEngine.AI;
+using Object = UnityEngine.Object;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure.Services.Factories
 {
     public class GameFactory : IGameFactory
     {
         private readonly IAssetProvider _assetProvider;
+        private readonly IStaticDataService _staticData;
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
-        
-        public GameObject HeroGameObject { get; private set; }
+
+        private GameObject _heroGameObject;
+
         
 
-        public event Action OnHeroCreated;
-
-        public GameFactory(IAssetProvider assetProvider)
+        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData)
         {
             _assetProvider = assetProvider;
+            _staticData = staticData;
         }
 
         public GameObject CreatePlayer(Vector3 at)
         {
-            HeroGameObject =  InstantiateRegistered(AssetsPath.PlayerPrefabPath, at);
-            OnHeroCreated?.Invoke();
-            return HeroGameObject;
+            _heroGameObject = InstantiateRegistered(AssetsPath.PlayerPrefabPath, at);
+            return _heroGameObject;
         }
 
         public GameObject CreateHud()
@@ -37,13 +43,14 @@ namespace ProjectSolitude.Infrastructure
             ProgressReaders.Clear();
             ProgressWriters.Clear();
         }
-        
+
         private GameObject InstantiateRegistered(string path, Vector3 at)
         {
             GameObject obj = _assetProvider.Instantiate(path, at);
             RegisterProgressWatchers(obj);
             return obj;
         }
+
         private GameObject InstantiateRegistered(string path)
         {
             GameObject obj = _assetProvider.Instantiate(path);
@@ -57,12 +64,29 @@ namespace ProjectSolitude.Infrastructure
                 Register(progressReader);
         }
 
-        private void Register(ISavedProgressReader obj)
+        public void Register(ISavedProgressReader obj)
         {
-            if(obj is ISavedProgressWriter writer)
+            if (obj is ISavedProgressWriter writer)
                 ProgressWriters.Add(writer);
-            
+
             ProgressReaders.Add(obj);
+        }
+
+        public GameObject CreateEnemy(EnemyType enemyType, Transform parent)
+        {
+            EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
+            GameObject enemy = Object.Instantiate(enemyData.Prefab, parent.position, Quaternion.identity, parent);
+            var health = enemy.GetComponent<IHealth>();
+            health.CurrentHealth = enemyData.MaxHp;
+            health.MaxHp = enemyData.MaxHp;
+            
+            enemy.GetComponent<UIActor>().Construct(health);
+            enemy.GetComponent<AgentMoveToPlayer>().Construct(_heroGameObject.transform);
+            enemy.GetComponent<NavMeshAgent>().speed = enemyData.MoveSpeed;
+
+            EnemyAttack attack = enemy.GetComponent<EnemyAttack>();
+            attack.Construct(_heroGameObject.transform,enemyData.Damage,enemyData.AttackCoolDown);
+            return enemy;
         }
     }
 }

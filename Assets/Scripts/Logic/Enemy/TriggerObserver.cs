@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ProjectSolitude.Logic
+namespace Logic.Enemy
 {
     [RequireComponent(typeof(Collider))]
     public class TriggerObserver : MonoBehaviour

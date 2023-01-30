@@ -1,4 +1,4 @@
-﻿namespace ProjectSolitude.Interfaces
+﻿namespace Interfaces
 {
     public interface IPayloadedState<TPayload> : IExitableState
     {

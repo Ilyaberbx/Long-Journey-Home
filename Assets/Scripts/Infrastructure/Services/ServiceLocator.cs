@@ -1,7 +1,6 @@
-﻿using System;
-using Interfaces;
+﻿using Interfaces;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure.Services
 {
     public class ServiceLocator 
     {

@@ -7,10 +7,8 @@ namespace UI
     {
         [SerializeField] private Image _hpImage;
 
-        public void SetValue(float current, float max)
-        {
-            _hpImage.fillAmount = current / max;
-            Debug.Log(_hpImage.fillAmount);
-        }
+        public void SetValue(float current, float max) 
+            => _hpImage.fillAmount = current / max;
     }
+     
 }

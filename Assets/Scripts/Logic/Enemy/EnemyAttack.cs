@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using DG.Tweening;
+using Infrastructure.Services;
+using Interfaces;
 using ProjectSolitude.Extensions;
-using ProjectSolitude.Infrastructure;
-using ProjectSolitude.Interfaces;
 using UnityEngine;
 
-namespace ProjectSolitude.Logic
+namespace Logic.Enemy
 {
     [RequireComponent(typeof(EnemyAnimator))]
     public class EnemyAttack : MonoBehaviour
@@ -13,12 +13,11 @@ namespace ProjectSolitude.Logic
         private const string PlayerLayer = "Player";
 
         [SerializeField] private EnemyAnimator _animator;
-        [SerializeField] private float _attackCoolDown;
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
-        [SerializeField] private float _damage;
-
-        private IGameFactory _gameFactory;
+        
+        private int _damage;
+        private float _attackCoolDown;
         private Transform _playerTransform;
         private float _currentCoolDown;
         private bool _isAttacking;
@@ -26,12 +25,15 @@ namespace ProjectSolitude.Logic
         private Collider[] _colliders = new Collider[1];
         private bool _attackIsActive;
 
-        private void Awake()
+        public void Construct(Transform playerTransform,int damage,float attackCoolDown)
         {
-            _gameFactory = ServiceLocator.Container.Single<IGameFactory>();
-            _gameFactory.OnHeroCreated += OnHeroCreated;
-            _layerMask = 1 << LayerMask.NameToLayer(PlayerLayer);
+            _damage = damage;
+            _attackCoolDown = attackCoolDown;
+            _playerTransform = playerTransform;
         }
+
+        private void Awake() 
+            => _layerMask = 1 << LayerMask.NameToLayer(PlayerLayer);
 
         private void Update()
         {
@@ -51,7 +53,7 @@ namespace ProjectSolitude.Logic
         {
             if (Hit(out Collider collider))
             {
-                var health = collider.transform.GetComponent<HeroHealth>();
+                var health = collider.transform.GetComponent<IHealth>();
                 health.TakeDamage(_damage);
                 PhysicsDebug.DrawDebug(_checkPoint.Position, _checkPoint.Radius, 1f);
             }
@@ -69,7 +71,7 @@ namespace ProjectSolitude.Logic
                 Physics.OverlapSphereNonAlloc(_checkPoint.Position, _checkPoint.Radius, _colliders, _layerMask);
 
             collider = _colliders.FirstOrDefault();
-            
+
             return hitsCount > 0;
         }
 
@@ -92,8 +94,6 @@ namespace ProjectSolitude.Logic
 
         private bool IsCoolDownEnded()
             => _currentCoolDown <= 0;
-
-        private void OnHeroCreated()
-            => _playerTransform = _gameFactory.HeroGameObject.transform;
+        
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerInitPoint
   - POVPoint
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Player
   - AggroZone
   - AttackZone
-  - 
-  - 
+  - PostProcessing
+  - Hittable
   - 
   - 
   - 

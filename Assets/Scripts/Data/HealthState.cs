@@ -5,8 +5,8 @@ namespace ProjectSolitude.Data
     [Serializable]
     public class HealthState
     {
-        public float CurrentHP;
-        public float MaxHP;
+        public int CurrentHP;
+        public int MaxHP;
 
         public void ResetHp()
             => CurrentHP = MaxHP;

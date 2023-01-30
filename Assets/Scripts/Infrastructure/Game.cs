@@ -1,7 +1,9 @@
-using ProjectSolitude.Interfaces;
-using ProjectSolitude.Logic;
+using Infrastructure.Services;
+using Infrastructure.StateMachine;
+using Interfaces;
+using Logic;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure
 {
     public class Game
     {

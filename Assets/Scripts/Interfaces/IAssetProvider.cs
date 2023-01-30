@@ -1,7 +1,6 @@
-﻿using Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ProjectSolitude.Interfaces
+namespace Interfaces
 {
     public interface IAssetProvider : IService
     {

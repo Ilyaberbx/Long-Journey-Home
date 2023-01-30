@@ -1,7 +1,7 @@
 ﻿using Interfaces;
 using UnityEngine;
 
-namespace ProjectSolitude.Logic.Animations
+namespace Logic.Animations
 {
     public class AnimatorStateReporter : StateMachineBehaviour
     {

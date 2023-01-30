@@ -1,7 +1,7 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-namespace ProjectSolitude.Logic
+namespace Logic
 {
     public class LoadingCurtain : MonoBehaviour
     {

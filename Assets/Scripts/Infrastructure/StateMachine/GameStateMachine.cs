@@ -1,11 +1,12 @@
-using ProjectSolitude.Infrastructure.SceneManagment;
-using ProjectSolitude.Interfaces;
-using ProjectSolitude.Logic;
 using System;
 using System.Collections.Generic;
-using ProjectSolitude.Infrastructure.PersistentProgress;
+using Infrastructure.Services;
+using Infrastructure.StateMachine.State;
+using Interfaces;
+using Logic;
+using SceneManagment;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure.StateMachine
 {
     public class GameStateMachine 
     {

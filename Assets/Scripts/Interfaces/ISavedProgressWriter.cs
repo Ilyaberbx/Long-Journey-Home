@@ -1,7 +1,7 @@
-﻿
+﻿using Data;
 using ProjectSolitude.Data;
 
-namespace ProjectSolitude.Interfaces
+namespace Interfaces
 {
     public interface ISavedProgressWriter : ISavedProgressReader
     {

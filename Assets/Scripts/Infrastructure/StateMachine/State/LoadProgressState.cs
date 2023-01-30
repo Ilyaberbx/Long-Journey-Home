@@ -1,8 +1,8 @@
-﻿using ProjectSolitude.Data;
-using ProjectSolitude.Infrastructure.PersistentProgress;
-using ProjectSolitude.Interfaces;
+﻿using Data;
+using Interfaces;
+using ProjectSolitude.Data;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure.StateMachine.State
 {
     public class LoadProgressState : IState
     {
@@ -40,8 +40,10 @@ namespace ProjectSolitude.Infrastructure
         {
             PlayerProgress progress = new PlayerProgress(MainScene);
 
-            progress.HealthState.MaxHP = 30f;
+            progress.HealthState.MaxHP = 30;
             progress.HealthState.ResetHp();
+            progress.Stats.Damage = 1;
+            progress.Stats.AttackRadius = 5;
 
             return progress;
         }

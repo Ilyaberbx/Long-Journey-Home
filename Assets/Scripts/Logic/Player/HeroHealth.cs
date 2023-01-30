@@ -1,38 +1,28 @@
 ﻿using System;
-using System.Reflection;
+using Data;
+using Interfaces;
 using ProjectSolitude.Data;
-using ProjectSolitude.Interfaces;
 using UnityEngine;
 
-namespace ProjectSolitude.Logic
+namespace Logic.Player
 {
-    public class HeroHealth : MonoBehaviour, ISavedProgressWriter
+    public class HeroHealth : MonoBehaviour, ISavedProgressWriter, IHealth
     {
         private HealthState _state;
+        private ICameraAnimator _animator;
+        public event Action OnHealthChanged;
 
-        public event Action<float> OnHealthChanged;
-        public float CurrentHp
+        public int CurrentHealth
         {
             get => _state.CurrentHP;
             set
             {
-                if (CanChange(value))
-                {
-                    _state.CurrentHP = value;
-                    OnHealthChanged?.Invoke(value);
-                }
+                _state.CurrentHP = value;
+                OnHealthChanged?.Invoke();
             }
         }
 
-        public void TakeDamage(float damage)
-        {
-            if(CurrentHp <= 0)
-                return;
-
-            CurrentHp = ClampHeatlhPoints(damage);
-        }
-
-        public float MaxHp
+        public int MaxHp
         {
             get => _state.MaxHP;
             set
@@ -42,21 +32,32 @@ namespace ProjectSolitude.Logic
             }
         }
 
+        public void TakeDamage(int damage)
+        {
+            if (CurrentHealth <= 0)
+                return;
+
+
+            _animator.PlayTakeDamage();
+            CurrentHealth = ClampHealthPoints(damage);
+        }
+
+        public void Construct(ICameraAnimator animator)
+            => _animator = animator;
+
         public void LoadProgress(PlayerProgress progress)
         {
             _state = progress.HealthState;
+            OnHealthChanged?.Invoke();
         }
 
         public void UpdateProgress(PlayerProgress progress)
         {
-            progress.HealthState.CurrentHP = CurrentHp;
+            progress.HealthState.CurrentHP = CurrentHealth;
             progress.HealthState.MaxHP = MaxHp;
         }
 
-        private bool CanChange(float value) 
-            => value >= 0 && _state.CurrentHP != value;
-
-        private float ClampHeatlhPoints(float damage)
-            => Mathf.Clamp(CurrentHp - damage, 0, MaxHp);
+        private int ClampHealthPoints(int damage)
+            => Mathf.Clamp(CurrentHealth - damage, 0, MaxHp);
     }
 }

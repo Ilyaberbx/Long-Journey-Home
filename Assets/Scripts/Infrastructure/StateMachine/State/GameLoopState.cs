@@ -1,7 +1,6 @@
-﻿using System;
-using ProjectSolitude.Interfaces;
+﻿using Interfaces;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure.StateMachine.State
 {
     public class GameLoopState : IState
     {

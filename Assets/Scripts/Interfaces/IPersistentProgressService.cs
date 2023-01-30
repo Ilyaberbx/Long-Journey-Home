@@ -1,7 +1,7 @@
-﻿using Interfaces;
+﻿using Data;
 using ProjectSolitude.Data;
 
-namespace ProjectSolitude.Infrastructure.PersistentProgress
+namespace Interfaces
 {
     public interface IPersistentProgressService : IService
     {

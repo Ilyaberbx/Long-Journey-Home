@@ -1,11 +1,12 @@
-using ProjectSolitude.Interfaces;
+using Data;
+using Infrastructure.Services;
+using Interfaces;
 using ProjectSolitude.Data;
 using ProjectSolitude.Extensions;
 using UnityEngine;
-using ProjectSolitude.Infrastructure;
 using UnityEngine.SceneManagement;
 
-namespace ProjectSolitude.Logic
+namespace Logic.Player
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(Gravity))]
@@ -20,13 +21,13 @@ namespace ProjectSolitude.Logic
 
         private IInputService _input;
         private Gravity _gravity;
-        private Camera _camera;
+        private UnityEngine.Camera _camera;
 
         private void Awake()
         {
             _input = ServiceLocator.Container.Single<IInputService>();
             _gravity = GetComponent<Gravity>();
-            _camera = Camera.main;
+            _camera = UnityEngine.Camera.main;
             Cursor.lockState = CursorLockMode.Locked;
         }
 

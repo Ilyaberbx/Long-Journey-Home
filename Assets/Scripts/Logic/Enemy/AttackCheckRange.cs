@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ProjectSolitude.Logic
+namespace Logic.Enemy
 {
     [RequireComponent(typeof(EnemyAttack))]
     public class AttackCheckRange : MonoBehaviour

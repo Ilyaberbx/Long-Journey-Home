@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Interfaces;
-using ProjectSolitude.Interfaces;
+using Logic;
 using UnityEngine;
 
-namespace ProjectSolitude.Infrastructure
+namespace Interfaces
 {
     public interface IGameFactory : IService
     {
         List<ISavedProgressReader> ProgressReaders { get; }
         List<ISavedProgressWriter> ProgressWriters { get; }
-        
-        GameObject HeroGameObject { get;}
-        
-        event Action OnHeroCreated;
+
         GameObject CreatePlayer(Vector3 at);
         GameObject CreateHud();
         void CleanUp();
+        void Register(ISavedProgressReader obj);
+        GameObject CreateEnemy(EnemyType enemyType, Transform transform);
     }
 }

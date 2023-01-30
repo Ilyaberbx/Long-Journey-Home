@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace ProjectSolitude.Interfaces
+namespace Interfaces
 {
     public interface ICoroutineRunner
     {

@@ -1,10 +1,10 @@
-using ProjectSolitude.Interfaces;
 using System;
 using System.Collections;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ProjectSolitude.Infrastructure.SceneManagment
+namespace SceneManagment
 {
     public class SceneLoader
     {

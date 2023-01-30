@@ -1,18 +1,21 @@
-﻿using ProjectSolitude.CameraAdditions;
+﻿using Interfaces;
+using Logic;
+using Logic.Camera;
+using Logic.Player;
+using Logic.Spawners;
 using ProjectSolitude.Enum;
-using ProjectSolitude.Infrastructure.PersistentProgress;
-using ProjectSolitude.Infrastructure.SceneManagment;
-using ProjectSolitude.Interfaces;
-using ProjectSolitude.Logic;
+using SceneManagment;
 using UI;
 using UnityEngine;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure.StateMachine.State
 {
     public class LoadLevelState : IPayloadedState<string>
     {
         private const string PlayerInitPointTag = "PlayerInitPoint";
         private const string PovPoint = "POVPoint";
+        private const string EnemySpawnerTag = "EnemySpawner";
+        
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
@@ -52,9 +55,26 @@ namespace ProjectSolitude.Infrastructure
 
         private void InitGameWorld()
         {
+            InitSpawners();
             var player = InitPlayer();
             InitHud(player);
-            CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
+            var camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
+            InjectCameraAnimator(player, camera);
+        }
+
+        private void InitSpawners()
+        {
+            foreach (GameObject spawnerObject in GameObject.FindGameObjectsWithTag(EnemySpawnerTag))
+            {
+                EnemySpawner spawner = spawnerObject.GetComponent<EnemySpawner>();
+                _gameFactory.Register(spawner);
+            }
+        }
+
+        private void InjectCameraAnimator(GameObject player, GameObject camera)
+        {
+            player.GetComponent<HeroHealth>().Construct(camera.GetComponentInParent<ICameraAnimator>());
+            player.GetComponent<HeroDeath>().Construct(camera.GetComponentInParent<ICameraAnimator>());
         }
 
         private void InitHud(GameObject player)
@@ -73,11 +93,11 @@ namespace ProjectSolitude.Infrastructure
             return player;
         }
 
-        private void CameraFollowPlayer(Transform target)
+        private GameObject CameraFollowPlayer(Transform target)
         {
             var cameraChanger = Camera.main.
                 GetComponentInParent<GameCamerasChanger>();
-            cameraChanger.SetCamera(GameCameraType.PlayerCamera, target,true);
+            return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, target,true);
         }
         
     }

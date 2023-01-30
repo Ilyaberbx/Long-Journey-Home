@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ProjectSolitude.Logic
+namespace Logic
 {
     public class Gravity : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace ProjectSolitude.Logic
+namespace Logic.Enemy
 {
     public class EnemyAggro : MonoBehaviour
     {

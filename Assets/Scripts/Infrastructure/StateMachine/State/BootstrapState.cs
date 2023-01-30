@@ -1,12 +1,14 @@
-using ProjectSolitude.Infrastructure.AssetManagment;
-using ProjectSolitude.Infrastructure.PersistentProgress;
-using ProjectSolitude.Infrastructure.SaveLoad;
-using ProjectSolitude.Infrastructure.SceneManagment;
-using ProjectSolitude.Inputs;
-using ProjectSolitude.Interfaces;
-using UnityEngine;
+using Infrastructure.Services;
+using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.Factories;
+using Infrastructure.Services.Input;
+using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.StaticData;
+using Interfaces;
+using SceneManagment;
 
-namespace ProjectSolitude.Infrastructure
+namespace Infrastructure.StateMachine.State
 {
     public class BootstrapState : IState
     {
@@ -36,6 +38,7 @@ namespace ProjectSolitude.Infrastructure
         {
             RegisterInput();
             RegisterAssetsProvider();
+            RegisterStaticData();
             RegisterFactory();
             RegisterProgress();
             RegisterSaveLoadService();
@@ -51,7 +54,7 @@ namespace ProjectSolitude.Infrastructure
 
         private void RegisterFactory() 
             => _serviceLocator.RegisterService<IGameFactory>(new GameFactory
-                (_serviceLocator.Single<IAssetProvider>()));
+                (_serviceLocator.Single<IAssetProvider>(),_serviceLocator.Single<IStaticDataService>()));
 
         private void RegisterInput()
             => _serviceLocator.RegisterService(DefineInputService());
@@ -59,6 +62,13 @@ namespace ProjectSolitude.Infrastructure
         private void RegisterSaveLoadService() 
             => _serviceLocator.RegisterService<ISaveLoadService>(new SaveLoadService
                 (_serviceLocator.Single<IGameFactory>(),_serviceLocator.Single<IPersistentProgressService>()));
+
+        private void RegisterStaticData()
+        {
+            IStaticDataService staticData = new StaticDataService();
+            staticData.LoadEnemies();
+            _serviceLocator.RegisterService(staticData);
+        }
 
         private IInputService DefineInputService() 
             => new StandaloneInputService();

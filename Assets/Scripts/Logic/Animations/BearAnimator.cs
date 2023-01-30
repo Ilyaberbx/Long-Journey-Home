@@ -1,11 +1,10 @@
 using System;
 using Interfaces;
 using ProjectSolitude.Enum;
-using ProjectSolitude.Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace ProjectSolitude.Logic.Animations
+namespace Logic.Animations
 {
     public class BearAnimator : EnemyAnimator, IAnimationStateReader
     {
@@ -14,6 +13,8 @@ namespace ProjectSolitude.Logic.Animations
         private static readonly int Death = Animator.StringToHash("Death");
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+        private static readonly int IsDead= Animator.StringToHash("IsDead");
+        private static readonly int TakeDamage = Animator.StringToHash("TakeDamage");
 
         private readonly int _movementStateHash = Animator.StringToHash("Movement");
         private readonly int _attackFirstStateHash = Animator.StringToHash("Bear_Attack1");
@@ -22,21 +23,27 @@ namespace ProjectSolitude.Logic.Animations
         private readonly int _deathStateHash = Animator.StringToHash("Bear_Death");
 
         [SerializeField] private Animator _animator;
-    
+
         public AnimatorState State { get; private set; }
 
         public event Action<AnimatorState> StateEntered;
         public event Action<AnimatorState> StateExited;
-    
 
-        public void PlayDeath()
-            => _animator.SetTrigger(Death);
+
+        public override void PlayDeath()
+        {
+            _animator.SetTrigger(Death);
+            _animator.SetBool(IsDead,true);
+        }
 
         public override void PlayAttack()
         {
             int rand = Random.Range(1,MaxInclusiveAttackCountConst);
             _animator.SetTrigger(Attack+ rand);
         }
+
+        public override void PlayTakeDamage() 
+            => _animator.SetTrigger(TakeDamage);
 
         public void Move(float speed)
         {
