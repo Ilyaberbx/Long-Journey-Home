@@ -1,4 +1,4 @@
-﻿namespace ProjectSolitude.Data
+﻿namespace Data
 {
     [System.Serializable]
     public class PositionOnLevel

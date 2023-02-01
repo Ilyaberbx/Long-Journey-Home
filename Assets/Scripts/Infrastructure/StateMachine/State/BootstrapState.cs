@@ -39,8 +39,8 @@ namespace Infrastructure.StateMachine.State
             RegisterInput();
             RegisterAssetsProvider();
             RegisterStaticData();
-            RegisterFactory();
             RegisterProgress();
+            RegisterFactory();
             RegisterSaveLoadService();
         }
 
@@ -54,7 +54,7 @@ namespace Infrastructure.StateMachine.State
 
         private void RegisterFactory() 
             => _serviceLocator.RegisterService<IGameFactory>(new GameFactory
-                (_serviceLocator.Single<IAssetProvider>(),_serviceLocator.Single<IStaticDataService>()));
+                (_serviceLocator.Single<IAssetProvider>(),_serviceLocator.Single<IStaticDataService>(),_serviceLocator.Single<IPersistentProgressService>()));
 
         private void RegisterInput()
             => _serviceLocator.RegisterService(DefineInputService());

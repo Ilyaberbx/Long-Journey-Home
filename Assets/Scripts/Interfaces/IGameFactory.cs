@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Logic;
+using Logic.Enemy;
 using UnityEngine;
 
 namespace Interfaces
@@ -15,5 +16,6 @@ namespace Interfaces
         void CleanUp();
         void Register(ISavedProgressReader obj);
         GameObject CreateEnemy(EnemyType enemyType, Transform transform);
+        LootPiece CreateLoot();
     }
 }

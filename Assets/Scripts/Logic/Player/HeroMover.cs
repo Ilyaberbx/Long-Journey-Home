@@ -34,7 +34,6 @@ namespace Logic.Player
         private void Update()
         {
             Move();
-
             if (_input.IsJumped() && _gravity.TryCatchGround())
                 Jump();
         }

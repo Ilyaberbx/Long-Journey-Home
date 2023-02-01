@@ -8,8 +8,8 @@ namespace Logic.Enemy
 {
     public class EnemyDeath : MonoBehaviour
     {
-
         public event Action OnDie;
+        public event Action OnDisappear;
 
         [SerializeField] private AgentMoveToPlayer _agent;
         [SerializeField] private EnemyAttack _attack;
@@ -49,7 +49,11 @@ namespace Logic.Enemy
             var sequence = DOTween.Sequence();
             sequence.Append(SetScaleToZero());
             sequence.AppendCallback(DestroyObject);
+            sequence.AppendCallback(InvokeOnDisappear);
         }
+
+        private void InvokeOnDisappear() =>
+            OnDisappear?.Invoke();
 
         private Tween SetScaleToZero()
             => transform.DOScale(0, 2);

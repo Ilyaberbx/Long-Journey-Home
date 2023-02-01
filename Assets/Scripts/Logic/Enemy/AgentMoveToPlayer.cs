@@ -15,7 +15,7 @@ namespace Logic.Enemy
         
         private void Update()
         {
-            if (Initialized() && HeroNotTouched())
+            if (Initialized() && HeroNotTouched() && _agent.isOnNavMesh)
                 _agent.destination = _playerTransform.position;
             else
                 _agent.destination = _agent.transform.position;

@@ -1,6 +1,5 @@
 ﻿using Data;
 using Interfaces;
-using ProjectSolitude.Data;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -43,7 +42,7 @@ namespace Infrastructure.StateMachine.State
             progress.HealthState.MaxHP = 30;
             progress.HealthState.ResetHp();
             progress.Stats.Damage = 1;
-            progress.Stats.AttackRadius = 5;
+            progress.Stats.AttackRadius = 8;
 
             return progress;
         }

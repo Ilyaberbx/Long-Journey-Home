@@ -1,3 +1,4 @@
+using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +11,7 @@ namespace Logic.Animations
         private const float MinimalSpeedVelocity = 0.1f;
 
         [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private BearAnimator _animator;
+        [SerializeField] private EnemyAnimator _animator;
 
         private void Update()
         {

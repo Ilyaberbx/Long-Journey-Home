@@ -45,13 +45,13 @@ namespace Logic.Animations
         public override void PlayTakeDamage() 
             => _animator.SetTrigger(TakeDamage);
 
-        public void Move(float speed)
+        public override void Move(float speed)
         {
             _animator.SetBool(IsMoving, true);
             _animator.SetFloat(Speed, speed);
         }
 
-        public void StopMoving()
+        public override void StopMoving()
             => _animator.SetBool(IsMoving, false);
 
         public void EnterState(int stateHash)

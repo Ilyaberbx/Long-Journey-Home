@@ -27,7 +27,7 @@ namespace Logic.Animations
         public void PlayTakeDamage() 
             => transform.DOShakeRotation(_takeDamageDuration, _takeDamageStrenght, 10, _takeDamageRandomness);
 
-        public void PlayDeath()
+        public void PlayDeath() 
             => _vignette.intensity.value = 1f;
     }
 }

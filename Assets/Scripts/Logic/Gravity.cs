@@ -7,10 +7,10 @@ namespace Logic
         private const float GroundedGravityConst = -2f;
         private const float GravityCoefficientConst = 1.05f;
 
-        [SerializeField] private float _gravity = -9.81f;
+        [SerializeField] private float _gravity = 120f;
         [SerializeField] private CheckPoint _checkingGroundPoint;
 
-        private CharacterController _characterController;
+        [SerializeField] private CharacterController _characterController;
         private Vector3 _velocity;
 
         public Vector3 GetVelocity() 
@@ -34,7 +34,7 @@ namespace Logic
             {
                 if (check.transform != null)
                     
-                    if (check.transform.GetComponent<Ground>() != null) 
+                    if (check.transform.GetComponentInParent<Ground>() != null) 
                         return true;
             }
 
@@ -43,7 +43,6 @@ namespace Logic
 
         private void Inititalize()
         {
-            _characterController = GetComponent<CharacterController>();
             _gravity *= GravityCoefficientConst;
         }
 

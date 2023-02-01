@@ -16,6 +16,7 @@ namespace Infrastructure.Services.Factories
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticData;
+        private readonly IPersistentProgressService _progressService;
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
 
@@ -23,10 +24,11 @@ namespace Infrastructure.Services.Factories
 
         
 
-        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData)
+        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData,IPersistentProgressService progressService)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
+            _progressService = progressService;
         }
 
         public GameObject CreatePlayer(Vector3 at)
@@ -37,6 +39,35 @@ namespace Infrastructure.Services.Factories
 
         public GameObject CreateHud()
             => InstantiateRegistered(AssetsPath.HudPath);
+
+        public LootPiece CreateLoot()
+        {
+            var lootPiece = InstantiateRegistered(AssetsPath.Loot).GetComponent<LootPiece>();
+            lootPiece.Construct(_progressService.PlayerProgress.WorldData);
+            return lootPiece;
+        }
+
+        public GameObject CreateEnemy(EnemyType enemyType, Transform parent)
+        {
+            EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
+            GameObject enemy = Object.Instantiate(enemyData.Prefab, parent.position, Quaternion.identity, parent);
+            var health = enemy.GetComponent<IHealth>();
+            health.CurrentHealth = enemyData.MaxHp;
+            health.MaxHp = enemyData.MaxHp;
+            
+            enemy.GetComponent<UIActor>()?.Construct(health);
+            enemy.GetComponent<AgentMoveToPlayer>().Construct(_heroGameObject.transform);
+            enemy.GetComponent<NavMeshAgent>().speed = enemyData.MoveSpeed;
+            
+            var loot = enemy.GetComponentInChildren<EnemyLootSpawner>();
+            loot.SetLoot(enemyData.MinLoot,enemyData.MaxLoot);
+            loot.Construct(this);
+            
+
+            EnemyAttack attack = enemy.GetComponent<EnemyAttack>();
+            attack.Construct(_heroGameObject.transform,enemyData.Damage,enemyData.AttackCoolDown);
+            return enemy;
+        }
 
         public void CleanUp()
         {
@@ -70,23 +101,6 @@ namespace Infrastructure.Services.Factories
                 ProgressWriters.Add(writer);
 
             ProgressReaders.Add(obj);
-        }
-
-        public GameObject CreateEnemy(EnemyType enemyType, Transform parent)
-        {
-            EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
-            GameObject enemy = Object.Instantiate(enemyData.Prefab, parent.position, Quaternion.identity, parent);
-            var health = enemy.GetComponent<IHealth>();
-            health.CurrentHealth = enemyData.MaxHp;
-            health.MaxHp = enemyData.MaxHp;
-            
-            enemy.GetComponent<UIActor>().Construct(health);
-            enemy.GetComponent<AgentMoveToPlayer>().Construct(_heroGameObject.transform);
-            enemy.GetComponent<NavMeshAgent>().speed = enemyData.MoveSpeed;
-
-            EnemyAttack attack = enemy.GetComponent<EnemyAttack>();
-            attack.Construct(_heroGameObject.transform,enemyData.Damage,enemyData.AttackCoolDown);
-            return enemy;
         }
     }
 }
