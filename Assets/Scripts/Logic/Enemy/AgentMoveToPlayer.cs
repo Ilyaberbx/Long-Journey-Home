@@ -5,8 +5,7 @@ namespace Logic.Enemy
 {
     public class AgentMoveToPlayer : MonoBehaviour
     {
-        private const float MinimalDistance = 18f;
-
+        [SerializeField] private float _minimalDistance;
         [SerializeField] private NavMeshAgent _agent;
         private Transform _playerTransform;
 
@@ -25,6 +24,6 @@ namespace Logic.Enemy
             => _playerTransform != null;
 
         private bool HeroNotTouched()
-            => Vector3.Distance(_agent.transform.position, _playerTransform.position) >= MinimalDistance;
+            => Vector3.Distance(_agent.transform.position, _playerTransform.position) >= _minimalDistance;
     }
 }

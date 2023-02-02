@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Logic.Animations
 {
-    public class BearAnimator : EnemyAnimator, IAnimationStateReader
+    public class BearAnimator : BaseEnemyAnimator, IAnimationStateReader
     {
         private const int MaxInclusiveAttackCountConst = 3;
         private static readonly string Attack = "Attack";

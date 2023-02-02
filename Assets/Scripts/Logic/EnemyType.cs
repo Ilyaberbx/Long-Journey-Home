@@ -2,6 +2,6 @@
 {
     public enum EnemyType
     {
-        Bear
+        Bear,Wolf
     }
 }

@@ -15,7 +15,7 @@ namespace Logic.Enemy
         [SerializeField] private EnemyAttack _attack;
         [SerializeField] private EnemyAggro _aggro;
         [SerializeField] private EnemyHealth _health;
-        [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private float _delayBeforeDestroy;
 
         private void Awake() => 

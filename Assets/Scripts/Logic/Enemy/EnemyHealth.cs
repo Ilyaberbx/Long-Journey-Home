@@ -8,7 +8,7 @@ namespace Logic.Enemy
     {
         public event Action OnHealthChanged;
 
-        [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private int _maxHealth;
 
         public int MaxHp

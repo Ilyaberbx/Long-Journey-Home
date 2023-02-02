@@ -11,7 +11,7 @@ namespace Logic.Animations
         private const float MinimalSpeedVelocity = 0.1f;
 
         [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private BaseEnemyAnimator _animator;
 
         private void Update()
         {

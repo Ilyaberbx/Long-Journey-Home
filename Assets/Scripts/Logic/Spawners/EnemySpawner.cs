@@ -3,7 +3,6 @@ using Infrastructure.Services;
 using Interfaces;
 using Logic.Enemy;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Logic.Spawners
 {

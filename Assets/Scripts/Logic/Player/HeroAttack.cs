@@ -11,6 +11,8 @@ namespace Logic.Player
 
         [SerializeField] private CheckPoint _attackPoint;
         [SerializeField] private float _attackSpeed;
+        [SerializeField] private ParticleSystem _bloodFx;
+        [SerializeField] private float _offset;
 
         private IWeaponAnimator _animator;
         private IInputService _input;
@@ -47,7 +49,10 @@ namespace Logic.Player
         }
 
         private void PerformAttack(int index)
-            => _hits[index].transform.parent.GetComponent<IHealth>().TakeDamage(_stats.Damage);
+        {
+            _hits[index].transform.parent.GetComponent<IHealth>().TakeDamage(_stats.Damage);
+            Instantiate(_bloodFx.gameObject, _hits[index].attachedRigidbody.position + Vector3.up * _offset, Quaternion.identity);
+        }
 
         private int Hit()
             => Physics.OverlapSphereNonAlloc(_attackPoint.Position, _stats.AttackRadius, _hits, _layerMask);

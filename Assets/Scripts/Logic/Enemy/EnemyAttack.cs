@@ -1,18 +1,17 @@
 ﻿using System.Linq;
 using DG.Tweening;
-using Infrastructure.Services;
 using Interfaces;
 using ProjectSolitude.Extensions;
 using UnityEngine;
 
 namespace Logic.Enemy
 {
-    [RequireComponent(typeof(EnemyAnimator))]
+    [RequireComponent(typeof(BaseEnemyAnimator))]
     public class EnemyAttack : MonoBehaviour
     {
         private const string PlayerLayer = "Player";
 
-        [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
         
@@ -51,6 +50,8 @@ namespace Logic.Enemy
 
         private void OnAttack()
         {
+            Debug.Log("OnAttack");
+            
             if (Hit(out Collider collider))
             {
                 var health = collider.transform.GetComponent<IHealth>();
@@ -61,6 +62,8 @@ namespace Logic.Enemy
 
         private void OnAttackEnded()
         {
+            Debug.Log("OnAttackEnded");
+            
             _currentCoolDown = _attackCoolDown;
             _isAttacking = false;
         }

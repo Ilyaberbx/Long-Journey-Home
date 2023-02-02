@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Logic.Enemy
@@ -32,6 +33,11 @@ namespace Logic.Enemy
             if(!_isFollowing) return;
 
             _aggroCoroutine = StartCoroutine(StopFollowingAfterCoolDownRoutine());
+        }
+
+        private void Update()
+        {
+            Debug.Log(_follow.enabled);
         }
 
         private void StopPrevAggro()
