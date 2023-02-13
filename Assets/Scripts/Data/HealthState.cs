@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectSolitude.Data
+namespace Data
 {
     [Serializable]
     public class HealthState

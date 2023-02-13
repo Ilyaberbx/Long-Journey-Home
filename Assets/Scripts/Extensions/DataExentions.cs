@@ -1,6 +1,5 @@
 ﻿using Data;
 using UnityEngine;
-using ProjectSolitude.Data;
 
 namespace ProjectSolitude.Extensions
 {

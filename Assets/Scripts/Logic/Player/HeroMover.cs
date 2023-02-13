@@ -1,7 +1,6 @@
 using Data;
 using Infrastructure.Services;
 using Interfaces;
-using ProjectSolitude.Data;
 using ProjectSolitude.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;

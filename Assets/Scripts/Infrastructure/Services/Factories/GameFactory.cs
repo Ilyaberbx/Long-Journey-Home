@@ -43,7 +43,7 @@ namespace Infrastructure.Services.Factories
         public LootPiece CreateLoot()
         {
             var lootPiece = InstantiateRegistered(AssetsPath.Loot).GetComponent<LootPiece>();
-            lootPiece.Construct(_progressService.PlayerProgress.WorldData);
+            lootPiece.Construct(_progressService.PlayerProgress.FlashLightState);
             return lootPiece;
         }
 

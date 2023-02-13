@@ -1,7 +1,6 @@
 ﻿using System;
 using Data;
 using Interfaces;
-using ProjectSolitude.Data;
 using UnityEngine;
 
 namespace Logic.Player

@@ -9,8 +9,8 @@ namespace Logic.Enemy
     {
         [SerializeField] private EnemyDeath _enemyDeath;
         private IGameFactory _factory;
-        private int _lootMax;
-        private int _lootMin;
+        private float _lootMax;
+        private float _lootMin;
 
         public void Construct(IGameFactory factory)
         {
@@ -18,7 +18,7 @@ namespace Logic.Enemy
             _enemyDeath.OnDisappear += Spawn;
         }
 
-        public void SetLoot(int min, int max)
+        public void SetLoot(float min, float max)
         {
             _lootMin = min;
             _lootMax = max;
@@ -35,9 +35,9 @@ namespace Logic.Enemy
             loot.Initialize(lootItem);
         }
 
-        private Loot GenerateLootItem()
+        private FlashLightLoot GenerateLootItem()
         {
-            return new Loot()
+            return new FlashLightLoot()
             {
                 Value = Random.Range(_lootMin, _lootMax)
             };

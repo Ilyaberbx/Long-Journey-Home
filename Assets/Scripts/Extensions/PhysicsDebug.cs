@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ProjectSolitude.Extensions
+namespace Extensions
 {
     public static class PhysicsDebug
     {

@@ -35,11 +35,6 @@ namespace Logic.Enemy
             _aggroCoroutine = StartCoroutine(StopFollowingAfterCoolDownRoutine());
         }
 
-        private void Update()
-        {
-            Debug.Log(_follow.enabled);
-        }
-
         private void StopPrevAggro()
         {
             _isFollowing = true;

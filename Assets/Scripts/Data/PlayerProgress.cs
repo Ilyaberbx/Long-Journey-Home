@@ -1,6 +1,4 @@
-﻿using ProjectSolitude.Data;
-
-namespace Data
+﻿namespace Data
 {
     [System.Serializable]
     public class PlayerProgress
@@ -9,6 +7,7 @@ namespace Data
         public WorldData WorldData;
         public Stats Stats;
         public KillData KillData;
+        public FlashLightState FlashLightState;
 
         public PlayerProgress(string initialLevel)
         {
@@ -16,6 +15,7 @@ namespace Data
             HealthState = new HealthState();
             Stats = new Stats();
             KillData = new KillData();
+            FlashLightState = new FlashLightState();
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using Data;
 using Interfaces;
+using UnityEngine;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -33,9 +34,11 @@ namespace Infrastructure.StateMachine.State
         {
             _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
                                               ?? DefaultProgress();
+            
+            Debug.Log(_progressService.PlayerProgress.FlashLightState);
         }
 
-        private static PlayerProgress DefaultProgress()
+        private PlayerProgress DefaultProgress()
         {
             PlayerProgress progress = new PlayerProgress(MainScene);
 
@@ -43,6 +46,8 @@ namespace Infrastructure.StateMachine.State
             progress.HealthState.ResetHp();
             progress.Stats.Damage = 1;
             progress.Stats.AttackRadius = 8;
+            progress.FlashLightState.MaxLightIntensity = 1500;
+            progress.FlashLightState.Reset();
 
             return progress;
         }

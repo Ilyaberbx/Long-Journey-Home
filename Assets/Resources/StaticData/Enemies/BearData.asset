@@ -18,5 +18,5 @@ MonoBehaviour:
   _damage: 7
   _attackCoolDown: 0.9
   _moveSpeed: 50
-  _minLoot: 1
-  _maxLoot: 4
+  _minLoot: 0.1
+  _maxLoot: 0.3

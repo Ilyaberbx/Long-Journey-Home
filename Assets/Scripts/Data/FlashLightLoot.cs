@@ -3,8 +3,8 @@
 namespace Data
 {
     [Serializable]
-    public class Loot
+    public class FlashLightLoot
     {
-        public int Value;
+        public float Value;
     }
 }

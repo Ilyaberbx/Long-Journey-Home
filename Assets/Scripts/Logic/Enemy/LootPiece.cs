@@ -8,19 +8,18 @@ namespace Logic.Enemy
 {
     public class LootPiece : MonoBehaviour
     {
-        [SerializeField] private GameObject _lootVisualObject;
         [SerializeField] private DisappearingText _lootText;
         [SerializeField] private float _delayBeforeDestroy;
 
-        private Loot _loot;
-        private WorldData _worldData;
+        private FlashLightLoot _flashLightLoot;
+        private FlashLightState _flashLightState;
         private bool _isPicked;
 
-        public void Initialize(Loot loot)
-            => _loot = loot;
+        public void Initialize(FlashLightLoot flashLightLoot)
+            => _flashLightLoot = flashLightLoot;
 
-        public void Construct(WorldData worldData) 
-            => _worldData = worldData;
+        public void Construct(FlashLightState flashLightState) 
+            => _flashLightState = flashLightState;
 
         private void OnTriggerEnter(Collider other)
             => PickUp();
@@ -38,7 +37,7 @@ namespace Logic.Enemy
         private void CollectToWorldData()
         {
             _isPicked = true;
-            _worldData.LootData.Collect(_loot);
+            _flashLightState.Add(_flashLightLoot);
         }
 
         private IEnumerator DestroyRoutine()
@@ -48,9 +47,9 @@ namespace Logic.Enemy
         }
 
         private void Disappear() 
-            => _lootVisualObject.transform.DOScale(Vector3.zero, 1f);
+            => transform.DOScale(Vector3.zero, 1f);
 
         private void ShowText()
-            => _lootText.Show("+" + _loot.Value,_delayBeforeDestroy,Direction.Up);
+            => _lootText.Show("+" + _flashLightLoot.Value,_delayBeforeDestroy,Direction.Up);
     }
 }
