@@ -9,6 +9,7 @@ namespace Logic.Enemy
     public class LootPiece : MonoBehaviour
     {
         [SerializeField] private DisappearingText _lootText;
+        [SerializeField] private float _dissapearingDuration;
         [SerializeField] private float _delayBeforeDestroy;
 
         private FlashLightLoot _flashLightLoot;
@@ -47,7 +48,7 @@ namespace Logic.Enemy
         }
 
         private void Disappear() 
-            => transform.DOScale(Vector3.zero, 1f);
+            => transform.DOScale(Vector3.zero, _dissapearingDuration);
 
         private void ShowText()
             => _lootText.Show("+" + _flashLightLoot.Value,_delayBeforeDestroy,Direction.Up);

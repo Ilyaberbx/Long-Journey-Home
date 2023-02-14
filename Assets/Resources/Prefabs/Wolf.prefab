@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 2053555843935835451}
   _follow: {fileID: 3416594095639993542}
-  _followingDuration: 3
+  _followingDuration: 10
 --- !u!114 &6906607898896634438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,7 +1833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57fc492d4a9451ebf5aad537708f353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpImage: {fileID: 1195629662333213818}
+  _image: {fileID: 1195629662333213818}
 --- !u!1 &8200547026319252979
 GameObject:
   m_ObjectHideFlags: 0

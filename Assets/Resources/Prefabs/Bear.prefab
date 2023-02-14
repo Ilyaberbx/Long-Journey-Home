@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57fc492d4a9451ebf5aad537708f353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpImage: {fileID: 8546768309435807765}
+  _image: {fileID: 8546768309435807765}
 --- !u!1 &811790249755832718
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 8823730903001805140}
   _follow: {fileID: 5287697185329625257}
-  _followingDuration: 3
+  _followingDuration: 10
 --- !u!114 &4166588197806159401
 MonoBehaviour:
   m_ObjectHideFlags: 0

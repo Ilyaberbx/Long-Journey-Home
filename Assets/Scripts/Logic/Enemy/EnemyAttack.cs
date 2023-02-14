@@ -2,7 +2,6 @@
 using DG.Tweening;
 using Extensions;
 using Interfaces;
-using ProjectSolitude.Extensions;
 using UnityEngine;
 
 namespace Logic.Enemy
@@ -15,14 +14,14 @@ namespace Logic.Enemy
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
-        
+
+        private readonly Collider[] _colliders = new Collider[1];
+        private Transform _playerTransform;
         private int _damage;
         private float _attackCoolDown;
-        private Transform _playerTransform;
         private float _currentCoolDown;
         private bool _isAttacking;
         private int _layerMask;
-        private Collider[] _colliders = new Collider[1];
         private bool _attackIsActive;
 
         public void Construct(Transform playerTransform,int damage,float attackCoolDown)

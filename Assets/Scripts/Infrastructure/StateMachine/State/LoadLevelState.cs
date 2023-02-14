@@ -80,10 +80,8 @@ namespace Infrastructure.StateMachine.State
         private void InitHud(GameObject player)
         {
             GameObject hud = _gameFactory.CreateHud();
-
-            UIActor uiActor = hud.GetComponent<UIActor>();
-
-            uiActor.Construct(player.GetComponent<HeroHealth>());
+            PlayerUIActor uiActor = hud.GetComponent<PlayerUIActor>();
+            uiActor.Construct(player.GetComponent<HeroHealth>(),player.GetComponentInChildren<FlashLight>());
         }
 
         private GameObject InitPlayer()

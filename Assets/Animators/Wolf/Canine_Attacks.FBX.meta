@@ -479,14 +479,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.43871048
+      - time: 0.32342225
         functionName: OnAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.7571316
+      - time: 0.5591365
         functionName: OnAttackEnded
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -608,14 +608,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.35647368
+      - time: 0.2888045
         functionName: OnAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6802895
+      - time: 0.57001376
         functionName: OnAttackEnded
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -737,14 +737,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.33489472
+      - time: 0.26722553
         functionName: OnAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.66923684
+      - time: 0.5539486
         functionName: OnAttackEnded
         data: 
         objectReferenceParameter: {instanceID: 0}

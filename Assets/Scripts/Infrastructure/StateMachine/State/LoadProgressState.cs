@@ -34,8 +34,6 @@ namespace Infrastructure.StateMachine.State
         {
             _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
                                               ?? DefaultProgress();
-            
-            Debug.Log(_progressService.PlayerProgress.FlashLightState);
         }
 
         private PlayerProgress DefaultProgress()
