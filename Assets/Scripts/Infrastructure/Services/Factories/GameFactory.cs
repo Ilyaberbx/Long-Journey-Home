@@ -58,11 +58,6 @@ namespace Infrastructure.Services.Factories
             enemy.GetComponent<UIActor>()?.Construct(health);
             enemy.GetComponent<AgentMoveToPlayer>().Construct(_heroGameObject.transform);
             enemy.GetComponent<NavMeshAgent>().speed = enemyData.MoveSpeed;
-            
-            var loot = enemy.GetComponentInChildren<EnemyLootSpawner>();
-            loot.SetLoot(enemyData.MinLoot,enemyData.MaxLoot);
-            loot.Construct(this);
-            
 
             EnemyAttack attack = enemy.GetComponent<EnemyAttack>();
             attack.Construct(_heroGameObject.transform,enemyData.Damage,enemyData.AttackCoolDown);

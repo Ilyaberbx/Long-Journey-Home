@@ -17,11 +17,13 @@ namespace Logic.Enemy
         [SerializeField] private EnemyHealth _health;
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private float _delayBeforeDestroy;
+        [SerializeField] private ParticleSystem _deathFx;
+        [SerializeField] private float _fxOffSet = 5f;
 
-        private void Awake() => 
+        private void Awake() =>
             _health.OnHealthChanged += HealthChanged;
 
-        private void OnDestroy() 
+        private void OnDestroy()
             => _health.OnHealthChanged -= HealthChanged;
 
         private void HealthChanged()
@@ -38,7 +40,7 @@ namespace Logic.Enemy
             _attack.enabled = false;
             _animator.PlayDeath();
             StartCoroutine(DestroyingRoutine());
-            
+
             OnDie?.Invoke();
         }
 
@@ -47,18 +49,22 @@ namespace Logic.Enemy
             yield return new WaitForSeconds(_delayBeforeDestroy);
 
             var sequence = DOTween.Sequence();
-            sequence.Append(SetScaleToZero());
+            sequence.AppendCallback(InstantiateDeathFX);
+            sequence.Append(Disappear());
             sequence.AppendCallback(DestroyObject);
             sequence.AppendCallback(InvokeOnDisappear);
         }
 
+        private Tween Disappear()
+            => transform.DOScale(Vector3.zero, 1f);
+
         private void InvokeOnDisappear() =>
             OnDisappear?.Invoke();
 
-        private Tween SetScaleToZero()
-            => transform.DOScale(0, 2);
+        private void InstantiateDeathFX()
+            => Instantiate(_deathFx.gameObject, transform.position + Vector3.up * _fxOffSet, Quaternion.identity);
 
         private void DestroyObject()
-            => Destroy(this);
+            => Destroy(gameObject);
     }
 }

@@ -625,50 +625,6 @@ Transform:
   m_Father: {fileID: 7003574633381697764}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2374767357263074550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3008678762806132032}
-  - component: {fileID: 6609103927103204690}
-  m_Layer: 0
-  m_Name: LootSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3008678762806132032
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2374767357263074550}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3187716493957604303}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6609103927103204690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2374767357263074550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da6f44b7e7724d108762bb1f6b39a971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyDeath: {fileID: 6765417002108350700}
 --- !u!1 &2580228136483737955
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +733,6 @@ Transform:
   - {fileID: 8808483795131064320}
   - {fileID: 7215871329160528938}
   - {fileID: 8896488860945743396}
-  - {fileID: 3008678762806132032}
   - {fileID: 460440580575619835}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -942,6 +897,8 @@ MonoBehaviour:
   _health: {fileID: 7623132160314030190}
   _animator: {fileID: 4166588197806159401}
   _delayBeforeDestroy: 8
+  _deathFx: {fileID: 1920325297268671249, guid: 889dd67908ff48640a817f0b0074814e, type: 3}
+  _fxOffSet: 5
 --- !u!114 &4130819273021700041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,7 +1529,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3187716493957604303}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2865534039087681393
 MonoBehaviour:
