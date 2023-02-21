@@ -4,6 +4,7 @@ using Infrastructure.Services.StaticData;
 using Interfaces;
 using Logic;
 using Logic.Enemy;
+using Logic.Spawners;
 using StaticData;
 using UI;
 using UnityEngine;
@@ -62,6 +63,15 @@ namespace Infrastructure.Services.Factories
             EnemyAttack attack = enemy.GetComponent<EnemyAttack>();
             attack.Construct(_heroGameObject.transform,enemyData.Damage,enemyData.AttackCoolDown);
             return enemy;
+        }
+
+        public SpawnPoint CreateSpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType)
+        {
+            SpawnPoint spawner = InstantiateRegistered(AssetsPath.Spawner,at).GetComponent<SpawnPoint>();
+            spawner.SetId(spawnerId);
+            spawner.SetType(spawnerEnemyType);
+            spawner.Construct(this);
+            return spawner;
         }
 
         public void CleanUp()

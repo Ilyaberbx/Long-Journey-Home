@@ -9,7 +9,7 @@ namespace Logic.Player
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(Gravity))]
-    public class HeroMover : MonoBehaviour, ISavedProgressWriter
+    public class HeroMover : MonoBehaviour
     {
         private const float GravityConst = -10f;
         
@@ -54,35 +54,6 @@ namespace Logic.Player
             velocity.y += Mathf.Sqrt(_jumpHeight * (-3.0f * GravityConst));
             _gravity.SetVelocity(velocity);
         }
-
-        public void UpdateProgress(PlayerProgress progress)
-            => UpdatePlayerPositionOnLevelProgress(progress);
-
-        private void UpdatePlayerPositionOnLevelProgress(PlayerProgress progress)
-        {
-            progress.WorldData.PositionOnLevel = new PositionOnLevel(SceneManager.GetActiveScene().name,
-                transform.position.AsVector3Data());
-        }
-
-        public void LoadProgress(PlayerProgress progress)
-        {
-            if (CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
-            {
-                Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
-
-                if (savedPosition != null)
-                    WarpPlayerPosition(savedPosition);
-            }
-        }
-
-        private void WarpPlayerPosition(Vector3Data to)
-        {
-            _characterController.enabled = false;
-            transform.position = to.AsUnityVector().AddY(_characterController.height);
-            _characterController.enabled = true;
-        }
-
-        private string CurrentLevel()
-            => SceneManager.GetActiveScene().name;
+        
     }
 }

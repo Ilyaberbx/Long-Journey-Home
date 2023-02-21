@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Infrastructure.Services;
+using Infrastructure.Services.StaticData;
 using Infrastructure.StateMachine.State;
 using Interfaces;
 using Logic;
@@ -23,7 +24,7 @@ namespace Infrastructure.StateMachine
                 
                 [typeof(LoadLevelState)] = new LoadLevelState(this,sceneLoader, loadingCurtain, 
                     serviceLocator.Single<IGameFactory>(),
-                    serviceLocator.Single<IPersistentProgressService>()),
+                    serviceLocator.Single<IPersistentProgressService>(),serviceLocator.Single<IStaticDataService>()),
                 
                 [typeof(LoadProgressState)] = new LoadProgressState(this,
                     serviceLocator.Single<IPersistentProgressService>(),

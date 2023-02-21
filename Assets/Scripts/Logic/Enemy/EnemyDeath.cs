@@ -9,7 +9,6 @@ namespace Logic.Enemy
     public class EnemyDeath : MonoBehaviour
     {
         public event Action OnDie;
-        public event Action OnDisappear;
 
         [SerializeField] private AgentMoveToPlayer _agent;
         [SerializeField] private EnemyAttack _attack;
@@ -35,9 +34,9 @@ namespace Logic.Enemy
         private void Die()
         {
             _health.OnHealthChanged -= HealthChanged;
+            _attack.enabled = false;
             _aggro.enabled = false;
             _agent.enabled = false;
-            _attack.enabled = false;
             _animator.PlayDeath();
             StartCoroutine(DestroyingRoutine());
 
@@ -52,14 +51,10 @@ namespace Logic.Enemy
             sequence.AppendCallback(InstantiateDeathFX);
             sequence.Append(Disappear());
             sequence.AppendCallback(DestroyObject);
-            sequence.AppendCallback(InvokeOnDisappear);
         }
 
         private Tween Disappear()
             => transform.DOScale(Vector3.zero, 1f);
-
-        private void InvokeOnDisappear() =>
-            OnDisappear?.Invoke();
 
         private void InstantiateDeathFX()
             => Instantiate(_deathFx.gameObject, transform.position + Vector3.up * _fxOffSet, Quaternion.identity);

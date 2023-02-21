@@ -12,7 +12,6 @@ namespace Logic.Player
         [SerializeField] private CheckPoint _attackPoint;
         [SerializeField] private float _attackSpeed;
         [SerializeField] private GameObject _bloodFx;
-        [SerializeField] private GameObject _brainFx;
         [SerializeField] private float _offset;
 
         private IWeaponAnimator _animator;
@@ -58,8 +57,6 @@ namespace Logic.Player
         private void ShowFx(int index)
         {
             Instantiate(_bloodFx.gameObject, _hits[index].attachedRigidbody.position + Vector3.up * _offset,
-                Quaternion.identity);
-            Instantiate(_brainFx.gameObject, _hits[index].attachedRigidbody.position + Vector3.up * _offset,
                 Quaternion.identity);
         }
 

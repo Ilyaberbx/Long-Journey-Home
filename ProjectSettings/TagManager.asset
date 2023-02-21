@@ -6,7 +6,6 @@ TagManager:
   tags:
   - PlayerInitPoint
   - POVPoint
-  - EnemySpawner
   layers:
   - Default
   - TransparentFX

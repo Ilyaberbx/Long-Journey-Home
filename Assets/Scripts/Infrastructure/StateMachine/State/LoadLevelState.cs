@@ -1,4 +1,6 @@
-﻿using Interfaces;
+﻿using Data;
+using Infrastructure.Services.StaticData;
+using Interfaces;
 using Logic;
 using Logic.Camera;
 using Logic.Player;
@@ -7,6 +9,7 @@ using ProjectSolitude.Enum;
 using SceneManagment;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -14,26 +17,28 @@ namespace Infrastructure.StateMachine.State
     {
         private const string PlayerInitPointTag = "PlayerInitPoint";
         private const string PovPoint = "POVPoint";
-        private const string EnemySpawnerTag = "EnemySpawner";
-        
+
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _persistentProgressService;
+        private readonly IStaticDataService _staticData;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
-            IGameFactory gameFactory,IPersistentProgressService persistentProgressService)
+            IGameFactory gameFactory,IPersistentProgressService persistentProgressService,IStaticDataService staticData)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
             _gameFactory = gameFactory;
             _persistentProgressService = persistentProgressService;
+            _staticData = staticData;
         }
 
         public void Enter(string payLoad)
         {
+            _gameFactory.CleanUp();
             _loadingCurtain.Show();
             _sceneLoader.Load(payLoad, OnLoaded);
         }
@@ -64,10 +69,11 @@ namespace Infrastructure.StateMachine.State
 
         private void InitSpawners()
         {
-            foreach (GameObject spawnerObject in GameObject.FindGameObjectsWithTag(EnemySpawnerTag))
+            string sceneKey = SceneManager.GetActiveScene().name;
+            LevelData levelData = _staticData.GetLevelData(sceneKey);
+            foreach (EnemySpawnerData spawner in levelData.EnemySpawners)
             {
-                EnemySpawner spawner = spawnerObject.GetComponent<EnemySpawner>();
-                _gameFactory.Register(spawner);
+                _gameFactory.CreateSpawner(spawner.Position, spawner.Id, spawner.EnemyType);
             }
         }
 

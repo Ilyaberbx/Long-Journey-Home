@@ -299,8 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackPoint: {fileID: 6655819200494281951}
   _attackSpeed: 0.6
-  _bloodFx: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
-  _brainFx: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
+  _bloodFx: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
   _offset: 10
 --- !u!114 &72199085430969277
 MonoBehaviour:
@@ -341,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6231490332984145265}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.25, z: -0.11}
+  m_LocalPosition: {x: 0, y: 14.599998, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8959592897280256948}
@@ -453,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7995979508108311700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.63, z: 0}
+  m_LocalPosition: {x: 0, y: 14.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3401435002938043441}
@@ -645,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c2444a8dd040cd943d294fb053c5bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lessValue: 0.5
+  _lessValue: 0.002
   _light: {fileID: 7457118619293394937}
 --- !u!108 &7457118619293394937
 Light:
@@ -659,7 +658,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.7995101, b: 0, a: 1}
-  m_Intensity: 52.97
+  m_Intensity: 99.41
   m_Range: 127.33
   m_SpotAngle: 79.47788
   m_InnerSpotAngle: 41.59323

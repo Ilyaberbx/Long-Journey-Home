@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Logic;
-using Logic.Enemy;
+using Logic.Spawners;
 using UnityEngine;
 
 namespace Interfaces
@@ -14,8 +13,7 @@ namespace Interfaces
         GameObject CreatePlayer(Vector3 at);
         GameObject CreateHud();
         void CleanUp();
-        void Register(ISavedProgressReader obj);
         GameObject CreateEnemy(EnemyType enemyType, Transform transform);
-        LootPiece CreateLoot();
+        SpawnPoint CreateSpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType);
     }
 }

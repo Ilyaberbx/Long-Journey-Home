@@ -66,7 +66,7 @@ namespace Infrastructure.StateMachine.State
         private void RegisterStaticData()
         {
             IStaticDataService staticData = new StaticDataService();
-            staticData.LoadEnemies();
+            staticData.Load();
             _serviceLocator.RegisterService(staticData);
         }
 
