@@ -43,7 +43,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.7616924, b: 0.2093271, a: 1}
-  m_Intensity: 10
+  m_Intensity: 5
   m_Range: 45.95
   m_SpotAngle: 123.2291
   m_InnerSpotAngle: 59.09372
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c2444a8dd040cd943d294fb053c5bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lessValue: 0.005
+  _lessValue: 0.2
   _lights:
   - {fileID: 2871344689896616772}
   - {fileID: 7302193177243777178}
@@ -615,7 +615,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.7616924, b: 0.2093271, a: 1}
-  m_Intensity: 10
+  m_Intensity: 5
   m_Range: 45.95
   m_SpotAngle: 123.2291
   m_InnerSpotAngle: 59.09372
@@ -850,7 +850,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.7616924, b: 0.2093271, a: 1}
-  m_Intensity: 10
+  m_Intensity: 5
   m_Range: 45.95
   m_SpotAngle: 123.2291
   m_InnerSpotAngle: 59.09372
