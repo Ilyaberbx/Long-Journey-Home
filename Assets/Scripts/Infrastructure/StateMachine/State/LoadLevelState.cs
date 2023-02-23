@@ -3,8 +3,8 @@ using Infrastructure.Services.StaticData;
 using Interfaces;
 using Logic;
 using Logic.Camera;
+using Logic.DialogueSystem;
 using Logic.Player;
-using Logic.Spawners;
 using ProjectSolitude.Enum;
 using SceneManagment;
 using UI;
@@ -87,7 +87,9 @@ namespace Infrastructure.StateMachine.State
         {
             GameObject hud = _gameFactory.CreateHud();
             PlayerUIActor uiActor = hud.GetComponent<PlayerUIActor>();
-            uiActor.Construct(player.GetComponent<HeroHealth>(),player.GetComponentInChildren<FlashLight>());
+            uiActor.Construct(player.GetComponent<HeroHealth>(),
+                player.GetComponentInChildren<FlashLight>(),
+                player.GetComponent<IDialogueActor>());
         }
 
         private GameObject InitPlayer()

@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Logic.DialogueSystem;
 using UnityEngine;
 
 
