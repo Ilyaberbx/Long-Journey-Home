@@ -21,8 +21,8 @@ TagManager:
   - Hittable
   - PickUp
   - Dialogue
-  - 
-  - 
+  - CampFire
+  - SaveTrigger
   - 
   - 
   - 

@@ -7,6 +7,6 @@ namespace Interfaces
         event Action OnHealthChanged;
         int CurrentHealth { get; set; }
         int MaxHp { get; set; }
-        void TakeDamage(int damage);
+        void TakeDamage(int damage,bool withAnimation = true);
     }
 }

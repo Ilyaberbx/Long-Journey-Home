@@ -25,6 +25,10 @@ namespace Infrastructure.Services.Input
         public bool IsAttackButtonPressed()
             => UnityEngine.Input.GetMouseButtonDown(0);
 
+        public bool IsInteractButtonPressed()
+            => UnityEngine.Input.GetKeyDown(KeyCode.E);
+
+
         public bool IsJumped()
             => UnityEngine.Input.GetKeyDown(KeyCode.Space);
 

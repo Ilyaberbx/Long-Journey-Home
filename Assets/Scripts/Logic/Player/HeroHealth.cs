@@ -31,13 +31,14 @@ namespace Logic.Player
             }
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, bool withAnimation = true)
         {
             if (CurrentHealth <= 0)
                 return;
+            
+            if (withAnimation)
+                _animator.PlayTakeDamage();
 
-
-            _animator.PlayTakeDamage();
             CurrentHealth = ClampHealthPoints(damage);
         }
 
@@ -52,8 +53,7 @@ namespace Logic.Player
 
         public void UpdateProgress(PlayerProgress progress)
         {
-            progress.HealthState.CurrentHP = CurrentHealth;
-            progress.HealthState.MaxHP = MaxHp;
+            progress.HealthState = _state;
         }
 
         private int ClampHealthPoints(int damage)

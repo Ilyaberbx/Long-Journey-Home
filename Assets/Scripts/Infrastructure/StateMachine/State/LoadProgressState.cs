@@ -40,12 +40,14 @@ namespace Infrastructure.StateMachine.State
         {
             PlayerProgress progress = new PlayerProgress(MainScene);
 
-            progress.HealthState.MaxHP = 30;
+            progress.HealthState.MaxHP = 100;
             progress.HealthState.ResetHp();
             progress.Stats.Damage = 1;
             progress.Stats.AttackRadius = 8;
             progress.FlashLightState.MaxLightIntensity = 1500;
             progress.FlashLightState.Reset();
+            progress.FreezeState.MaxFreeze = 100;
+            progress.FreezeState.ResetFreeze();
 
             return progress;
         }

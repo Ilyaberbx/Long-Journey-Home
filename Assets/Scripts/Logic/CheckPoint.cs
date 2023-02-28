@@ -12,7 +12,7 @@ namespace Logic
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(_checkPointTransform.position,_radius);
+            Gizmos.DrawSphere(_checkPointTransform.position, _radius);
             Gizmos.color = Color.white;
         }
     }

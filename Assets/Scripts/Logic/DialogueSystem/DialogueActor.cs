@@ -14,6 +14,7 @@ namespace Logic.DialogueSystem
         [SerializeField] private float _nextSentenceInterval;
         
         private Queue<string> _sentences = new Queue<string>();
+        private Coroutine _typingCoroutine;
 
         public void StartDialogue(Dialogue dialogue)
         {
@@ -25,6 +26,12 @@ namespace Logic.DialogueSystem
         private void ClearPreviousSentence()
         {
             OnSentenceCleared?.Invoke();
+
+            if (_typingCoroutine != null)
+            {
+                StopCoroutine(_typingCoroutine);
+                _typingCoroutine = null;
+            }
             _sentences.Clear();
         }
 
@@ -40,7 +47,7 @@ namespace Logic.DialogueSystem
 
             string sentenceToDisplay = _sentences.Dequeue();
             StopAllCoroutines();
-            StartCoroutine(TypeSentence(sentenceToDisplay));
+            _typingCoroutine = StartCoroutine(TypeSentence(sentenceToDisplay));
         }
         
 

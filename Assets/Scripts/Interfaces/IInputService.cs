@@ -9,6 +9,8 @@ namespace Interfaces
         public float MouseX { get; }
 
         public bool IsAttackButtonPressed();
+
+        public bool IsInteractButtonPressed();
         public bool IsJumped();
         public bool IsSprinting();
     }

@@ -4,6 +4,7 @@ using Infrastructure.Services.StaticData;
 using Interfaces;
 using Logic;
 using Logic.Enemy;
+using Logic.Player;
 using Logic.Spawners;
 using StaticData;
 using UI;
@@ -40,13 +41,7 @@ namespace Infrastructure.Services.Factories
 
         public GameObject CreateHud()
             => InstantiateRegistered(AssetsPath.HudPath);
-
-        public LootPiece CreateLoot()
-        {
-            var lootPiece = InstantiateRegistered(AssetsPath.Loot).GetComponent<LootPiece>();
-            lootPiece.Construct(_progressService.PlayerProgress.FlashLightState);
-            return lootPiece;
-        }
+        
 
         public GameObject CreateEnemy(EnemyType enemyType, Transform parent)
         {

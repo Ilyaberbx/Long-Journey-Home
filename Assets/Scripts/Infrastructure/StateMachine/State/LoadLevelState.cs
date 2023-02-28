@@ -26,7 +26,8 @@ namespace Infrastructure.StateMachine.State
         private readonly IStaticDataService _staticData;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
-            IGameFactory gameFactory,IPersistentProgressService persistentProgressService,IStaticDataService staticData)
+            IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
+            IStaticDataService staticData)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -43,8 +44,9 @@ namespace Infrastructure.StateMachine.State
             _sceneLoader.Load(payLoad, OnLoaded);
         }
 
-        public void Exit() 
+        public void Exit()
             => _loadingCurtain.Hide();
+
         private void OnLoaded()
         {
             InitGameWorld();
@@ -71,10 +73,9 @@ namespace Infrastructure.StateMachine.State
         {
             string sceneKey = SceneManager.GetActiveScene().name;
             LevelData levelData = _staticData.GetLevelData(sceneKey);
+            
             foreach (EnemySpawnerData spawner in levelData.EnemySpawners)
-            {
                 _gameFactory.CreateSpawner(spawner.Position, spawner.Id, spawner.EnemyType);
-            }
         }
 
         private void InjectCameraAnimator(GameObject player, GameObject camera)
@@ -87,9 +88,12 @@ namespace Infrastructure.StateMachine.State
         {
             GameObject hud = _gameFactory.CreateHud();
             PlayerUIActor uiActor = hud.GetComponent<PlayerUIActor>();
-            uiActor.Construct(player.GetComponent<HeroHealth>(),
+            uiActor.Construct(
+                player.GetComponent<HeroHealth>(),
                 player.GetComponentInChildren<FlashLight>(),
-                player.GetComponent<IDialogueActor>());
+                player.GetComponent<IDialogueActor>(),
+                player.GetComponent<IFreeze>(),
+            player.GetComponent<IInteractor>());
         }
 
         private GameObject InitPlayer()
@@ -101,10 +105,8 @@ namespace Infrastructure.StateMachine.State
 
         private GameObject CameraFollowPlayer(Transform target)
         {
-            var cameraChanger = Camera.main.
-                GetComponentInParent<GameCamerasChanger>();
-            return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, target,true);
+            var cameraChanger = Camera.main.GetComponentInParent<GameCamerasChanger>();
+            return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, target, true);
         }
-        
     }
 }

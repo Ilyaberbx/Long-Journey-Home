@@ -4,6 +4,7 @@
     public class PlayerProgress
     {
         public HealthState HealthState;
+        public FreezeState FreezeState;
         public WorldData WorldData;
         public Stats Stats;
         public KillData KillData;
@@ -16,6 +17,7 @@
             Stats = new Stats();
             KillData = new KillData();
             FlashLightState = new FlashLightState();
+            FreezeState = new FreezeState();
         }
 
     }

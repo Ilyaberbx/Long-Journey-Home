@@ -19,11 +19,6 @@ namespace Infrastructure
 
             DontDestroyOnLoad(this);
         }
-
-        private void OnApplicationQuit()
-            => SafetySave();
-
-        private void SafetySave()
-            => ServiceLocator.Container.Single<ISaveLoadService>().SaveProgress();
+        
     }
 }

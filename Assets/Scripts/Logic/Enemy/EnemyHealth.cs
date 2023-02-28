@@ -25,10 +25,13 @@ namespace Logic.Enemy
         private void Awake()
             => CurrentHealth = _maxHealth;
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, bool withAnimation = true)
         {
             CurrentHealth = ClampHealthValue(damage);
-            _animator.PlayTakeDamage();
+
+            if (withAnimation)
+                _animator.PlayTakeDamage();
+
             OnHealthChanged?.Invoke();
         }
 
