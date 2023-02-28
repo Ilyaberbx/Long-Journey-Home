@@ -9,7 +9,7 @@ namespace ProjectSolitude.Extensions
             => new Vector3Data(vector3.x, vector3.y, vector3.z);
 
         public static Vector3 AsUnityVector(this Vector3Data vector3data)
-            => new Vector3(vector3data.X, vector3data.Y, vector3data.Y);
+            => new Vector3(vector3data.X, vector3data.Y, vector3data.Z);
         public static T ToDeserialized<T>(this string json) 
             => JsonUtility.FromJson<T>(json);
 
