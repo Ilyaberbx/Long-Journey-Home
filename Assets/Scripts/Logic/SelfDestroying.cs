@@ -9,10 +9,10 @@ namespace Logic
 
         private void Awake()
         {
-            var sequnce = DOTween.Sequence();
-            sequnce.AppendInterval(_delayBeforeDestroy);
-            sequnce.Append(Disappear());
-            sequnce.AppendCallback(Destroy);
+            var sequence = DOTween.Sequence();
+            sequence.AppendInterval(_delayBeforeDestroy);
+            sequence.Append(Disappear());
+            sequence.AppendCallback(Destroy);
         }
 
         private void Destroy()

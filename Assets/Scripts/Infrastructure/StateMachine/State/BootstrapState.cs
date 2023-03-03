@@ -6,7 +6,7 @@ using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
 using Interfaces;
-using SceneManagment;
+using SceneManagement;
 
 namespace Infrastructure.StateMachine.State
 {

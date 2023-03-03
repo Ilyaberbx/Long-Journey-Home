@@ -5,7 +5,7 @@ using Infrastructure.Services.StaticData;
 using Infrastructure.StateMachine.State;
 using Interfaces;
 using Logic;
-using SceneManagment;
+using SceneManagement;
 
 namespace Infrastructure.StateMachine
 {

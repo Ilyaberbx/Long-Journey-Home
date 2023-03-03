@@ -15,8 +15,8 @@ MonoBehaviour:
   LevelKey: MainScene
   EnemySpawners:
   - Id: MainScene_4afa3ab6-9ff5-4b1d-83b1-1c3411c5bb5d
-    EnemyType: 0
-    Position: {x: 364, y: 15, z: 3533}
+    EnemyType: 1
+    Position: {x: 1458.4, y: 14, z: 3616.8284}
   - Id: MainScene_b95854a8-ee2f-4209-99a5-a3592321ee4e
     EnemyType: 1
-    Position: {x: 336.3, y: 33.3, z: 3963.3}
+    Position: {x: 1512.5, y: 14, z: 3602.4}

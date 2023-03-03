@@ -8,14 +8,20 @@ namespace Logic
     public class SaveTrigger : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
+        private bool _isSaved;
 
-        private void Awake() 
+        private void Awake()
             => _triggerObserver.OnTriggerEntered += e => SafetySave();
 
-        private void OnDestroy() 
+        private void OnDestroy()
             => _triggerObserver.OnTriggerEntered -= e => SafetySave();
 
         private void SafetySave()
-            => ServiceLocator.Container.Single<ISaveLoadService>().SaveProgress();
+        {
+            if (_isSaved) return;
+
+            ServiceLocator.Container.Single<ISaveLoadService>().SaveProgress();
+            _isSaved = true;
+        }
     }
 }

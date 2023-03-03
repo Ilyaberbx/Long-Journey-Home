@@ -6,7 +6,7 @@ using Logic.Camera;
 using Logic.DialogueSystem;
 using Logic.Player;
 using ProjectSolitude.Enum;
-using SceneManagment;
+using SceneManagement;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
