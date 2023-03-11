@@ -9,6 +9,7 @@ namespace Logic.Player.Inventory
     {
         public event Action<IInventoryItem, int> OnInventoryItemAdded;
         public event Action<Type, int> OnInventoryItemRemoved;
+        public event Action OnStateChanged;
 
         public int Capacity { get; }
         public bool IsFull => _slots.All(slot => slot.IsFull);
@@ -37,7 +38,7 @@ namespace Logic.Player.Inventory
             => (from slot in _slots where !slot.IsEmpty select slot.Item).ToArray();
 
         public IInventoryItem[] GetEquippedItems()
-            => (from slot in _slots where !slot.IsEmpty && slot.Item.IsEquipped select slot.Item).ToArray();
+            => (from slot in _slots where !slot.IsEmpty && slot.Item.State.IsEquipped select slot.Item).ToArray();
 
         public IInventoryItem[] GetAllItems(Type type)
             => (from slot in _slots where !slot.IsEmpty && slot.ItemType == type select slot.Item).ToArray();
@@ -47,7 +48,7 @@ namespace Logic.Player.Inventory
             var items =
                 (from slot in _slots where !slot.IsEmpty && slot.ItemType == type select slot.Item).ToList();
 
-            return items.Sum(item => item.Amount);
+            return items.Sum(item => item.State.Amount);
         }
 
         public bool TryAdd(IInventoryItem item)
@@ -69,30 +70,62 @@ namespace Logic.Player.Inventory
 
         private bool TryAddToSlot(IInventorySlot slot, IInventoryItem item)
         {
-            bool fits = slot.Amount + item.Amount <= item.MaxItemsInInventorySlot;
+            bool fits = slot.Amount + item.State.Amount <= item.Info.MaxItemsInInventorySlot;
 
             int amountToAdd = fits
-                ? item.Amount
-                : item.MaxItemsInInventorySlot - slot.Amount;
+                ? item.State.Amount
+                : item.Info.MaxItemsInInventorySlot - slot.Amount;
 
-            int amountLeft = item.Amount - amountToAdd;
+            int amountLeft = item.State.Amount - amountToAdd;
 
             var clonedItem = item.Clone();
-            clonedItem.Amount = amountToAdd;
+            clonedItem.State.Amount = amountToAdd;
 
             if (slot.IsEmpty)
                 slot.SetItem(clonedItem);
             else
-                slot.Item.Amount += amountToAdd;
+                slot.Item.State.Amount += amountToAdd;
 
             Debug.Log($"Item Added to inventory. Item type: {item.Type}, Amount to add: {amountToAdd}");
             OnInventoryItemAdded?.Invoke(item, amountToAdd);
+            OnStateChanged?.Invoke();
 
             if (amountLeft <= 0)
                 return true;
 
-            item.Amount = amountLeft;
+            item.State.Amount = amountLeft;
             return TryAdd(item);
+        }
+
+        public void TransitFromSlotToSlot(IInventorySlot from, IInventorySlot to)
+        {
+            if (from.IsEmpty) return;
+
+            if (to.IsFull) return;
+
+            if (!to.IsEmpty && from.ItemType != to.ItemType)
+                return;
+
+            int slotCapacity = from.Capacity;
+            bool fits = from.Amount + to.Amount <= slotCapacity;
+            int amountToAdd = fits ? from.Amount : slotCapacity - to.Amount;
+            int amountLeft = from.Amount - amountToAdd;
+
+            if (!to.IsEmpty)
+            {
+                OnStateChanged?.Invoke();
+                to.SetItem(from.Item);
+                from.Clear();
+            }
+
+            to.Item.State.Amount += amountToAdd;
+            
+            if(fits)
+                from.Clear();
+            else
+                from.Item.State.Amount = amountLeft;
+            
+            OnStateChanged?.Invoke();
         }
 
         public void Remove(Type type, int amount = 1)
@@ -114,14 +147,14 @@ namespace Logic.Player.Inventory
                 var slot = slotsWithItem[i];
                 if (slot.Amount >= amountToRemove)
                 {
-                    slot.Item.Amount -= amountToRemove;
+                    slot.Item.State.Amount -= amountToRemove;
 
                     if (slot.Amount <= 0)
                         slot.Clear();
 
                     Debug.Log($"Item Removed to inventory. Item type: {type}, Amount to remove: {amountToRemove}");
                     OnInventoryItemRemoved?.Invoke(type, amountToRemove);
-
+                    OnStateChanged?.Invoke();
                     break;
                 }
 
@@ -130,6 +163,7 @@ namespace Logic.Player.Inventory
                 slot.Clear();
                 Debug.Log($"Item Removed to inventory. Item type: {type}, Amount to remove: {amountRemoved}");
                 OnInventoryItemRemoved?.Invoke(type, amountRemoved);
+                OnStateChanged?.Invoke();
             }
         }
 

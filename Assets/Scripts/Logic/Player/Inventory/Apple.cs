@@ -4,18 +4,24 @@ namespace Logic.Player.Inventory
 {
     public class Apple : IInventoryItem
     {
-        public bool IsEquipped { get; set; }
+        public IInventoryItemInfo Info { get; }
+        public IInventoryItemState State { get; }
         public Type Type => GetType();
-        public int MaxItemsInInventorySlot { get; }
-        public int Amount { get; set; }
-
-        public Apple(int maxItemsInInventorySlot) 
-            => MaxItemsInInventorySlot = maxItemsInInventorySlot;
+        public Apple(IInventoryItemInfo info)
+        {
+            Info = info;
+            State = new InventoryItemState();
+        }
 
         public IInventoryItem Clone()
         {
-            var clone = new Apple(MaxItemsInInventorySlot);
-            clone.Amount = Amount;
+            var clone = new Apple(Info)
+            {
+                State =
+                {
+                    Amount = State.Amount
+                }
+            };
             return clone;
         }
     }
