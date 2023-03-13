@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7880d4bfbe94d09ab3e2eae8a6f0424, type: 3}
-  m_Name: Apple
+  m_Name: Pepper
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
-  _id: apple
-  _title: Apple
-  _description: 'Big cock '
-  _maxItemsInSlot: 4
+  _icon: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  _id: pepper
+  _title: Pepper
+  _description: Big ass
+  _maxItemsInSlot: 7

@@ -68,7 +68,7 @@ namespace Logic.Player.Inventory
             return false;
         }
 
-        private bool TryAddToSlot(IInventorySlot slot, IInventoryItem item)
+        public bool TryAddToSlot(IInventorySlot slot, IInventoryItem item)
         {
             bool fits = slot.Amount + item.State.Amount <= item.Info.MaxItemsInInventorySlot;
 
@@ -111,7 +111,7 @@ namespace Logic.Player.Inventory
             int amountToAdd = fits ? from.Amount : slotCapacity - to.Amount;
             int amountLeft = from.Amount - amountToAdd;
 
-            if (!to.IsEmpty)
+            if (to.IsEmpty)
             {
                 OnStateChanged?.Invoke();
                 to.SetItem(from.Item);
