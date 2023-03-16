@@ -1,3 +1,4 @@
+using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Factories;
@@ -5,8 +6,9 @@ using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
-using Interfaces;
 using SceneManagement;
+using UI.Services.Factory;
+using UI.Services.Window;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -42,7 +44,18 @@ namespace Infrastructure.StateMachine.State
             RegisterProgress();
             RegisterFactory();
             RegisterSaveLoadService();
+            RegisterUIFactory();
+            RegisterWindowFactory();
         }
+
+        private void RegisterWindowFactory() 
+            => _serviceLocator.RegisterService<IWindowService>(
+                new WindowService(_serviceLocator.Single<IUIFactory>()));
+
+        private void RegisterUIFactory() 
+            => _serviceLocator.RegisterService<IUIFactory>(
+                new UIFactory(_serviceLocator.Single<IAssetProvider>(),
+                    _serviceLocator.Single<IStaticDataService>()));
 
         private void RegisterProgress() =>
             _serviceLocator.RegisterService<IPersistentProgressService>
@@ -54,7 +67,7 @@ namespace Infrastructure.StateMachine.State
 
         private void RegisterFactory() 
             => _serviceLocator.RegisterService<IGameFactory>(new GameFactory
-                (_serviceLocator.Single<IAssetProvider>(),_serviceLocator.Single<IStaticDataService>(),_serviceLocator.Single<IPersistentProgressService>()));
+                (_serviceLocator.Single<IAssetProvider>(),_serviceLocator.Single<IStaticDataService>()));
 
         private void RegisterInput()
             => _serviceLocator.RegisterService(DefineInputService());

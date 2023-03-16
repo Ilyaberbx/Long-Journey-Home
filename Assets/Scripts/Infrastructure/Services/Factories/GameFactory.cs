@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.StaticData;
 using Interfaces;
@@ -8,6 +9,7 @@ using Logic.Player;
 using Logic.Spawners;
 using StaticData;
 using UI;
+using UI.Elements;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -18,19 +20,17 @@ namespace Infrastructure.Services.Factories
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticData;
-        private readonly IPersistentProgressService _progressService;
+
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
 
         private GameObject _heroGameObject;
-
         
 
-        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData,IPersistentProgressService progressService)
+        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
-            _progressService = progressService;
         }
 
         public GameObject CreatePlayer(Vector3 at)

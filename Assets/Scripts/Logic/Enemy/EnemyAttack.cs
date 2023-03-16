@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Extensions;
 using Interfaces;
+using Logic.Player;
 using UnityEngine;
 
 namespace Logic.Enemy

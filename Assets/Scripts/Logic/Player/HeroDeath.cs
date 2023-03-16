@@ -1,5 +1,6 @@
 ﻿using System;
 using Interfaces;
+using Logic.Animations;
 using UnityEngine;
 
 namespace Logic.Player
@@ -17,12 +18,12 @@ namespace Logic.Player
             _animator = animator;
 
         private void Awake() => 
-            _health.OnHealthChanged += HelthChanged;
+            _health.OnHealthChanged += HealthChanged;
 
         private void OnDestroy() => 
-            _health.OnHealthChanged -= HelthChanged;
+            _health.OnHealthChanged -= HealthChanged;
 
-        private void HelthChanged()
+        private void HealthChanged()
         {
             if(_isDead) return;
             

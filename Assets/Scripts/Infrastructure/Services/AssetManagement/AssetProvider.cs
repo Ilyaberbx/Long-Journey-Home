@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using Infrastructure.Interfaces;
+using Interfaces;
 using UnityEngine;
 
 namespace Infrastructure.Services.AssetManagement

@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Logic.Player;
 using UnityEngine;
 
 namespace Logic.Weapons

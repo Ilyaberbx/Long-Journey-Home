@@ -1,13 +1,16 @@
 ﻿using Data;
+using Infrastructure.Interfaces;
 using Infrastructure.Services.StaticData;
 using Interfaces;
 using Logic;
+using Logic.Animations;
 using Logic.Camera;
 using Logic.DialogueSystem;
 using Logic.Player;
 using ProjectSolitude.Enum;
 using SceneManagement;
 using UI;
+using UI.Elements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

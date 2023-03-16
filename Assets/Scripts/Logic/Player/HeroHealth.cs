@@ -1,6 +1,8 @@
 ﻿using System;
 using Data;
+using Infrastructure.Interfaces;
 using Interfaces;
+using Logic.Animations;
 using UnityEngine;
 
 namespace Logic.Player

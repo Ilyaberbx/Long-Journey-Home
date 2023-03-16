@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using DG.Tweening;
-using Interfaces;
 using Logic.Enemy;
 using Logic.Player;
 using UnityEngine;
@@ -26,22 +25,20 @@ namespace Logic
 
         private void StartHealing(Transform player)
         {
-            if (player.TryGetComponent(out IHealth health) && player.TryGetComponent(out IFreeze freeze))
-            {
-                _isFire = true;
-                _healingRoutine = StartCoroutine(HealingRoutine(health, freeze));
-            }
+            if (!player.TryGetComponent(out IHealth health) || !player.TryGetComponent(out IFreeze freeze)) return;
+            
+            _isFire = true;
+            _healingRoutine = StartCoroutine(HealingRoutine(health, freeze));
         }
 
         private void StopHealing()
         {
-            if (_healingRoutine != null)
-            {
-                StopCoroutine(_healingRoutine);
-                DisappearFx();
-                _isFire = false;
-                _healingRoutine = null;
-            }
+            if (_healingRoutine == null) return;
+            
+            StopCoroutine(_healingRoutine);
+            DisappearFx();
+            _isFire = false;
+            _healingRoutine = null;
         }
 
         private IEnumerator HealingRoutine(IHealth health, IFreeze freeze)

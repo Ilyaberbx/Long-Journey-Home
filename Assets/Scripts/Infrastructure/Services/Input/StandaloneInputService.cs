@@ -1,3 +1,4 @@
+using Infrastructure.Interfaces;
 using Interfaces;
 using UnityEngine;
 
@@ -27,6 +28,9 @@ namespace Infrastructure.Services.Input
 
         public bool IsInteractButtonPressed()
             => UnityEngine.Input.GetKeyDown(KeyCode.E);
+
+        public bool IsInventoryButtonPressed()
+            => UnityEngine.Input.GetKeyDown(KeyCode.I);
 
 
         public bool IsJumped()

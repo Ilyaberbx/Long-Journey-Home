@@ -1,5 +1,6 @@
 ﻿using System;
 using Interfaces;
+using Logic.Player;
 using UnityEngine;
 
 namespace Logic.Enemy
