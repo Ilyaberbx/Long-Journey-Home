@@ -7,6 +7,7 @@ using Infrastructure.StateMachine.State;
 using Interfaces;
 using Logic;
 using SceneManagement;
+using UI.Services.Factory;
 
 namespace Infrastructure.StateMachine
 {
@@ -25,7 +26,9 @@ namespace Infrastructure.StateMachine
                 
                 [typeof(LoadLevelState)] = new LoadLevelState(this,sceneLoader, loadingCurtain, 
                     serviceLocator.Single<IGameFactory>(),
-                    serviceLocator.Single<IPersistentProgressService>(),serviceLocator.Single<IStaticDataService>()),
+                    serviceLocator.Single<IPersistentProgressService>(),
+                    serviceLocator.Single<IStaticDataService>(),
+                    serviceLocator.Single<IUIFactory>()),
                 
                 [typeof(LoadProgressState)] = new LoadProgressState(this,
                     serviceLocator.Single<IPersistentProgressService>(),

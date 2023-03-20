@@ -1,6 +1,4 @@
 ﻿using Infrastructure.Interfaces;
-using Infrastructure.Services;
-using Interfaces;
 using UnityEngine;
 
 namespace Logic.Player
@@ -13,8 +11,8 @@ namespace Logic.Player
         private IInteractable _interactable;
         private bool _hintShowed;
 
-        public void Awake() 
-            => _input = ServiceLocator.Container.Single<IInputService>();
+        public void Construct(IInputService input) 
+            => _input = input;
 
         private void Update()
         {

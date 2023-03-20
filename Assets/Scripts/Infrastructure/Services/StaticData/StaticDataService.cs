@@ -12,7 +12,7 @@ namespace Infrastructure.Services.StaticData
     {
         private const string EnemyStaticDataPath = "StaticData/Enemies";
         private const string LevelStaticDataPath = "StaticData/Levels";
-        private const string WindowsStaticDataPath = "StaticData/UI/WindowsData.asset";
+        private const string WindowsStaticDataPath = "StaticData/UI/WindowsData";
         private Dictionary<EnemyType, EnemyData> _enemies;
         private Dictionary<string, LevelData> _levels;
         private Dictionary<WindowType, WindowConfig> _windows;

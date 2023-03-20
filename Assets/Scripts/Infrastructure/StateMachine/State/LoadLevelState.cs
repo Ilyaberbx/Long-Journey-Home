@@ -11,6 +11,7 @@ using ProjectSolitude.Enum;
 using SceneManagement;
 using UI;
 using UI.Elements;
+using UI.Services.Factory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,10 +28,11 @@ namespace Infrastructure.StateMachine.State
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly IStaticDataService _staticData;
+        private readonly IUIFactory _uiFactory;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData)
+            IStaticDataService staticData,IUIFactory uiFactory)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -38,6 +40,7 @@ namespace Infrastructure.StateMachine.State
             _gameFactory = gameFactory;
             _persistentProgressService = persistentProgressService;
             _staticData = staticData;
+            _uiFactory = uiFactory;
         }
 
         public void Enter(string payLoad)
@@ -52,10 +55,14 @@ namespace Infrastructure.StateMachine.State
 
         private void OnLoaded()
         {
+            InitUIRoot();
             InitGameWorld();
             InformProgressReaders();
             _gameStateMachine.Enter<GameLoopState>();
         }
+
+        private void InitUIRoot() 
+            => _uiFactory.CreateUIRoot();
 
         private void InformProgressReaders()
         {

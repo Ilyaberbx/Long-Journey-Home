@@ -42,10 +42,10 @@ namespace Infrastructure.StateMachine.State
             RegisterAssetsProvider();
             RegisterStaticData();
             RegisterProgress();
-            RegisterFactory();
-            RegisterSaveLoadService();
             RegisterUIFactory();
             RegisterWindowFactory();
+            RegisterFactory();
+            RegisterSaveLoadService();
         }
 
         private void RegisterWindowFactory() 
@@ -55,7 +55,7 @@ namespace Infrastructure.StateMachine.State
         private void RegisterUIFactory() 
             => _serviceLocator.RegisterService<IUIFactory>(
                 new UIFactory(_serviceLocator.Single<IAssetProvider>(),
-                    _serviceLocator.Single<IStaticDataService>()));
+                    _serviceLocator.Single<IStaticDataService>(),_serviceLocator.Single<IPersistentProgressService>()));
 
         private void RegisterProgress() =>
             _serviceLocator.RegisterService<IPersistentProgressService>
@@ -67,7 +67,8 @@ namespace Infrastructure.StateMachine.State
 
         private void RegisterFactory() 
             => _serviceLocator.RegisterService<IGameFactory>(new GameFactory
-                (_serviceLocator.Single<IAssetProvider>(),_serviceLocator.Single<IStaticDataService>()));
+                (_serviceLocator.Single<IAssetProvider>(),_serviceLocator.Single<IStaticDataService>(),
+                    _serviceLocator.Single<IWindowService>(),_serviceLocator.Single<IInputService>()));
 
         private void RegisterInput()
             => _serviceLocator.RegisterService(DefineInputService());

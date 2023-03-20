@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.StaticData;
+using UI.Elements;
 using UI.Services.Window;
 using UnityEngine;
 
@@ -11,17 +12,20 @@ namespace UI.Services.Factory
         private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
         private Transform _uiRoot;
+        private IPersistentProgressService _progressService;
 
-        public UIFactory(IAssetProvider assets,IStaticDataService _staticData)
+        public UIFactory(IAssetProvider assets,IStaticDataService staticData, IPersistentProgressService progressService)
         {
             _assets = assets;
-            this._staticData = _staticData;
+            _staticData = staticData;
+            _progressService = progressService;
         }
 
         public void CreateInventory()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Inventory);
-            Object.Instantiate(config.Prefab, _uiRoot);
+            WindowBase window = Object.Instantiate(config.Prefab, _uiRoot);
+            window.Construct(_progressService);
         }
 
         public void CreateUIRoot() 

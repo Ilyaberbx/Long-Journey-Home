@@ -21,11 +21,14 @@ namespace Logic.Player
 
         private IInputService _input;
         private Gravity _gravity;
+
         private UnityEngine.Camera _camera;
+
+        public void Construct(IInputService inputService) 
+            => _input = inputService;
 
         private void Awake()
         {
-            _input = ServiceLocator.Container.Single<IInputService>();
             _gravity = GetComponent<Gravity>();
             _camera = UnityEngine.Camera.main;
             Cursor.lockState = CursorLockMode.Locked;

@@ -1,7 +1,4 @@
-﻿using System;
-using Infrastructure.Interfaces;
-using Infrastructure.Services;
-using Interfaces;
+﻿using Infrastructure.Interfaces;
 using UnityEngine;
 
 namespace Logic.Player
@@ -10,8 +7,8 @@ namespace Logic.Player
     {
         private IInputService _input;
 
-        private void Awake() 
-            => _input = ServiceLocator.Container.Single<IInputService>();
+        public void Construct(IInputService input) 
+            => _input = input;
 
         private void Update() 
             => Look();

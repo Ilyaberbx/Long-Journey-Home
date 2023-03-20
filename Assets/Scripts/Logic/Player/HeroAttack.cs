@@ -30,6 +30,9 @@ namespace Logic.Player
             _layerMask = 1 << LayerMask.NameToLayer(HittableLayerName);
         }
 
+        public void Construct(IInputService inputService) 
+            => _input = inputService;
+
         private void Update()
         {
             if (_input.IsAttackButtonPressed() && !_isAttacking)
