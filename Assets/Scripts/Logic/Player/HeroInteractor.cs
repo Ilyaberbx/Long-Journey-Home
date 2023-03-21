@@ -21,7 +21,6 @@ namespace Logic.Player
             _interactable = GetInteractableObject();
             
             _interactable?.Interact(transform);
-
         }
 
         public IInteractable GetInteractableObject()

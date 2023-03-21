@@ -30,7 +30,7 @@ namespace UI.Inventory
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            transform.DOLocalMove(Vector3.zero, 0.5f);
+            transform.localPosition = Vector3.zero;
             _canvasGroup.blocksRaycasts = true;
         }
 

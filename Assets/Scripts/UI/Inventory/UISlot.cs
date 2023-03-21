@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace UI.Inventory
@@ -10,7 +9,7 @@ namespace UI.Inventory
         {
             var item = eventData.pointerDrag.transform;
             item.SetParent(transform);
-            item.transform.DOLocalMove(Vector3.zero, 0.5f);
+            item.localPosition = Vector3.zero;
         }
     }
 }
