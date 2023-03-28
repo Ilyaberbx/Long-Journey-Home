@@ -40,10 +40,7 @@ namespace Logic.DialogueSystem
             OnSentenceCleared?.Invoke();
             
             if (IsQueueEnd())
-            {
-                Debug.Log("End");
                 return;
-            }
 
             string sentenceToDisplay = _sentences.Dequeue();
             StopAllCoroutines();

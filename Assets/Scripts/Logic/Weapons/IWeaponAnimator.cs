@@ -1,4 +1,4 @@
-﻿namespace Logic.Player
+﻿namespace Logic.Weapons
 {
     public interface IWeaponAnimator
     {

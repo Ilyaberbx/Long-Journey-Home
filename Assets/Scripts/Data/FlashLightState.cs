@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Data
 {
@@ -7,18 +6,9 @@ namespace Data
     public class FlashLightState
     {
         public float MaxLightIntensity;
-        public float LightIntensity;
+        public float CurrentLightIntensity;
 
-        public void Reset() 
-            => LightIntensity = MaxLightIntensity;
-
-        public void Add(FlashLightLoot flashLightLoot)
-        {
-            float addIntensity = MaxLightIntensity * flashLightLoot.Value;
-            LightIntensity = CalculateLightIntensity(addIntensity);
-        }
-
-        private int CalculateLightIntensity(float addIntensity) 
-            => (int)Mathf.Clamp(LightIntensity + addIntensity,0, MaxLightIntensity);
+        public void Reset()
+            => CurrentLightIntensity = MaxLightIntensity;
     }
 }

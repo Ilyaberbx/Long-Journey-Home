@@ -15,15 +15,8 @@ namespace Logic.Player
         [SerializeField] private int _damage;
         private FreezeState _state;
 
-        public float MaxFreeze
-        {
-            get => _state.MaxFreeze;
-            set
-            {
-                if (value > 0)
-                    _state.MaxFreeze = value;
-            }
-        }
+        public float MaxFreeze => _state.MaxFreeze;
+
         public float CurrentFreeze
         {
             get => _state.CurrentFreeze;

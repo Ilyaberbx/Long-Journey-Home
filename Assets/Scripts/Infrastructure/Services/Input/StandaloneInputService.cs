@@ -38,5 +38,29 @@ namespace Infrastructure.Services.Input
 
         public bool IsSprinting()
             => Vertical > 0.02f && UnityEngine.Input.GetKey(KeyCode.LeftShift);
+
+        public bool IsSwitchButtonPressed(out int i)
+        {
+            i = 0;
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                i = 1;
+                return true;
+            }
+
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                i = 2;
+                return true;
+            }
+
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                i = 3;
+                return true;
+            }
+
+            return false;
+        }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System;
 using Data;
 using Infrastructure.Interfaces;
-using Interfaces;
 using UnityEngine;
 
 namespace Logic.Player
 {
-    public class FlashLight : MonoBehaviour, ISavedProgressWriter
+    public class FlashLight : MonoBehaviour, ISavedProgressWriter,IEquippable
     {
         public event Action OnIntensityChanged;
 
@@ -19,17 +18,31 @@ namespace Logic.Player
 
         public float CurrentIntensity
         {
-            get => _flashLightState.LightIntensity;
+            get => _flashLightState.CurrentLightIntensity;
             private set
             {
                 if (value < 0) return;
-                _flashLightState.LightIntensity = value;
+                _flashLightState.CurrentLightIntensity = value;
             }
         }
 
         public float MaxIntensity
             => _flashLightState.MaxLightIntensity;
 
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            _flashLightState = progress.FlashLightState;
+        }
+
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            progress.FlashLightState.CurrentLightIntensity = CurrentIntensity;
+            progress.FlashLightState.MaxLightIntensity = MaxIntensity;
+        }
+
+        public Transform GetTransform() 
+            => transform;
 
         private void Update()
         {
@@ -59,19 +72,8 @@ namespace Logic.Player
 
         private void DecreaseLightIntensity()
         {
-            for (int i = 0; i < _lights.Length; i++)
-                _lights[i].intensity = _flashLightState.LightIntensity;
-        }
-
-        public void LoadProgress(PlayerProgress progress)
-        {
-            _flashLightState = progress.FlashLightState;
-        }
-
-        public void UpdateProgress(PlayerProgress progress)
-        {
-            progress.FlashLightState.LightIntensity = CurrentIntensity;
-            progress.FlashLightState.MaxLightIntensity = MaxIntensity;
+            foreach (var light in _lights)
+                light.intensity = _flashLightState.CurrentLightIntensity;
         }
     }
 }
