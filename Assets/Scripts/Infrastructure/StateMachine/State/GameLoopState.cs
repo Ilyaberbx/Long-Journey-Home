@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Interfaces;
-using Interfaces;
 
 namespace Infrastructure.StateMachine.State
 {

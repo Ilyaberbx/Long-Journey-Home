@@ -1,19 +1,20 @@
-﻿using Data;
-using Infrastructure.Interfaces;
+﻿using DG.Tweening;
+using Logic.Inventory;
 using Logic.Player;
 using UnityEngine;
 
 namespace Logic.Weapons
 {
-    public class Axe : MonoBehaviour, IWeapon, ISavedProgressReader, IEquippable
+    public class Axe : BaseItem, IWeapon, IEquippable
     {
         private const string HittableLayerName = "Hittable";
-
         public IWeaponAnimator WeaponAnimator => _animator;
+        public ItemType ItemType => Type;
 
-        [SerializeField] private CheckPoint _attackPoint;
+        [SerializeField] private int _damage;
+        [SerializeField] private float _attackRadius;
         [SerializeField] private float _attackSpeed;
-        [SerializeField] private ParticleSystem _bloodFx;
+        [SerializeField] private GameObject _bloodFx;
         [SerializeField] private float _offset;
 
         private IWeaponAnimator _animator;
@@ -21,12 +22,14 @@ namespace Logic.Weapons
 
         private int _layerMask;
         private Collider[] _hits = new Collider[3];
-        private Stats _stats;
+        private Vector3 _cachedScale;
+        private CheckPoint _attackPoint;
 
         private void Awake()
         {
             _layerMask = 1 << LayerMask.NameToLayer(HittableLayerName);
             _animator = GetComponent<IWeaponAnimator>();
+            _cachedScale = transform.localScale;
         }
 
         public void PerformAttack()
@@ -38,11 +41,15 @@ namespace Logic.Weapons
             _isAttacking = true;
         }
 
-        public void LoadProgress(PlayerProgress progress)
-            => _stats = progress.Stats;
-
         public Transform GetTransform()
             => transform;
+
+        public void Appear()
+        {
+            _isAttacking = false;
+            transform.localScale = Vector3.zero;
+            transform.DOScale(_cachedScale, 0.2f);
+        }
 
         private void OnAttack()
         {
@@ -52,10 +59,10 @@ namespace Logic.Weapons
             _animator.SetAnimatorSpeed(1);
             _isAttacking = false;
         }
-
+        
         private void ProcessAttack(int index)
         {
-            _hits[index].transform.parent.GetComponent<IHealth>().TakeDamage(_stats.Damage);
+            _hits[index].transform.parent.GetComponent<IHealth>().TakeDamage(_damage);
             ShowFx(index);
         }
 
@@ -66,6 +73,19 @@ namespace Logic.Weapons
         }
 
         private int Hit()
-            => Physics.OverlapSphereNonAlloc(_attackPoint.Position, _stats.AttackRadius, _hits, _layerMask);
+            => Physics.OverlapSphereNonAlloc(_attackPoint.Position, _attackRadius, _hits, _layerMask);
+
+        public override void Use(HeroMover player)
+        {
+            var equipSwitcher = player.GetComponent<HeroEquipSwitcher>();
+            var attack = player.GetComponent<HeroAttack>();
+
+            if (equipSwitcher.IsAlreadyEquip(Type))
+                Destroy(gameObject);
+
+            transform.SetParent(equipSwitcher.EquipmentContainer);
+            transform.position = equipSwitcher.EquipPosition;
+            _attackPoint = attack.AttackPoint;
+        }
     }
 }

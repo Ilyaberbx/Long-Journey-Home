@@ -6,6 +6,9 @@ namespace Logic.Player
 {
     public class HeroAttack : MonoBehaviour
     {
+        public CheckPoint AttackPoint => _attackPoint;
+        [SerializeField] private CheckPoint _attackPoint;
+        
         private IInputService _input;
         private IWeapon _currentWeapon;
 

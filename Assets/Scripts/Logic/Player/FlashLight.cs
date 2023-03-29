@@ -1,13 +1,16 @@
 ﻿using System;
 using Data;
+using DG.Tweening;
 using Infrastructure.Interfaces;
+using Logic.Inventory;
 using UnityEngine;
 
 namespace Logic.Player
 {
-    public class FlashLight : MonoBehaviour, ISavedProgressWriter,IEquippable
+    public class FlashLight : BaseItem, ISavedProgressWriter,IEquippable
     {
         public event Action OnIntensityChanged;
+        public ItemType ItemType => Type;
 
         [SerializeField] private float _lessValue;
         [SerializeField] private Light[] _lights;
@@ -15,6 +18,11 @@ namespace Logic.Player
         [SerializeField] private float _offSet;
 
         private FlashLightState _flashLightState;
+        private Vector3 _cachedScale;
+
+
+        private void Awake() 
+            => _cachedScale = transform.localScale;
 
         public float CurrentIntensity
         {
@@ -43,6 +51,12 @@ namespace Logic.Player
 
         public Transform GetTransform() 
             => transform;
+
+        public void Appear()
+        {
+            transform.localScale = Vector3.zero;
+            transform.DOScale(_cachedScale, 0.2f);
+        }
 
         private void Update()
         {
@@ -74,6 +88,11 @@ namespace Logic.Player
         {
             foreach (var light in _lights)
                 light.intensity = _flashLightState.CurrentLightIntensity;
+        }
+
+        public override void Use(HeroMover player)
+        {
+            
         }
     }
 }

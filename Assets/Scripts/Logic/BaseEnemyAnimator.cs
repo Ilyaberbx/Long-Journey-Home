@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Interfaces
+namespace Logic
 {
     public abstract class BaseEnemyAnimator : MonoBehaviour
     {

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Infrastructure.Interfaces;
-using Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

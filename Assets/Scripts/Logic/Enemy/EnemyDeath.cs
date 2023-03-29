@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
-using Interfaces;
 using UnityEngine;
 
 namespace Logic.Enemy

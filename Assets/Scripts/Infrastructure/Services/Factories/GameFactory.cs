@@ -2,13 +2,12 @@
 using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.StaticData;
-using Interfaces;
 using Logic;
 using Logic.Enemy;
+using Logic.Inventory;
 using Logic.Player;
 using Logic.Spawners;
 using StaticData;
-using UI;
 using UI.Elements;
 using UI.Services.Window;
 using UnityEngine;
@@ -48,7 +47,8 @@ namespace Infrastructure.Services.Factories
             _heroGameObject.GetComponent<HeroLook>().Construct(_inputService);
             _heroGameObject.GetComponent<HeroMover>().Construct(_inputService);
             _heroGameObject.GetComponent<HeroEquipSwitcher>().Construct(_inputService);
-            
+            _heroGameObject.GetComponent<HeroInventoryController>().Construct(_staticData);
+
             return _heroGameObject;
         }
 
@@ -108,7 +108,7 @@ namespace Infrastructure.Services.Factories
                 Register(progressReader);
         }
 
-        public void Register(ISavedProgressReader obj)
+        private void Register(ISavedProgressReader obj)
         {
             if (obj is ISavedProgressWriter writer)
                 ProgressWriters.Add(writer);

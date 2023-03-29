@@ -1,7 +1,6 @@
 ﻿using System;
 using Data;
 using Infrastructure.Interfaces;
-using Interfaces;
 using UnityEngine;
 
 namespace Logic.Player
@@ -51,10 +50,12 @@ namespace Logic.Player
 
         public void LoadProgress(PlayerProgress progress)
         {
+            Debug.Log("Load");
             _state = progress.FreezeState;
             OnFreezeChanged?.Invoke();
         }
 
-        public void UpdateProgress(PlayerProgress progress) => progress.FreezeState = _state;
+        public void UpdateProgress(PlayerProgress progress) 
+            => progress.FreezeState = _state;
     }
 }

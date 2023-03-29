@@ -1,7 +1,6 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.StaticData;
-using Interfaces;
 using Logic;
 using Logic.Animations;
 using Logic.Camera;

@@ -6,7 +6,6 @@
         public HealthState HealthState;
         public FreezeState FreezeState;
         public WorldData WorldData;
-        public Stats Stats;
         public KillData KillData;
         public FlashLightState FlashLightState;
         public InventoryData InventoryData;
@@ -15,7 +14,6 @@
         {
             WorldData = new WorldData(initialLevel);
             HealthState = new HealthState();
-            Stats = new Stats();
             KillData = new KillData();
             FlashLightState = new FlashLightState();
             FreezeState = new FreezeState();

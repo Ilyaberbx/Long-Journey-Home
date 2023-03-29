@@ -1,6 +1,5 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
-using Interfaces;
 
 namespace Infrastructure.Services.PersistentProgress
 {

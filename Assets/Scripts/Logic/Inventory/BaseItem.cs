@@ -1,12 +1,12 @@
-﻿using Data;
+﻿using Logic.Player;
+using UnityEngine;
 
 namespace Logic.Inventory
 {
-    public abstract class BaseItem
+    public abstract class BaseItem : MonoBehaviour
     {
-        public ItemData Info { get; private set; }
-
-        public void Init(ItemData info) 
-            => Info = info;
+        [SerializeField] private ItemType _type;
+        protected ItemType Type => _type;
+        public abstract void Use(HeroMover player);
     }
 }

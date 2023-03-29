@@ -6,13 +6,34 @@ namespace Data
     [Serializable]
     public class InventoryData
     {
-        public List<ItemData> Items;
-        public Action OnStateChanged;
+        public event Action OnInventoryStateChanged;
+        private List<ItemData> _items;
 
-        public void AddItem(ItemData item)
+        public InventoryData()
+            => _items = new List<ItemData>();
+
+        private void Debug()
         {
-            Items.Add(item);
-            OnStateChanged?.Invoke();
+            foreach (var item in _items)
+                UnityEngine.Debug.Log(item.Name);
+        }
+
+        public void AddItem(ItemData itemData)
+        {
+            _items.Add(itemData);
+            OnInventoryStateChanged?.Invoke();
+            Debug();
+        }
+
+        public void RemoveItem(ItemData itemData)
+        {
+            if (!_items.Contains(itemData)) return;
+
+            _items.Remove(itemData);
+
+            OnInventoryStateChanged?.Invoke();
+
+            Debug();
         }
     }
 }

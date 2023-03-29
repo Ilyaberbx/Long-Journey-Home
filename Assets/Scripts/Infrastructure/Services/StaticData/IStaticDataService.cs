@@ -1,7 +1,7 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
-using Interfaces;
 using Logic;
+using Logic.Inventory;
 using StaticData;
 using UI.Services.Window;
 using UnityEditor.PackageManager.UI;
@@ -14,5 +14,6 @@ namespace Infrastructure.Services.StaticData
         EnemyData GetEnemyDataByType(EnemyType type);
         LevelData GetLevelData(string sceneKey);
         WindowConfig GetWindowData(WindowType windowType);
+        ItemData GetItemByType(ItemType type);
     }
 }

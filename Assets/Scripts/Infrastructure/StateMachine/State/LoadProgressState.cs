@@ -1,6 +1,5 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
-using Interfaces;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine.State
@@ -43,8 +42,6 @@ namespace Infrastructure.StateMachine.State
 
             progress.HealthState.MaxHP = 100;
             progress.HealthState.ResetHp();
-            progress.Stats.Damage = 1;
-            progress.Stats.AttackRadius = 8;
             progress.FlashLightState.MaxLightIntensity = 1500;
             progress.FlashLightState.Reset();
             progress.FreezeState.MaxFreeze = 100;
