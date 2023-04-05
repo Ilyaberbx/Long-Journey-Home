@@ -28,10 +28,8 @@ namespace Logic.Player
             Collider[] colliders = Physics.OverlapSphere(transform.position, _interactRange);
 
             foreach (var collider in colliders)
-            {
                 if (collider.TryGetComponent(out IInteractable interactable))
-                    return  interactable;
-            }
+                    return interactable;
 
             return null;
         }

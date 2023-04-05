@@ -10,6 +10,6 @@ namespace Infrastructure.Interfaces
         bool IsInventoryButtonPressed();
         bool IsJumped();
         bool IsSprinting();
-        bool IsSwitchButtonPressed(out int i);
+        bool IsSwitchButtonPressed(int maxCapacity,out int i);
     }
 }

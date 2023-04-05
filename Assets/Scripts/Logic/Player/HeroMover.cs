@@ -69,13 +69,12 @@ namespace Logic.Player
 
         public void LoadProgress(PlayerProgress progress)
         {
-            if (CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
-            {
-                Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
+            if (CurrentLevel() != progress.WorldData.PositionOnLevel.Level) return;
+            
+            Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
 
-                if (savedPosition != null)
-                    WarpPlayerPosition(savedPosition);
-            }
+            if (savedPosition != null)
+                WarpPlayerPosition(savedPosition);
         }
 
         private void WarpPlayerPosition(Vector3Data to)

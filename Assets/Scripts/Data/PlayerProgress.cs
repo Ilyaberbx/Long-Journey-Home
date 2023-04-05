@@ -8,7 +8,6 @@
         public WorldData WorldData;
         public KillData KillData;
         public FlashLightState FlashLightState;
-        public InventoryData InventoryData;
 
         public PlayerProgress(string initialLevel)
         {
@@ -17,7 +16,6 @@
             KillData = new KillData();
             FlashLightState = new FlashLightState();
             FreezeState = new FreezeState();
-            InventoryData = new InventoryData();
         }
 
     }

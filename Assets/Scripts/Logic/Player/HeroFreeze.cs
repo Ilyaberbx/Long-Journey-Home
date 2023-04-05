@@ -50,7 +50,6 @@ namespace Logic.Player
 
         public void LoadProgress(PlayerProgress progress)
         {
-            Debug.Log("Load");
             _state = progress.FreezeState;
             OnFreezeChanged?.Invoke();
         }

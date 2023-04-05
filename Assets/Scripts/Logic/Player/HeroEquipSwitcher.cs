@@ -1,19 +1,13 @@
-﻿using System.Linq;
-using Data;
+﻿using Data;
 using Infrastructure.Interfaces;
-using Logic.Inventory;
 using Logic.Weapons;
 using UnityEngine;
 
 namespace Logic.Player
 {
-    public class HeroEquipSwitcher : MonoBehaviour,ISavedProgressReader
+    public class HeroEquipSwitcher : MonoBehaviour
     {
-        public Transform EquipmentContainer => _equipmentContainer;
-        public Vector3 EquipPosition => _equipPosition.position;
-
         [SerializeField] private Transform _equipmentContainer;
-        [SerializeField] private Transform _equipPosition;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private float _switchCoolDown;
 
@@ -25,17 +19,11 @@ namespace Logic.Player
         public void Construct(IInputService input)
             => _input = input;
 
-        private void Start()
-        {
-            UpdateEquippableObjects();
-            SelectEquipment(1);
-        }
-
         private void Update()
         {
             _timeSinceLastSwitch += Time.deltaTime;
 
-            if (_input.IsSwitchButtonPressed(out int index) && IsCoolDowned())
+            if (_input.IsSwitchButtonPressed(_equippableObjects.Length, out int index) && IsCoolDowned())
                 SelectEquipment(index);
         }
 
@@ -64,22 +52,16 @@ namespace Logic.Player
                 _attack.SetWeapon(weapon);
         }
 
-        public bool IsAlreadyEquip(ItemType type)
-            => _equippableObjects.Any(equipObj => equipObj.ItemType == type);
-
         private bool IsWeapon(out IWeapon weapon)
             => _currentEquipObject.GetTransform().TryGetComponent(out weapon);
 
         private bool IsRightEquipment(int i, int index)
             => i == index - 1;
 
-        private void UpdateEquippableObjects()
+        public void UpdateEquippableObjects()
         {
             _equippableObjects = _equipmentContainer.GetComponentsInChildren<IEquippable>();
             SelectEquipment(_equippableObjects.Length);
         }
-
-        public void LoadProgress(PlayerProgress progress) 
-            => progress.InventoryData.OnInventoryStateChanged += UpdateEquippableObjects;
     }
 }

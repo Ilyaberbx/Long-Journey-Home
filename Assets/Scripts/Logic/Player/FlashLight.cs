@@ -2,16 +2,14 @@
 using Data;
 using DG.Tweening;
 using Infrastructure.Interfaces;
-using Logic.Inventory;
 using UnityEngine;
 
 namespace Logic.Player
 {
-    public class FlashLight : BaseItem, ISavedProgressWriter,IEquippable
+    public class FlashLight : MonoBehaviour, ISavedProgressWriter,IEquippable
     {
         public event Action OnIntensityChanged;
-        public ItemType ItemType => Type;
-
+   
         [SerializeField] private float _lessValue;
         [SerializeField] private Light[] _lights;
         [SerializeField] private Transform[] _lightBlooms;
@@ -88,11 +86,6 @@ namespace Logic.Player
         {
             foreach (var light in _lights)
                 light.intensity = _flashLightState.CurrentLightIntensity;
-        }
-
-        public override void Use(HeroMover player)
-        {
-            
         }
     }
 }
