@@ -9,25 +9,24 @@ namespace Logic.Inventory
         public int Quantity;
         public ItemData ItemData;
 
+        public bool IsEmpty => ItemData == null;
+
         public InventoryItem(ItemData itemData, int quantity)
         {
             ItemData = itemData;
             Quantity = quantity;
         }
 
-        public bool IsEmpty => ItemData == null;
-
         public InventoryItem ChangeQuantity(int newQuantity)
         {
-            return new InventoryItem
-            {
-                ItemData = this.ItemData,
-                Quantity = newQuantity,
-            };
+            var item = new InventoryItem();
+            item.Quantity = newQuantity;
+            item.ItemData = ItemData;
+            return item;
         }
 
         public static InventoryItem GetEmptyItem()
-            => new InventoryItem(itemData: null, quantity: 0);
+            => new InventoryItem(null, 0);
 
     }
 }

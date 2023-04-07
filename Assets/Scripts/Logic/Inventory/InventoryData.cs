@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace Logic.Inventory
     [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/InventoryData", order = 0)]
     public class InventoryData : ScriptableObject
     {
+        public event Action<Dictionary<int, InventoryItem>> OnStateChanged;
+
         [SerializeField] private List<InventoryItem> _inventoryItems;
         [SerializeField] private int _size;
 
@@ -26,7 +29,7 @@ namespace Logic.Inventory
             {
                 for (int i = 0; i < _inventoryItems.Count; i++)
                 {
-                    while (quantity > 0 && !IsInventoryFull()) 
+                    while (quantity > 0 && !IsInventoryFull())
                         quantity -= AddToFirstSlot(itemData, 1);
 
                     InformStateChanged();
@@ -35,9 +38,32 @@ namespace Logic.Inventory
             }
 
             quantity = AddStackableItem(itemData, quantity);
-            
+
             InformStateChanged();
             return quantity;
+        }
+
+        public InventoryItem GetItemByIndex(int index)
+            => _inventoryItems[index];
+
+        public void RemoveItem(int index, int amount)
+        {
+            if (_inventoryItems.Count > index)
+            {
+                if (_inventoryItems[index].IsEmpty) return;
+
+                int reminder = _inventoryItems[index].Quantity - amount;
+                if (reminder <= 0)
+                {
+                    _inventoryItems[index] = InventoryItem.GetEmptyItem();
+                    Debug.Log("Empty");
+                }
+                else
+                    _inventoryItems[index] = _inventoryItems[index]
+                        .ChangeQuantity(reminder);
+
+                InformStateChanged();
+            }
         }
 
         private int AddToFirstSlot(ItemData itemData, int quantity)
@@ -51,12 +77,27 @@ namespace Logic.Inventory
             for (int i = 0; i < _inventoryItems.Count; i++)
             {
                 if (!_inventoryItems[i].IsEmpty) continue;
-                
+
                 _inventoryItems[i] = newItem;
                 return quantity;
             }
 
             return 0;
+        }
+
+        private Dictionary<int, InventoryItem> GetCurrentInventoryState()
+        {
+            Dictionary<int, InventoryItem> value = new Dictionary<int, InventoryItem>();
+
+            for (int i = 0; i < _inventoryItems.Count; i++)
+            {
+                if (_inventoryItems[i].IsEmpty)
+                    continue;
+
+                value[i] = _inventoryItems[i];
+            }
+
+            return value;
         }
 
         private bool IsInventoryFull()
@@ -66,11 +107,11 @@ namespace Logic.Inventory
         {
             for (int i = 0; i < _inventoryItems.Count; i++)
             {
-                if(_inventoryItems[i].IsEmpty)
+                if (_inventoryItems[i].IsEmpty)
                     continue;
 
                 if (_inventoryItems[i].ItemData.Id != itemData.Id) continue;
-                
+
                 int amountPossibleToTake = _inventoryItems[i].ItemData.MaxStackSize - _inventoryItems[i].Quantity;
 
                 if (quantity > amountPossibleToTake)
@@ -99,26 +140,6 @@ namespace Logic.Inventory
         }
 
         private void InformStateChanged()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Dictionary<int, InventoryItem> GetCurrentInventoryState()
-        {
-            Dictionary<int, InventoryItem> value = new Dictionary<int, InventoryItem>();
-
-            for (int i = 0; i < _inventoryItems.Count; i++)
-            {
-                if (_inventoryItems[i].IsEmpty)
-                    continue;
-
-                value[i] = _inventoryItems[i];
-            }
-
-            return value;
-        }
-
-        public InventoryItem GetItemByIndex(int index)
-            => _inventoryItems[index];
+            => OnStateChanged?.Invoke(GetCurrentInventoryState());
     }
 }

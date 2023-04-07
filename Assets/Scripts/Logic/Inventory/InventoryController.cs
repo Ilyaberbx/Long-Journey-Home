@@ -1,30 +1,45 @@
-﻿using UI.Inventory;
+﻿using System.Collections.Generic;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Logic.Inventory
 {
     public class InventoryController : MonoBehaviour
     {
+        private const string Drop = "Drop";
+        [SerializeField] private List<InventoryItem> _initialItems;
         [SerializeField] private InventoryData _inventoryData;
         [SerializeField] private InventoryWindow _inventoryWindow;
 
         private void Awake()
         {
+            InitData();
             PrepareUI();
-            //_inventoryData.Init();
+            AddInitialItems();
         }
 
-        private void Update()
+        private void InitData()
         {
-            if (!Input.GetKeyDown(KeyCode.A)) return;
+            _inventoryData.Init();
+            _inventoryData.OnStateChanged += UpdateInventoryUI;
+        }
 
-            foreach (var item in _inventoryData.GetCurrentInventoryState())
-            {
+        private void AddInitialItems()
+        {
+            foreach (var item in _initialItems)
+                _inventoryData.AddItem(item.ItemData, item.Quantity);
+        }
+
+        private void UpdateInventoryUI(Dictionary<int, InventoryItem> itemsByIndex)
+        {
+            _inventoryWindow.ResetAllItems();
+            
+            foreach (var item in itemsByIndex)
                 _inventoryWindow.UpdateData(item.Key
                     , item.Value.ItemData.Icon
                     , item.Value.Quantity);
-            }
         }
+
 
         private void PrepareUI()
         {
@@ -33,8 +48,28 @@ namespace Logic.Inventory
             _inventoryWindow.OnItemActionRequested += HandleItemActionRequest;
         }
 
+
         private void HandleItemActionRequest(int index)
         {
+            IActionListener listener;
+            InventoryItem item = _inventoryData.GetItemByIndex(index);
+
+            if (item.IsEmpty)
+                return;
+
+
+            if (item.ItemData is IItemAction action)
+            {
+                listener = new ExecuteItemAction(_inventoryData, _inventoryWindow, index, gameObject);
+                _inventoryWindow.ShowActionPanelByIndex(index);
+                _inventoryWindow.AddAction(action.ActionName, listener);
+            }
+
+            if (item.ItemData is IDestroyableItem)
+            {
+                listener = new DropItemAction(_inventoryData, _inventoryWindow, index, item.Quantity);
+                _inventoryWindow.AddAction(Drop, listener);
+            }
         }
 
         private void HandleDescriptionRequest(int index)
@@ -46,10 +81,10 @@ namespace Logic.Inventory
                 _inventoryWindow.ResetSelection();
                 return;
             }
-               
+
 
             _inventoryWindow.UpdateDescription(index
-                , item.ItemData.Icon, 
+                , item.ItemData.Icon,
                 item.ItemData.Name,
                 item.ItemData.Description);
         }

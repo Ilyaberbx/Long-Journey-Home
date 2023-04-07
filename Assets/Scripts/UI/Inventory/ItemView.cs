@@ -48,10 +48,11 @@ namespace UI.Inventory
         public void Deselect() 
             => _borderImage.enabled = false;
 
-        private void CleanUp()
+        public void CleanUp()
         {
             _image.gameObject.SetActive(false);
             _isEmpty = true;
         }
+        
     }
 }
