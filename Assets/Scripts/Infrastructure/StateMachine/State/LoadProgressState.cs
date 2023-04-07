@@ -27,7 +27,6 @@ namespace Infrastructure.StateMachine.State
         }
         public void Exit()
         {
-            
         }
 
         private void LoadProgressOrInitNew()
@@ -46,6 +45,7 @@ namespace Infrastructure.StateMachine.State
             progress.FlashLightState.Reset();
             progress.FreezeState.MaxFreeze = 100;
             progress.FreezeState.ResetFreeze();
+            progress.InventoryData.Init(30);
 
             return progress;
         }

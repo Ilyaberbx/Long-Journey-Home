@@ -27,10 +27,8 @@ namespace Infrastructure.StateMachine.State
             RegisterServices();
         }
 
-        public void Enter()
-        {
-            _sceneLoader.Load(Initial, EnterLoadLevel);
-        }
+        public void Enter() 
+            => _sceneLoader.Load(Initial, EnterLoadLevel);
 
         public void Exit() {}
         

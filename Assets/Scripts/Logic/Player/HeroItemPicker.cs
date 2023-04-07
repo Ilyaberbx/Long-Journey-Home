@@ -1,11 +1,13 @@
-﻿using Logic.Inventory;
+﻿using Data;
+using Infrastructure.Interfaces;
+using Logic.Inventory;
 using UnityEngine;
 
 namespace Logic.Player
 {
-    public class HeroItemPicker : MonoBehaviour, IHeroItemPicker
+    public class HeroItemPicker : MonoBehaviour, IHeroItemPicker,ISavedProgressWriter
     {
-        [SerializeField] private InventoryData _inventoryData;
+        private InventoryData _inventoryData;
 
         public bool TryPickUpItem(ItemData itemData, int quantity, out int reminder)
         {
@@ -16,5 +18,11 @@ namespace Logic.Player
             
             return false;
         }
+
+        public void LoadProgress(PlayerProgress progress) 
+            => _inventoryData = progress.InventoryData;
+
+        public void UpdateProgress(PlayerProgress progress) 
+            => progress.InventoryData = _inventoryData;
     }
 }

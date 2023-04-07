@@ -2,6 +2,6 @@
 {
     public interface IActionListener
     {
-        void HandleAction();
+        void ExecuteAction();
     }
 } 

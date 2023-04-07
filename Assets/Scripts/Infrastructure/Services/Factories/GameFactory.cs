@@ -5,6 +5,7 @@ using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.StaticData;
 using Logic;
 using Logic.Enemy;
+using Logic.Inventory;
 using Logic.Player;
 using Logic.Spawners;
 using StaticData;
@@ -47,7 +48,9 @@ namespace Infrastructure.Services.Factories
             _heroGameObject.GetComponent<HeroLook>().Construct(_inputService);
             _heroGameObject.GetComponent<HeroMover>().Construct(_inputService);
             _heroGameObject.GetComponent<HeroEquipSwitcher>().Construct(_inputService);
-
+            var inventory = _heroGameObject.GetComponent<InventoryViewHandler>();
+            _windowService.Init(inventory);
+            
             return _heroGameObject;
         }
 
@@ -80,6 +83,7 @@ namespace Infrastructure.Services.Factories
             spawner.Construct(this);
             return spawner;
         }
+
         public void CleanUp()
         {
             ProgressReaders.Clear();

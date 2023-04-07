@@ -1,4 +1,5 @@
-﻿using UI.Inventory;
+﻿using Data;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Logic.Inventory
@@ -18,7 +19,7 @@ namespace Logic.Inventory
             _sender = sender;
         }
 
-        public void HandleAction()
+        public void ExecuteAction()
         {
             InventoryItem item = _inventoryData.GetItemByIndex(_index);
 

@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Logic.Inventory;
 using UnityEngine;
 
-namespace Logic.Inventory
+namespace Data
 {
-    [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/InventoryData", order = 0)]
-    public class InventoryData : ScriptableObject
+    [Serializable]
+    public class InventoryData
     {
-        public event Action<Dictionary<int, InventoryItem>> OnStateChanged;
+        public event Action OnStateChanged;
 
         [SerializeField] private List<InventoryItem> _inventoryItems;
-        [SerializeField] private int _size;
 
-        public int Size => _size;
-
-        public void Init()
+        public void Init(int size)
         {
             _inventoryItems = new List<InventoryItem>();
 
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < size; i++)
                 _inventoryItems.Add(InventoryItem.GetEmptyItem());
         }
+
+        public int GetSize()
+            => _inventoryItems.Count;
 
         public int AddItem(ItemData itemData, int quantity)
         {
@@ -41,6 +42,24 @@ namespace Logic.Inventory
 
             InformStateChanged();
             return quantity;
+        }
+
+        public bool IsEmpty()
+            => _inventoryItems.All(item => item.IsEmpty);
+
+        public Dictionary<int, InventoryItem> GetCurrentInventoryState()
+        {
+            Dictionary<int, InventoryItem> value = new Dictionary<int, InventoryItem>();
+
+            for (int i = 0; i < _inventoryItems.Count; i++)
+            {
+                if (_inventoryItems[i].IsEmpty)
+                    continue;
+
+                value[i] = _inventoryItems[i];
+            }
+
+            return value;
         }
 
         public InventoryItem GetItemByIndex(int index)
@@ -85,21 +104,6 @@ namespace Logic.Inventory
             return 0;
         }
 
-        private Dictionary<int, InventoryItem> GetCurrentInventoryState()
-        {
-            Dictionary<int, InventoryItem> value = new Dictionary<int, InventoryItem>();
-
-            for (int i = 0; i < _inventoryItems.Count; i++)
-            {
-                if (_inventoryItems[i].IsEmpty)
-                    continue;
-
-                value[i] = _inventoryItems[i];
-            }
-
-            return value;
-        }
-
         private bool IsInventoryFull()
             => _inventoryItems.All(item => !item.IsEmpty);
 
@@ -140,6 +144,6 @@ namespace Logic.Inventory
         }
 
         private void InformStateChanged()
-            => OnStateChanged?.Invoke(GetCurrentInventoryState());
+            => OnStateChanged?.Invoke();
     }
 }

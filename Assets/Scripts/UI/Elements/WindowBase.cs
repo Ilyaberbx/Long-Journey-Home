@@ -1,6 +1,6 @@
-﻿using System;
-using Data;
+﻿using Data;
 using Infrastructure.Interfaces;
+using Logic.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +10,7 @@ namespace UI.Elements
     {
         [SerializeField] private Button _closeButton;
         protected IPersistentProgressService _progressService;
+        private IActionListener _closeListener;
         protected PlayerProgress _progress => _progressService.PlayerProgress;
 
         public void Construct(IPersistentProgressService progressService) 
@@ -28,7 +29,16 @@ namespace UI.Elements
             => CleanUp();
 
         protected virtual void OnAwake()
-            => _closeButton.onClick.AddListener(() => Destroy(gameObject));
+            => _closeButton.onClick.AddListener(Close);
+
+        public void SubscribeCloseListener(IActionListener listener) 
+            => _closeListener = listener;
+
+        private void Close()
+        {
+            _closeListener.ExecuteAction();
+            Destroy(gameObject);
+        }
 
         protected virtual void Initialize()
         {
@@ -37,6 +47,7 @@ namespace UI.Elements
         protected virtual void SubscribeUpdates()
         {
         }
+
         protected virtual void CleanUp()
         {
         }

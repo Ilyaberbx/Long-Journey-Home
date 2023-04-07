@@ -12,7 +12,7 @@ namespace UI.Inventory
         public void AddButton(string name, IActionListener listener)
         {
             GameObject button = Instantiate(_buttonPrefab, transform);
-            button.GetComponent<Button>().onClick.AddListener(listener.HandleAction);
+            button.GetComponent<Button>().onClick.AddListener(listener.ExecuteAction);
             button.GetComponentInChildren<TMP_Text>().text = name;
         }
 

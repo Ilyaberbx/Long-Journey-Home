@@ -1,10 +1,11 @@
 ﻿using Infrastructure.Interfaces;
+using UI.Inventory;
 
 namespace UI.Services.Factory
 {
     public interface IUIFactory : IService
     {
-        void CreateInventory();
+        InventoryWindow CreateInventory();
         void CreateUIRoot();
     }
 }

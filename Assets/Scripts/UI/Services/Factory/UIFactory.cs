@@ -2,6 +2,7 @@
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.StaticData;
 using UI.Elements;
+using UI.Inventory;
 using UI.Services.Window;
 using UnityEngine;
 
@@ -21,11 +22,12 @@ namespace UI.Services.Factory
             _progressService = progressService;
         }
 
-        public void CreateInventory()
+        public InventoryWindow CreateInventory()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Inventory);
             WindowBase window = Object.Instantiate(config.Prefab, _uiRoot);
             window.Construct(_progressService);
+            return window.GetComponent<InventoryWindow>();
         }
 
         public void CreateUIRoot() 

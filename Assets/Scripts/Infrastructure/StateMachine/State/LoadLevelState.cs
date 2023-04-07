@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using Cinemachine;
+using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.StaticData;
 using Logic;
@@ -11,6 +12,7 @@ using SceneManagement;
 using UI;
 using UI.Elements;
 using UI.Services.Factory;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -74,10 +76,10 @@ namespace Infrastructure.StateMachine.State
             InitSpawners();
             var player = InitPlayer();
             InitHud(player);
-            var camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
-            InjectCameraAnimator(player, camera);
+            var camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform).GetComponent<CinemachineVirtualCamera>();
+            InitPlayerInteractWithCamera(player, camera);
         }
-
+        
         private void InitSpawners()
         {
             string sceneKey = SceneManager.GetActiveScene().name;
@@ -87,10 +89,11 @@ namespace Infrastructure.StateMachine.State
                 _gameFactory.CreateSpawner(spawner.Position, spawner.Id, spawner.EnemyType);
         }
 
-        private void InjectCameraAnimator(GameObject player, GameObject camera)
+        private void InitPlayerInteractWithCamera(GameObject player, CinemachineVirtualCamera camera)
         {
             player.GetComponent<HeroHealth>().Construct(camera.GetComponentInParent<ICameraAnimator>());
             player.GetComponent<HeroDeath>().Construct(camera.GetComponentInParent<ICameraAnimator>());
+            player.GetComponent<HeroWindowOpener>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
         }
 
         private void InitHud(GameObject player)

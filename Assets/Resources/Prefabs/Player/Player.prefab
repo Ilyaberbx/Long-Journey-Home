@@ -147,8 +147,9 @@ GameObject:
   - component: {fileID: 588288202585052698}
   - component: {fileID: 3958158885331785620}
   - component: {fileID: 4568631829993806250}
-  - component: {fileID: 5961264935981159543}
   - component: {fileID: 9086304539905147601}
+  - component: {fileID: 7706042647302247250}
+  - component: {fileID: 6927917661858737277}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -348,23 +349,6 @@ MonoBehaviour:
   _health: {fileID: 7260139725395528708}
   _freezeValue: 0.005
   _damage: 1
---- !u!114 &5961264935981159543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3401435002938043440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af284d156950465597781a2c1413df62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialItems:
-  - Quantity: 2
-    ItemData: {fileID: 11400000, guid: 1a169c95a18618649ba1f966e6df29b5, type: 2}
-  _inventoryData: {fileID: 11400000, guid: 0fe5d4121fe76f144a27ae6ded147ade, type: 2}
-  _inventoryWindow: {fileID: 0}
 --- !u!114 &9086304539905147601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +361,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2accdcbe519245e0a76aa66c76aca86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryData: {fileID: 11400000, guid: 0fe5d4121fe76f144a27ae6ded147ade, type: 2}
+  _inventoryData:
+    _inventoryItems: []
+--- !u!114 &7706042647302247250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401435002938043440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af284d156950465597781a2c1413df62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialItems:
+  - Quantity: 9
+    ItemData: {fileID: 11400000, guid: 1a169c95a18618649ba1f966e6df29b5, type: 2}
+--- !u!114 &6927917661858737277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401435002938043440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2accdcbe519245e0a76aa66c76aca86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryData:
+    _inventoryItems: []
 --- !u!1 &7995979508108311700
 GameObject:
   m_ObjectHideFlags: 0

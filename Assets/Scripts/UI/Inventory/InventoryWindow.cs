@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Data;
 using Logic.Inventory;
 using UI.Elements;
 using UnityEngine;
@@ -16,9 +17,32 @@ namespace UI.Inventory
         [SerializeField] private RectTransform _contentPanel;
 
         private List<ItemView> _itemViews = new List<ItemView>();
+        private InventoryData _inventoryData => _progress.InventoryData;
 
         protected override void Initialize()
-            => ResetSelection();
+        {
+            ResetSelection();
+            UpdateInventoryUI();
+        }
+
+        protected override void SubscribeUpdates() 
+            => _inventoryData.OnStateChanged += UpdateInventoryUI;
+
+        protected override void CleanUp()
+        {
+            base.CleanUp();
+            _inventoryData.OnStateChanged -= UpdateInventoryUI;
+        }
+
+        private void UpdateInventoryUI()
+        {
+            ResetAllItems();
+
+            foreach (var item in _inventoryData.GetCurrentInventoryState())
+                UpdateData(item.Key
+                    , item.Value.ItemData.Icon
+                    , item.Value.Quantity);
+        }
 
         public void ResetSelection()
         {
@@ -43,16 +67,16 @@ namespace UI.Inventory
             }
         }
 
-        public void UpdateData(int itemIndex, Sprite itemIcon, int itemQuantity)
-        {
-            if (_itemViews.Count > itemIndex)
-                _itemViews[itemIndex].SetData(itemIcon, itemQuantity);
-        }
-
         public void ShowActionPanelByIndex(int index)
         {
             _actionPanel.Toggle(true);
             _actionPanel.transform.position = _itemViews[index].transform.position;
+        }
+
+        private void UpdateData(int itemIndex, Sprite itemIcon, int itemQuantity)
+        {
+            if (_itemViews.Count > itemIndex)
+                _itemViews[itemIndex].SetData(itemIcon, itemQuantity);
         }
 
         private void SubscribeItemView(ItemView uiItem)
@@ -86,14 +110,14 @@ namespace UI.Inventory
         {
             if (IsExist(item, out var index))
                 return;
-            
+
             OnItemActionRequested?.Invoke(index);
         }
 
-        public void AddAction(string name, IActionListener listener) 
-            => _actionPanel.AddButton(name,listener);
+        public void AddAction(string name, IActionListener listener)
+            => _actionPanel.AddButton(name, listener);
 
-        public void ResetAllItems()
+        private void ResetAllItems()
         {
             foreach (var item in _itemViews)
             {

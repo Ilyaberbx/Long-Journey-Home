@@ -1,4 +1,5 @@
-﻿using UI.Inventory;
+﻿using Data;
+using UI.Inventory;
 
 namespace Logic.Inventory
 {
@@ -16,7 +17,7 @@ namespace Logic.Inventory
             _index = index;
             _quantity = quantity;
         }
-        public void HandleAction()
+        public void ExecuteAction()
         {
             _inventoryData.RemoveItem(_index, _quantity);
             _view.ResetSelection();

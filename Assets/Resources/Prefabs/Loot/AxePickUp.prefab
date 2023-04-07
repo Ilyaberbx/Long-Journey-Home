@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quantity: 3
-  _itemData: {fileID: 11400000, guid: 5462c5caa1555f942bc9f5e4792e156f, type: 2}
+  _itemData: {fileID: 11400000, guid: 1a169c95a18618649ba1f966e6df29b5, type: 2}
   _interactText: Pick up bear
 --- !u!1 &6503484024784416881
 GameObject:
