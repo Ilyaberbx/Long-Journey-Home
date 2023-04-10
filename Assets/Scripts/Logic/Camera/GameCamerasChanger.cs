@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Enums;
 using ProjectSolitude.Enum;
 using UnityEngine;
 

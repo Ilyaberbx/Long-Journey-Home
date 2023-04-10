@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Logic.Weapons
 {
-    public class Axe : MonoBehaviour, IWeapon, IEquippable
+    public class Axe : BaseEquippableItem, IWeapon
     {
         private const string HittableLayerName = "Hittable";
 
@@ -38,11 +38,8 @@ namespace Logic.Weapons
             _animator.SetAnimatorSpeed(_attackSpeed);
             _isAttacking = true;
         }
-
-        public Transform GetTransform()
-            => transform;
-
-        public void Appear()
+  
+        public override void Appear()
         {
             _isAttacking = false;
             transform.localScale = Vector3.zero;

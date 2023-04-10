@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using Data;
+using Enums;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.StaticData;
 using Logic;
@@ -7,6 +8,7 @@ using Logic.Animations;
 using Logic.Camera;
 using Logic.DialogueSystem;
 using Logic.Player;
+using Logic.Weapons;
 using ProjectSolitude.Enum;
 using SceneManagement;
 using UI;
@@ -33,7 +35,7 @@ namespace Infrastructure.StateMachine.State
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData,IUIFactory uiFactory)
+            IStaticDataService staticData, IUIFactory uiFactory)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -62,7 +64,7 @@ namespace Infrastructure.StateMachine.State
             _gameStateMachine.Enter<GameLoopState>();
         }
 
-        private void InitUIRoot() 
+        private void InitUIRoot()
             => _uiFactory.CreateUIRoot();
 
         private void InformProgressReaders()
@@ -76,15 +78,16 @@ namespace Infrastructure.StateMachine.State
             InitSpawners();
             var player = InitPlayer();
             InitHud(player);
-            var camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform).GetComponent<CinemachineVirtualCamera>();
+            var camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform)
+                .GetComponent<CinemachineVirtualCamera>();
             InitPlayerInteractWithCamera(player, camera);
         }
-        
+
         private void InitSpawners()
         {
             string sceneKey = SceneManager.GetActiveScene().name;
             LevelData levelData = _staticData.GetLevelData(sceneKey);
-            
+
             foreach (EnemySpawnerData spawner in levelData.EnemySpawners)
                 _gameFactory.CreateSpawner(spawner.Position, spawner.Id, spawner.EnemyType);
         }
@@ -102,10 +105,11 @@ namespace Infrastructure.StateMachine.State
             PlayerUIActor uiActor = hud.GetComponent<PlayerUIActor>();
             uiActor.Construct(
                 player.GetComponent<HeroHealth>(),
-                player.GetComponentInChildren<FlashLight>(),
+                player.GetComponent<HeroLight>(),
                 player.GetComponent<IDialogueActor>(),
                 player.GetComponent<IFreeze>(),
-            player.GetComponent<IInteractor>());
+                player.GetComponent<IInteractor>());
+            
         }
 
         private GameObject InitPlayer()

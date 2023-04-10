@@ -47,8 +47,7 @@ namespace Infrastructure.Services.Factories
             _heroGameObject.GetComponent<HeroInteractor>().Construct(_inputService);
             _heroGameObject.GetComponent<HeroLook>().Construct(_inputService);
             _heroGameObject.GetComponent<HeroMover>().Construct(_inputService);
-            _heroGameObject.GetComponent<HeroEquipSwitcher>().Construct(_inputService);
-            var inventory = _heroGameObject.GetComponent<InventoryViewHandler>();
+            var inventory = _heroGameObject.GetComponent<InventoryAdapter>();
             _windowService.Init(inventory);
             
             return _heroGameObject;

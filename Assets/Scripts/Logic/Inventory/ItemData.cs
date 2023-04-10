@@ -7,7 +7,6 @@ namespace Logic.Inventory
     {
         public Sprite Icon;
         public bool IsStackable;
-
         public int Id => GetInstanceID();
         public int MaxStackSize;
         public string Name;

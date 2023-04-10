@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Logic.Inventory
 {
-    public class InventoryViewHandler : MonoBehaviour, ISavedProgressWriter
+    public class InventoryAdapter : MonoBehaviour, ISavedProgressWriter
     {
         private const string Drop = "Drop";
 
@@ -25,7 +25,7 @@ namespace Logic.Inventory
             foreach (var item in _initialItems)
                 _inventoryData.AddItem(item.ItemData, item.Quantity);
         }
-        
+
 
         private void PrepareUI()
         {
@@ -51,9 +51,9 @@ namespace Logic.Inventory
                 _inventoryWindow.AddAction(action.ActionName, listener);
             }
 
-            if (item.ItemData is IDestroyableItem)
+            if (item.ItemData is IDestroyableItem destroyableItem)
             {
-                listener = new DropItemAction(_inventoryData, _inventoryWindow, index, item.Quantity);
+                listener = new DropItemAction(_inventoryData, _inventoryWindow, destroyableItem, index, item.Quantity);
                 _inventoryWindow.AddAction(Drop, listener);
             }
         }
@@ -68,7 +68,6 @@ namespace Logic.Inventory
                 return;
             }
 
-
             _inventoryWindow.UpdateDescription(index
                 , item.ItemData.Icon,
                 item.ItemData.Name,
@@ -79,11 +78,11 @@ namespace Logic.Inventory
         {
             _inventoryData = progress.InventoryData;
 
-            if (_inventoryData.IsEmpty()) 
+            if (_inventoryData.IsEmpty())
                 AddInitialItems();
         }
 
-        public void UpdateProgress(PlayerProgress progress) 
+        public void UpdateProgress(PlayerProgress progress)
             => progress.InventoryData = _inventoryData;
     }
 }

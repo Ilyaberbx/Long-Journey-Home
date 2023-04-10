@@ -145,11 +145,12 @@ GameObject:
   - component: {fileID: 7307701248841367871}
   - component: {fileID: 8857901979492613142}
   - component: {fileID: 588288202585052698}
-  - component: {fileID: 3958158885331785620}
   - component: {fileID: 4568631829993806250}
   - component: {fileID: 9086304539905147601}
   - component: {fileID: 7706042647302247250}
   - component: {fileID: 6927917661858737277}
+  - component: {fileID: 4184236430028116523}
+  - component: {fileID: 8758750815865675400}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -319,21 +320,6 @@ MonoBehaviour:
   _look: {fileID: 8427398397224038650}
   _interactor: {fileID: 8857901979492613142}
   _attack: {fileID: 704864929059702421}
---- !u!114 &3958158885331785620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3401435002938043440}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1860f8a4b71a4ab1b96b55449063eb3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _equipmentContainer: {fileID: 2328272469543204399}
-  _attack: {fileID: 704864929059702421}
-  _switchCoolDown: 1
 --- !u!114 &4568631829993806250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,8 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2accdcbe519245e0a76aa66c76aca86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryData:
-    _inventoryItems: []
 --- !u!114 &7706042647302247250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,9 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af284d156950465597781a2c1413df62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialItems:
-  - Quantity: 9
-    ItemData: {fileID: 11400000, guid: 1a169c95a18618649ba1f966e6df29b5, type: 2}
+  _initialItems: []
 --- !u!114 &6927917661858737277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,8 +372,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2accdcbe519245e0a76aa66c76aca86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryData:
-    _inventoryItems: []
+--- !u!114 &4184236430028116523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401435002938043440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a6b2af3a4d46cc89f0ac9b612f2d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 8758750815865675400}
+  _attack: {fileID: 704864929059702421}
+  _container: {fileID: 7753708064033763373}
+  _equipmentPoint: {fileID: 6332151511665307492}
+--- !u!114 &8758750815865675400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401435002938043440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca792d834174f1ab715652338fd4adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7995979508108311700
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3633446090805477233, guid: 29c3905256fe89d42b92e4d16000a248, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8771196672766916979, guid: 29c3905256fe89d42b92e4d16000a248, type: 3}
       propertyPath: m_RootOrder
@@ -488,6 +496,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8771196672766916979, guid: 29c3905256fe89d42b92e4d16000a248, type: 3}
   m_PrefabInstance: {fileID: 6482407880529907548}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6332151511665307492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1015123970437865528, guid: 29c3905256fe89d42b92e4d16000a248, type: 3}
+  m_PrefabInstance: {fileID: 6482407880529907548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6655819200494281951 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 407606360377797507, guid: 29c3905256fe89d42b92e4d16000a248, type: 3}
@@ -499,3 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ae30b578604d9db49c281684b2168c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7753708064033763373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3633446090805477233, guid: 29c3905256fe89d42b92e4d16000a248, type: 3}
+  m_PrefabInstance: {fileID: 6482407880529907548}
+  m_PrefabAsset: {fileID: 0}

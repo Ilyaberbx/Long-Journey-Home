@@ -1,18 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using Logic.Player;
+using UnityEngine;
 
 namespace Logic.Inventory
 {
     [CreateAssetMenu(fileName = "Item", menuName = "Inventory/EquippableItem", order = 0)]
     public class EquippableItemData : ItemData, IDestroyableItem, IItemAction
     {
-        public string ActionName => "Equip";
-        public AudioClip ActionSfx => _actionSfx;
+        public event Action OnDrop;
+
+        [SerializeField] private BaseEquippableItem _itemPrefab;
 
         [SerializeField] private AudioClip _actionSfx;
 
+        public string ActionName => "Equip";
+
+        public BaseEquippableItem ItemPrefab => _itemPrefab;
+
+        public AudioClip ActionSfx => _actionSfx;
+
+
+        public void Drop()
+            => OnDrop?.Invoke();
+
         public void PerformAction(GameObject character)
-        {
-            Debug.Log("Equip");
-        }
+            => character.GetComponent<HeroEquiper>()
+                .SelectEquipment(this);
     }
 }

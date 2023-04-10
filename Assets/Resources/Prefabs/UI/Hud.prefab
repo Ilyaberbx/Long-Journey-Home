@@ -527,6 +527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlashLighBar
       objectReference: {fileID: 0}
+    - target: {fileID: 1193272033145606666, guid: 7eb9e76d49b36474fab2a0b0aa84b6da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446599796460853324, guid: 7eb9e76d49b36474fab2a0b0aa84b6da, type: 3}
       propertyPath: m_Name
       value: BarFill
@@ -633,7 +637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5012792904595591672, guid: 7eb9e76d49b36474fab2a0b0aa84b6da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 233.20001
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 5012792904595591672, guid: 7eb9e76d49b36474fab2a0b0aa84b6da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -846,7 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5012792904595591672, guid: 7eb9e76d49b36474fab2a0b0aa84b6da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 335.3
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 5012792904595591672, guid: 7eb9e76d49b36474fab2a0b0aa84b6da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

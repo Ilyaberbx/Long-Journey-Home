@@ -1,5 +1,6 @@
 ﻿using Logic.DialogueSystem;
 using Logic.Player;
+using Logic.Weapons;
 using TMPro;
 using UnityEngine;
 
@@ -12,29 +13,28 @@ namespace UI.Elements
         [SerializeField] private TextMeshProUGUI _dialogueText;
         [SerializeField] private InteractHint _interactHint;
 
-        private FlashLight _flashLight;
+        private HeroLight _light;
         private IDialogueActor _dialogueActor;
         private IFreeze _freeze;
         private IInteractor _interactor;
 
-        public void Construct(IHealth health,FlashLight flashLight,IDialogueActor dialogueActor,IFreeze freeze,IInteractor interactor)
+        public void Construct(IHealth health,HeroLight light,IDialogueActor dialogueActor,IFreeze freeze,IInteractor interactor)
         {
             base.Construct(health);
 
             _freeze = freeze;
             _interactor = interactor;
             _dialogueActor = dialogueActor;
-            _flashLight = flashLight;
-            _flashLight.OnIntensityChanged += UpdateFlashLightBar;
+            _light = light;
+            _light.OnIntensityChanged += UpdateFlashLightBar;
             _dialogueActor.OnSentenceCleared += ClearDialogueText;
             _dialogueActor.OnSentenceTyping += TypeDialogueText;
             _freeze.OnFreezeChanged += UpdateFreezeBar;
         }
-
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            _flashLight.OnIntensityChanged -= UpdateFlashLightBar;
+            _light.OnIntensityChanged -= UpdateFlashLightBar;
             _dialogueActor.OnSentenceCleared -= ClearDialogueText;
             _dialogueActor.OnSentenceTyping -= TypeDialogueText;
             _freeze.OnFreezeChanged -= UpdateFreezeBar;
@@ -61,6 +61,6 @@ namespace UI.Elements
             => _dialogueText.text += letter;
 
         private void UpdateFlashLightBar() 
-            => _flashLightBar.SetValue(_flashLight.CurrentIntensity,_flashLight.MaxIntensity);
+            => _flashLightBar.SetValue(_light.CurrentIntensity,_light.MaxIntensity);
     }
 }

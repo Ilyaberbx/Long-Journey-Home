@@ -33,29 +33,5 @@ namespace Infrastructure.Services.Input
 
         public bool IsSprinting()
             => Vertical > 0.02f && UnityEngine.Input.GetKey(KeyCode.LeftShift);
-
-        public bool IsSwitchButtonPressed(int maxCapacity, out int i)
-        {
-            i = 0;
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1) && maxCapacity >= 1)
-            {
-                i = 1;
-                return true;
-            }
-
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2) && maxCapacity >= 2)
-            {
-                i = 2;
-                return true;
-            }
-
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3) && maxCapacity >= 3)
-            {
-                i = 3;
-                return true;
-            }
-
-            return false;
-        }
     }
 }

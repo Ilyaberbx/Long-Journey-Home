@@ -1,4 +1,5 @@
 ﻿using Data;
+using Logic.Player;
 using UI.Inventory;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace Logic.Inventory
             if (item.IsEmpty)
                 return;
 
-            if (item.ItemData is IDestroyableItem)
+            if (item.ItemData is IReducible)
                 _inventoryData.RemoveItem(_index, 1);
 
             if (item.ItemData is IItemAction action)

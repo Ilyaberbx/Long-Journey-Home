@@ -8,13 +8,13 @@ namespace UI.Services.Window
     public class WindowService : IWindowService
     {
         private readonly IUIFactory _uiFactory;
-        private InventoryViewHandler _heroInventoryViewHandler;
+        private InventoryAdapter _heroInventoryAdapter;
 
         public WindowService(IUIFactory uiFactory) 
             => _uiFactory = uiFactory;
 
-        public void Init(InventoryViewHandler heroInventoryViewHandler) 
-            => _heroInventoryViewHandler = heroInventoryViewHandler;
+        public void Init(InventoryAdapter heroInventoryAdapter) 
+            => _heroInventoryAdapter = heroInventoryAdapter;
 
         public void Open(WindowType windowType, IActionListener closelistener)
         {
@@ -25,7 +25,7 @@ namespace UI.Services.Window
                 case WindowType.Inventory:
                    InventoryWindow window = _uiFactory.CreateInventory();
                    window.SubscribeCloseListener(closelistener);
-                   _heroInventoryViewHandler.InitUI(window);
+                   _heroInventoryAdapter.InitUI(window);
                     break;
                 default:
                     Debug.LogError("There is no type behaviour for this type: " + windowType);

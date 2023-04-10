@@ -1,4 +1,4 @@
-namespace ProjectSolitude.Enum
+namespace Enums
 {
     public enum GameCameraType 
     {
