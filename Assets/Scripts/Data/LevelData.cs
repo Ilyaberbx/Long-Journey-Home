@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Logic.Spawners;
 using UnityEngine;
 
 namespace Data
@@ -8,5 +9,7 @@ namespace Data
     {
         public string LevelKey;
         public List<EnemySpawnerData> EnemySpawners;
+        public List<LootSpawnerData> LootSpawners;
+        public Vector3 PlayerInitPoint;
     }
 }

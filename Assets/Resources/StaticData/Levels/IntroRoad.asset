@@ -20,3 +20,9 @@ MonoBehaviour:
   - Id: MainScene_b95854a8-ee2f-4209-99a5-a3592321ee4e
     EnemyType: 1
     Position: {x: 662, y: 14, z: 3877}
+  LootSpawners:
+  - Id: MainScene_57b4c623-54d0-453a-aaf4-b70a4fac7774
+    Data: {fileID: 11400000, guid: 91cb99cb20ed0c44f876b8ddddd300a4, type: 2}
+    Position: {x: 1621.1307, y: 5.699999, z: 3768.856}
+    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
+  PlayerInitPoint: {x: 1590, y: 26.6, z: 3662}

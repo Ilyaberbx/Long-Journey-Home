@@ -7,6 +7,7 @@
         public FreezeState FreezeState;
         public WorldData WorldData;
         public KillData KillData;
+        public PickUpLootData PickUpLootData;
         public FlashLightState FlashLightState;
         public InventoryData InventoryData;
 
@@ -18,6 +19,7 @@
             FlashLightState = new FlashLightState();
             FreezeState = new FreezeState();
             InventoryData = new InventoryData();
+            PickUpLootData = new PickUpLootData();
         }
 
     }

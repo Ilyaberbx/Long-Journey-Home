@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
+using Infrastructure.Services.Factories;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
 using Infrastructure.StateMachine.State;
 using Logic;
@@ -10,7 +12,7 @@ using UI.Services.Factory;
 
 namespace Infrastructure.StateMachine
 {
-    public class GameStateMachine 
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _statesMap;
         private IExitableState _activeState;

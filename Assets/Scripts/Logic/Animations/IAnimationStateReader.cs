@@ -1,4 +1,4 @@
-﻿using ProjectSolitude.Enum;
+﻿using Enums;
 
 namespace Logic.Animations
 {

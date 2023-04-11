@@ -1,4 +1,6 @@
 ﻿using DG.Tweening;
+using Logic.Gravity;
+using Logic.Inventory.Item;
 using Logic.Player;
 using UnityEngine;
 

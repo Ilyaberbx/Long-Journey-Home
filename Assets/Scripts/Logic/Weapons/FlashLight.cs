@@ -1,6 +1,7 @@
 ﻿using System;
 using Data;
 using DG.Tweening;
+using Logic.Inventory.Item;
 using Logic.Player;
 using UnityEngine;
 

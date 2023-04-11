@@ -1,12 +1,13 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.SaveLoad;
 using Logic.Inventory;
 using Logic.Inventory.Item;
 using UnityEngine;
 
 namespace Logic.Player
 {
-    public class HeroItemPicker : MonoBehaviour, IHeroItemPicker,ISavedProgressWriter
+    public class HeroItemPicker : MonoBehaviour, IItemPicker,ISavedProgressWriter
     {
         private InventoryData _inventoryData;
 

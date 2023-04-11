@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Interfaces;
+using Infrastructure.Services.Input;
 using UnityEngine;
 
 namespace Logic.Player

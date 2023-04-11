@@ -1,14 +1,16 @@
 using Data;
+using Extensions;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
-using ProjectSolitude.Extensions;
+using Infrastructure.Services.Input;
+using Infrastructure.Services.SaveLoad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Logic.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    [RequireComponent(typeof(Gravity))]
+    [RequireComponent(typeof(Gravity.Gravity))]
     public class HeroMover : MonoBehaviour,ISavedProgressWriter
     {
         private const float GravityConst = -10f;
@@ -19,7 +21,7 @@ namespace Logic.Player
         [SerializeField] private float _sprintingCoefficient;
 
         private IInputService _input;
-        private Gravity _gravity;
+        private Gravity.Gravity _gravity;
 
         private UnityEngine.Camera _camera;
 
@@ -28,7 +30,7 @@ namespace Logic.Player
 
         private void Awake()
         {
-            _gravity = GetComponent<Gravity>();
+            _gravity = GetComponent<Gravity.Gravity>();
             _camera = UnityEngine.Camera.main;
             Cursor.lockState = CursorLockMode.Locked;
         }

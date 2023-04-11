@@ -11,6 +11,7 @@ namespace Editor
     public class LevelDataEditor : UnityEditor.Editor
     {
         private const string CollectLabel = "Collect";
+        private const string PlayerInitPointTag = "PlayerInitPoint";
 
         public override void OnInspectorGUI()
         {
@@ -19,10 +20,15 @@ namespace Editor
 
             if (GUILayout.Button(CollectLabel))
             {
-                levelData.EnemySpawners = FindObjectsOfType<SpawnMarker>()
+                levelData.EnemySpawners = FindObjectsOfType<EnemyMarker>()
                     .Select(x => new EnemySpawnerData(x.GetComponent<UniqueId>().Id,x.EnemyType,x.transform.position))
                     .ToList();
+                
+                levelData.LootSpawners= FindObjectsOfType<LootMarker>()
+                    .Select(x => new LootSpawnerData(x.GetComponent<UniqueId>().Id,x.Data,x.transform.position,x.transform.rotation))
+                    .ToList();
 
+                levelData.PlayerInitPoint = GameObject.FindGameObjectWithTag(PlayerInitPointTag).transform.position;
                 levelData.LevelKey = SceneManager.GetActiveScene().name;
             }
             

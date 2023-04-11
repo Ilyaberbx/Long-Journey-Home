@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Logic.Triggers;
 using UnityEditor;
 using UnityEngine;
 

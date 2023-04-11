@@ -1,5 +1,4 @@
-﻿using Data;
-using Infrastructure.Interfaces;
+﻿using Infrastructure.Interfaces;
 using Logic.Inventory;
 using Logic.Inventory.Item;
 using Logic.Weapons;
@@ -13,7 +12,6 @@ namespace Logic.Player
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private Transform _container;
         [SerializeField] private Transform _equipmentPoint;
-        private PlayerProgress _progress;
         private EquippableItemData _equippedItemData;
 
         public void SelectEquipment(EquippableItemData equippableItemData)

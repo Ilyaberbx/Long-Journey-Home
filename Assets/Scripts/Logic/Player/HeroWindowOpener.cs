@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using Cinemachine;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.Input;
 using Logic.Inventory;
+using Logic.Inventory.Actions;
 using UI.Services.Window;
 using UnityEngine;
 

@@ -36,6 +36,7 @@ namespace Infrastructure.StateMachine.State
             => _stateMachine.Enter<LoadProgressState>();
         private void RegisterServices()
         {
+            RegisterStateMachine();
             RegisterInput();
             RegisterAssetsProvider();
             RegisterStaticData();
@@ -45,6 +46,9 @@ namespace Infrastructure.StateMachine.State
             RegisterFactory();
             RegisterSaveLoadService();
         }
+
+        private void RegisterStateMachine() 
+            => _serviceLocator.RegisterService<IGameStateMachine>(_stateMachine);
 
         private void RegisterWindowFactory() 
             => _serviceLocator.RegisterService<IWindowService>(

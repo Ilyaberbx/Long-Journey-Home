@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Logic.Enemy;
 using UnityEngine;
 
 namespace StaticData

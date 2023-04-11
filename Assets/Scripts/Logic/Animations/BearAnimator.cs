@@ -1,5 +1,5 @@
 using System;
-using ProjectSolitude.Enum;
+using Enums;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

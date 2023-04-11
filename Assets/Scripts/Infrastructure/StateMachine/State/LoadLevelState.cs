@@ -2,6 +2,8 @@
 using Data;
 using Enums;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.Factories;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
 using Logic;
 using Logic.Animations;
@@ -9,7 +11,6 @@ using Logic.Camera;
 using Logic.DialogueSystem;
 using Logic.Player;
 using Logic.Weapons;
-using ProjectSolitude.Enum;
 using SceneManagement;
 using UI;
 using UI.Elements;
@@ -22,7 +23,6 @@ namespace Infrastructure.StateMachine.State
 {
     public class LoadLevelState : IPayloadedState<string>
     {
-        private const string PlayerInitPointTag = "PlayerInitPoint";
         private const string PovPoint = "POVPoint";
 
         private readonly GameStateMachine _gameStateMachine;
@@ -76,20 +76,29 @@ namespace Infrastructure.StateMachine.State
         private void InitGameWorld()
         {
             InitSpawners();
-            var player = InitPlayer();
+            GameObject player = InitPlayer();
             InitHud(player);
-            var camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform)
+            CinemachineVirtualCamera camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform)
                 .GetComponent<CinemachineVirtualCamera>();
             InitPlayerInteractWithCamera(player, camera);
         }
 
         private void InitSpawners()
         {
+            LevelData levelData = LevelData();
+
+            foreach (EnemySpawnerData enemySpawnerData in levelData.EnemySpawners)
+                _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id, enemySpawnerData.EnemyType);
+
+            foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
+                _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id, lootSpawnerData.Rotation, lootSpawnerData.Data);
+        }
+
+        private LevelData LevelData()
+        {
             string sceneKey = SceneManager.GetActiveScene().name;
             LevelData levelData = _staticData.GetLevelData(sceneKey);
-
-            foreach (EnemySpawnerData spawner in levelData.EnemySpawners)
-                _gameFactory.CreateSpawner(spawner.Position, spawner.Id, spawner.EnemyType);
+            return levelData;
         }
 
         private void InitPlayerInteractWithCamera(GameObject player, CinemachineVirtualCamera camera)
@@ -114,14 +123,15 @@ namespace Infrastructure.StateMachine.State
 
         private GameObject InitPlayer()
         {
-            var initPoint = GameObject.FindGameObjectWithTag(PlayerInitPointTag);
-            GameObject player = _gameFactory.CreatePlayer(initPoint.transform.position);
+            LevelData levelData = LevelData();
+            Vector3 initPoint = levelData.PlayerInitPoint;
+            GameObject player = _gameFactory.CreatePlayer(initPoint);
             return player;
         }
 
         private GameObject CameraFollowPlayer(Transform target)
         {
-            var cameraChanger = Camera.main.GetComponentInParent<GameCamerasChanger>();
+            GameCamerasChanger cameraChanger = Camera.main.GetComponentInParent<GameCamerasChanger>();
             return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, target, true);
         }
     }

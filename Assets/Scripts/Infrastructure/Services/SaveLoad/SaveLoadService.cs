@@ -1,6 +1,7 @@
 ﻿using Data;
+using Extensions;
 using Infrastructure.Interfaces;
-using ProjectSolitude.Extensions;
+using Infrastructure.Services.Factories;
 using UnityEngine;
 
 namespace Infrastructure.Services.SaveLoad

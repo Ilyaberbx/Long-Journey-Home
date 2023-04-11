@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using Logic.Animations;
 using UnityEngine;
 
 namespace Logic.Enemy

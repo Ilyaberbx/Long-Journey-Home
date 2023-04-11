@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Editor
 {
-    [CustomEditor(typeof(SpawnMarker))]
+    [CustomEditor(typeof(BaseMarker))]
     public class SpawnMarkerEditorMark : UnityEditor.Editor
     {
         [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected)]
-        public static void RenderCustomGizmo(SpawnMarker spawner, GizmoType type)
+        public static void RenderCustomGizmo(BaseMarker spawner, GizmoType type)
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = spawner.IndicatorColor;
             Gizmos.DrawSphere(spawner.transform.position,3);
             Gizmos.color = Color.white;
         }

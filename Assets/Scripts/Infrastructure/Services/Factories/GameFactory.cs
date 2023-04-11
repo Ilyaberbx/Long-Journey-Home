@@ -2,10 +2,13 @@
 using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.Input;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
 using Logic;
 using Logic.Enemy;
 using Logic.Inventory;
+using Logic.Inventory.Item;
 using Logic.Player;
 using Logic.Spawners;
 using StaticData;
@@ -74,12 +77,29 @@ namespace Infrastructure.Services.Factories
             return enemy;
         }
 
-        public SpawnPoint CreateSpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType)
+        public EnemySpawnPoint CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType)
         {
-            SpawnPoint spawner = InstantiateRegistered(AssetsPath.Spawner, at).GetComponent<SpawnPoint>();
+            EnemySpawnPoint spawner = InstantiateRegistered(AssetsPath.EnemySpawner, at).GetComponent<EnemySpawnPoint>();
             spawner.SetId(spawnerId);
             spawner.SetType(spawnerEnemyType);
             spawner.Construct(this);
+            return spawner;
+        }
+
+        public ItemPickUp CreateItemPickUp(ItemData data, Transform parent)
+        {
+            ItemPickUp pickUpPrefab = _staticData.GetPickUpByData(data);
+            ItemPickUp spawnedPickUp = Object.Instantiate(pickUpPrefab, parent.position, parent.rotation, parent);
+            return spawnedPickUp;
+        }
+
+        public LootSpawnPoint CreateLootSpawner(Vector3 at, string id, Quaternion rotation, ItemData data)
+        {
+            LootSpawnPoint spawner = InstantiateRegistered(AssetsPath.LootSpawner, at).GetComponent<LootSpawnPoint>();
+            spawner.SetId(id);
+            spawner.SetData(data);
+            spawner.Construct(this);
+            spawner.transform.rotation = rotation;
             return spawner;
         }
 
