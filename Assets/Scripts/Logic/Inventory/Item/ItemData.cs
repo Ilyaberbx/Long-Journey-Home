@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Logic.Inventory
+namespace Logic.Inventory.Item
 {
     [CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item", order = 0)]
     public abstract class ItemData : ScriptableObject

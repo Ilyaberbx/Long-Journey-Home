@@ -37,24 +37,23 @@ namespace Logic.Inventory
 
         private void HandleItemActionRequest(int index)
         {
-            IActionListener listener;
+            IActionListener itemAction;
             InventoryItem item = _inventoryData.GetItemByIndex(index);
 
             if (item.IsEmpty)
                 return;
-
-
+            
             if (item.ItemData is IItemAction action)
             {
-                listener = new ExecuteItemAction(_inventoryData, _inventoryWindow, index, gameObject);
+                itemAction = new ExecuteItemAction(_inventoryData, _inventoryWindow, index, gameObject);
                 _inventoryWindow.ShowActionPanelByIndex(index);
-                _inventoryWindow.AddAction(action.ActionName, listener);
+                _inventoryWindow.AddAction(action.ActionName, itemAction);
             }
 
             if (item.ItemData is IDestroyableItem destroyableItem)
             {
-                listener = new DropItemAction(_inventoryData, _inventoryWindow, destroyableItem, index, item.Quantity);
-                _inventoryWindow.AddAction(Drop, listener);
+                itemAction = new DropItemAction(_inventoryData, _inventoryWindow, destroyableItem, index, item.Quantity);
+                _inventoryWindow.AddAction(Drop, itemAction);
             }
         }
 

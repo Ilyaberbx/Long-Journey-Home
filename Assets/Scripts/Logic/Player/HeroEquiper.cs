@@ -1,6 +1,7 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
 using Logic.Inventory;
+using Logic.Inventory.Item;
 using Logic.Weapons;
 using UnityEngine;
 
@@ -13,15 +14,17 @@ namespace Logic.Player
         [SerializeField] private Transform _container;
         [SerializeField] private Transform _equipmentPoint;
         private PlayerProgress _progress;
+        private EquippableItemData _equippedItemData;
 
         public void SelectEquipment(EquippableItemData equippableItemData)
         {
             ClearUp();
 
-            equippableItemData.OnDrop += ClearUp;
+            _equippedItemData = equippableItemData;
+            _equippedItemData.OnDrop += ClearUp;
             
             var equipment =
-                Instantiate(equippableItemData.ItemPrefab, _equipmentPoint.position, Quaternion.identity, _container);
+                Instantiate(_equippedItemData.ItemPrefab, _equipmentPoint.position, Quaternion.identity, _container);
 
             equipment.transform.localScale = Vector3.zero;
             equipment.Appear();

@@ -1,6 +1,7 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
 using Logic.Inventory;
+using Logic.Inventory.Item;
 using UnityEngine;
 
 namespace Logic.Player

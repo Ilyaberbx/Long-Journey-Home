@@ -13,12 +13,12 @@ namespace UI.Elements
         [SerializeField] private TextMeshProUGUI _dialogueText;
         [SerializeField] private InteractHint _interactHint;
 
-        private HeroLight _light;
+        private IHeroLight _light;
         private IDialogueActor _dialogueActor;
         private IFreeze _freeze;
         private IInteractor _interactor;
 
-        public void Construct(IHealth health,HeroLight light,IDialogueActor dialogueActor,IFreeze freeze,IInteractor interactor)
+        public void Construct(IHealth health,IHeroLight light,IDialogueActor dialogueActor,IFreeze freeze,IInteractor interactor)
         {
             base.Construct(health);
 

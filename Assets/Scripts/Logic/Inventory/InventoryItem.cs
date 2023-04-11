@@ -1,4 +1,5 @@
 ﻿using System;
+using Logic.Inventory.Item;
 
 namespace Logic.Inventory
 {

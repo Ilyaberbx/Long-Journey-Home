@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Logic.Player
 {
-    public class HeroLight : MonoBehaviour, ISavedProgressWriter
+    public class HeroLight : MonoBehaviour, ISavedProgressWriter, IHeroLight
     {
         public event Action OnIntensityChanged;
         private FlashLightState _lightState;

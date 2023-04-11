@@ -1,7 +1,7 @@
 ﻿using Logic.Player;
 using UnityEngine;
 
-namespace Logic.Inventory
+namespace Logic.Inventory.Item
 {
     public class ItemPickUp : MonoBehaviour, IInteractable
     {

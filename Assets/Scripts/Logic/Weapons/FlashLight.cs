@@ -16,13 +16,13 @@ namespace Logic.Weapons
         [SerializeField] private float _offSet;
         
         private Vector3 _cachedScale;
-        private HeroLight _light;
+        private IHeroLight _light;
 
 
         private void Awake()
             => _cachedScale = transform.localScale;
 
-        public void Construct(HeroLight light) 
+        public void Construct(IHeroLight light) 
             => _light = light;
         
 

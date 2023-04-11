@@ -1,4 +1,6 @@
-﻿namespace Logic.Inventory
+﻿using Logic.Inventory.Item;
+
+namespace Logic.Inventory
 {
     public interface IHeroItemPicker
     {

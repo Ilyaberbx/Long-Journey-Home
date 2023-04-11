@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Logic.DialogueSystem;
-using Logic.Inventory;
+﻿using Logic.DialogueSystem;
 using Logic.Player;
 using UnityEngine;
 
@@ -8,7 +6,6 @@ namespace Logic
 {
     public class Hint : MonoBehaviour, IInteractable
     {
-        [SerializeField] private List<ItemPickUp> _itemPickUps;
         [SerializeField] private Dialogue _dialogue;
         [SerializeField] private string _hintName;
 
@@ -16,9 +13,6 @@ namespace Logic
         {
             IDialogueActor dialogueActor = interactorTransform.GetComponent<IDialogueActor>();
             dialogueActor.StartDialogue(_dialogue);
-
-            foreach (var itemPickUp in _itemPickUps) 
-                itemPickUp.Interact(interactorTransform);
         }
 
         public string GetInteractText()

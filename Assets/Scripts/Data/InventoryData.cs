@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Logic.Inventory;
+using Logic.Inventory.Item;
 using UnityEngine;
 
 namespace Data
