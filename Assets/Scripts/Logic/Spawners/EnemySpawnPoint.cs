@@ -4,6 +4,7 @@ using Infrastructure.Services.Factories;
 using Infrastructure.Services.SaveLoad;
 using Logic.Enemy;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Spawners
 {
@@ -16,6 +17,7 @@ namespace Logic.Spawners
         private IGameFactory _factory;
         private EnemyDeath _enemyDeath;
 
+        [Inject]
         public void Construct(IGameFactory gameFactory) 
             => _factory = gameFactory;
 

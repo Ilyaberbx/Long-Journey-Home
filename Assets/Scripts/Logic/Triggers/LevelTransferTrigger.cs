@@ -1,10 +1,9 @@
-﻿using System;
-using Infrastructure.Services;
-using Infrastructure.StateMachine;
+﻿using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Enemy;
 using Logic.Spawners;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Triggers
 {
@@ -17,11 +16,12 @@ namespace Logic.Triggers
         private IGameStateMachine _stateMachine;
         private bool _triggered;
 
-        private void Awake()
-        {
-            _stateMachine = ServiceLocator.Container.Single<IGameStateMachine>();
-            _triggerObserver.OnTriggerEntered += Triggered;
-        }
+        [Inject]
+        public void Construct(IGameStateMachine stateMachine) 
+            => _stateMachine = stateMachine;
+
+        private void Awake() 
+            => _triggerObserver.OnTriggerEntered += Triggered;
 
         private void OnDestroy() 
             => _triggerObserver.OnTriggerEntered -= Triggered;

@@ -1,22 +1,24 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Logic.Inventory;
 using Logic.Inventory.Actions;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI.Elements
 {
     public abstract class WindowBase : MonoBehaviour
     {
         [SerializeField] private Button _closeButton;
-        protected IPersistentProgressService _progressService;
         private IActionListener _closeListener;
-        protected PlayerProgress _progress => _progressService.PlayerProgress;
+        protected PlayerProgress _progress;
 
+        [Inject]
         public void Construct(IPersistentProgressService progressService) 
-            => _progressService = progressService;
+            => _progress = progressService.PlayerProgress;
 
         private void Awake()
             => OnAwake();

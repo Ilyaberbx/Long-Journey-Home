@@ -1,5 +1,6 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using UnityEngine;
 
@@ -30,11 +31,9 @@ namespace Infrastructure.StateMachine.State
         {
         }
 
-        private void LoadProgressOrInitNew()
-        {
-            _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
-                                              ?? DefaultProgress();
-        }
+        private void LoadProgressOrInitNew() 
+            => _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
+                                                 ?? DefaultProgress();
 
         private PlayerProgress DefaultProgress()
         {

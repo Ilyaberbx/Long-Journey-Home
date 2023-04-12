@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Interfaces;
+using Infrastructure.Services.Factories;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
@@ -8,7 +9,7 @@ using Zenject;
 
 namespace Installers
 {
-    public class BootStrapInstaller : MonoInstaller, IInitializable,ICoroutineRunner
+    public class BootStrapInstaller : MonoInstaller, IInitializable, ICoroutineRunner
     {
         [SerializeField] private LoadingCurtain _loadingCurtainPrefab;
 
@@ -19,14 +20,14 @@ namespace Installers
             BindSceneLoader();
             BindStateFactory();
         }
-        private void BindSceneLoader() 
+
+        private void BindSceneLoader()
             => Container.Bind<ISceneLoader>()
                 .To<SceneLoader>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
 
-        private void BindInstallerInterfaces() 
+        private void BindInstallerInterfaces()
             => Container.BindInterfacesTo<BootStrapInstaller>()
                 .FromInstance(this)
                 .AsSingle()
@@ -43,13 +44,14 @@ namespace Installers
 
         private void BindStateFactory()
             => Container
-                .Bind<StateFactory>().FromNew()
+                .Bind<IStateFactory>()
+                .To<StateFactory>()
                 .AsSingle()
                 .NonLazy();
 
         public void Initialize()
         {
-            StateFactory stateFactory = Container.Resolve<StateFactory>();
+            IStateFactory stateFactory = Container.Resolve<IStateFactory>();
             IGameStateMachine stateMachine = Container.Resolve<IGameStateMachine>();
             stateFactory.Create(stateMachine, typeof(BootstrapState));
             stateFactory.Create(stateMachine, typeof(LoadProgressState));

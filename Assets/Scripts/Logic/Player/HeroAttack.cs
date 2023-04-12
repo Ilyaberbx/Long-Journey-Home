@@ -3,6 +3,7 @@ using Infrastructure.Services.Input;
 using Logic.Gravity;
 using Logic.Weapons;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Player
 {
@@ -13,6 +14,7 @@ namespace Logic.Player
         private IInputService _input;
         private IWeapon _currentWeapon;
 
+        [Inject]
         public void Construct(IInputService inputService)
             => _input = inputService;
 

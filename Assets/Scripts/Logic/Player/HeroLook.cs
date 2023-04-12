@@ -1,6 +1,6 @@
-﻿using Infrastructure.Interfaces;
-using Infrastructure.Services.Input;
+﻿using Infrastructure.Services.Input;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Player
 {
@@ -8,6 +8,7 @@ namespace Logic.Player
     {
         private IInputService _input;
 
+        [Inject]
         public void Construct(IInputService input) 
             => _input = input;
 

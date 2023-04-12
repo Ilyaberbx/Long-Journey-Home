@@ -14,14 +14,11 @@ namespace Logic
             gameObject.SetActive(true);
             _canvasGroup.alpha = 1;
         }
-        public void Hide()
-        {
-            var sequnce = DOTween.Sequence();
-            sequnce.Append(_canvasGroup.DOFade(0, 1f));
-            sequnce.AppendCallback(DisabeObject);
-        }
+        public void Hide() 
+            => _canvasGroup.DOFade(0, 1f)
+                .OnComplete(DisableObject);
 
-        private void DisabeObject() 
+        private void DisableObject() 
             => gameObject.SetActive(false);
     }
 }

@@ -3,9 +3,9 @@ using Infrastructure.Interfaces;
 using Infrastructure.StateMachine;
 using Zenject;
 
-namespace Installers
+namespace Infrastructure.Services.Factories
 {
-    public class StateFactory
+    public class StateFactory : IStateFactory
     {
         private readonly DiContainer _container;
 

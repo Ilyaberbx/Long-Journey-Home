@@ -8,14 +8,14 @@ namespace Logic.Camera
     {
         [SerializeField] private List<GameCamera> _cameras;
 
-        public GameObject ConstructCamera(GameCameraType type, Transform target = null, bool isLookAt = false)
+        public GameCamera ConstructCamera(GameCameraType type, Transform target = null, bool isLookAt = false)
         {
-            var camera =  DefineCamera(type, target, isLookAt);
+            GameCamera camera =  DefineCamera(type, target, isLookAt);
             ChangeCamerasPriority(type);
             return camera;
         }
 
-        private GameObject DefineCamera(GameCameraType type, Transform target, bool isLookAt)
+        private GameCamera DefineCamera(GameCameraType type, Transform target, bool isLookAt)
         {
             if (target != null)
             {
@@ -27,7 +27,7 @@ namespace Logic.Camera
                     gameCamera.Camera.Follow = gameCamera.CameraType == type ? target : null;
 
                     if (gameCamera.Camera.Follow != null)
-                        return gameCamera.gameObject;
+                        return gameCamera;
                 }
             }
 

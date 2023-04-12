@@ -2,6 +2,7 @@
 using Extensions;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
+using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 
 namespace Infrastructure.Services.SaveLoad

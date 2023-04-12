@@ -26,51 +26,42 @@ namespace Installers
             BindGameFactory();
             BindSaveLoad();
             BindStateMachine();
-            
         }
-        
-        
 
-        private void BindStateMachine() 
+
+        private void BindStateMachine()
             => Container.Bind<IGameStateMachine>()
                 .To<GameStateMachine>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
 
-        private void BindSaveLoad() 
+        private void BindSaveLoad()
             => Container.Bind<ISaveLoadService>()
                 .To<SaveLoadService>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
 
         private void BindGameFactory()
             => Container.Bind<IGameFactory>()
                 .To<GameFactory>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
 
         private void BindWindowService()
             => Container.Bind<IWindowService>()
                 .To<WindowService>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
 
         private void BindUIFactory()
-            =>
-                Container.Bind<IUIFactory>()
-                    .To<UIFactory>()
-                    .FromNew()
-                    .AsSingle()
-                    .NonLazy();
+            => Container.Bind<IUIFactory>()
+                .To<UIFactory>()
+                .AsSingle()
+                .NonLazy();
 
         private void BindProgress()
             => Container.Bind<IPersistentProgressService>()
                 .To<PersistentProgressService>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
 
@@ -87,7 +78,6 @@ namespace Installers
         private void BindAssets()
             => Container.Bind<IAssetProvider>()
                 .To<AssetProvider>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
 
@@ -95,7 +85,6 @@ namespace Installers
         private void BindInput()
             => Container.Bind<IInputService>()
                 .To<StandaloneInputService>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
     }

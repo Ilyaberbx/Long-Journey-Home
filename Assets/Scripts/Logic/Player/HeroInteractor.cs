@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Interfaces;
 using Infrastructure.Services.Input;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Player
 {
@@ -12,6 +13,7 @@ namespace Logic.Player
         private IInteractable _interactable;
         private bool _hintShowed;
 
+        [Inject]
         public void Construct(IInputService input) 
             => _input = input;
 

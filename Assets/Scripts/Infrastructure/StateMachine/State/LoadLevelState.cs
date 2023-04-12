@@ -3,6 +3,7 @@ using Data;
 using Enums;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
+using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.StaticData;
@@ -126,7 +127,7 @@ namespace Infrastructure.StateMachine.State
             return player;
         }
 
-        private GameObject CameraFollowPlayer(Transform target)
+        private GameCamera CameraFollowPlayer(Transform target)
         {
             GameCamerasChanger cameraChanger = Camera.main.GetComponentInParent<GameCamerasChanger>();
             return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, target, true);

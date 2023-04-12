@@ -4,6 +4,7 @@ using Infrastructure.Services.Factories;
 using Infrastructure.Services.SaveLoad;
 using Logic.Inventory.Item;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Spawners
 {
@@ -14,6 +15,7 @@ namespace Logic.Spawners
         private ItemData _data;
         private bool _isPickedUp;
 
+        [Inject]
         public void Construct(IGameFactory gameFactory) 
             => _factory = gameFactory;
         

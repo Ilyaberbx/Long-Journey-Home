@@ -6,6 +6,7 @@ using Infrastructure.Services.Input;
 using Infrastructure.Services.SaveLoad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Logic.Player
 {
@@ -25,6 +26,7 @@ namespace Logic.Player
 
         private UnityEngine.Camera _camera;
 
+        [Inject]
         public void Construct(IInputService inputService) 
             => _input = inputService;
 
