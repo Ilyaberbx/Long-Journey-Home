@@ -4,18 +4,15 @@ using Enums;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.StaticData;
 using Logic;
 using Logic.Animations;
 using Logic.Camera;
 using Logic.DialogueSystem;
 using Logic.Player;
-using Logic.Weapons;
-using SceneManagement;
-using UI;
 using UI.Elements;
 using UI.Services.Factory;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,15 +22,15 @@ namespace Infrastructure.StateMachine.State
     {
         private const string PovPoint = "POVPoint";
 
-        private readonly GameStateMachine _gameStateMachine;
-        private readonly SceneLoader _sceneLoader;
+        private readonly IGameStateMachine _gameStateMachine;
+        private readonly ISceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly IStaticDataService _staticData;
         private readonly IUIFactory _uiFactory;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
+        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
             IStaticDataService staticData, IUIFactory uiFactory)
         {

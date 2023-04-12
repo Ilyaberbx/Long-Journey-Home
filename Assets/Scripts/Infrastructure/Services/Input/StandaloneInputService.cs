@@ -1,4 +1,3 @@
-using Infrastructure.Interfaces;
 using UnityEngine;
 
 namespace Infrastructure.Services.Input
@@ -26,8 +25,7 @@ namespace Infrastructure.Services.Input
 
         public bool IsInventoryButtonPressed()
             => UnityEngine.Input.GetKeyDown(KeyCode.I);
-
-
+        
         public bool IsJumped()
             => UnityEngine.Input.GetKeyDown(KeyCode.Space);
 

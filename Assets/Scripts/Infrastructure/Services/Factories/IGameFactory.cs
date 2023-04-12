@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Infrastructure.Services.SaveLoad;
-using Logic;
 using Logic.Enemy;
 using Logic.Inventory.Item;
 using Logic.Spawners;

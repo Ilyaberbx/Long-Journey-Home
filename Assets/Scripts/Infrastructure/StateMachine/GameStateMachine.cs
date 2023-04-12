@@ -1,56 +1,29 @@
 using System;
 using System.Collections.Generic;
 using Infrastructure.Interfaces;
-using Infrastructure.Services;
-using Infrastructure.Services.Factories;
-using Infrastructure.Services.SaveLoad;
-using Infrastructure.Services.StaticData;
-using Infrastructure.StateMachine.State;
 using Logic;
-using SceneManagement;
-using UI.Services.Factory;
 
 namespace Infrastructure.StateMachine
 {
     public class GameStateMachine : IGameStateMachine
     {
-        private readonly Dictionary<Type, IExitableState> _statesMap;
+        public Dictionary<Type, IExitableState> StatesMap { get; set; } = new Dictionary<Type, IExitableState>();
         private IExitableState _activeState;
 
-        public GameStateMachine(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain, ServiceLocator serviceLocator)
-        {
-            var sceneLoader = new SceneLoader(coroutineRunner);
-
-            _statesMap = new Dictionary<Type, IExitableState>()
-            {
-                [typeof(BootstrapState)] = new BootstrapState(this,sceneLoader, serviceLocator),
-                
-                [typeof(LoadLevelState)] = new LoadLevelState(this,sceneLoader, loadingCurtain, 
-                    serviceLocator.Single<IGameFactory>(),
-                    serviceLocator.Single<IPersistentProgressService>(),
-                    serviceLocator.Single<IStaticDataService>(),
-                    serviceLocator.Single<IUIFactory>()),
-                
-                [typeof(LoadProgressState)] = new LoadProgressState(this,
-                    serviceLocator.Single<IPersistentProgressService>(),
-                    serviceLocator.Single<ISaveLoadService>()),
-                
-                
-                [typeof(GameLoopState)] = new GameLoopState(this),
-            };
-        }
-        public void Enter<TState>() where TState : class,IState
+        public void Enter<TState>() where TState : class, IState
         {
             IState state = ChangeState<TState>();
             state.Enter();
         }
-        public void Enter<TState,TPayLoad>(TPayLoad payLoad) where TState : class,IPayloadedState<TPayLoad>
+
+        public void Enter<TState, TPayLoad>(TPayLoad payLoad) where TState : class, IPayloadedState<TPayLoad>
         {
             TState state = ChangeState<TState>();
             state.Enter(payLoad);
         }
-        private TState GetState<TState>() where TState : class, IExitableState 
-            => _statesMap[typeof(TState)] as TState;
+
+        private TState GetState<TState>() where TState : class, IExitableState
+            => StatesMap[typeof(TState)] as TState;
 
         private TState ChangeState<TState>() where TState : class, IExitableState
         {
@@ -61,6 +34,5 @@ namespace Infrastructure.StateMachine
 
             return state;
         }
-
     }
 }

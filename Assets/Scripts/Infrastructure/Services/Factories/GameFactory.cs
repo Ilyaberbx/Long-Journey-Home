@@ -16,6 +16,7 @@ using UI.Elements;
 using UI.Services.Window;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 using Object = UnityEngine.Object;
 
 namespace Infrastructure.Services.Factories
@@ -26,6 +27,7 @@ namespace Infrastructure.Services.Factories
         private readonly IStaticDataService _staticData;
         private readonly IWindowService _windowService;
         private readonly IInputService _inputService;
+        private readonly DiContainer _container;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
@@ -34,12 +36,13 @@ namespace Infrastructure.Services.Factories
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
-            , IWindowService windowService, IInputService inputService)
+            , IWindowService windowService, IInputService inputService,DiContainer container)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
             _windowService = windowService;
             _inputService = inputService;
+            _container = container;
         }
 
         public GameObject CreatePlayer(Vector3 at)
@@ -63,7 +66,7 @@ namespace Infrastructure.Services.Factories
         public GameObject CreateEnemy(EnemyType enemyType, Transform parent)
         {
             EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
-            GameObject enemy = Object.Instantiate(enemyData.Prefab, parent.position, Quaternion.identity, parent);
+            GameObject enemy = _container.InstantiatePrefab(enemyData.Prefab, parent.position, Quaternion.identity, parent);
             var health = enemy.GetComponent<IHealth>();
             health.CurrentHealth = enemyData.MaxHp;
             health.MaxHp = enemyData.MaxHp;
