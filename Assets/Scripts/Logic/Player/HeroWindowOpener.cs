@@ -6,6 +6,7 @@ using Logic.Inventory;
 using Logic.Inventory.Actions;
 using UI.Services.Window;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Player
 {
@@ -22,6 +23,7 @@ namespace Logic.Player
 
         private CinemachinePOV _cameraPov;
 
+        [Inject]
         public void Construct(IInputService input, IWindowService windowService)
         {
             _input = input;

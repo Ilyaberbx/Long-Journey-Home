@@ -102,7 +102,7 @@ namespace Infrastructure.StateMachine.State
         private void InitPlayerInteractWithCamera(GameObject player, CinemachineVirtualCamera camera)
         {
             player.GetComponent<HeroHealth>().Construct(camera.GetComponentInParent<ICameraAnimator>());
-            player.GetComponent<HeroDeath>().Construct(camera.GetComponentInParent<ICameraAnimator>());
+            player.GetComponent<HeroDeath>().SetCameraAnimator(camera.GetComponentInParent<ICameraAnimator>());
             player.GetComponent<HeroWindowOpener>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
         }
 

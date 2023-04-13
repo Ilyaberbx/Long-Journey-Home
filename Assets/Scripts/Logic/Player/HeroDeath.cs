@@ -1,5 +1,4 @@
-﻿using System;
-using Logic.Animations;
+﻿using Logic.Animations;
 using UnityEngine;
 
 namespace Logic.Player
@@ -13,7 +12,8 @@ namespace Logic.Player
         private ICameraAnimator _animator;
         private bool _isDead;
 
-        public void Construct(ICameraAnimator animator) => 
+        
+        public void SetCameraAnimator(ICameraAnimator animator) => 
             _animator = animator;
 
         private void Awake() => 

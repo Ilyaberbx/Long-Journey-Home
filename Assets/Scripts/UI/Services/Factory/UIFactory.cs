@@ -7,6 +7,7 @@ using UI.Elements;
 using UI.Inventory;
 using UI.Services.Window;
 using UnityEngine;
+using Zenject;
 
 namespace UI.Services.Factory
 {
@@ -14,21 +15,21 @@ namespace UI.Services.Factory
     {
         private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
+        private readonly DiContainer _container;
         private Transform _uiRoot;
         private IPersistentProgressService _progressService;
 
-        public UIFactory(IAssetProvider assets,IStaticDataService staticData, IPersistentProgressService progressService)
+        public UIFactory(IAssetProvider assets,IStaticDataService staticData,DiContainer container)
         {
             _assets = assets;
             _staticData = staticData;
-            _progressService = progressService;
+            _container = container;
         }
 
         public InventoryWindow CreateInventory()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Inventory);
-            WindowBase window = Object.Instantiate(config.Prefab, _uiRoot);
-            window.Construct(_progressService);
+            WindowBase window = _container.InstantiatePrefabForComponent<WindowBase>(config.Prefab, _uiRoot);
             return window.GetComponent<InventoryWindow>();
         }
 

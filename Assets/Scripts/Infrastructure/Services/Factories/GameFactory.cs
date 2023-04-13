@@ -26,7 +26,6 @@ namespace Infrastructure.Services.Factories
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticData;
         private readonly IWindowService _windowService;
-        private readonly IInputService _inputService;
         private readonly DiContainer _container;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
@@ -36,26 +35,19 @@ namespace Infrastructure.Services.Factories
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
-            , IWindowService windowService, IInputService inputService,DiContainer container)
+            , IWindowService windowService,DiContainer container)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
             _windowService = windowService;
-            _inputService = inputService;
             _container = container;
         }
 
         public GameObject CreatePlayer(Vector3 at)
         {
             _heroGameObject = InstantiateRegistered(AssetsPath.PlayerPrefabPath, at);
-            _heroGameObject.GetComponent<HeroWindowOpener>().Construct(_inputService, _windowService);
-            _heroGameObject.GetComponent<HeroAttack>().Construct(_inputService);
-            _heroGameObject.GetComponent<HeroInteractor>().Construct(_inputService);
-            _heroGameObject.GetComponent<HeroLook>().Construct(_inputService);
-            _heroGameObject.GetComponent<HeroMover>().Construct(_inputService);
             var inventory = _heroGameObject.GetComponent<InventoryAdapter>();
             _windowService.Init(inventory);
-            
             return _heroGameObject;
         }
 
@@ -84,8 +76,7 @@ namespace Infrastructure.Services.Factories
         {
             EnemySpawnPoint spawner = InstantiateRegistered(AssetsPath.EnemySpawner, at).GetComponent<EnemySpawnPoint>();
             spawner.SetId(spawnerId);
-            spawner.SetType(spawnerEnemyType);
-            spawner.Construct(this);
+            spawner.SetType(spawnerEnemyType); 
             return spawner;
         }
 
@@ -101,7 +92,6 @@ namespace Infrastructure.Services.Factories
             LootSpawnPoint spawner = InstantiateRegistered(AssetsPath.LootSpawner, at).GetComponent<LootSpawnPoint>();
             spawner.SetId(id);
             spawner.SetData(data);
-            spawner.Construct(this);
             spawner.transform.rotation = rotation;
             return spawner;
         }
