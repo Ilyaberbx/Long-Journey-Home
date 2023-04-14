@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "688097587368",
+    "project_id": "long-journey-hone",
+    "storage_bucket": "long-journey-hone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688097587368:android:a73969ab357ad1e86f529d",
+        "android_client_info": {
+          "package_name": "com.longjourneyhome.firebasedb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688097587368-khpgnfoc4rbh27qb7milp81hmoaqbtq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCseQ1remBK4u4uBdS_FSW_n8U-zKM_cic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688097587368-khpgnfoc4rbh27qb7milp81hmoaqbtq4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
