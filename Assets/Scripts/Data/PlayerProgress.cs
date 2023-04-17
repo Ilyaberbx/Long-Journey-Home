@@ -21,6 +21,5 @@
             InventoryData = new InventoryData();
             PickUpLootData = new PickUpLootData();
         }
-
     }
 }

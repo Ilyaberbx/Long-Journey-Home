@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f67374c5b3748468b3f0ddfeee05d0e, type: 3}
   m_Name: BearData
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 2843702036561623413, guid: b4f0a11638883314b84413c51bc7b422, type: 3}
+  _prefabReference:
+    m_AssetGUID: b4f0a11638883314b84413c51bc7b422
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _type: 0
   _maxHp: 9
   _damage: 7
   _attackCoolDown: 0.9
   _moveSpeed: 50
-  _minLoot: 0.1
-  _maxLoot: 0.3

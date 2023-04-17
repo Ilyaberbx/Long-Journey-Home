@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
@@ -42,9 +43,9 @@ namespace Logic.Spawners
                 progress.KillData.ClearedSpawners.Add(_id);
         }
 
-        private void Spawn()
+        private async void Spawn()
         {
-            GameObject enemy = _factory.CreateEnemy(_enemyType, transform);
+            GameObject enemy = await _factory.CreateEnemy(_enemyType, transform);
             _enemyDeath = enemy.GetComponent<EnemyDeath>();
             _enemyDeath.OnDie += Slay;
         }

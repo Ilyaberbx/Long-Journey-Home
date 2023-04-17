@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Infrastructure.Services.SaveLoad;
 using Logic.Enemy;
 using Logic.Inventory.Item;
@@ -15,7 +16,7 @@ namespace Infrastructure.Services.Factories
         GameObject CreatePlayer(Vector3 at);
         GameObject CreateHud();
         void CleanUp();
-        GameObject CreateEnemy(EnemyType enemyType, Transform transform);
+        Task<GameObject> CreateEnemy(EnemyType enemyType, Transform transform);
         EnemySpawnPoint CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType);
         ItemPickUp CreateItemPickUp(ItemData data, Transform transform);
         LootSpawnPoint CreateLootSpawner(Vector3 position, string id, Quaternion rotation, ItemData data);

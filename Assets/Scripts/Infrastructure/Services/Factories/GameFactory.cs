@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
@@ -15,7 +16,9 @@ using StaticData;
 using UI.Elements;
 using UI.Services.Window;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.AI;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -35,7 +38,7 @@ namespace Infrastructure.Services.Factories
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
-            , IWindowService windowService,DiContainer container)
+            , IWindowService windowService, DiContainer container)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
@@ -54,12 +57,16 @@ namespace Infrastructure.Services.Factories
         public GameObject CreateHud()
             => InstantiateRegistered(AssetsPath.HudPath);
 
+        
 
-        public GameObject CreateEnemy(EnemyType enemyType, Transform parent)
+        public async Task<GameObject> CreateEnemy(EnemyType enemyType, Transform parent)
         {
             EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
-            GameObject enemy = _container.InstantiatePrefab(enemyData.Prefab, parent.position, Quaternion.identity, parent);
-            var health = enemy.GetComponent<IHealth>();
+            GameObject enemyPrefab = await _assetProvider.Load<GameObject>(enemyData.PrefabReference);
+            
+            GameObject enemy = _container.InstantiatePrefab(enemyPrefab, parent.position,
+                Quaternion.identity, parent);
+            IHealth health = enemy.GetComponent<IHealth>();
             health.CurrentHealth = enemyData.MaxHp;
             health.MaxHp = enemyData.MaxHp;
 
@@ -74,9 +81,10 @@ namespace Infrastructure.Services.Factories
 
         public EnemySpawnPoint CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType)
         {
-            EnemySpawnPoint spawner = InstantiateRegistered(AssetsPath.EnemySpawner, at).GetComponent<EnemySpawnPoint>();
+            EnemySpawnPoint spawner =
+                InstantiateRegistered(AssetsPath.EnemySpawner, at).GetComponent<EnemySpawnPoint>();
             spawner.SetId(spawnerId);
-            spawner.SetType(spawnerEnemyType); 
+            spawner.SetType(spawnerEnemyType);
             return spawner;
         }
 
@@ -100,6 +108,7 @@ namespace Infrastructure.Services.Factories
         {
             ProgressReaders.Clear();
             ProgressWriters.Clear();
+            _assetProvider.CleanUp();
         }
 
         private GameObject InstantiateRegistered(string path, Vector3 at)

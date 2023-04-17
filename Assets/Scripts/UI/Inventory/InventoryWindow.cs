@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Data;
-using Logic.Inventory;
 using Logic.Inventory.Actions;
 using UI.Elements;
 using UnityEngine;
