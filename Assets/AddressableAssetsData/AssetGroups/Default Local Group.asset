@@ -25,6 +25,26 @@ MonoBehaviour:
     m_Address: Wolf
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6e57971f17afde64bb2e06552fe1ecac
+    m_Address: LootSpawnPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8bf91d0dd341fa844b9981766ecd88c0
+    m_Address: EnemySpawnPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 20f50d4fa8df3cd49bbdafa05adb0228
+    m_Address: Hud
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b08dbbd78d526ad4e8aee01e14881676
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d06aa919462659408f6a29ffe22dae0
+    m_Address: UIRoot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4196972746579829383}
   - component: {fileID: 803166423953116962}
   m_Layer: 0
-  m_Name: LootPoint
+  m_Name: LootSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -20,6 +20,9 @@ namespace Infrastructure.Services.AssetManagement
         public AssetProvider(DiContainer container)
             => _container = container;
 
+        public void Initialize() 
+            => Addressables.InitializeAsync();
+
         public GameObject Instantiate(string path)
         {
             var prefab = Resources.Load<GameObject>(path);
@@ -38,11 +41,35 @@ namespace Infrastructure.Services.AssetManagement
             
             if (_completedCache.TryGetValue(key, out AsyncOperationHandle completedHandle))
                 return completedHandle.Result as T;
+            
+            AsyncOperationHandle<T> operationHandle = Addressables.LoadAssetAsync<T>(assetReference);
+            return await RunWithCacheOnComplete(operationHandle, key);
+        }
 
-            AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(assetReference);
+        public async Task<T> Load<T>(string address) where T : class
+        {
+            if (_completedCache.TryGetValue(address, out AsyncOperationHandle completedHandle))
+                return completedHandle.Result as T;
 
-            handle.Completed += h
-                => _completedCache[assetReference.AssetGUID] = h;
+            AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(address);
+
+            return await RunWithCacheOnComplete(handle, address);
+        }
+
+        public void CleanUp()
+        {
+            foreach (var resourceHandles in _handles.Values)
+            foreach (var handle in resourceHandles)
+                Addressables.Release(handle);
+            
+            _completedCache.Clear();
+            _handles.Clear();
+        }
+
+        private async Task<T> RunWithCacheOnComplete<T>(AsyncOperationHandle<T> handle, string key) where T : class
+        {
+            handle.Completed += completeHandle
+                => _completedCache[key] = completeHandle;
 
             AddHandle(key, handle);
 
@@ -58,13 +85,6 @@ namespace Infrastructure.Services.AssetManagement
             }
 
             resourceHandle.Add(handle);
-        }
-
-        public void CleanUp()
-        {
-            foreach (var resourceHandles in _handles.Values)
-            foreach (var handle in resourceHandles)
-                Addressables.Release(handle);
         }
     }
 }

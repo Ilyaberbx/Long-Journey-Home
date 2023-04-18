@@ -66,14 +66,10 @@ namespace Installers
                 .NonLazy();
 
         private void BindStaticData()
-        {
-            IStaticDataService staticData = new StaticDataService();
-            staticData.Load();
-            Container.Bind<IStaticDataService>()
-                .FromInstance(staticData)
+            => Container.Bind<IStaticDataService>()
+                .To<StaticDataService>()
                 .AsSingle()
                 .NonLazy();
-        }
 
         private void BindAssets()
             => Container.Bind<IAssetProvider>()

@@ -10,5 +10,7 @@ namespace Infrastructure.Services.AssetManagement
         GameObject Instantiate(string path, Vector3 at);
         Task<T> Load<T>(AssetReference assetReference) where T : class;
         void CleanUp();
+        Task<T> Load<T>(string address) where T : class;
+        void Initialize();
     }
 }

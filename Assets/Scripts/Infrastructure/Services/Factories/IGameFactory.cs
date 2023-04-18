@@ -17,8 +17,9 @@ namespace Infrastructure.Services.Factories
         GameObject CreateHud();
         void CleanUp();
         Task<GameObject> CreateEnemy(EnemyType enemyType, Transform transform);
-        EnemySpawnPoint CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType);
+        Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType);
         ItemPickUp CreateItemPickUp(ItemData data, Transform transform);
-        LootSpawnPoint CreateLootSpawner(Vector3 position, string id, Quaternion rotation, ItemData data);
+        Task<LootSpawnPoint> CreateLootSpawner(Vector3 position, string id, Quaternion rotation, ItemData data);
+        Task WarmUp();
     }
 }

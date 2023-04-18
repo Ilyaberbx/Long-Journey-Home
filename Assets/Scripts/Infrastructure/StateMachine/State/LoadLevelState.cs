@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using System.Threading.Tasks;
+using Cinemachine;
 using Data;
 using Enums;
 using Infrastructure.Interfaces;
@@ -47,6 +48,7 @@ namespace Infrastructure.StateMachine.State
         public void Enter(string payLoad)
         {
             _gameFactory.CleanUp();
+            _gameFactory.WarmUp();
             _loadingCurtain.Show();
             _sceneLoader.Load(payLoad, OnLoaded);
         }
@@ -54,10 +56,10 @@ namespace Infrastructure.StateMachine.State
         public void Exit()
             => _loadingCurtain.Hide();
 
-        private void OnLoaded()
+        private async void OnLoaded()
         {
             InitUIRoot();
-            InitGameWorld();
+            await InitGameWorld();
             InformProgressReaders();
             _gameStateMachine.Enter<GameLoopState>();
         }
@@ -71,9 +73,9 @@ namespace Infrastructure.StateMachine.State
                 reader.LoadProgress(_persistentProgressService.PlayerProgress);
         }
 
-        private void InitGameWorld()
+        private async Task InitGameWorld()
         {
-            InitSpawners();
+            await InitSpawners();
             GameObject player = InitPlayer();
             InitHud(player);
             CinemachineVirtualCamera camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform)
@@ -81,15 +83,15 @@ namespace Infrastructure.StateMachine.State
             InitPlayerInteractWithCamera(player, camera);
         }
 
-        private void InitSpawners()
+        private async Task InitSpawners()
         {
             LevelData levelData = LevelData();
 
             foreach (EnemySpawnerData enemySpawnerData in levelData.EnemySpawners)
-                _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id, enemySpawnerData.EnemyType);
+                await _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id, enemySpawnerData.EnemyType);
 
             foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
-                _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id, lootSpawnerData.Rotation, lootSpawnerData.Data);
+                await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id, lootSpawnerData.Rotation, lootSpawnerData.Data);
         }
 
         private LevelData LevelData()

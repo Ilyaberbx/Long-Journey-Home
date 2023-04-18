@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Data;
-using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
-using Infrastructure.Services.Input;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
-using Logic;
 using Logic.Enemy;
 using Logic.Inventory;
 using Logic.Inventory.Item;
@@ -16,9 +12,7 @@ using StaticData;
 using UI.Elements;
 using UI.Services.Window;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.AI;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -46,24 +40,29 @@ namespace Infrastructure.Services.Factories
             _container = container;
         }
 
+        public async Task WarmUp()
+        {
+            await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);
+            await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
+        }
+
         public GameObject CreatePlayer(Vector3 at)
         {
-            _heroGameObject = InstantiateRegistered(AssetsPath.PlayerPrefabPath, at);
+            _heroGameObject = InstantiateRegistered(AssetsAddress.PlayerPrefabPath, at);
             var inventory = _heroGameObject.GetComponent<InventoryAdapter>();
             _windowService.Init(inventory);
             return _heroGameObject;
         }
 
         public GameObject CreateHud()
-            => InstantiateRegistered(AssetsPath.HudPath);
+            => InstantiateRegistered(AssetsAddress.HudPath);
 
-        
 
         public async Task<GameObject> CreateEnemy(EnemyType enemyType, Transform parent)
         {
             EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
             GameObject enemyPrefab = await _assetProvider.Load<GameObject>(enemyData.PrefabReference);
-            
+
             GameObject enemy = _container.InstantiatePrefab(enemyPrefab, parent.position,
                 Quaternion.identity, parent);
             IHealth health = enemy.GetComponent<IHealth>();
@@ -79,10 +78,13 @@ namespace Infrastructure.Services.Factories
             return enemy;
         }
 
-        public EnemySpawnPoint CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType)
+        public async Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType)
         {
-            EnemySpawnPoint spawner =
-                InstantiateRegistered(AssetsPath.EnemySpawner, at).GetComponent<EnemySpawnPoint>();
+            GameObject prefab = await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
+
+            EnemySpawnPoint spawner = InstantiateRegistered(prefab, at)
+                .GetComponent<EnemySpawnPoint>();
+
             spawner.SetId(spawnerId);
             spawner.SetType(spawnerEnemyType);
             return spawner;
@@ -95,9 +97,13 @@ namespace Infrastructure.Services.Factories
             return spawnedPickUp;
         }
 
-        public LootSpawnPoint CreateLootSpawner(Vector3 at, string id, Quaternion rotation, ItemData data)
+        public async Task<LootSpawnPoint> CreateLootSpawner(Vector3 at, string id, Quaternion rotation, ItemData data)
         {
-            LootSpawnPoint spawner = InstantiateRegistered(AssetsPath.LootSpawner, at).GetComponent<LootSpawnPoint>();
+            GameObject prefab = await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);
+            
+            LootSpawnPoint spawner = InstantiateRegistered(prefab, at)
+                .GetComponent<LootSpawnPoint>();
+
             spawner.SetId(id);
             spawner.SetData(data);
             spawner.transform.rotation = rotation;
@@ -114,6 +120,13 @@ namespace Infrastructure.Services.Factories
         private GameObject InstantiateRegistered(string path, Vector3 at)
         {
             GameObject obj = _assetProvider.Instantiate(path, at);
+            RegisterProgressWatchers(obj);
+            return obj;
+        }
+
+        private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
+        {
+            GameObject obj = _container.InstantiatePrefab(prefab, at, Quaternion.identity,null);
             RegisterProgressWatchers(obj);
             return obj;
         }

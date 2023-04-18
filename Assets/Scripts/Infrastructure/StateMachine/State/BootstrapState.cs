@@ -1,5 +1,7 @@
 using Infrastructure.Interfaces;
+using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.SceneManagement;
+using Infrastructure.Services.StaticData;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -8,15 +10,28 @@ namespace Infrastructure.StateMachine.State
         private const string Initial = "InitialScene";
         private readonly IGameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
+        private readonly IAssetProvider _assetProvider;
+        private readonly IStaticDataService _staticData;
 
-        public BootstrapState(IGameStateMachine stateMachine,ISceneLoader sceneLoader)
+        public BootstrapState(IGameStateMachine stateMachine,ISceneLoader sceneLoader,IAssetProvider assetProvider,IStaticDataService staticData)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
+            _assetProvider = assetProvider;
+            _staticData = staticData;
         }
 
-        public void Enter() 
-            => _sceneLoader.Load(Initial, EnterLoadLevel);
+        public void Enter()
+        {
+            PreWarmUp();
+            _sceneLoader.Load(Initial, EnterLoadLevel);
+        }
+
+        private void PreWarmUp()
+        {
+            _assetProvider.Initialize();
+            _staticData.Load();
+        }
 
         public void Exit() {}
         
