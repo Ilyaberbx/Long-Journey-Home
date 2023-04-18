@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using Zenject;
 
 namespace Infrastructure.Services.AssetManagement
 {
@@ -15,33 +13,17 @@ namespace Infrastructure.Services.AssetManagement
         private readonly Dictionary<string, List<AsyncOperationHandle>> _handles =
             new Dictionary<string, List<AsyncOperationHandle>>();
 
-        private readonly DiContainer _container;
 
-        public AssetProvider(DiContainer container)
-            => _container = container;
-
-        public void Initialize() 
+        public void Initialize()
             => Addressables.InitializeAsync();
-
-        public GameObject Instantiate(string path)
-        {
-            var prefab = Resources.Load<GameObject>(path);
-            return _container.InstantiatePrefab(prefab);
-        }
-
-        public GameObject Instantiate(string path, Vector3 at)
-        {
-            var prefab = Resources.Load<GameObject>(path);
-            return _container.InstantiatePrefab(prefab, at, Quaternion.identity, null);
-        }
 
         public async Task<T> Load<T>(AssetReference assetReference) where T : class
         {
             var key = assetReference.AssetGUID;
-            
+
             if (_completedCache.TryGetValue(key, out AsyncOperationHandle completedHandle))
                 return completedHandle.Result as T;
-            
+
             AsyncOperationHandle<T> operationHandle = Addressables.LoadAssetAsync<T>(assetReference);
             return await RunWithCacheOnComplete(operationHandle, key);
         }
@@ -59,9 +41,11 @@ namespace Infrastructure.Services.AssetManagement
         public void CleanUp()
         {
             foreach (var resourceHandles in _handles.Values)
-            foreach (var handle in resourceHandles)
-                Addressables.Release(handle);
-            
+            {
+                foreach (var handle in resourceHandles)
+                    Addressables.Release(handle);
+            }
+
             _completedCache.Clear();
             _handles.Clear();
         }

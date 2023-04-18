@@ -17,14 +17,14 @@ namespace UI.Services.Window
         public void Init(InventoryAdapter heroInventoryAdapter) 
             => _heroInventoryAdapter = heroInventoryAdapter;
 
-        public void Open(WindowType windowType, IActionListener closelistener)
+        public async void Open(WindowType windowType, IActionListener closelistener)
         {
             switch (windowType)
             {
                 case WindowType.None:
                     break;
                 case WindowType.Inventory:
-                   InventoryWindow window = _uiFactory.CreateInventory();
+                   InventoryWindow window = await _uiFactory.CreateInventory();
                    window.SubscribeCloseListener(closelistener);
                    _heroInventoryAdapter.InitUI(window);
                     break;

@@ -13,8 +13,8 @@ namespace Infrastructure.Services.Factories
         List<ISavedProgressReader> ProgressReaders { get; }
         List<ISavedProgressWriter> ProgressWriters { get; }
 
-        GameObject CreatePlayer(Vector3 at);
-        GameObject CreateHud();
+        Task<GameObject> CreatePlayer(Vector3 at);
+        Task<GameObject> CreateHud();
         void CleanUp();
         Task<GameObject> CreateEnemy(EnemyType enemyType, Transform transform);
         Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType);

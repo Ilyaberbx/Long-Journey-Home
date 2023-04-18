@@ -1,4 +1,5 @@
-﻿using Infrastructure.Interfaces;
+﻿using System.Threading.Tasks;
+using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
@@ -26,14 +27,18 @@ namespace UI.Services.Factory
             _container = container;
         }
 
-        public InventoryWindow CreateInventory()
+        public async Task<InventoryWindow> CreateInventory()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Inventory);
-            WindowBase window = _container.InstantiatePrefabForComponent<WindowBase>(config.Prefab, _uiRoot);
-            return window.GetComponent<InventoryWindow>();
+            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            InventoryWindow window = _container.InstantiatePrefabForComponent<InventoryWindow>(prefab, _uiRoot);
+            return window;
         }
 
-        public void CreateUIRoot() 
-            => _uiRoot =_assets.Instantiate(AssetsAddress.UIRoot).transform;
+        public async Task CreateUIRoot()
+        {
+            GameObject uiRootPrefab = await _assets.Load<GameObject>(AssetsAddress.UIRoot);
+            _uiRoot = Object.Instantiate(uiRootPrefab).transform;
+        }
     }
 }

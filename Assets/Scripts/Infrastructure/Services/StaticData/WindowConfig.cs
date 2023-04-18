@@ -1,6 +1,7 @@
 ﻿using System;
 using UI.Elements;
 using UI.Services.Window;
+using UnityEngine.AddressableAssets;
 
 namespace Infrastructure.Services.StaticData
 {
@@ -8,6 +9,6 @@ namespace Infrastructure.Services.StaticData
     public class WindowConfig 
     {
         public WindowType Type;
-        public WindowBase Prefab;
+        public AssetReferenceGameObject Prefab;
     }
 }

@@ -45,10 +45,10 @@ namespace Infrastructure.StateMachine.State
             _uiFactory = uiFactory;
         }
 
-        public void Enter(string payLoad)
+        public async void Enter(string payLoad)
         {
             _gameFactory.CleanUp();
-            _gameFactory.WarmUp();
+            await _gameFactory.WarmUp();
             _loadingCurtain.Show();
             _sceneLoader.Load(payLoad, OnLoaded);
         }
@@ -58,14 +58,14 @@ namespace Infrastructure.StateMachine.State
 
         private async void OnLoaded()
         {
-            InitUIRoot();
+            await InitUIRoot();
             await InitGameWorld();
             InformProgressReaders();
             _gameStateMachine.Enter<GameLoopState>();
         }
 
-        private void InitUIRoot()
-            => _uiFactory.CreateUIRoot();
+        private async Task InitUIRoot()
+            => await _uiFactory.CreateUIRoot();
 
         private void InformProgressReaders()
         {
@@ -76,8 +76,8 @@ namespace Infrastructure.StateMachine.State
         private async Task InitGameWorld()
         {
             await InitSpawners();
-            GameObject player = InitPlayer();
-            InitHud(player);
+            GameObject player = await InitPlayer();
+            await InitHud(player);
             CinemachineVirtualCamera camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform)
                 .GetComponent<CinemachineVirtualCamera>();
             InitPlayerInteractWithCamera(player, camera);
@@ -108,9 +108,9 @@ namespace Infrastructure.StateMachine.State
             player.GetComponent<HeroWindowOpener>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
         }
 
-        private void InitHud(GameObject player)
+        private async Task InitHud(GameObject player)
         {
-            GameObject hud = _gameFactory.CreateHud();
+            GameObject hud = await _gameFactory.CreateHud();
             PlayerUIActor uiActor = hud.GetComponent<PlayerUIActor>();
             uiActor.Construct(
                 player.GetComponent<HeroHealth>(),
@@ -121,11 +121,11 @@ namespace Infrastructure.StateMachine.State
             
         }
 
-        private GameObject InitPlayer()
+        private async Task<GameObject> InitPlayer()
         {
             LevelData levelData = LevelData();
             Vector3 initPoint = levelData.PlayerInitPoint;
-            GameObject player = _gameFactory.CreatePlayer(initPoint);
+            GameObject player = await _gameFactory.CreatePlayer(initPoint);
             return player;
         }
 

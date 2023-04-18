@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Configs:
   - Type: 1
-    Prefab: {fileID: 1369712444522573309, guid: 6109d2cac8d44cb4785f29d4bda9d0bb, type: 3}
+    Prefab:
+      m_AssetGUID: 6109d2cac8d44cb4785f29d4bda9d0bb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

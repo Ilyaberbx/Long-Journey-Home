@@ -44,18 +44,26 @@ namespace Infrastructure.Services.Factories
         {
             await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);
             await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
+            await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
+            await _assetProvider.Load<GameObject>(AssetsAddress.HudPath);
+            await _assetProvider.Load<GameObject>(AssetsAddress.UIRoot);
         }
 
-        public GameObject CreatePlayer(Vector3 at)
+        public async Task<GameObject> CreatePlayer(Vector3 at)
         {
-            _heroGameObject = InstantiateRegistered(AssetsAddress.PlayerPrefabPath, at);
-            var inventory = _heroGameObject.GetComponent<InventoryAdapter>();
+            GameObject playerPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
+            _heroGameObject = InstantiateRegistered(playerPrefab, at);
+            
+            InventoryAdapter inventory = _heroGameObject.GetComponent<InventoryAdapter>();
             _windowService.Init(inventory);
             return _heroGameObject;
         }
 
-        public GameObject CreateHud()
-            => InstantiateRegistered(AssetsAddress.HudPath);
+        public async Task<GameObject> CreateHud()
+        {
+            GameObject hudPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.HudPath);
+            return InstantiateRegistered(hudPrefab);
+        }
 
 
         public async Task<GameObject> CreateEnemy(EnemyType enemyType, Transform parent)
@@ -65,6 +73,7 @@ namespace Infrastructure.Services.Factories
 
             GameObject enemy = _container.InstantiatePrefab(enemyPrefab, parent.position,
                 Quaternion.identity, parent);
+            
             IHealth health = enemy.GetComponent<IHealth>();
             health.CurrentHealth = enemyData.MaxHp;
             health.MaxHp = enemyData.MaxHp;
@@ -100,7 +109,7 @@ namespace Infrastructure.Services.Factories
         public async Task<LootSpawnPoint> CreateLootSpawner(Vector3 at, string id, Quaternion rotation, ItemData data)
         {
             GameObject prefab = await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);
-            
+
             LootSpawnPoint spawner = InstantiateRegistered(prefab, at)
                 .GetComponent<LootSpawnPoint>();
 
@@ -117,23 +126,16 @@ namespace Infrastructure.Services.Factories
             _assetProvider.CleanUp();
         }
 
-        private GameObject InstantiateRegistered(string path, Vector3 at)
-        {
-            GameObject obj = _assetProvider.Instantiate(path, at);
-            RegisterProgressWatchers(obj);
-            return obj;
-        }
-
         private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
         {
-            GameObject obj = _container.InstantiatePrefab(prefab, at, Quaternion.identity,null);
+            GameObject obj = _container.InstantiatePrefab(prefab, at, Quaternion.identity, null);
             RegisterProgressWatchers(obj);
             return obj;
         }
 
-        private GameObject InstantiateRegistered(string path)
+        private GameObject InstantiateRegistered(GameObject prefab)
         {
-            GameObject obj = _assetProvider.Instantiate(path);
+            GameObject obj = _container.InstantiatePrefab(prefab);
             RegisterProgressWatchers(obj);
             return obj;
         }
