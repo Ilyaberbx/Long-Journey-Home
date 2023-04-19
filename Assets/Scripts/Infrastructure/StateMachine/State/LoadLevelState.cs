@@ -58,6 +58,7 @@ namespace Infrastructure.StateMachine.State
 
         private async void OnLoaded()
         {
+            _persistentProgressService.PlayerProgress.IsFirstLoad = false;
             await InitUIRoot();
             await InitGameWorld();
             InformProgressReaders();

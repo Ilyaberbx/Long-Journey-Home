@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef93f389374647f4b7afd25788bbdbb6, type: 3}
   m_Name: IntroRoad
   m_EditorClassIdentifier: 
-  LevelKey: MainScene
+  LevelKey: IntroRoad
   EnemySpawners:
   - Id: MainScene_f073497e-336f-4356-ae5f-c37acf377ab1
     EnemyType: 0

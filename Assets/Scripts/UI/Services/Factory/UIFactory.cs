@@ -1,11 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.PersistentProgress;
-using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
-using UI.Elements;
 using UI.Inventory;
+using UI.Menu;
 using UI.Services.Window;
 using UnityEngine;
 using Zenject;
@@ -32,6 +30,13 @@ namespace UI.Services.Factory
             WindowConfig config = _staticData.GetWindowData(WindowType.Inventory);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
             InventoryWindow window = _container.InstantiatePrefabForComponent<InventoryWindow>(prefab, _uiRoot);
+            return window;
+        }
+        public async Task<MenuWindow> CreateMainMenu()
+        {
+            WindowConfig config = _staticData.GetWindowData(WindowType.MainMenu);
+            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            MenuWindow window = _container.InstantiatePrefabForComponent<MenuWindow>(prefab, _uiRoot);
             return window;
         }
 

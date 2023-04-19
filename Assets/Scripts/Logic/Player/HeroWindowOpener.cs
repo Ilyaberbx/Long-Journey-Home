@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Logic.Player
 {
-    public class HeroWindowOpener : MonoBehaviour, IActionListener
+    public class HeroWindowOpener : MonoBehaviour
     {
         [SerializeField] private HeroMover _mover;
         [SerializeField] private HeroLook _look;
@@ -43,7 +43,7 @@ namespace Logic.Player
                 _isWindowOpen = true;
                 Cursor.lockState = CursorLockMode.Confined;
                 ToggleHero(false);
-                _windowService.Open(WindowType.Inventory, this);
+                _windowService.Open(WindowType.Inventory, OnWindowClose);
             }
         }
 
@@ -55,7 +55,7 @@ namespace Logic.Player
             _attack.enabled = value;
         }
 
-        public void ExecuteAction()
+        public void OnWindowClose()
         {
             StartCoroutine(RecenterCameraRoutine());
             Cursor.lockState = CursorLockMode.Locked;

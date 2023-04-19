@@ -56,9 +56,10 @@ namespace Installers
             
             stateFactory.Create(stateMachine, typeof(BootstrapState));
             stateFactory.Create(stateMachine, typeof(LoadProgressState));
+            stateFactory.Create(stateMachine, typeof(LoadMainMenuState));
             stateFactory.Create(stateMachine, typeof(LoadLevelState));
             stateFactory.Create(stateMachine, typeof(GameLoopState));
-            
+
             stateMachine.Enter<BootstrapState>();
         }
     }

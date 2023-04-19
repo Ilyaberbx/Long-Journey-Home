@@ -114,7 +114,7 @@ namespace UI.Inventory
             OnItemActionRequested?.Invoke(index);
         }
 
-        public void AddAction(string name, IActionListener listener)
+        public void AddAction(string name, IAction listener)
             => _actionPanel.AddButton(name, listener);
 
         private void ResetAllItems()

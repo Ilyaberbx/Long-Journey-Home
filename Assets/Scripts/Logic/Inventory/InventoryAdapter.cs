@@ -40,7 +40,7 @@ namespace Logic.Inventory
 
         private void HandleItemActionRequest(int index)
         {
-            IActionListener itemAction;
+            IAction itemAction;
             InventoryItem item = _inventoryData.GetItemByIndex(index);
 
             if (item.IsEmpty)

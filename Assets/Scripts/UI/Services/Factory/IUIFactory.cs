@@ -2,6 +2,7 @@
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using UI.Inventory;
+using UI.Menu;
 
 namespace UI.Services.Factory
 {
@@ -9,5 +10,6 @@ namespace UI.Services.Factory
     {
         Task<InventoryWindow> CreateInventory();
         Task CreateUIRoot();
+        Task<MenuWindow> CreateMainMenu();
     }
 }

@@ -9,7 +9,7 @@ namespace UI.Inventory
     {
         [SerializeField] private GameObject _buttonPrefab;
 
-        public void AddButton(string name, IActionListener listener)
+        public void AddButton(string name, IAction listener)
         {
             GameObject button = Instantiate(_buttonPrefab, transform);
             button.GetComponent<Button>().onClick.AddListener(listener.ExecuteAction);

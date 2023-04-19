@@ -4,7 +4,7 @@ using UI.Inventory;
 
 namespace Logic.Inventory.Actions
 {
-    public class DropItemAction : IActionListener
+    public class DropItemAction : IAction
     {
         private readonly InventoryData _inventoryData;
         private readonly InventoryWindow _view;

@@ -1,6 +1,6 @@
-﻿using Data;
+﻿using System;
+using Data;
 using Infrastructure.Services.PersistentProgress;
-using Logic.Inventory.Actions;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,7 +10,7 @@ namespace UI.Elements
     public abstract class WindowBase : MonoBehaviour
     {
         [SerializeField] private Button _closeButton;
-        private IActionListener _closeListener;
+        private Action _close;
         protected PlayerProgress _progress;
 
         [Inject]
@@ -30,14 +30,14 @@ namespace UI.Elements
             => CleanUp();
 
         protected virtual void OnAwake()
-            => _closeButton.onClick.AddListener(Close);
+            => _closeButton?.onClick.AddListener(Close);
 
-        public void SubscribeCloseListener(IActionListener listener) 
-            => _closeListener = listener;
+        public void SubscribeCloseListener(Action onClose) 
+            => _close = onClose;
 
         private void Close()
         {
-            _closeListener.ExecuteAction();
+            _close?.Invoke();
             Destroy(gameObject);
         }
 

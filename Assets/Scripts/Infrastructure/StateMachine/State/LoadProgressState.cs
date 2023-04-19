@@ -1,14 +1,11 @@
-﻿using Data;
-using Infrastructure.Interfaces;
+﻿using Infrastructure.Interfaces;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine.State
 {
     public class LoadProgressState : IState
     {
-        private const string MainScene = "MainScene";
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IPersistentProgressService _progressService;
         private readonly ISaveLoadService _saveLoadService;
@@ -24,8 +21,7 @@ namespace Infrastructure.StateMachine.State
         public void Enter()
         {
             LoadProgressOrInitNew();
-            var level = _progressService.PlayerProgress.WorldData.PositionOnLevel.Level;
-            _gameStateMachine.Enter<LoadLevelState,string>(level);
+            _gameStateMachine.Enter<LoadMainMenuState>();
         }
         public void Exit()
         {
@@ -33,22 +29,7 @@ namespace Infrastructure.StateMachine.State
 
         private void LoadProgressOrInitNew() 
             => _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
-                                                 ?? DefaultProgress();
-
-        private PlayerProgress DefaultProgress()
-        {
-            PlayerProgress progress = new PlayerProgress(MainScene);
-
-            progress.HealthState.MaxHP = 100;
-            progress.HealthState.ResetHp();
-            progress.FlashLightState.MaxLightIntensity = 1500;
-            progress.FlashLightState.Reset();
-            progress.FreezeState.MaxFreeze = 100;
-            progress.FreezeState.ResetFreeze();
-            progress.InventoryData.Init(30);
-
-            return progress;
-        }
+                                                 ?? _progressService.DefaultProgress();
     }
     
 }
