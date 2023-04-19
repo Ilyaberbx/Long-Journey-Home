@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Installers
 {
-    public class BootStrapInstaller : MonoInstaller, IInitializable, ICoroutineRunner
+    public class BootStrapInstaller : MonoInstaller, ICoroutineRunner
     {
         [SerializeField] private LoadingCurtain _loadingCurtainPrefab;
 
@@ -48,19 +48,6 @@ namespace Installers
                 .To<StateFactory>()
                 .AsSingle()
                 .NonLazy();
-
-        public void Initialize()
-        {
-            IStateFactory stateFactory = Container.Resolve<IStateFactory>();
-            IGameStateMachine stateMachine = Container.Resolve<IGameStateMachine>();
-            
-            stateFactory.Create(stateMachine, typeof(BootstrapState));
-            stateFactory.Create(stateMachine, typeof(LoadProgressState));
-            stateFactory.Create(stateMachine, typeof(LoadMainMenuState));
-            stateFactory.Create(stateMachine, typeof(LoadLevelState));
-            stateFactory.Create(stateMachine, typeof(GameLoopState));
-
-            stateMachine.Enter<BootstrapState>();
-        }
+        
     }
 }

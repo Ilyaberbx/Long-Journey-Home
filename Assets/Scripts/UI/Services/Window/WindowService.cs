@@ -1,18 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Logic.Inventory;
-using Logic.Inventory.Actions;
+using UI.Elements;
 using UI.Inventory;
-using UI.Menu;
 using UI.Services.Factory;
-using UnityEditor.VersionControl;
+using UI.Settings;
 using UnityEngine;
-using Task = System.Threading.Tasks.Task;
 
 namespace UI.Services.Window
 {
     public class WindowService : IWindowService
     {
         private readonly IUIFactory _uiFactory;
+        private readonly List<WindowBase> _openWindows = new List<WindowBase>();
         private InventoryAdapter _heroInventoryAdapter;
 
         public WindowService(IUIFactory uiFactory)
@@ -21,8 +22,10 @@ namespace UI.Services.Window
         public void Init(InventoryAdapter heroInventoryAdapter)
             => _heroInventoryAdapter = heroInventoryAdapter;
 
-        public async Task Open(WindowType windowType, Action onClose = null)
+        public async Task<WindowBase> Open(WindowType windowType, Action onClose = null)
         {
+            WindowBase window = null;
+
             switch (windowType)
             {
                 case WindowType.None:
@@ -31,13 +34,32 @@ namespace UI.Services.Window
                     InventoryWindow inventoryView = await _uiFactory.CreateInventory();
                     inventoryView.SubscribeCloseListener(onClose);
                     _heroInventoryAdapter.InitUI(inventoryView);
+                    window = inventoryView;
                     break;
                 case WindowType.MainMenu:
-                    await _uiFactory.CreateMainMenu();
+                    window = await _uiFactory.CreateMainMenu();
+                    break;
+                case WindowType.Settings:
+                    SettingsWindow settingsView = await _uiFactory.CreateSettingsWindow();
+                    settingsView.SubscribeCloseListener(onClose);
+                    window = settingsView;
                     break;
                 default:
                     Debug.LogError("There is no type behaviour for this type: " + windowType);
                     break;
+            }
+
+            ClearUp();
+            _openWindows.Add(window);
+            return window;
+        }
+
+        private void ClearUp()
+        {
+            foreach (WindowBase window in _openWindows)
+            {
+                _openWindows.Remove(window);
+                window.Close();
             }
         }
     }

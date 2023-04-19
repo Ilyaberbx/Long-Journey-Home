@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Data;
 using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -35,7 +36,7 @@ namespace UI.Elements
         public void SubscribeCloseListener(Action onClose) 
             => _close = onClose;
 
-        private void Close()
+        public virtual void Close()
         {
             _close?.Invoke();
             Destroy(gameObject);

@@ -10,7 +10,7 @@
         public PickUpLootData PickUpLootData;
         public FlashLightState FlashLightState;
         public InventoryData InventoryData;
-        public bool IsFirstLoad;
+        public bool IsFirstLoad = true;
 
         public PlayerProgress(string initialLevel)
         {

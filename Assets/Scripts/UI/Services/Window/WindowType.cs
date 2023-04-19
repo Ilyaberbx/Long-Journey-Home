@@ -4,6 +4,7 @@
     {
         None,
         Inventory,
-        MainMenu
+        MainMenu,
+        Settings
     }
 }

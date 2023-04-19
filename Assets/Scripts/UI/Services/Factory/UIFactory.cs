@@ -5,6 +5,7 @@ using Infrastructure.Services.StaticData;
 using UI.Inventory;
 using UI.Menu;
 using UI.Services.Window;
+using UI.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -37,6 +38,14 @@ namespace UI.Services.Factory
             WindowConfig config = _staticData.GetWindowData(WindowType.MainMenu);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
             MenuWindow window = _container.InstantiatePrefabForComponent<MenuWindow>(prefab, _uiRoot);
+            return window;
+        }
+
+        public async Task<SettingsWindow> CreateSettingsWindow()
+        {
+            WindowConfig config = _staticData.GetWindowData(WindowType.Settings);
+            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            SettingsWindow window = _container.InstantiatePrefabForComponent<SettingsWindow>(prefab, _uiRoot);
             return window;
         }
 

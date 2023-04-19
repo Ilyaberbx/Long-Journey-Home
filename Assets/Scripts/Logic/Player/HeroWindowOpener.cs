@@ -35,12 +35,8 @@ namespace Logic.Player
 
         private void Update()
         {
-            if (_isWindowOpen)
-                return;
-
             if (_input.IsInventoryButtonPressed())
             {
-                _isWindowOpen = true;
                 Cursor.lockState = CursorLockMode.Confined;
                 ToggleHero(false);
                 _windowService.Open(WindowType.Inventory, OnWindowClose);
@@ -67,7 +63,6 @@ namespace Logic.Player
             yield return new WaitForSeconds(CalculateRecenterDuration());
             ToggleRecentering(false);
             ToggleHero(true);
-            _isWindowOpen = false;
         }
 
         private void ToggleRecentering(bool value)

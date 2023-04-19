@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using UI.Inventory;
 using UI.Menu;
+using UI.Settings;
 
 namespace UI.Services.Factory
 {
@@ -11,5 +11,6 @@ namespace UI.Services.Factory
         Task<InventoryWindow> CreateInventory();
         Task CreateUIRoot();
         Task<MenuWindow> CreateMainMenu();
+        Task<SettingsWindow> CreateSettingsWindow();
     }
 }
