@@ -39,7 +39,7 @@ namespace Logic.Player
             {
                 Cursor.lockState = CursorLockMode.Confined;
                 ToggleHero(false);
-                _windowService.Open(WindowType.Inventory, OnWindowClose);
+                _windowService.Open(WindowType.Inventory, HandleWindowClose);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Logic.Player
             _attack.enabled = value;
         }
 
-        public void OnWindowClose()
+        private void HandleWindowClose()
         {
             StartCoroutine(RecenterCameraRoutine());
             Cursor.lockState = CursorLockMode.Locked;

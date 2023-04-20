@@ -13,7 +13,6 @@ namespace UI.Services.Window
     public class WindowService : IWindowService
     {
         private readonly IUIFactory _uiFactory;
-        private readonly List<WindowBase> _openWindows = new List<WindowBase>();
         private InventoryAdapter _heroInventoryAdapter;
 
         public WindowService(IUIFactory uiFactory)
@@ -48,19 +47,9 @@ namespace UI.Services.Window
                     Debug.LogError("There is no type behaviour for this type: " + windowType);
                     break;
             }
-
-            ClearUp();
-            _openWindows.Add(window);
+            
             return window;
         }
-
-        private void ClearUp()
-        {
-            foreach (WindowBase window in _openWindows)
-            {
-                _openWindows.Remove(window);
-                window.Close();
-            }
-        }
+        
     }
 }
