@@ -14,11 +14,16 @@ namespace Logic
             gameObject.SetActive(true);
             _canvasGroup.alpha = 1;
         }
-        public void Hide() 
-            => _canvasGroup.DOFade(0, 1f)
+        public void Hide()
+        {
+            _canvasGroup.DOFade(0, 1f)
                 .OnComplete(DisableObject);
+        }
 
-        private void DisableObject() 
-            => gameObject.SetActive(false);
+        private void DisableObject()
+        {
+            Debug.Log("Hide");
+            gameObject.SetActive(false);
+        }
     }
 }

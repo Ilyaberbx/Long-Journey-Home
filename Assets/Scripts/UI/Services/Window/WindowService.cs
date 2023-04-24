@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Logic.Inventory;
 using UI.Elements;
@@ -37,6 +36,10 @@ namespace UI.Services.Window
                     break;
                 case WindowType.MainMenu:
                     window = await _uiFactory.CreateMainMenu();
+                    break;
+                case WindowType.Pause:
+                    window = await _uiFactory.CreatePauseMenu();
+                    window.SubscribeCloseListener(onClose);
                     break;
                 case WindowType.Settings:
                     SettingsWindow settingsView = await _uiFactory.CreateSettingsWindow();

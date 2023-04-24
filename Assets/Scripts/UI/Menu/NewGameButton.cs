@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
 using UI.Elements;
 using UnityEngine;
 using Zenject;
@@ -9,14 +10,19 @@ namespace UI.Menu
     {
         [SerializeField] private LoadLastSaveButton _lastSaveButton;
         private IPersistentProgressService _progressService;
+        private ISaveLoadService _saveLoad;
 
         [Inject]
-        public void Construct(IPersistentProgressService progressService) 
-            => _progressService = progressService;
+        public void Construct(IPersistentProgressService progressService,ISaveLoadService saveLoad)
+        {
+            _progressService = progressService;
+            _saveLoad = saveLoad;
+        }
 
         public override void Execute()
         {
-            _progressService.ClearUp();
+            _saveLoad.CleanUp();
+            _progressService.PlayerProgress = _progressService.DefaultProgress();
             _lastSaveButton.Execute();
         }
     }

@@ -2,8 +2,10 @@
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.StaticData;
+using UI.Elements;
 using UI.Inventory;
 using UI.Menu;
+using UI.Pause;
 using UI.Services.Window;
 using UI.Settings;
 using UnityEngine;
@@ -46,6 +48,14 @@ namespace UI.Services.Factory
             WindowConfig config = _staticData.GetWindowData(WindowType.Settings);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
             SettingsWindow window = _container.InstantiatePrefabForComponent<SettingsWindow>(prefab, _uiRoot);
+            return window;
+        }
+
+        public async Task<WindowBase> CreatePauseMenu()
+        {
+            WindowConfig config = _staticData.GetWindowData(WindowType.Pause);
+            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            PauseWindow window = _container.InstantiatePrefabForComponent<PauseWindow>(prefab, _uiRoot);
             return window;
         }
 

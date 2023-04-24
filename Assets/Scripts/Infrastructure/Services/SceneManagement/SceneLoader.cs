@@ -8,8 +8,9 @@ namespace Infrastructure.Services.SceneManagement
 {
     public class SceneLoader : ISceneLoader
     {
-        private readonly ICoroutineRunner _coroutineRunner;
-        public SceneLoader(ICoroutineRunner coroutineRunner) 
+        private ICoroutineRunner _coroutineRunner;
+
+        public void Init(ICoroutineRunner coroutineRunner) 
             => _coroutineRunner = coroutineRunner;
 
         public void Load(string name, Action onLoaded = null)

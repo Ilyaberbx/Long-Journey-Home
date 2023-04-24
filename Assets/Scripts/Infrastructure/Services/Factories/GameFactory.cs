@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.Pause;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
 using Logic.Enemy;
@@ -23,22 +24,28 @@ namespace Infrastructure.Services.Factories
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticData;
         private readonly IWindowService _windowService;
+        private readonly IPauseService _pauseService;
         private readonly DiContainer _container;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
 
         private GameObject _heroGameObject;
+        private GameObject _createdObjectsContainer;
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
-            , IWindowService windowService, DiContainer container)
+            , IWindowService windowService,IPauseService pauseService, DiContainer container)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
             _windowService = windowService;
+            _pauseService = pauseService;
             _container = container;
         }
+
+        public void CreateContainerForCreatedObjects() 
+            => _createdObjectsContainer = new GameObject("Container");
 
         public async Task WarmUp()
         {
@@ -71,8 +78,8 @@ namespace Infrastructure.Services.Factories
             EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
             GameObject enemyPrefab = await _assetProvider.Load<GameObject>(enemyData.PrefabReference);
 
-            GameObject enemy = _container.InstantiatePrefab(enemyPrefab, parent.position,
-                Quaternion.identity, parent);
+            GameObject enemy = InstantiateRegistered(enemyPrefab, parent.position);
+            enemy.transform.SetParent(parent);
             
             IHealth health = enemy.GetComponent<IHealth>();
             health.CurrentHealth = enemyData.MaxHp;
@@ -128,16 +135,25 @@ namespace Infrastructure.Services.Factories
 
         private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
         {
-            GameObject obj = _container.InstantiatePrefab(prefab, at, Quaternion.identity, null);
+            GameObject obj = _container.InstantiatePrefab(prefab, at, Quaternion.identity, _createdObjectsContainer.transform);
             RegisterProgressWatchers(obj);
+            RegisterPauseWatchers(obj);
             return obj;
         }
 
         private GameObject InstantiateRegistered(GameObject prefab)
         {
             GameObject obj = _container.InstantiatePrefab(prefab);
+            obj.transform.SetParent(_createdObjectsContainer.transform);
             RegisterProgressWatchers(obj);
+            RegisterPauseWatchers(obj);
             return obj;
+        }
+
+        private void RegisterPauseWatchers(GameObject obj)
+        {
+            foreach (IPauseHandler handler in obj.GetComponentsInChildren<IPauseHandler>())
+                _pauseService.Register(handler);
         }
 
         private void RegisterProgressWatchers(GameObject obj)

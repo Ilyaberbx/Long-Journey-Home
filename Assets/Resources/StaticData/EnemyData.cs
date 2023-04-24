@@ -1,8 +1,6 @@
-﻿using Logic;
-using Logic.Enemy;
+﻿using Logic.Enemy;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Serialization;
 
 namespace StaticData
 {

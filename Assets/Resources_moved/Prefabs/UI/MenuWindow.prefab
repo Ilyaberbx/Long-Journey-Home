@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1260988461899135060}
-  _windowType: 3
+  _windowType: 4
 --- !u!1 &1260988462155010960
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,3 +938,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _closeButton: {fileID: 0}
   _lastSaveButton: {fileID: 4995661408861044513}
+  _openWindowButton: {fileID: 2835776965697707680}

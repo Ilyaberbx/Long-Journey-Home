@@ -8,10 +8,7 @@ namespace Infrastructure.Services.PersistentProgress
     {
         private const string SceneByDefault = "IntroRoad";
         public PlayerProgress PlayerProgress { get; set; }
-
-        public void ClearUp() 
-            => PlayerProgress = DefaultProgress();
-
+        
         public PlayerProgress DefaultProgress()
         {
             PlayerProgress progress = new PlayerProgress(SceneByDefault);

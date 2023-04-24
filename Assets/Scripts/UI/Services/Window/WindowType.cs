@@ -5,6 +5,7 @@
         None,
         Inventory,
         MainMenu,
+        Pause,
         Settings
     }
 }

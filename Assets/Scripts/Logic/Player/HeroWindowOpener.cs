@@ -1,80 +1,82 @@
-﻿using System.Collections;
-using Cinemachine;
-using Infrastructure.Interfaces;
+﻿using System.Threading.Tasks;
 using Infrastructure.Services.Input;
-using Logic.Inventory;
-using Logic.Inventory.Actions;
+using Infrastructure.Services.Pause;
+using UI.Elements;
+using UI.Inventory;
+using UI.Pause;
 using UI.Services.Window;
 using UnityEngine;
 using Zenject;
 
 namespace Logic.Player
 {
-    public class HeroWindowOpener : MonoBehaviour
+    public class HeroWindowOpener : MonoBehaviour, IPauseHandler
     {
-        [SerializeField] private HeroMover _mover;
         [SerializeField] private HeroLook _look;
-        [SerializeField] private HeroInteractor _interactor;
-        [SerializeField] private HeroAttack _attack;
+        [SerializeField] private HeroCameraHolder _heroCamera;
 
         private IInputService _input;
         private IWindowService _windowService;
-        private bool _isWindowOpen;
+        private IPauseService _pauseService;
+        private WindowBase _currentWindow;
 
-        private CinemachinePOV _cameraPov;
 
         [Inject]
-        public void Construct(IInputService input, IWindowService windowService)
+        public void Construct(IInputService input, IWindowService windowService, IPauseService pauseService)
         {
             _input = input;
             _windowService = windowService;
+            _pauseService = pauseService;
         }
 
-        public void Init(CinemachinePOV cameraPov)
-            => _cameraPov = cameraPov;
-
-        private void Update()
+        private async void Update()
         {
+            if (IsPaused())
+                return;
+
             if (_input.IsInventoryButtonPressed())
             {
-                Cursor.lockState = CursorLockMode.Confined;
-                ToggleHero(false);
-                _windowService.Open(WindowType.Inventory, HandleWindowClose);
+                if (_currentWindow is InventoryWindow)
+                    return;
+
+                _currentWindow = await OpenWindow(WindowType.Inventory);
             }
         }
 
-        private void ToggleHero(bool value)
+        public async void HandlePause(bool isPaused)
         {
-            _mover.enabled = value;
-            _look.enabled = value;
-            _interactor.enabled = value;
-            _attack.enabled = value;
+            if (_currentWindow is PauseWindow)
+                return;
+            
+            if (isPaused)
+                _currentWindow = await OpenWindow(WindowType.Pause);
         }
 
-        private void HandleWindowClose()
+        private async Task<WindowBase> OpenWindow(WindowType type)
         {
-            StartCoroutine(RecenterCameraRoutine());
+            CloseCurrentWindow();
+            Cursor.lockState = CursorLockMode.Confined;
+            _heroCamera.ToggleCamera(false);
+            _look.enabled = false;
+            _currentWindow = await _windowService.Open(type, WindowClosed);
+            return _currentWindow;
+        }
+
+        private bool IsPaused()
+            => _pauseService.IsPaused;
+
+        private void CloseCurrentWindow()
+        {
+            if (_currentWindow != null)
+                _currentWindow.Close();
+        }
+
+        private void WindowClosed()
+        {
+            _look.enabled = true;
+            _heroCamera.ToggleCamera(true);
             Cursor.lockState = CursorLockMode.Locked;
+            _currentWindow = null;
         }
-
-        private IEnumerator RecenterCameraRoutine()
-        {
-            ToggleRecentering(true);
-            yield return new WaitForSeconds(CalculateRecenterDuration());
-            ToggleRecentering(false);
-            ToggleHero(true);
-        }
-
-        private void ToggleRecentering(bool value)
-        {
-            _cameraPov.m_HorizontalAxis.m_MaxSpeed = value ? 0 : 1;
-            _cameraPov.m_VerticalAxis.m_MaxSpeed = value ? 0 : 1;
-            _cameraPov.m_HorizontalRecentering.m_enabled = value;
-            _cameraPov.m_VerticalRecentering.m_enabled = value;
-        }
-
-        private float CalculateRecenterDuration() =>
-            _cameraPov.m_HorizontalRecentering.m_WaitTime +
-            _cameraPov.m_HorizontalRecentering.m_RecenteringTime;
     }
 }

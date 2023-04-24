@@ -21,5 +21,6 @@ namespace Infrastructure.Services.Factories
         ItemPickUp CreateItemPickUp(ItemData data, Transform transform);
         Task<LootSpawnPoint> CreateLootSpawner(Vector3 position, string id, Quaternion rotation, ItemData data);
         Task WarmUp();
+        void CreateContainerForCreatedObjects();
     }
 }

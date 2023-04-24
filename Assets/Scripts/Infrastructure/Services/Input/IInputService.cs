@@ -10,5 +10,6 @@ namespace Infrastructure.Services.Input
         bool IsInventoryButtonPressed();
         bool IsJumped();
         bool IsSprinting();
+        bool IsPauseButtonPressed();
     }
 }

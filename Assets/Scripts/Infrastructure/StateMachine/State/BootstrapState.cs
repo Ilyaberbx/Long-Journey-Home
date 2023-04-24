@@ -2,6 +2,7 @@ using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.StaticData;
+using UnityEngine;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -22,7 +23,7 @@ namespace Infrastructure.StateMachine.State
         }
 
         public void Enter()
-        {
+        { 
             PreWarmUp();
             _sceneLoader.Load(Initial, EnterLoadLevel);
         }

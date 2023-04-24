@@ -1,17 +1,14 @@
 ﻿using Infrastructure.Services.PersistentProgress;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
-using UI.Elements;
-using Zenject;
 
-namespace UI.Menu
+namespace UI.Elements
 {
     public class LoadLastSaveButton : BaseButton
     {
         private IGameStateMachine _stateMachine;
         private IPersistentProgressService _progressService;
 
-        [Inject]
         public void Construct(IGameStateMachine stateMachine,IPersistentProgressService progressService)
         {
             _stateMachine = stateMachine;

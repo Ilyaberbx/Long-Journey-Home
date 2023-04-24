@@ -4,6 +4,7 @@ using Data;
 using Enums;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
+using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SceneManagement;
@@ -31,10 +32,11 @@ namespace Infrastructure.StateMachine.State
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly IStaticDataService _staticData;
         private readonly IUIFactory _uiFactory;
+        private readonly IPauseService _pauseService;
 
         public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData, IUIFactory uiFactory)
+            IStaticDataService staticData, IUIFactory uiFactory,IPauseService pauseService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -43,11 +45,13 @@ namespace Infrastructure.StateMachine.State
             _persistentProgressService = persistentProgressService;
             _staticData = staticData;
             _uiFactory = uiFactory;
+            _pauseService = pauseService;
         }
 
         public async void Enter(string payLoad)
         {
             _gameFactory.CleanUp();
+            _pauseService.CleanUp();
             await _gameFactory.WarmUp();
             _loadingCurtain.Show();
             _sceneLoader.Load(payLoad, OnLoaded);
@@ -59,6 +63,7 @@ namespace Infrastructure.StateMachine.State
         private async void OnLoaded()
         {
             _persistentProgressService.PlayerProgress.IsFirstLoad = false;
+            _gameFactory.CreateContainerForCreatedObjects();
             await InitUIRoot();
             await InitGameWorld();
             InformProgressReaders();
@@ -106,7 +111,7 @@ namespace Infrastructure.StateMachine.State
         {
             player.GetComponent<HeroHealth>().Construct(camera.GetComponentInParent<ICameraAnimator>());
             player.GetComponent<HeroDeath>().SetCameraAnimator(camera.GetComponentInParent<ICameraAnimator>());
-            player.GetComponent<HeroWindowOpener>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
+            player.GetComponent<HeroCameraHolder>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
         }
 
         private async Task InitHud(GameObject player)

@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Data;
 using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace UI.Elements
 {
     public abstract class WindowBase : MonoBehaviour
     {
-        [SerializeField] private Button _closeButton;
         private Action _close;
-        protected PlayerProgress _progress;
+        protected PlayerProgress _progress => _progressService.PlayerProgress;
+        protected IPersistentProgressService _progressService;
 
         [Inject]
-        public void Construct(IPersistentProgressService progressService) 
-            => _progress = progressService.PlayerProgress;
+        public void Construct(IPersistentProgressService progressService)
+            => _progressService = progressService;
 
         private void Awake()
             => OnAwake();
@@ -27,16 +25,17 @@ namespace UI.Elements
             SubscribeUpdates();
         }
 
-        private void OnDestroy() 
+        private void OnDestroy()
             => CleanUp();
 
         protected virtual void OnAwake()
-            => _closeButton?.onClick.AddListener(Close);
+        {
+        }
 
-        public void SubscribeCloseListener(Action onClose) 
+        public void SubscribeCloseListener(Action onClose)
             => _close = onClose;
 
-        public virtual void Close()
+        public void Close()
         {
             _close?.Invoke();
             Destroy(gameObject);
@@ -48,6 +47,7 @@ namespace UI.Elements
 
         protected virtual void SubscribeUpdates()
         {
+
         }
 
         protected virtual void CleanUp()

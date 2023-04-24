@@ -4,6 +4,7 @@ using Data;
 using Logic.Inventory.Actions;
 using UI.Elements;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Inventory
 {
@@ -11,6 +12,7 @@ namespace UI.Inventory
     {
         public event Action<int> OnDescriptionRequested, OnItemActionRequested;
 
+        [SerializeField] private Button _closeButton;
         [SerializeField] private ItemActionPanel _actionPanel;
         [SerializeField] private InventoryDescription _description;
         [SerializeField] private ItemView _itemPrefab;
@@ -25,13 +27,17 @@ namespace UI.Inventory
             UpdateInventoryUI();
         }
 
-        protected override void SubscribeUpdates() 
-            => _inventoryData.OnStateChanged += UpdateInventoryUI;
+        protected override void SubscribeUpdates()
+        {
+            _inventoryData.OnStateChanged += UpdateInventoryUI;
+            _closeButton.onClick.AddListener(Close);
+        }
 
         protected override void CleanUp()
         {
             base.CleanUp();
             _inventoryData.OnStateChanged -= UpdateInventoryUI;
+            _closeButton.onClick.RemoveListener(Close);
         }
 
         private void UpdateInventoryUI()

@@ -1,8 +1,10 @@
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.StaticData;
 using Infrastructure.StateMachine;
 using UI.Services.Factory;
@@ -25,8 +27,21 @@ namespace Installers
             BindWindowService();
             BindGameFactory();
             BindSaveLoad();
+            BindPause();
+            BindSceneLoader();
             BindStateMachine();
         }
+        private void BindSceneLoader()
+            => Container.Bind<ISceneLoader>()
+                .To<SceneLoader>()
+                .AsSingle()
+                .NonLazy();
+
+        private void BindPause() 
+            => Container.Bind<IPauseService>()
+                .To<PauseService>()
+                .AsSingle()
+                .NonLazy();
 
 
         private void BindStateMachine()

@@ -1,7 +1,6 @@
 ﻿using UI.Elements;
 using UI.Services.Window;
 using UnityEngine;
-using Zenject;
 
 namespace UI.Menu
 {
@@ -10,8 +9,6 @@ namespace UI.Menu
     {
         [SerializeField] private WindowType _windowType;
         private IWindowService _windowService;
-
-        [Inject]
         public void Construct(IWindowService windowService) 
             => _windowService = windowService;
 
