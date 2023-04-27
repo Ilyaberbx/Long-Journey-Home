@@ -36,8 +36,8 @@ namespace Logic.Camera
 
         private void ChangeCamerasPriority(GameCameraType type)
         {
-            foreach (var camera in _cameras)
-                camera.Camera.Priority = camera.CameraType == type ? 1 : 0;
+            foreach (GameCamera gameCamera in _cameras)
+                gameCamera.Camera.Priority = gameCamera.CameraType == type ? 1 : 0;
         }
     }
 }

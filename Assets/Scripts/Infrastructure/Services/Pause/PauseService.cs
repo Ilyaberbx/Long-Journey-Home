@@ -18,10 +18,10 @@ namespace Infrastructure.Services.Pause
         {
             IsPaused = isPaused;
 
+            Time.timeScale = isPaused ? 0 : 1;
+            
             foreach (IPauseHandler handler in _handlers)
                 handler.HandlePause(isPaused);
-
-            Time.timeScale = isPaused ? 0 : 1;
         }
 
         public void CleanUp() 

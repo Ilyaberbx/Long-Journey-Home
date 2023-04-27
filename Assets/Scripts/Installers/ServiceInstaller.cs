@@ -5,6 +5,7 @@ using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SceneManagement;
+using Infrastructure.Services.Settings;
 using Infrastructure.Services.StaticData;
 using Infrastructure.StateMachine;
 using UI.Services.Factory;
@@ -30,7 +31,15 @@ namespace Installers
             BindPause();
             BindSceneLoader();
             BindStateMachine();
+            BindSettings();
         }
+
+        private void BindSettings() 
+            => Container.Bind<ISettingsService>()
+                .To<SettingsService>()
+                .AsSingle()
+                .NonLazy();
+
         private void BindSceneLoader()
             => Container.Bind<ISceneLoader>()
                 .To<SceneLoader>()

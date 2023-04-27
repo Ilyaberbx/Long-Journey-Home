@@ -1,4 +1,5 @@
 ﻿using Data;
+using Infrastructure.Services.Settings;
 
 namespace Infrastructure.Services.SaveLoad
 {
@@ -8,5 +9,7 @@ namespace Infrastructure.Services.SaveLoad
         PlayerProgress LoadProgress();
 
         void CleanUp();
+        SettingsData LoadSettings();
+        void SaveSettings(SettingsData settingsData);
     }
 }

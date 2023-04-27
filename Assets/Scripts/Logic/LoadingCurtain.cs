@@ -20,10 +20,7 @@ namespace Logic
                 .OnComplete(DisableObject);
         }
 
-        private void DisableObject()
-        {
-            Debug.Log("Hide");
-            gameObject.SetActive(false);
-        }
+        private void DisableObject() 
+            => gameObject.SetActive(false);
     }
 }

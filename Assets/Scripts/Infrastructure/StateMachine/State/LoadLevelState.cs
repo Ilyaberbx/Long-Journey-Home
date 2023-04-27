@@ -8,6 +8,7 @@ using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SceneManagement;
+using Infrastructure.Services.Settings;
 using Infrastructure.Services.StaticData;
 using Logic;
 using Logic.Animations;
@@ -33,10 +34,12 @@ namespace Infrastructure.StateMachine.State
         private readonly IStaticDataService _staticData;
         private readonly IUIFactory _uiFactory;
         private readonly IPauseService _pauseService;
+        private readonly ISettingsService _settings;
 
-        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, LoadingCurtain loadingCurtain,
+        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
+            LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData, IUIFactory uiFactory,IPauseService pauseService)
+            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService, ISettingsService settings)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -46,6 +49,7 @@ namespace Infrastructure.StateMachine.State
             _staticData = staticData;
             _uiFactory = uiFactory;
             _pauseService = pauseService;
+            _settings = settings;
         }
 
         public async void Enter(string payLoad)
@@ -84,9 +88,21 @@ namespace Infrastructure.StateMachine.State
             await InitSpawners();
             GameObject player = await InitPlayer();
             await InitHud(player);
-            CinemachineVirtualCamera camera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform)
-                .GetComponent<CinemachineVirtualCamera>();
+            CinemachineVirtualCamera camera = InitCamera();
             InitPlayerInteractWithCamera(player, camera);
+        }
+
+        private CinemachineVirtualCamera InitCamera()
+        {
+            GameCamera inGameCamera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
+            
+            if (inGameCamera is ISettingsHandler cameraSettings) 
+                cameraSettings.HandleSettings(_settings.SettingsData);
+            
+            if (inGameCamera is IPauseHandler cameraPause) 
+                _pauseService.Register(cameraPause);
+
+            return inGameCamera.Camera;
         }
 
         private async Task InitSpawners()
@@ -94,10 +110,12 @@ namespace Infrastructure.StateMachine.State
             LevelData levelData = LevelData();
 
             foreach (EnemySpawnerData enemySpawnerData in levelData.EnemySpawners)
-                await _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id, enemySpawnerData.EnemyType);
+                await _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id,
+                    enemySpawnerData.EnemyType);
 
             foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
-                await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id, lootSpawnerData.Rotation, lootSpawnerData.Data);
+                await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id,
+                    lootSpawnerData.Rotation, lootSpawnerData.Data);
         }
 
         private LevelData LevelData()
@@ -124,7 +142,6 @@ namespace Infrastructure.StateMachine.State
                 player.GetComponent<IDialogueActor>(),
                 player.GetComponent<IFreeze>(),
                 player.GetComponent<IInteractor>());
-            
         }
 
         private async Task<GameObject> InitPlayer()
@@ -135,10 +152,10 @@ namespace Infrastructure.StateMachine.State
             return player;
         }
 
-        private GameCamera CameraFollowPlayer(Transform target)
+        private GameCamera CameraFollowPlayer(Transform player)
         {
             GameCamerasChanger cameraChanger = Camera.main.GetComponentInParent<GameCamerasChanger>();
-            return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, target, true);
+            return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, player, true);
         }
     }
 }

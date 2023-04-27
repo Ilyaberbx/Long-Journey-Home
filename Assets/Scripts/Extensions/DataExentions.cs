@@ -1,4 +1,5 @@
 ﻿using Data;
+using Infrastructure.Services.Settings.Screen;
 using UnityEngine;
 
 namespace Extensions
@@ -10,6 +11,21 @@ namespace Extensions
 
         public static Vector3 AsUnityVector(this Vector3Data vector3data)
             => new Vector3(vector3data.X, vector3data.Y, vector3data.Z);
+
+        public static ResolutionData AsResolutionData(this Resolution resolution) 
+            => new ResolutionData(resolution.width, resolution.height);
+
+        public static Resolution AsUnityResolution(this ResolutionData resolutionData)
+        {
+            Resolution resolution = new Resolution
+            {
+                width = resolutionData.Width,
+                height = resolutionData.Height
+            };
+            
+            return resolution;
+        }
+
         public static T ToDeserialized<T>(this string json) 
             => JsonUtility.FromJson<T>(json);
 

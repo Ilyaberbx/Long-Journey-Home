@@ -8,5 +8,11 @@ namespace Infrastructure.Services.Settings.Screen
     {
         public int Width;
         public int Height;
+
+        public ResolutionData(int width, int height)
+        {
+            Width = width;
+            Height = height;
+        }
     }
 }

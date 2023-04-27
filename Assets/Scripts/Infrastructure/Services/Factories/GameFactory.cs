@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.Settings;
 using Infrastructure.Services.StaticData;
 using Logic.Enemy;
 using Logic.Inventory;
@@ -29,13 +30,14 @@ namespace Infrastructure.Services.Factories
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
+        public List<ISettingsHandler> SettingReaders { get; } = new List<ISettingsHandler>();
 
         private GameObject _heroGameObject;
         private GameObject _createdObjectsContainer;
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
-            , IWindowService windowService,IPauseService pauseService, DiContainer container)
+            , IWindowService windowService, IPauseService pauseService, DiContainer container)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
@@ -44,7 +46,7 @@ namespace Infrastructure.Services.Factories
             _container = container;
         }
 
-        public void CreateContainerForCreatedObjects() 
+        public void CreateContainerForCreatedObjects()
             => _createdObjectsContainer = new GameObject("Container");
 
         public async Task WarmUp()
@@ -60,7 +62,7 @@ namespace Infrastructure.Services.Factories
         {
             GameObject playerPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
             _heroGameObject = InstantiateRegistered(playerPrefab, at);
-            
+
             InventoryAdapter inventory = _heroGameObject.GetComponent<InventoryAdapter>();
             _windowService.Init(inventory);
             return _heroGameObject;
@@ -80,7 +82,7 @@ namespace Infrastructure.Services.Factories
 
             GameObject enemy = InstantiateRegistered(enemyPrefab, parent.position);
             enemy.transform.SetParent(parent);
-            
+
             IHealth health = enemy.GetComponent<IHealth>();
             health.CurrentHealth = enemyData.MaxHp;
             health.MaxHp = enemyData.MaxHp;
@@ -135,7 +137,8 @@ namespace Infrastructure.Services.Factories
 
         private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
         {
-            GameObject obj = _container.InstantiatePrefab(prefab, at, Quaternion.identity, _createdObjectsContainer.transform);
+            GameObject obj =
+                _container.InstantiatePrefab(prefab, at, Quaternion.identity, _createdObjectsContainer.transform);
             RegisterProgressWatchers(obj);
             RegisterPauseWatchers(obj);
             return obj;
@@ -145,9 +148,16 @@ namespace Infrastructure.Services.Factories
         {
             GameObject obj = _container.InstantiatePrefab(prefab);
             obj.transform.SetParent(_createdObjectsContainer.transform);
+            RegisterSettingsWatchers(obj);
             RegisterProgressWatchers(obj);
             RegisterPauseWatchers(obj);
             return obj;
+        }
+
+        private void RegisterSettingsWatchers(GameObject obj)
+        {
+            foreach (ISettingsHandler handler in obj.GetComponentsInChildren<ISettingsHandler>())
+                SettingReaders.Add(handler);
         }
 
         private void RegisterPauseWatchers(GameObject obj)
@@ -159,14 +169,13 @@ namespace Infrastructure.Services.Factories
         private void RegisterProgressWatchers(GameObject obj)
         {
             foreach (ISavedProgressReader progressReader in obj.GetComponentsInChildren<ISavedProgressReader>())
-                Register(progressReader);
+                RegisterProgress(progressReader);
         }
 
-        private void Register(ISavedProgressReader obj)
+        private void RegisterProgress(ISavedProgressReader obj)
         {
             if (obj is ISavedProgressWriter writer)
                 ProgressWriters.Add(writer);
-
             ProgressReaders.Add(obj);
         }
     }

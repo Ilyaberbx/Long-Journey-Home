@@ -7,10 +7,5 @@ namespace Infrastructure.Services.Settings.Screen
     {
         public bool IsFullScreen;
         public ResolutionData Resolution;
-
-        public ScreenData()
-        {
-            Resolution = new ResolutionData();
-        }
     }
 }

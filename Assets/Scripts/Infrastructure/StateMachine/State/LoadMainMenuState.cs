@@ -1,10 +1,10 @@
 ﻿using Infrastructure.Interfaces;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.SceneManagement;
+using Infrastructure.Services.Settings;
 using Logic;
 using UI.Services.Factory;
 using UI.Services.Window;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -17,10 +17,11 @@ namespace Infrastructure.StateMachine.State
         private readonly IUIFactory _uiFactory;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IPauseService _pauseService;
+        private readonly ISettingsService _settingsService;
 
         public LoadMainMenuState(IGameStateMachine stateMachine,IWindowService windowService, 
             ISceneLoader sceneLoader,IUIFactory uiFactory, 
-            LoadingCurtain loadingCurtain,IPauseService pauseService)
+            LoadingCurtain loadingCurtain,IPauseService pauseService,ISettingsService settingsService)
         {
             _stateMachine = stateMachine;
             _windowService = windowService;
@@ -28,6 +29,7 @@ namespace Infrastructure.StateMachine.State
             _uiFactory = uiFactory;
             _loadingCurtain = loadingCurtain;
             _pauseService = pauseService;
+            _settingsService = settingsService;
         }
 
         public void Enter()
@@ -41,6 +43,7 @@ namespace Infrastructure.StateMachine.State
         {
             _pauseService.CleanUp();
             _pauseService.SetPaused(false);
+            await _settingsService.Init();
             await _uiFactory.CreateUIRoot();
             await _windowService.Open(WindowType.MainMenu);
             _loadingCurtain.Hide();
