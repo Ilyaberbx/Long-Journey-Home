@@ -18,10 +18,10 @@ namespace Logic.Level
         private bool _isFire;
 
         private void Awake() 
-            => _triggerObserver.OnTriggerExited += e => StopHealing();
+            => _triggerObserver.OnTriggerExited += _ => StopHealing();
 
         private void OnDestroy() 
-            => _triggerObserver.OnTriggerExited -= e => StopHealing();
+            => _triggerObserver.OnTriggerExited -= _ => StopHealing();
 
         private void StartHealing(Transform player)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.SaveLoad;
@@ -12,11 +13,11 @@ namespace Logic.Inventory
     public class InventoryAdapter : MonoBehaviour, ISavedProgressWriter
     {
         private const string Drop = "Drop";
-
+        
         [SerializeField] private List<InventoryItem> _initialItems;
         private InventoryWindow _inventoryWindow;
         private InventoryData _inventoryData;
-
+        
         public void InitUI(InventoryWindow window)
         {
             _inventoryWindow = window;

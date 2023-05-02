@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Logic.Inventory;
 using Logic.Inventory.Item;
 using UnityEngine;
 
@@ -66,6 +65,23 @@ namespace Data
         public InventoryItem GetItemByIndex(int index)
             => _inventoryItems[index];
 
+        public bool TryWithDrawItem(ItemData itemData)
+        {
+            for (int i = 0; i < _inventoryItems.Count(); i++)
+            {
+                if(!_inventoryItems[i].ItemData == itemData) continue;
+                if(_inventoryItems[i].Quantity <= 0) continue;
+                
+                WithDrawItem(i);
+                return true;
+            }
+
+            return false;
+        }
+
+        private void WithDrawItem(int i) 
+            => _inventoryItems[i] = _inventoryItems[i].ChangeQuantity(_inventoryItems[i].Quantity - 1);
+
         public void RemoveItem(int index, int amount)
         {
             if (_inventoryItems.Count > index)
@@ -73,7 +89,7 @@ namespace Data
                 if (_inventoryItems[index].IsEmpty) return;
 
                 int reminder = _inventoryItems[index].Quantity - amount;
-                
+
                 if (reminder <= 0)
                     _inventoryItems[index] = InventoryItem.GetEmptyItem();
                 else
@@ -84,7 +100,7 @@ namespace Data
             }
         }
 
-     
+
         private int AddToFirstSlot(ItemData itemData, int quantity)
         {
             InventoryItem newItem = new InventoryItem
@@ -114,7 +130,7 @@ namespace Data
                 if (_inventoryItems[i].IsEmpty)
                     continue;
 
-                if (_inventoryItems[i].ItemData.Id != itemData.Id) 
+                if (_inventoryItems[i].ItemData.Id != itemData.Id)
                     continue;
 
                 int amountPossibleToTake = _inventoryItems[i].ItemData.MaxStackSize - _inventoryItems[i].Quantity;

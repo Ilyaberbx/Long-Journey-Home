@@ -22,5 +22,6 @@ namespace Infrastructure.Services.Factories
         Task<LootSpawnPoint> CreateLootSpawner(Vector3 position, string id, Quaternion rotation, ItemData data);
         Task WarmUp();
         void CreateContainerForCreatedObjects();
+        BaseEquippableItem CreateEquippableItem(BaseEquippableItem itemPrefab, Vector3 equipmentPointPosition, Transform container);
     }
 }

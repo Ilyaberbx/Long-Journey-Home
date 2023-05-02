@@ -319,7 +319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _look: {fileID: 8427398397224038650}
-  _hero: {fileID: 8884210282156206023}
   _heroCamera: {fileID: 5238980957427607552}
 --- !u!114 &4568631829993806250
 MonoBehaviour:
@@ -415,7 +414,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attack: {fileID: 704864929059702421}
   _mover: {fileID: 3401435002938043442}
-  _look: {fileID: 8427398397224038650}
   _death: {fileID: 72199085430969277}
   _interactor: {fileID: 8857901979492613142}
   _itemPicker: {fileID: 8245475930465937468}

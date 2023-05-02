@@ -49,6 +49,14 @@ namespace Infrastructure.Services.Factories
         public void CreateContainerForCreatedObjects()
             => _createdObjectsContainer = new GameObject("Container");
 
+        public BaseEquippableItem CreateEquippableItem(BaseEquippableItem itemPrefab, Vector3 at,
+            Transform container)
+        {
+            GameObject equipItem = InstantiateRegistered(itemPrefab.gameObject, at);
+            equipItem.transform.SetParent(container);
+            return equipItem.GetComponent<BaseEquippableItem>();
+        }
+
         public async Task WarmUp()
         {
             await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);

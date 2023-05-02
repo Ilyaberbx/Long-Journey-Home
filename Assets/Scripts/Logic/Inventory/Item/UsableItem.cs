@@ -11,12 +11,11 @@ namespace Logic.Inventory.Item
     public class UsableItem : ItemData, IItemAction,IReducible,IDestroyableItem
     {
         public event Action OnDrop;
-        
+
         [SerializeField] private List<ModifierData> _modifiersData = new List<ModifierData>();
+        [SerializeField] private AudioClip _actionSfx;
         public string ActionName => "Use";
         public AudioClip ActionSfx => _actionSfx;
-
-        [SerializeField] private AudioClip _actionSfx;
 
 
         public void PerformAction(GameObject character)

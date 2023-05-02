@@ -17,11 +17,11 @@ namespace Logic.Weapons
         [SerializeField] private GameObject _bloodFx;
         [SerializeField] private float _offset;
 
+        private readonly Collider[] _hits = new Collider[3];
         private IWeaponAnimator _animator;
         private bool _isAttacking;
 
         private int _layerMask;
-        private Collider[] _hits = new Collider[3];
         private Vector3 _cachedScale;
 
 

@@ -101,7 +101,7 @@ namespace UI.Inventory
 
         private void HandleItemSelection(ItemView item)
         {
-            if (IsExist(item, out var index)) return;
+            if (IsExist(item, out int index)) return;
 
             OnDescriptionRequested?.Invoke(index);
         }
@@ -114,9 +114,10 @@ namespace UI.Inventory
 
         private void HandleShowItemActions(ItemView item)
         {
-            if (IsExist(item, out var index))
+            if (IsExist(item, out int index))
                 return;
 
+            _actionPanel.Toggle(false);
             OnItemActionRequested?.Invoke(index);
         }
 

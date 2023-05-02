@@ -6,7 +6,7 @@ namespace Logic.Weapons
     {
         private static readonly int Attack = Animator.StringToHash("Attack");
         
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Animator _animator;
         
         public void PlayAttack()
             => _animator.SetTrigger(Attack);

@@ -24,14 +24,26 @@ MonoBehaviour:
     EnemyType: 1
     Position: {x: 662, y: 14, z: 3877}
   LootSpawners:
+  - Id: IntroRoad_df643c62-8a6d-4db8-8aae-17a79c2e689d
+    Data: {fileID: 11400000, guid: 72c842aeea02de840b9a737c7a0746b0, type: 2}
+    Position: {x: 1588.4, y: 5.700001, z: 3659.5}
+    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
   - Id: MainScene_57b4c623-54d0-453a-aaf4-b70a4fac7774
     Data: {fileID: 11400000, guid: 91cb99cb20ed0c44f876b8ddddd300a4, type: 2}
-    Position: {x: 1621.1307, y: 5.699999, z: 3768.856}
+    Position: {x: 1621.1307, y: 5.699999, z: 3768.8}
     Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
   - Id: MainScene_08ff4f11-fa26-47d9-8138-4924d50b8ab8
     Data: {fileID: 11400000, guid: 1a169c95a18618649ba1f966e6df29b5, type: 2}
     Position: {x: 1502.8, y: 5.699999, z: 3722.6}
     Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: IntroRoad_c7275637-1d85-4a7e-9e1e-2e8f065aface
+    Data: {fileID: 11400000, guid: cc45d1f53c382084ba1e9521a8b1afee, type: 2}
+    Position: {x: 1621.1307, y: 5.700001, z: 3727.3}
+    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
+  - Id: IntroRoad_7ae47bca-6b50-49c6-a5b6-7947761e6ad7
+    Data: {fileID: 11400000, guid: cc45d1f53c382084ba1e9521a8b1afee, type: 2}
+    Position: {x: 1653.1, y: 5.700001, z: 3727.3}
+    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
   - Id: MainScene_2acdda32-9a85-46b9-8b6e-6898f0004ecb
     Data: {fileID: 11400000, guid: f4953665e5434b04aa31121a61c22cfd, type: 2}
     Position: {x: 1502.8, y: 5.699999, z: 3654.7}
