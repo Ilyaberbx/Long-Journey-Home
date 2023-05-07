@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: d49e78756811bfa4aafb8b6535417991, type: 3}
   IsStackable: 1
+  Id: 5
   MaxStackSize: 8
   Name: Shotgun ammo
   Description: Handmade ammo for shotgun

@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71feceaf4ede4c099c7beeb68cc97d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attack: {fileID: 704864929059702421}
   _look: {fileID: 8427398397224038650}
   _heroCamera: {fileID: 5238980957427607552}
 --- !u!114 &4568631829993806250

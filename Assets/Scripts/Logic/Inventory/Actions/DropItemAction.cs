@@ -24,7 +24,7 @@ namespace Logic.Inventory.Actions
 
         public void ExecuteAction()
         {
-            _inventoryData.RemoveItem(_index, _quantity);
+            _inventoryData.RemoveItemByIndex(_index, _quantity);
             _item.Drop();
             _view.ResetSelection();
         }

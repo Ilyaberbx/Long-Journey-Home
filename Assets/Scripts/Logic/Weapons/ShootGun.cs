@@ -41,11 +41,9 @@ namespace Logic.Weapons
         public void PerformAttack()
         {
             if (!CanShoot()) return;
-            
-           if(!_inventoryData.TryWithDrawItem(_ammoItemData))
-               return;
            
-           Debug.Log("ShootGunAttack");
+            Debug.Log(_inventoryData.TryRemoveItemById(_ammoItemData.Id,1));
+           
             _animator.PlayAttack();
             _animator.SetAnimatorSpeed(_attackSpeed);
             _isAttacking = true;

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Data;
-using Infrastructure.Interfaces;
 using Infrastructure.Services.SaveLoad;
 using Logic.Inventory.Actions;
 using Logic.Inventory.Item;

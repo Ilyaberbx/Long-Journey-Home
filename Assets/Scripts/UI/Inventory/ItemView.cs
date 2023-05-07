@@ -13,7 +13,7 @@ namespace UI.Inventory
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _amount;
         [SerializeField] private Image _borderImage;
-
+        
         private bool _isEmpty;
 
         private void Awake()

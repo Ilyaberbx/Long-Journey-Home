@@ -29,7 +29,7 @@ namespace Logic.Inventory.Actions
                 return;
 
             if (item.ItemData is IReducible)
-                _inventoryData.RemoveItem(_index, 1);
+                _inventoryData.RemoveItemByIndex(_index, 1);
 
             if (item.ItemData is IItemAction action)
             {

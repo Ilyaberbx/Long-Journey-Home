@@ -65,24 +65,27 @@ namespace Data
         public InventoryItem GetItemByIndex(int index)
             => _inventoryItems[index];
 
-        public bool TryWithDrawItem(ItemData itemData)
+        public bool TryRemoveItemById(int id, int amount)
         {
-            for (int i = 0; i < _inventoryItems.Count(); i++)
+            for (int i = 0; i < _inventoryItems.Count; i++)
             {
-                if(!_inventoryItems[i].ItemData == itemData) continue;
-                if(_inventoryItems[i].Quantity <= 0) continue;
-                
-                WithDrawItem(i);
+                if (_inventoryItems[i].IsEmpty)
+                    continue;
+
+                if (_inventoryItems[i].ItemData.Id != id)
+                    continue;
+
+                if (_inventoryItems[i].Quantity < amount)
+                    continue;
+
+                RemoveItemByIndex(i, amount);
                 return true;
             }
 
             return false;
         }
 
-        private void WithDrawItem(int i) 
-            => _inventoryItems[i] = _inventoryItems[i].ChangeQuantity(_inventoryItems[i].Quantity - 1);
-
-        public void RemoveItem(int index, int amount)
+        public void RemoveItemByIndex(int index, int amount)
         {
             if (_inventoryItems.Count > index)
             {
