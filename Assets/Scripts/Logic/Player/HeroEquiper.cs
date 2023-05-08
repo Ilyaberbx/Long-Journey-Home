@@ -1,6 +1,4 @@
-﻿using Infrastructure.Interfaces;
-using Infrastructure.Services.Factories;
-using Logic.Inventory;
+﻿using Infrastructure.Services.Factories;
 using Logic.Inventory.Item;
 using Logic.Weapons;
 using UnityEngine;
@@ -23,6 +21,9 @@ namespace Logic.Player
 
         public void SelectEquipment(EquippableItemData equippableItemData)
         {
+            if(_equippedItemData?.Id == equippableItemData.Id)
+                return;
+            
             ClearUp();
 
             _equippedItemData = equippableItemData;

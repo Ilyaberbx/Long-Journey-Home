@@ -10,6 +10,7 @@ using Logic.Inventory;
 using Logic.Inventory.Item;
 using Logic.Player;
 using Logic.Spawners;
+using Logic.Weapons;
 using StaticData;
 using UI.Elements;
 using UI.Services.Window;
@@ -34,6 +35,7 @@ namespace Infrastructure.Services.Factories
 
         private GameObject _heroGameObject;
         private GameObject _createdObjectsContainer;
+        private PlayerUIActor _uiActor;
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
@@ -45,7 +47,7 @@ namespace Infrastructure.Services.Factories
             _pauseService = pauseService;
             _container = container;
         }
-
+        
         public void CreateContainerForCreatedObjects()
             => _createdObjectsContainer = new GameObject("Container");
 
@@ -53,7 +55,12 @@ namespace Infrastructure.Services.Factories
             Transform container)
         {
             GameObject equipItem = InstantiateRegistered(itemPrefab.gameObject, at);
+            
+            if (equipItem.TryGetComponent(out IHudAmmoShowable ammoShowable))
+                _uiActor.RegisterAmmoShowableObject(ammoShowable);
+            
             equipItem.transform.SetParent(container);
+
             return equipItem.GetComponent<BaseEquippableItem>();
         }
 
@@ -79,7 +86,9 @@ namespace Infrastructure.Services.Factories
         public async Task<GameObject> CreateHud()
         {
             GameObject hudPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.HudPath);
-            return InstantiateRegistered(hudPrefab);
+            GameObject hud = InstantiateRegistered(hudPrefab);
+            _uiActor = hud.GetComponent<PlayerUIActor>();
+            return hud;
         }
 
 
@@ -177,13 +186,14 @@ namespace Infrastructure.Services.Factories
         private void RegisterProgressWatchers(GameObject obj)
         {
             foreach (ISavedProgressReader progressReader in obj.GetComponentsInChildren<ISavedProgressReader>())
-                RegisterProgress(progressReader);
+                RegisterProgressWriters(progressReader);
         }
 
-        private void RegisterProgress(ISavedProgressReader obj)
+        private void RegisterProgressWriters(ISavedProgressReader obj)
         {
             if (obj is ISavedProgressWriter writer)
                 ProgressWriters.Add(writer);
+            
             ProgressReaders.Add(obj);
         }
     }

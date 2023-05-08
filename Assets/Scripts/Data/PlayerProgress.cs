@@ -10,6 +10,7 @@
         public PickUpLootData PickUpLootData;
         public FlashLightState FlashLightState;
         public InventoryData InventoryData;
+        public WeaponAmmoData WeaponAmmoData;
         public bool IsFirstLoad = true;
 
         public PlayerProgress(string initialLevel)
@@ -21,6 +22,7 @@
             FreezeState = new FreezeState();
             InventoryData = new InventoryData();
             PickUpLootData = new PickUpLootData();
+            WeaponAmmoData = new WeaponAmmoData();
         }
     }
 }

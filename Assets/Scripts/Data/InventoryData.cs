@@ -65,6 +65,20 @@ namespace Data
         public InventoryItem GetItemByIndex(int index)
             => _inventoryItems[index];
 
+
+        public bool HasItemById(int id)
+        {
+            for (int i = 0; i < _inventoryItems.Count; i++)
+            {
+                if (_inventoryItems[i].IsEmpty)
+                    continue;
+                
+                if (_inventoryItems[i].ItemData.Id == id)
+                    return true;
+            }
+            return false;
+        }
+        
         public bool TryRemoveItemById(int id, int amount)
         {
             for (int i = 0; i < _inventoryItems.Count; i++)

@@ -34,5 +34,8 @@ namespace Infrastructure.Services.Input
 
         public bool IsPauseButtonPressed()
             => UnityEngine.Input.GetKeyDown(KeyCode.Escape);
+
+        public bool IsReloadButtonPressed()
+            => UnityEngine.Input.GetKeyDown(KeyCode.R);
     }
 }

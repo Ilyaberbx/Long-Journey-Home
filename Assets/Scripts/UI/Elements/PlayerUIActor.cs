@@ -11,12 +11,14 @@ namespace UI.Elements
         [SerializeField] private Bar _flashLightBar;
         [SerializeField] private Bar _freezeBar;
         [SerializeField] private TextMeshProUGUI _dialogueText;
+        [SerializeField] private TextMeshProUGUI _ammoText;
         [SerializeField] private InteractHint _interactHint;
 
         private IHeroLight _light;
         private IDialogueActor _dialogueActor;
         private IFreeze _freeze;
         private IInteractor _interactor;
+        private IHudAmmoShowable _ammoShowableObject;
 
         public void Construct(IHealth health,IHeroLight light,IDialogueActor dialogueActor,IFreeze freeze,IInteractor interactor)
         {
@@ -42,6 +44,21 @@ namespace UI.Elements
 
         private void Update() 
             => ShowHint(_interactor.GetInteractableObject());
+
+        public void RegisterAmmoShowableObject(IHudAmmoShowable ammoShowable)
+        {
+            _ammoShowableObject = ammoShowable;
+            ToggleAmmoBar(true);
+            UpdateAmmoBar();
+            _ammoShowableObject.OnAmmoChanged += UpdateAmmoBar;
+            _ammoShowableObject.OnDispose += () => ToggleAmmoBar(false);
+        }
+
+        private void ToggleAmmoBar(bool isActive) 
+            => _ammoText.gameObject.SetActive(isActive);
+
+        private void UpdateAmmoBar() 
+            => _ammoText.text = _ammoShowableObject.CurrentAmmo + "/" + _ammoShowableObject.MaxAmmo;
 
         private void ShowHint(IInteractable interactable)
         {
