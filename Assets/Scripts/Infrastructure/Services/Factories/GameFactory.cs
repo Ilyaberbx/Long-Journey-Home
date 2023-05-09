@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Pause;
+using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Settings;
 using Infrastructure.Services.StaticData;
@@ -27,6 +28,7 @@ namespace Infrastructure.Services.Factories
         private readonly IStaticDataService _staticData;
         private readonly IWindowService _windowService;
         private readonly IPauseService _pauseService;
+        private readonly IPersistentProgressService _progressService;
         private readonly DiContainer _container;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
@@ -39,12 +41,13 @@ namespace Infrastructure.Services.Factories
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
-            , IWindowService windowService, IPauseService pauseService, DiContainer container)
+            , IWindowService windowService, IPauseService pauseService, IPersistentProgressService progressService, DiContainer container)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
             _windowService = windowService;
             _pauseService = pauseService;
+            _progressService = progressService;
             _container = container;
         }
         
@@ -56,6 +59,9 @@ namespace Infrastructure.Services.Factories
         {
             GameObject equipItem = InstantiateRegistered(itemPrefab.gameObject, at);
             
+            if(equipItem.TryGetComponent(out  ISavedProgressReader reader))
+                reader.LoadProgress(_progressService.PlayerProgress);
+
             if (equipItem.TryGetComponent(out IHudAmmoShowable ammoShowable))
                 _uiActor.RegisterAmmoShowableObject(ammoShowable);
             
@@ -78,7 +84,7 @@ namespace Infrastructure.Services.Factories
             GameObject playerPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
             _heroGameObject = InstantiateRegistered(playerPrefab, at);
 
-            InventoryAdapter inventory = _heroGameObject.GetComponent<InventoryAdapter>();
+            InventoryPresenter inventory = _heroGameObject.GetComponent<InventoryPresenter>();
             _windowService.Init(inventory);
             return _heroGameObject;
         }
@@ -124,6 +130,7 @@ namespace Infrastructure.Services.Factories
             spawner.SetType(spawnerEnemyType);
             return spawner;
         }
+        
 
         public ItemPickUp CreateItemPickUp(ItemData data, Transform parent)
         {

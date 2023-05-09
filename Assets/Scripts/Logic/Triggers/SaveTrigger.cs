@@ -1,5 +1,4 @@
-﻿using Infrastructure.Services;
-using Infrastructure.Services.SaveLoad;
+﻿using Infrastructure.Services.SaveLoad;
 using Logic.Enemy;
 using UnityEngine;
 using Zenject;
@@ -26,6 +25,7 @@ namespace Logic.Triggers
         {
             if (_isSaved) return;
 
+            Debug.Log("Save Trigger");
             _saveLoadService.SaveProgress();
             _isSaved = true;
         }

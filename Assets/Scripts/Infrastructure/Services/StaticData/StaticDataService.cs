@@ -2,7 +2,6 @@
 using UnityEngine;
 using System.Linq;
 using Data;
-using Logic;
 using Logic.Enemy;
 using Logic.Inventory.Item;
 using StaticData;
@@ -16,6 +15,7 @@ namespace Infrastructure.Services.StaticData
         private const string LevelStaticDataPath = "StaticData/Levels";
         private const string WindowsStaticDataPath = "StaticData/UI/WindowsData";
         private const string ItemsPickUpDataPath = "StaticData/ItemsPickUp";
+        private const string BulletsStaticData = "StaticData/Bullets";
         private Dictionary<EnemyType, EnemyData> _enemies;
         private Dictionary<string, LevelData> _levels;
         private Dictionary<WindowType, WindowConfig> _windows;
@@ -28,6 +28,7 @@ namespace Infrastructure.Services.StaticData
             _windows = LoadWindowData();
             _pickUps = LoadItemPickUps();
         }
+        
 
         private Dictionary<ItemData, ItemPickUp> LoadItemPickUps() 
             => Resources.
@@ -65,9 +66,10 @@ namespace Infrastructure.Services.StaticData
                 ? config 
                 : null;
 
-        public ItemPickUp GetPickUpByData(ItemData data) =>
-            _pickUps.TryGetValue(data, out ItemPickUp pickUp)
+        public ItemPickUp GetPickUpByData(ItemData data) 
+            => _pickUps.TryGetValue(data, out ItemPickUp pickUp)
                 ? pickUp
                 : null;
+        
     }
 }

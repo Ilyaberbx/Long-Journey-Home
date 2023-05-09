@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Logic.Inventory.Item
 {
     [CreateAssetMenu(fileName = "Item", menuName = "Inventory/UsableItem", order = 0)]
-    public class UsableItem : ItemData, IItemAction,IReducible,IDestroyableItem
+    public class UsableItem : ItemData, IItemAction,IReducible
     {
         public event Action OnDrop;
 

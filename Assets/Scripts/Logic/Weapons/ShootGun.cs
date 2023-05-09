@@ -1,44 +1,49 @@
 ﻿using System;
 using Data;
 using DG.Tweening;
+using Infrastructure.Services.Factories;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
-using Infrastructure.Services.SaveLoad;
 using Logic.Inventory.Item;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Logic.Weapons
 {
-    public class ShootGun : BaseEquippableItem, IWeapon, IHudAmmoShowable,ISavedProgressWriter
+    public class ShootGun : BaseEquippableItem, IWeapon, IHudAmmoShowable
     {
         public event Action OnAmmoChanged;
         public event Action OnDispose;
         public int CurrentAmmo => _ammoInMagazine;
         public int MaxAmmo => _magazineCapacity;
 
-        [SerializeField] private ItemData _ammoItemData;
-        [SerializeField] private EquippableItemData _selfItemData;
+        
+        [SerializeField] private ParticleSystem _smokeFx;
+        [SerializeField] private ParticleSystem _sparksFx;
+        [SerializeField] private Transform _shootPoint;
+        [SerializeField] private AmmoItemData _ammoItemData;
         [SerializeField] private float _attackSpeed;
         [SerializeField] private float _reloadSpeed;
         [SerializeField] private int _magazineCapacity;
 
         private IReloadableWeaponAnimator _animator;
         private IInputService _input;
+        private IPersistentProgressService _progressService;
         private InventoryData _inventoryData => _progressService.PlayerProgress.InventoryData;
         private bool _isAttacking;
         private bool _isReloading;
         private int _ammoInMagazine;
 
         private Vector3 _cachedScale;
-        private IPersistentProgressService _progressService;
+        private IGameFactory _gameFactory;
 
 
         [Inject]
         public void Construct(IPersistentProgressService progressService, IInputService input)
         {
-            _progressService = progressService;
             _input = input;
+            _progressService = progressService;
         }
 
         private void Awake()
@@ -47,20 +52,17 @@ namespace Logic.Weapons
             _cachedScale = transform.localScale;
         }
 
-        private void Start()
-        {
-            if (TryLoadSavedAmmo(_progressService)) 
-                InformAmmoChanged();
-        }
-
         private void Update()
         {
             if (_input.IsReloadButtonPressed())
                 Reload();
         }
 
-        private void OnDestroy() 
-            => OnDispose?.Invoke();
+        private void OnDestroy()
+        {
+            _inventoryData.AddItem(_ammoItemData, _ammoInMagazine);
+            OnDispose?.Invoke();
+        }
 
         public override void Appear()
         {
@@ -72,19 +74,21 @@ namespace Logic.Weapons
         public void PerformAttack()
         {
             if (!CanShoot()) return;
-            
+
+            ShowFx();
             _ammoInMagazine--;
             _animator.PlayAttack();
             _animator.SetAnimatorSpeed(_attackSpeed);
             _isAttacking = true;
         }
 
-        private int GetId()
-            => _selfItemData.Id;
+        private void ShowFx()
+        {
+            Instantiate(_smokeFx, _shootPoint.position, Quaternion.identity);
+            ParticleSystem sparks = Instantiate(_sparksFx, _shootPoint.position, Quaternion.identity);
+            sparks.transform.Rotate(transform.forward);
+        }
 
-        private bool TryLoadSavedAmmo(IPersistentProgressService progressService) =>
-            progressService.PlayerProgress.WeaponAmmoData.AmmoByIdDictionary.TryGetValue(GetId(),
-                out _ammoInMagazine);
 
         private bool TryWithDrawAmmo()
             => _inventoryData.TryRemoveItemById(_ammoItemData.Id, 1);
@@ -102,7 +106,7 @@ namespace Logic.Weapons
             _isReloading = true;
         }
 
-        private bool CanReload() 
+        private bool CanReload()
             => _inventoryData.HasItemById(_ammoItemData.Id) && !_isReloading && CalculateAmmoReminder() > 0;
 
         private void OnReload()
@@ -117,7 +121,7 @@ namespace Logic.Weapons
                 else
                     break;
             }
-            
+
             InformAmmoChanged();
 
             _isReloading = false;
@@ -131,20 +135,10 @@ namespace Logic.Weapons
             _isAttacking = false;
         }
 
-        private void InformAmmoChanged() 
+        private void InformAmmoChanged()
             => OnAmmoChanged?.Invoke();
 
         private int CalculateAmmoReminder()
             => _magazineCapacity - _ammoInMagazine;
-
-        public void UpdateProgress(PlayerProgress progress)
-        {
-            Debug.Log("Save");
-            progress.WeaponAmmoData.AmmoByIdDictionary[GetId()] = _ammoInMagazine;
-        }
-
-        public void LoadProgress(PlayerProgress progress)
-        {
-        }
     }
 }

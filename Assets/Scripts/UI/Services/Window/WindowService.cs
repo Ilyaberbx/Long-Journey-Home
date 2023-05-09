@@ -12,13 +12,13 @@ namespace UI.Services.Window
     public class WindowService : IWindowService
     {
         private readonly IUIFactory _uiFactory;
-        private InventoryAdapter _heroInventoryAdapter;
+        private InventoryPresenter _heroInventoryPresenter;
 
         public WindowService(IUIFactory uiFactory)
             => _uiFactory = uiFactory;
 
-        public void Init(InventoryAdapter heroInventoryAdapter)
-            => _heroInventoryAdapter = heroInventoryAdapter;
+        public void Init(InventoryPresenter heroInventoryPresenter)
+            => _heroInventoryPresenter = heroInventoryPresenter;
 
         public async Task<WindowBase> Open(WindowType windowType, Action onClose = null)
         {
@@ -31,7 +31,7 @@ namespace UI.Services.Window
                 case WindowType.Inventory:
                     InventoryWindow inventoryView = await _uiFactory.CreateInventory();
                     inventoryView.SubscribeCloseListener(onClose);
-                    _heroInventoryAdapter.InitUI(inventoryView);
+                    _heroInventoryPresenter.InitUI(inventoryView);
                     window = inventoryView;
                     break;
                 case WindowType.MainMenu:

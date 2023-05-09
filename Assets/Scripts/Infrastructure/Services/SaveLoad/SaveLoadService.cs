@@ -31,12 +31,12 @@ namespace Infrastructure.Services.SaveLoad
         public PlayerProgress LoadProgress()
             => PlayerPrefs.GetString(ProgressKey)?.ToDeserialized<PlayerProgress>();
 
+        public void SaveSettings(SettingsData settingsData)
+            => PlayerPrefs.SetString(SettingsKey, settingsData.ToJson());
+
         public SettingsData LoadSettings()
             => PlayerPrefs.GetString(SettingsKey)?.ToDeserialized<SettingsData>();
 
-        public void SaveSettings(SettingsData settingsData)
-            => PlayerPrefs.SetString(SettingsKey, settingsData.ToJson());
-        
 
         public void CleanUp()
             => PlayerPrefs.DeleteAll();

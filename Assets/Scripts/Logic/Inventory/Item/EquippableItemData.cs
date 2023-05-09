@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Logic.Inventory.Item
 {
     [CreateAssetMenu(fileName = "Item", menuName = "Inventory/EquippableItem", order = 0)]
-    public class EquippableItemData : ItemData, IDestroyableItem, IItemAction
+    public class EquippableItemData : ItemData, IItemAction
     {
         public event Action OnDrop;
 

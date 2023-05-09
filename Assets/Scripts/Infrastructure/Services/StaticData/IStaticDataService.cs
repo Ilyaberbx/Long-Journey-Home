@@ -1,6 +1,4 @@
 ﻿using Data;
-using Infrastructure.Interfaces;
-using Logic;
 using Logic.Enemy;
 using Logic.Inventory.Item;
 using StaticData;

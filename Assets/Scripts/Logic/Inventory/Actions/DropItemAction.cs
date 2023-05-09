@@ -8,16 +8,14 @@ namespace Logic.Inventory.Actions
     {
         private readonly InventoryData _inventoryData;
         private readonly InventoryWindow _view;
-        private readonly IDestroyableItem _item;
         private readonly int _index;
         private readonly int _quantity;
 
-        public DropItemAction(InventoryData inventoryData, InventoryWindow view, IDestroyableItem item, int index,
+        public DropItemAction(InventoryData inventoryData, InventoryWindow view,  int index,
             int quantity)
         {
             _inventoryData = inventoryData;
             _view = view;
-            _item = item;
             _index = index;
             _quantity = quantity;
         }
@@ -25,7 +23,6 @@ namespace Logic.Inventory.Actions
         public void ExecuteAction()
         {
             _inventoryData.RemoveItemByIndex(_index, _quantity);
-            _item.Drop();
             _view.ResetSelection();
         }
     }

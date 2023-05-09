@@ -9,6 +9,6 @@ namespace UI.Services.Window
     public interface IWindowService : IService
     {
         Task<WindowBase> Open(WindowType windowType, Action onClose = null);
-        void Init(InventoryAdapter heroInventoryAdapter);
+        void Init(InventoryPresenter heroInventoryPresenter);
     }
 }
