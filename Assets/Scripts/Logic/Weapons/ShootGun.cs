@@ -75,10 +75,9 @@ namespace Logic.Weapons
 
         public void PerformAttack()
         {
-           if (!CanShoot()) return;
-
-            ShowFx();
-            _ammoInMagazine--;
+            if (!CanShoot()) return;
+            
+           _ammoInMagazine--;
             _animator.PlayAttack();
             _animator.SetAnimatorSpeed(_attackSpeed);
             _isAttacking = true;
@@ -131,6 +130,7 @@ namespace Logic.Weapons
         private void OnAttack()
         {
             Debug.Log("On Attack");
+            ShowFx();
             InformAmmoChanged();
             _animator.SetAnimatorSpeed(1);
             _isAttacking = false;

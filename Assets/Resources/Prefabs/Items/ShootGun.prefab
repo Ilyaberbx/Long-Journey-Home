@@ -51,7 +51,7 @@ MonoBehaviour:
   _sparksFx: {fileID: 7015866563140457361, guid: 36af283bdb6aa1e42a77c8e48739f9eb, type: 3}
   _shootPoint: {fileID: 1658175611116794669}
   _ammoItemData: {fileID: 11400000, guid: cc45d1f53c382084ba1e9521a8b1afee, type: 2}
-  _attackSpeed: 0.8
+  _attackSpeed: 2
   _reloadSpeed: 0.7
   _magazineCapacity: 2
 --- !u!114 &6274826172059578775
