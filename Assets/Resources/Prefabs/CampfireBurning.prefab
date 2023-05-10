@@ -4986,7 +4986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9026257609175070680
 Transform:
   m_ObjectHideFlags: 0
@@ -5000,6 +5000,7 @@ Transform:
   m_Children:
   - {fileID: 9026257609295771328}
   - {fileID: 9026257610823155794}
+  - {fileID: 7218947969538683943}
   m_Father: {fileID: 9026257610915906780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5077,7 +5078,7 @@ GameObject:
   - component: {fileID: 9219694653206630198}
   - component: {fileID: 9191703839202968276}
   m_Layer: 0
-  m_Name: SnokeParticles
+  m_Name: SmokeParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9854,3 +9855,65 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1001 &309429585639538271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9026257609175070680}
+    m_Modifications:
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 72.64463
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 72.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946857415641854944, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+      propertyPath: m_Name
+      value: ShootGunSmoke
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+--- !u!4 &7218947969538683943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6946110281968454264, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
+  m_PrefabInstance: {fileID: 309429585639538271}
+  m_PrefabAsset: {fileID: 0}

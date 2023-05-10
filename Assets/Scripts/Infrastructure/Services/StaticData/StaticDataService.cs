@@ -15,7 +15,6 @@ namespace Infrastructure.Services.StaticData
         private const string LevelStaticDataPath = "StaticData/Levels";
         private const string WindowsStaticDataPath = "StaticData/UI/WindowsData";
         private const string ItemsPickUpDataPath = "StaticData/ItemsPickUp";
-        private const string BulletsStaticData = "StaticData/Bullets";
         private Dictionary<EnemyType, EnemyData> _enemies;
         private Dictionary<string, LevelData> _levels;
         private Dictionary<WindowType, WindowConfig> _windows;

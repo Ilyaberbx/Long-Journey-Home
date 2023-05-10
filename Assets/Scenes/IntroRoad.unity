@@ -21367,6 +21367,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7218947969538683943, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218947969538683943, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218947969538683943, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394770838600611427, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9026257610915906780, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -21415,5 +21431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CampfireBurning
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9029168617070965762, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7215719411000577464, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}

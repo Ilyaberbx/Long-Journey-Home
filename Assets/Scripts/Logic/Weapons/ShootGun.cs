@@ -37,6 +37,7 @@ namespace Logic.Weapons
 
         private Vector3 _cachedScale;
         private IGameFactory _gameFactory;
+        private Transform _cachedTransform;
 
 
         [Inject]
@@ -50,6 +51,7 @@ namespace Logic.Weapons
         {
             _animator = GetComponent<IReloadableWeaponAnimator>();
             _cachedScale = transform.localScale;
+            _cachedTransform = transform;
         }
 
         private void Update()
@@ -73,7 +75,7 @@ namespace Logic.Weapons
 
         public void PerformAttack()
         {
-            if (!CanShoot()) return;
+           if (!CanShoot()) return;
 
             ShowFx();
             _ammoInMagazine--;
@@ -85,8 +87,7 @@ namespace Logic.Weapons
         private void ShowFx()
         {
             Instantiate(_smokeFx, _shootPoint.position, Quaternion.identity);
-            ParticleSystem sparks = Instantiate(_sparksFx, _shootPoint.position, Quaternion.identity);
-            sparks.transform.Rotate(transform.forward);
+            Instantiate(_sparksFx, _shootPoint.position, Quaternion.LookRotation(-_cachedTransform.right),_cachedTransform);
         }
 
 
