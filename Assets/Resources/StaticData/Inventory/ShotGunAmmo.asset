@@ -18,8 +18,4 @@ MonoBehaviour:
   MaxStackSize: 8
   Name: Shotgun ammo
   Description: Handmade ammo for shotgun
-  _bulletPrefab:
-    m_AssetGUID: f46b478ef72f6c94397667ec4f4a3fad
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  _damage: 2

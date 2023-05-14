@@ -5,9 +5,10 @@ using Infrastructure.Services.Factories;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using Logic.Inventory.Item;
+using Logic.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Logic.Weapons
 {
@@ -18,26 +19,29 @@ namespace Logic.Weapons
         public int CurrentAmmo => _ammoInMagazine;
         public int MaxAmmo => _magazineCapacity;
 
-        
+        [SerializeField] private ParticleSystem _hitMarkFx;
         [SerializeField] private ParticleSystem _smokeFx;
         [SerializeField] private ParticleSystem _sparksFx;
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private AmmoItemData _ammoItemData;
         [SerializeField] private float _attackSpeed;
         [SerializeField] private float _reloadSpeed;
+        [SerializeField] private float _scatter;
         [SerializeField] private int _magazineCapacity;
+        [SerializeField] private int _shotsPerBullet;
 
         private IReloadableWeaponAnimator _animator;
         private IInputService _input;
         private IPersistentProgressService _progressService;
         private InventoryData _inventoryData => _progressService.PlayerProgress.InventoryData;
+        private IGameFactory _gameFactory;
         private bool _isAttacking;
         private bool _isReloading;
         private int _ammoInMagazine;
 
-        private Vector3 _cachedScale;
-        private IGameFactory _gameFactory;
         private Transform _cachedTransform;
+        private Vector3 _cachedScale;
+        private Vector3 _randomRayDirection;
 
 
         [Inject]
@@ -50,8 +54,8 @@ namespace Logic.Weapons
         private void Awake()
         {
             _animator = GetComponent<IReloadableWeaponAnimator>();
-            _cachedScale = transform.localScale;
             _cachedTransform = transform;
+            _cachedScale = _cachedTransform.localScale;
         }
 
         private void Update()
@@ -76,8 +80,8 @@ namespace Logic.Weapons
         public void PerformAttack()
         {
             if (!CanShoot()) return;
-            
-           _ammoInMagazine--;
+
+            _ammoInMagazine--;
             _animator.PlayAttack();
             _animator.SetAnimatorSpeed(_attackSpeed);
             _isAttacking = true;
@@ -86,7 +90,8 @@ namespace Logic.Weapons
         private void ShowFx()
         {
             Instantiate(_smokeFx, _shootPoint.position, Quaternion.identity);
-            Instantiate(_sparksFx, _shootPoint.position, Quaternion.LookRotation(-_cachedTransform.right),_cachedTransform);
+            Instantiate(_sparksFx, _shootPoint.position, Quaternion.LookRotation(-_cachedTransform.right),
+                _cachedTransform);
         }
 
 
@@ -111,7 +116,6 @@ namespace Logic.Weapons
 
         private void OnReload()
         {
-            Debug.Log("On Reloaded");
             int noLoadedAmmo = CalculateAmmoReminder();
 
             for (int i = 0; i < noLoadedAmmo; i++)
@@ -129,12 +133,44 @@ namespace Logic.Weapons
 
         private void OnAttack()
         {
-            Debug.Log("On Attack");
+            Hit();
             ShowFx();
             InformAmmoChanged();
             _animator.SetAnimatorSpeed(1);
             _isAttacking = false;
         }
+        
+        private Vector3 CalculateCastDirection() 
+            => (-_cachedTransform.right + _randomRayDirection) * 150f;
+
+        private float CalculateScatter() 
+            => Random.Range(-_scatter, _scatter);
+
+        private void Hit()
+        {
+            RaycastHit hit = new RaycastHit();
+            for (int i = 0; i < _shotsPerBullet; i++)
+            {
+                _randomRayDirection = new Vector3(CalculateScatter(), CalculateScatter(), 0);
+                
+                if (!IsHit(out hit)) continue;
+
+                if (IsDamagable(hit, out var health)) 
+                    _ammoItemData.ApplyHit(health);
+                else
+                    ShowHitMark(hit);
+
+            }
+        }
+
+        private void ShowHitMark(RaycastHit hit) 
+            => Instantiate(_hitMarkFx, hit.point + hit.normal * .01f, Quaternion.FromToRotation(Vector3.right, hit.normal));
+
+        private bool IsDamagable(RaycastHit hit, out IHealth health) 
+            => hit.transform.gameObject.TryGetComponent(out health);
+
+        private bool IsHit(out RaycastHit hit) 
+            => Physics.Raycast(_cachedTransform.position, CalculateCastDirection(), out hit);
 
         private void InformAmmoChanged()
             => OnAmmoChanged?.Invoke();
