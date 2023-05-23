@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.004
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.60862404, g: 0.7113925, b: 0.9150943, a: 1}
+  m_AmbientSkyColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0.44
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.11217513, g: 0.20050882, b: 0.4339623, a: 1}
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.109043136, g: 0.03893734, b: 0.3301887, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 9af23ba5fa5364ff598888460e0e2759, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -20120,6 +20120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2017476592}
   - component: {fileID: 2017476591}
+  - component: {fileID: 2017476593}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -20138,8 +20139,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
-  m_Intensity: 0.31
+  m_Color: {r: 0.15809779, g: 0.115058735, b: 0.3018868, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -20149,8 +20150,8 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_Bias: 1
+    m_NormalBias: 1
     m_NearPlane: 1
     m_CullingMatrixOverride:
       e00: 1
@@ -20188,7 +20189,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
-  m_ShadowAngle: 0
+  m_ShadowAngle: 4.4
 --- !u!4 &2017476592
 Transform:
   m_ObjectHideFlags: 0
@@ -20203,6 +20204,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &2017476593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017476590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UsePipelineSettings: 1
 --- !u!1001 &2017888986
 PrefabInstance:
   m_ObjectHideFlags: 0
