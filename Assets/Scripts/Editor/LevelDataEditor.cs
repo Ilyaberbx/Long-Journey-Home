@@ -25,7 +25,7 @@ namespace Editor
                     .ToList();
                 
                 levelData.LootSpawners= FindObjectsOfType<LootMarker>()
-                    .Select(x => new LootSpawnerData(x.GetComponent<UniqueId>().Id,x.Data,x.transform.position,x.transform.rotation))
+                    .Select(x => new LootSpawnerData(x.GetComponent<UniqueId>().Id,x.Prefab,x.transform.position,x.transform.rotation))
                     .ToList();
 
                 levelData.PlayerInitPoint = GameObject.FindGameObjectWithTag(PlayerInitPointTag).transform.position;

@@ -8,16 +8,20 @@ namespace Logic.Player
     public class HeroLook : MonoBehaviour
     {
         private IInputService _input;
+        private ISettingsService _settings;
+
         [Inject]
-        public void Construct(IInputService input) 
-            => _input = input;
+        public void Construct(IInputService input,ISettingsService settings)
+        {
+            _input = input;
+            _settings = settings;
+        }
 
 
         private void Update() 
             => Look();
 
         private void Look() 
-            => transform.Rotate(Vector3.up * _input.MouseX);
-        
+            => transform.Rotate(Vector3.up * (_input.MouseX * _settings.SettingsData.Mouse.Sensitivity));
     }
 }

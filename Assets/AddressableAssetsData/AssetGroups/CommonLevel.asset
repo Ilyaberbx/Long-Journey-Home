@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CommonLevel
+  m_EditorClassIdentifier: 
+  m_GroupName: CommonLevel
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 57799f2a51f0af24d836c677bd17fe36
+  m_SerializeEntries:
+  - m_GUID: 51e2f6eff7ef5834fb41c15636b59c4b
+    m_Address: SkyBoxNight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4186065a737c5de4ebbe31a44025fce6
+    m_Address: SaveTrigger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 61429a1e72095154db59cb1d83ae75e8
+    m_Address: LevelTransferTrigger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ee6482dcad95de4c966cfe4265d12f9
+    m_Address: SpawnMarker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7e394479cb8106e4fa14b988d1e4b22a
+    m_Address: LootSpawnMarker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6e57971f17afde64bb2e06552fe1ecac
+    m_Address: LootSpawnPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8bf91d0dd341fa844b9981766ecd88c0
+    m_Address: EnemySpawnPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 61243f14e5d8e8e4f9d800a9d9bc7f73
+    m_Address: CampfireBurning
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5dc6deccf79b3534ebb5bfa181054c39
+    m_Address: DialogueTrigger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 172cbf46da9aeb045a32bc50d4154d54, type: 2}
+    - {fileID: 11400000, guid: 3f2720383f9e4bc449c6a3277b9b0166, type: 2}

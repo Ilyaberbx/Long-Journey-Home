@@ -41,6 +41,22 @@ MonoBehaviour:
     m_Address: InventoryWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a6afe1a2413e61645a403135f9e2445c
+    m_Address: ItemUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 055b093f2a3ed6042aec9d4d310c30e0
+    m_Address: ItemActionButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7eb9e76d49b36474fab2a0b0aa84b6da
+    m_Address: HpBar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df076dcc2d268a344b5fe253f7d494af
+    m_Address: ItemActionPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

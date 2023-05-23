@@ -42,7 +42,7 @@ namespace Infrastructure.StateMachine.State
         private SettingsData SettingsByDefault()
         {
             SettingsData settings = new SettingsData();
-            settings.Mouse.Sensitivity = 100;
+            settings.Mouse.Sensitivity = 1;
             settings.Audio.GlobalVolume = -20;
             settings.Audio.SoundsVolume = -20;
             settings.Audio.MusicVolume = -20;

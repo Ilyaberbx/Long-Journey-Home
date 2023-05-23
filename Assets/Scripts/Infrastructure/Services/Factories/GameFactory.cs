@@ -130,14 +130,13 @@ namespace Infrastructure.Services.Factories
         }
         
 
-        public ItemPickUp CreateItemPickUp(ItemData data, Transform parent)
+        public ItemPickUp CreateItemPickUp(ItemPickUp prefab, Transform parent)
         {
-            ItemPickUp pickUpPrefab = _staticData.GetPickUpByData(data);
-            ItemPickUp spawnedPickUp = Object.Instantiate(pickUpPrefab, parent.position, parent.rotation, parent);
+            ItemPickUp spawnedPickUp = Object.Instantiate(prefab, parent.position, parent.rotation, parent);
             return spawnedPickUp;
         }
 
-        public async Task<LootSpawnPoint> CreateLootSpawner(Vector3 at, string id, Quaternion rotation, ItemData data)
+        public async Task<LootSpawnPoint> CreateLootSpawner(Vector3 at, string id, Quaternion rotation, ItemPickUp data)
         {
             GameObject prefab = await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);
 
@@ -145,7 +144,7 @@ namespace Infrastructure.Services.Factories
                 .GetComponent<LootSpawnPoint>();
 
             spawner.SetId(id);
-            spawner.SetData(data);
+            spawner.SetItemPickUp(data);
             spawner.transform.rotation = rotation;
             return spawner;
         }

@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: Player
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 29c3905256fe89d42b92e4d16000a248
+    m_Address: Equipment
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3593a6d56ee504b4786fcaf32504a61c
+    m_Address: PlayerCamera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

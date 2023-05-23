@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Weapons
+  m_EditorClassIdentifier: 
+  m_GroupName: Weapons
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8aa51620ceed932409a3fe1267e1da92
+  m_SerializeEntries:
+  - m_GUID: e55149ba6f4d00741984987e258c3378
+    m_Address: LampBloom
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0ad00c6d5efc6ca43b90b39f5be806b6
+    m_Address: FlashLight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 47908ba3bd4b0c442a205c1f285a1202
+    m_Address: ShootGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 74168a21e16d1cc40a77f357c388cf5c
+    m_Address: AxeRoot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 38243ac80720cf6459583c52137bee75
+    m_Address: OilFuel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83f70ef1ddf59004bb825bce3fef46bb
+    m_Address: ShootGunPickUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aaa57165aee724b40beca4a145a7ae5b
+    m_Address: ShotGunAmmoPickUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a0a89e2567d0bb34ca1cf521c5e4f5c8
+    m_Address: OilFuelPickUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d8bc3c64b31d0ca41a85628751f47790
+    m_Address: FlashLightPickUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cbae169fc3ae8984082166a237e4cc37
+    m_Address: AxePickUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b1d57e21c742aa94091941ca69103656, type: 2}
+    - {fileID: 11400000, guid: 85e5de8b7d622ec479cec960fc46a8f5, type: 2}

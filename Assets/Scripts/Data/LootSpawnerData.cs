@@ -8,15 +8,15 @@ namespace Data
     public class LootSpawnerData
     {
         public string Id;
-        public ItemData Data;
+        public ItemPickUp Prefab;
         public Vector3 Position;
         public Quaternion Rotation;
 
 
-        public LootSpawnerData(string id, ItemData data,Vector3 position,Quaternion rotation)
+        public LootSpawnerData(string id, ItemPickUp prefab,Vector3 position,Quaternion rotation)
         {
             Id = id;
-            Data = data;
+            Prefab = prefab;
             Position = position;
             Rotation = rotation;
         }

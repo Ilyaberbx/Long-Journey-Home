@@ -34,12 +34,11 @@ namespace Infrastructure.StateMachine.State
         private readonly IStaticDataService _staticData;
         private readonly IUIFactory _uiFactory;
         private readonly IPauseService _pauseService;
-        private readonly ISettingsService _settings;
 
         public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
             LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService, ISettingsService settings)
+            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -49,7 +48,6 @@ namespace Infrastructure.StateMachine.State
             _staticData = staticData;
             _uiFactory = uiFactory;
             _pauseService = pauseService;
-            _settings = settings;
         }
 
         public async void Enter(string payLoad)
@@ -112,7 +110,7 @@ namespace Infrastructure.StateMachine.State
 
             foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
                 await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id,
-                    lootSpawnerData.Rotation, lootSpawnerData.Data);
+                    lootSpawnerData.Rotation, lootSpawnerData.Prefab);
         }
 
         private LevelData LevelData()

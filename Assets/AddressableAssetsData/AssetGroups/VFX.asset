@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: VFX
+  m_EditorClassIdentifier: 
+  m_GroupName: VFX
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 86bd9cc8183228d47b39b92af0eb7c88
+  m_SerializeEntries:
+  - m_GUID: 889dd67908ff48640a817f0b0074814e
+    m_Address: IceMagic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 36af283bdb6aa1e42a77c8e48739f9eb
+    m_Address: ShootGunSparksEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b3904c21c47c82348a47200eedff3c86
+    m_Address: ShootGunSmoke
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: dced9a5cfe01ee242ac308b060227afc, type: 2}
+    - {fileID: 11400000, guid: de2dfae69cf8fde4b8a593992c4bddcd, type: 2}

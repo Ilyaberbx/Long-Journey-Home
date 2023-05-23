@@ -12,7 +12,7 @@ namespace Logic.Spawners
     {
         private string _id;
         private IGameFactory _factory;
-        private ItemData _data;
+        private ItemPickUp _prefab;
         private bool _isPickedUp;
 
         [Inject]
@@ -22,8 +22,8 @@ namespace Logic.Spawners
         public void SetId(string id) 
             => _id = id;
 
-        public void SetData(ItemData data) 
-            => _data = data;
+        public void SetItemPickUp(ItemPickUp prefab) 
+            => _prefab = prefab;
 
         public void LoadProgress(PlayerProgress progress)
         {
@@ -35,7 +35,7 @@ namespace Logic.Spawners
 
         private void Spawn()
         {
-            ItemPickUp pickUp = _factory.CreateItemPickUp(_data,transform);
+            ItemPickUp pickUp = _factory.CreateItemPickUp(_prefab,transform);
             pickUp.OnPickedUp += () => _isPickedUp = true;
         }
 

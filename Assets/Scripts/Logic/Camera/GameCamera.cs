@@ -2,6 +2,7 @@ using Cinemachine;
 using Enums;
 using Infrastructure.Services.Settings;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Camera
 {
@@ -9,20 +10,30 @@ namespace Logic.Camera
     {
         [SerializeField] private GameCameraType _cameraType;
         private SettingsData _settings;
+        private CinemachinePOV _pov;
         public GameCameraType CameraType => _cameraType;
         public CinemachineVirtualCamera Camera { get; private set; }
 
-        private void Awake()
-            => Camera = GetComponent<CinemachineVirtualCamera>();
+        [Inject]
+        public void Construct(ISettingsService settingsService) 
+            => _settings = settingsService.SettingsData;
 
-        private void Update()
+        private void Awake()
         {
-            if (_settings == null)
-                return;
+            Camera = GetComponent<CinemachineVirtualCamera>();
+            _pov = Camera.GetCinemachineComponent<CinemachinePOV>();
+        }
+
+        private void Update() 
+            => ApplySensitivity();
+
+        private void ApplySensitivity()
+        {
+            _pov.m_HorizontalAxis.Value *=
+                _settings.Mouse.Sensitivity;
             
-            Camera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_InputAxisValue *=
+            _pov.m_VerticalAxis.Value *=
                 _settings.Mouse.Sensitivity;
         }
-        
     }
 }

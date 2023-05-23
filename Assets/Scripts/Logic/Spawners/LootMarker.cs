@@ -5,7 +5,7 @@ namespace Logic.Spawners
 {
     public class LootMarker : BaseMarker
     {
-        [SerializeField] private ItemData _itemData;
-        public ItemData Data => _itemData;
+        [SerializeField] private ItemPickUp _itemPickUp;
+        public ItemPickUp Prefab => _itemPickUp;
     }
 }
