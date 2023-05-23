@@ -95,10 +95,7 @@ namespace Infrastructure.StateMachine.State
         private CinemachineVirtualCamera InitCamera()
         {
             GameCamera inGameCamera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
-            
-            if (inGameCamera is ISettingsHandler cameraSettings) 
-                cameraSettings.HandleSettings(_settings.SettingsData);
-            
+
             if (inGameCamera is IPauseHandler cameraPause) 
                 _pauseService.Register(cameraPause);
 

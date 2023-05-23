@@ -42,7 +42,7 @@ namespace Infrastructure.StateMachine.State
 
         private async void OnLoaded()
         {
-            _pauseService.CleanUp();
+            Debug.Log("MainMenu loaded");
             _pauseService.SetPaused(false);
             await _settingsService.Init();
             await _uiFactory.CreateUIRoot();

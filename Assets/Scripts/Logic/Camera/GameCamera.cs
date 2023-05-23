@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Logic.Camera
 {
-    public class GameCamera : MonoBehaviour, ISettingsHandler
+    public class GameCamera : MonoBehaviour
     {
         [SerializeField] private GameCameraType _cameraType;
         private SettingsData _settings;
@@ -23,8 +23,6 @@ namespace Logic.Camera
             Camera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_InputAxisValue *=
                 _settings.Mouse.Sensitivity;
         }
-
-        public void HandleSettings(SettingsData settings)
-            => _settings = settings;
+        
     }
 }

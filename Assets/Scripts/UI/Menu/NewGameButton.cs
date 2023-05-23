@@ -21,7 +21,7 @@ namespace UI.Menu
 
         public override void Execute()
         {
-            _saveLoad.CleanUp();
+            _saveLoad.CleanUpProgress();
             _progressService.PlayerProgress = _progressService.DefaultProgress();
             _lastSaveButton.Execute();
         }

@@ -4,7 +4,6 @@ using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
-using Infrastructure.Services.Settings;
 using Infrastructure.Services.StaticData;
 using Logic.Enemy;
 using Logic.Inventory;
@@ -33,7 +32,6 @@ namespace Infrastructure.Services.Factories
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
-        public List<ISettingsHandler> SettingReaders { get; } = new List<ISettingsHandler>();
 
         private GameObject _heroGameObject;
         private GameObject _createdObjectsContainer;
@@ -50,7 +48,16 @@ namespace Infrastructure.Services.Factories
             _progressService = progressService;
             _container = container;
         }
-        
+
+        public async Task WarmUp()
+        {
+            await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);
+            await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
+            await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
+            await _assetProvider.Load<GameObject>(AssetsAddress.HudPath);
+            await _assetProvider.Load<GameObject>(AssetsAddress.UIRoot);
+        }
+
         public void CreateContainerForCreatedObjects()
             => _createdObjectsContainer = new GameObject("Container");
 
@@ -68,15 +75,6 @@ namespace Infrastructure.Services.Factories
             equipItem.transform.SetParent(container);
 
             return equipItem.GetComponent<BaseEquippableItem>();
-        }
-
-        public async Task WarmUp()
-        {
-            await _assetProvider.Load<GameObject>(AssetsAddress.LootSpawnPoint);
-            await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
-            await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
-            await _assetProvider.Load<GameObject>(AssetsAddress.HudPath);
-            await _assetProvider.Load<GameObject>(AssetsAddress.UIRoot);
         }
 
         public async Task<GameObject> CreatePlayer(Vector3 at)
@@ -172,18 +170,11 @@ namespace Infrastructure.Services.Factories
         {
             GameObject obj = _container.InstantiatePrefab(prefab);
             obj.transform.SetParent(_createdObjectsContainer.transform);
-            RegisterSettingsWatchers(obj);
             RegisterProgressWatchers(obj);
             RegisterPauseWatchers(obj);
             return obj;
         }
-
-        private void RegisterSettingsWatchers(GameObject obj)
-        {
-            foreach (ISettingsHandler handler in obj.GetComponentsInChildren<ISettingsHandler>())
-                SettingReaders.Add(handler);
-        }
-
+        
         private void RegisterPauseWatchers(GameObject obj)
         {
             foreach (IPauseHandler handler in obj.GetComponentsInChildren<IPauseHandler>())

@@ -38,7 +38,7 @@ namespace Infrastructure.Services.SaveLoad
             => PlayerPrefs.GetString(SettingsKey)?.ToDeserialized<SettingsData>();
 
 
-        public void CleanUp()
-            => PlayerPrefs.DeleteAll();
+        public void CleanUpProgress()
+            => PlayerPrefs.DeleteKey(ProgressKey);
     }
 }

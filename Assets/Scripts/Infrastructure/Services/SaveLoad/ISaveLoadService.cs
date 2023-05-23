@@ -8,7 +8,7 @@ namespace Infrastructure.Services.SaveLoad
         void SaveProgress();
         PlayerProgress LoadProgress();
 
-        void CleanUp();
+        void CleanUpProgress();
         SettingsData LoadSettings();
         void SaveSettings(SettingsData settingsData);
     }

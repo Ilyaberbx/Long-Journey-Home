@@ -1,36 +1,27 @@
 using System;
-using System.Collections;
-using Infrastructure.Interfaces;
-using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 namespace Infrastructure.Services.SceneManagement
 {
     public class SceneLoader : ISceneLoader
     {
-        private ICoroutineRunner _coroutineRunner;
-
-        public void Init(ICoroutineRunner coroutineRunner) 
-            => _coroutineRunner = coroutineRunner;
-
-        public void Load(string name, Action onLoaded = null)
-        => _coroutineRunner.StartCoroutine(LoadScene(name,onLoaded));
-
-        private IEnumerator LoadScene(string name, Action onLoaded = null)
+        public async void Load(string name, Action onLoaded = null)
         {
             if (SceneManager.GetActiveScene().name == name)
             {
                 onLoaded?.Invoke();
-                yield break;
+                return;
             }
 
+            AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(name, LoadSceneMode.Single);
 
-            AsyncOperation wait = SceneManager.LoadSceneAsync(name);
-
-            while (!wait.isDone)
-              yield return null;
+            await handle.Task;
 
             onLoaded?.Invoke();
         }
+        
     }
 }

@@ -1,8 +1,10 @@
-﻿using Infrastructure.Interfaces;
+﻿using Extensions;
+using Infrastructure.Interfaces;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Settings;
 using Infrastructure.Services.Settings.Screen;
+using UnityEngine;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -41,13 +43,22 @@ namespace Infrastructure.StateMachine.State
         {
             SettingsData settings = new SettingsData();
             settings.Mouse.Sensitivity = 100;
-            settings.Audio.GlobalVolume = 100;
-            settings.Audio.SoundsVolume = 100;
-            settings.Audio.MusicVolume = 100;
-            settings.Quality.QualityIndex = 3;
+            settings.Audio.GlobalVolume = -20;
+            settings.Audio.SoundsVolume = -20;
+            settings.Audio.MusicVolume = -20;
+            settings.Quality.QualityIndex = 2;
             settings.Screen.IsFullScreen = true;
-            settings.Screen.Resolution = new ResolutionData(1000, 500);
+            settings.Screen.CurrentResolution = new ResolutionData(1920, 1080);
+            CollectAllResolutions(settings);
             return settings;
+        }
+
+        private void CollectAllResolutions(SettingsData settings)
+        {
+            settings.Screen.AvaliableResolutions = new ResolutionData[Screen.resolutions.Length];
+            
+            for (int i = 0; i < Screen.resolutions.Length; i++)
+                settings.Screen.AvaliableResolutions[i] = Screen.resolutions[i].AsResolutionData();
         }
 
         private void LoadProgressOrInitNew() 

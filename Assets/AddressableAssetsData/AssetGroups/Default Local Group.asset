@@ -17,52 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f0896bb49c48300489d097ad597504a3
   m_SerializeEntries:
-  - m_GUID: b4f0a11638883314b84413c51bc7b422
-    m_Address: Bear
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 266652bb2f82f8d4789c8feb78e4a798
-    m_Address: Wolf
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6e57971f17afde64bb2e06552fe1ecac
-    m_Address: LootSpawnPoint
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8bf91d0dd341fa844b9981766ecd88c0
-    m_Address: EnemySpawnPoint
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 20f50d4fa8df3cd49bbdafa05adb0228
-    m_Address: Hud
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b08dbbd78d526ad4e8aee01e14881676
-    m_Address: Player
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5d06aa919462659408f6a29ffe22dae0
-    m_Address: UIRoot
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6109d2cac8d44cb4785f29d4bda9d0bb
-    m_Address: InventoryWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 96b76b9a7a9f27947a54018f309a140b
-    m_Address: MenuWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d8438bab9f9ba994ea18e4d016cd3861
-    m_Address: SettingsWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 026a62b29448d6f49be708a6738326dc
-    m_Address: PauseWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9117d76756ebd6f48a16abaf22cf0848
-    m_Address: GlobalMixer
+  - m_GUID: 180b430dad7fc2848aa85f8fe5592121
+    m_Address: NextLevel
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

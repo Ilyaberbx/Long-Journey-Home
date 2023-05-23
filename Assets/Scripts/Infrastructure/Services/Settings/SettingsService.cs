@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Extensions;
 using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.Settings.Screen;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -9,40 +9,39 @@ namespace Infrastructure.Services.Settings
     public class SettingsService : ISettingsService
     {
         private const string GlobalMixer = "GlobalMixer";
-        private const string MusicMixer = "MusicMixer";
-        private const string SoundsMixer = "SoundsMixer";
-        private const string MasterKey = "Master";
+        private const string MasterKey = "MasterVolume";
+        private const string SoundKey = "SoundVolume";
+        private const string MusicKey = "MusicVolume";
         private readonly IAssetProvider _assetProvider;
         public SettingsData SettingsData { get; set; }
         private AudioMixer _audioMixer;
 
-        public SettingsService(IAssetProvider assetProvider) 
+        public SettingsService(IAssetProvider assetProvider)
             => _assetProvider = assetProvider;
 
         public async Task Init()
         {
             _audioMixer = await _assetProvider.Load<AudioMixer>(GlobalMixer);
-            RefreshQuality();
-            RefreshScreen();
-            SetGlobalVolume(-50);
-            SetSensitivity(1000);
-            SetQuality(0);
+            Debug.Log(_audioMixer);
+            RefreshAllSettings();
         }
 
         public void SetMusicVolume(int value)
         {
             SettingsData.Audio.MusicVolume = value;
+            RefreshMusicVolume();
         }
 
         public void SetSoundVolume(int value)
         {
             SettingsData.Audio.SoundsVolume = value;
+            RefreshSoundsVolume();
         }
 
         public void SetGlobalVolume(int value)
         {
             SettingsData.Audio.GlobalVolume = value;
-            _audioMixer.SetFloat(MasterKey, value);
+            RefreshGlobalVolume();
         }
 
         public void SetQuality(int index)
@@ -51,9 +50,9 @@ namespace Infrastructure.Services.Settings
             RefreshQuality();
         }
 
-        public void SetResolution(Resolution resolution)
+        public void SetResolution(ResolutionData resolution)
         {
-            SettingsData.Screen.Resolution = resolution.AsResolutionData();
+            SettingsData.Screen.CurrentResolution = resolution;
             RefreshScreen();
         }
 
@@ -64,25 +63,41 @@ namespace Infrastructure.Services.Settings
         }
 
         public void SetSensitivity(int value)
+            => SettingsData.Mouse.Sensitivity = value;
+
+        private void RefreshSoundsVolume() 
+            => _audioMixer.SetFloat(SoundKey, SettingsData.Audio.SoundsVolume);
+
+        private void RefreshGlobalVolume()
         {
-            SettingsData.Mouse.Sensitivity = value;
-            
+            Debug.Log("Refresh");
+            _audioMixer.SetFloat(MasterKey, SettingsData.Audio.GlobalVolume);
         }
 
+        private void RefreshMusicVolume() 
+            => _audioMixer.SetFloat(MusicKey, SettingsData.Audio.MusicVolume);
 
-        private void RefreshQuality() 
+
+        private void RefreshQuality()
             => QualitySettings.SetQualityLevel(SettingsData.Quality.QualityIndex);
 
         private void RefreshScreen()
         {
-            int width = SettingsData.Screen.Resolution.Width;
-            int height = SettingsData.Screen.Resolution.Width;
+            int width = SettingsData.Screen.CurrentResolution.Width;
+            int height = SettingsData.Screen.CurrentResolution.Width;
             bool isFullScreen = SettingsData.Screen.IsFullScreen;
-            
+
             UnityEngine.Screen.SetResolution(width, height,
                 isFullScreen);
-            
-            Debug.Log(UnityEngine.Screen.currentResolution);
+        }
+
+        private void RefreshAllSettings()
+        {
+            RefreshScreen();
+            RefreshQuality();
+            RefreshGlobalVolume();
+            RefreshMusicVolume();
+            RefreshSoundsVolume();
         }
     }
 }

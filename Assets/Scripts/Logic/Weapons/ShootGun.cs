@@ -159,12 +159,11 @@ namespace Logic.Weapons
                     _ammoItemData.ApplyHit(health);
                 else
                     ShowHitMark(hit);
-
             }
         }
 
         private void ShowHitMark(RaycastHit hit) 
-            => Instantiate(_hitMarkFx, hit.point + hit.normal * .01f, Quaternion.FromToRotation(Vector3.right, hit.normal));
+            => Instantiate(_hitMarkFx, hit.point + hit.normal * .01f, Quaternion.FromToRotation(Vector3.forward, hit.normal));
 
         private bool IsDamagable(RaycastHit hit, out IHealth health) 
             => hit.transform.gameObject.TryGetComponent(out health);

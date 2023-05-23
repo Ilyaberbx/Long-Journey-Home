@@ -6,6 +6,7 @@ namespace Infrastructure.Services.Settings.Screen
     public class ScreenData
     {
         public bool IsFullScreen;
-        public ResolutionData Resolution;
+        public ResolutionData CurrentResolution;
+        public ResolutionData[] AvaliableResolutions;
     }
 }

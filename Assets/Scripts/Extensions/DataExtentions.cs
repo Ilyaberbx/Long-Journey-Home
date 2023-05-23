@@ -15,6 +15,9 @@ namespace Extensions
         public static ResolutionData AsResolutionData(this Resolution resolution) 
             => new ResolutionData(resolution.width, resolution.height);
 
+        public static bool IsSameResolution(this ResolutionData firstResolution, ResolutionData secondResolution) 
+            => firstResolution.Width == secondResolution.Width && firstResolution.Height == secondResolution.Height;
+
         public static Resolution AsUnityResolution(this ResolutionData resolutionData)
         {
             Resolution resolution = new Resolution

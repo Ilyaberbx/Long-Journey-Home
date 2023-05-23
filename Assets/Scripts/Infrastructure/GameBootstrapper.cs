@@ -1,6 +1,5 @@
 ﻿using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
-using Infrastructure.Services.SceneManagement;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using UnityEngine;
@@ -13,14 +12,12 @@ namespace Infrastructure
     {
         private IStateFactory _stateFactory;
         private IGameStateMachine _stateMachine;
-        private ISceneLoader _sceneLoader;
 
         [Inject]
-        public void Construct(IStateFactory stateFactory,IGameStateMachine stateMachine,ISceneLoader sceneLoader)
+        public void Construct(IStateFactory stateFactory,IGameStateMachine stateMachine)
         {
             _stateFactory = stateFactory;
             _stateMachine = stateMachine;
-            _sceneLoader = sceneLoader;
         }
         private void Awake() 
             => StartGame();
@@ -32,8 +29,7 @@ namespace Infrastructure
             _stateFactory.Create(_stateMachine, typeof(LoadMainMenuState));
             _stateFactory.Create(_stateMachine, typeof(LoadLevelState));
             _stateFactory.Create(_stateMachine, typeof(GameLoopState));
-
-            _sceneLoader.Init(this);
+            
             _stateMachine.Enter<BootstrapState>();
             
             DontDestroyOnLoad(this);

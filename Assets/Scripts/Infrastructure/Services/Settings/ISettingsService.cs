@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using Infrastructure.Services.Settings.Screen;
 using Task = System.Threading.Tasks.Task;
 
 namespace Infrastructure.Services.Settings
@@ -10,7 +10,7 @@ namespace Infrastructure.Services.Settings
         void SetSoundVolume(int value);
         void SetGlobalVolume(int value);
         void SetQuality(int index);
-        void SetResolution(Resolution resolution);
+        void SetResolution(ResolutionData resolution);
         void SetFullScreen(bool isFullScreen);
         void SetSensitivity(int value);
         Task Init();

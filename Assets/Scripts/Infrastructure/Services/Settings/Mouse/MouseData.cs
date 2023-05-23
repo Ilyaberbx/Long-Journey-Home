@@ -6,6 +6,5 @@ namespace Infrastructure.Services.Settings.Mouse
     public class MouseData
     {
          public float Sensitivity;
-         public Action OnSensitivityChanged;
     }
 }

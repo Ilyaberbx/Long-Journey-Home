@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Infrastructure.Services.AssetManagement
 {
-    public class AssetProvider : IAssetProvider
+    public class  AssetProvider : IAssetProvider
     {
         private readonly Dictionary<string, AsyncOperationHandle> _completedCache =
             new Dictionary<string, AsyncOperationHandle>();
@@ -21,7 +21,7 @@ namespace Infrastructure.Services.AssetManagement
 
         public async Task<T> Load<T>(AssetReference assetReference) where T : class
         {
-            var key = assetReference.AssetGUID;
+            string key = assetReference.AssetGUID;
 
             if (_completedCache.TryGetValue(key, out AsyncOperationHandle completedHandle))
                 return completedHandle.Result as T;
