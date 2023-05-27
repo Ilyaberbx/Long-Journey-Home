@@ -279,6 +279,10 @@ MonoBehaviour:
   _health: {fileID: 7260139725395528708}
   _mover: {fileID: 3401435002938043442}
   _attack: {fileID: 704864929059702421}
+  _windowOpener: {fileID: 588288202585052698}
+  _pauser: {fileID: 9164556016384416313}
+  _freeze: {fileID: 4568631829993806250}
+  _itemPicker: {fileID: 8245475930465937468}
 --- !u!114 &7307701248841367871
 MonoBehaviour:
   m_ObjectHideFlags: 0

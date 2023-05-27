@@ -7,6 +7,7 @@ namespace Infrastructure.Services.Input
         private const string HorizontalConst = "Horizontal";
         private const string VerticalConst = "Vertical";
         private const string MouseXConst = "Mouse X";
+        private const string MouseYConst = "Mouse Y";
 
         public float Horizontal
             => UnityEngine.Input.GetAxisRaw(HorizontalConst);
@@ -16,6 +17,9 @@ namespace Infrastructure.Services.Input
 
         public float MouseX
             => UnityEngine.Input.GetAxisRaw(MouseXConst);
+
+        public float MouseY 
+            => UnityEngine.Input.GetAxisRaw(MouseYConst);
 
         public bool IsAttackButtonPressed()
             => UnityEngine.Input.GetMouseButtonDown(0);

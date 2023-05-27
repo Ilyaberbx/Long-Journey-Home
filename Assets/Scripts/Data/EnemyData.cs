@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace StaticData
+namespace Data
 {
     [CreateAssetMenu(fileName = "EnemyData", menuName = "Enemy", order = 0)]
     public class EnemyData : ScriptableObject

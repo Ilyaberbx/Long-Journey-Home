@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.SceneManagement;
@@ -14,7 +15,8 @@ namespace Infrastructure.StateMachine.State
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticData;
 
-        public BootstrapState(IGameStateMachine stateMachine,ISceneLoader sceneLoader,IAssetProvider assetProvider,IStaticDataService staticData)
+        public BootstrapState(IGameStateMachine stateMachine, ISceneLoader sceneLoader, IAssetProvider assetProvider,
+            IStaticDataService staticData)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -22,22 +24,23 @@ namespace Infrastructure.StateMachine.State
             _staticData = staticData;
         }
 
-        public void Enter()
-        { 
-            PreWarmUp();
+        public async void Enter()
+        {
+            await PreWarmUp();
             _sceneLoader.Load(Initial, EnterLoadLevel);
         }
 
-        private void PreWarmUp()
+        public void Exit()
         {
-            _assetProvider.Initialize();
-            _staticData.Load();
         }
 
-        public void Exit() {}
-        
-        private void EnterLoadLevel() 
-            => _stateMachine.Enter<LoadProgressState>();
+        private async Task PreWarmUp()
+        {
+            _assetProvider.Initialize();
+            await _staticData.Load();
+        }
 
+        private void EnterLoadLevel()
+            => _stateMachine.Enter<LoadProgressState>();
     }
 }

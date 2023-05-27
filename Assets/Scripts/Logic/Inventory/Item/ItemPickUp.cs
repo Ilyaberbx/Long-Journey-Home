@@ -7,8 +7,6 @@ namespace Logic.Inventory.Item
     public class ItemPickUp : MonoBehaviour, IInteractable
     {
         public event Action OnPickedUp;
-        public ItemData Data => _itemData;
-        
         [SerializeField] private int _quantity;
         [SerializeField] private ItemData _itemData;
         [SerializeField] private string _interactText;

@@ -1,74 +1,67 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using System.Threading.Tasks;
 using Data;
+using Infrastructure.Services.AssetManagement;
 using Logic.Enemy;
-using Logic.Inventory.Item;
-using StaticData;
 using UI.Services.Window;
 
 namespace Infrastructure.Services.StaticData
 {
     public class StaticDataService : IStaticDataService
     {
-        private const string EnemyStaticDataPath = "StaticData/Enemies";
-        private const string LevelStaticDataPath = "StaticData/Levels";
-        private const string WindowsStaticDataPath = "StaticData/UI/WindowsData";
-        private const string ItemsPickUpDataPath = "StaticData/ItemsPickUp";
+        private const string EnemyStaticDataGroupAddress = "EnemiesStaticData";
+        private const string LevelStaticDataGroupAddress = "LevelStaticData";
+        private const string WindowsStaticDataAddress = "WindowsData";
         private Dictionary<EnemyType, EnemyData> _enemies;
         private Dictionary<string, LevelData> _levels;
         private Dictionary<WindowType, WindowConfig> _windows;
-        private Dictionary<ItemData, ItemPickUp> _pickUps;
+        private readonly IAssetProvider _assetProvider;
 
-        public void Load()
+        public StaticDataService(IAssetProvider assetProvider)
+            => _assetProvider = assetProvider;
+
+        public async Task Load()
         {
-            _enemies = LoadEnemiesData();
-            _levels = LoadLevelsData();
-            _windows = LoadWindowData();
-            _pickUps = LoadItemPickUps();
+            _enemies = await LoadEnemiesData();
+            _levels = await LoadLevelsData();
+            _windows = await LoadWindowData();
         }
-        
 
-        private Dictionary<ItemData, ItemPickUp> LoadItemPickUps() 
-            => Resources.
-                LoadAll<ItemPickUp>(ItemsPickUpDataPath)
-                .ToDictionary(x => x.Data, x => x);
 
-        private Dictionary<WindowType, WindowConfig> LoadWindowData() 
-            => Resources.Load<WindowsStaticData>(WindowsStaticDataPath)
-                .Configs.ToDictionary(x => x.Type, x => x);
-        
+        private async Task<Dictionary<WindowType, WindowConfig>> LoadWindowData()
+        {
+            WindowsStaticData handle = await _assetProvider.Load<WindowsStaticData>(WindowsStaticDataAddress);
+            return handle.Configs.ToDictionary(x => x.Type, x => x);
+        }
 
-        private Dictionary<string, LevelData> LoadLevelsData() 
-            => Resources.
-                LoadAll<LevelData>(LevelStaticDataPath)
-                .ToDictionary(x => x.LevelKey, x => x);
 
-        private Dictionary<EnemyType, EnemyData> LoadEnemiesData() =>
-            Resources.
-                LoadAll<EnemyData>(EnemyStaticDataPath)
-                .ToDictionary(x => x.Type, x => x);
-        
-        public EnemyData GetEnemyDataByType(EnemyType type) 
-            => _enemies.TryGetValue(type, out EnemyData data) 
-                ? data 
-                : null;
-        
+        private async Task<Dictionary<string, LevelData>> LoadLevelsData()
+        {
+            IList<LevelData> handle = await _assetProvider.LoadAll<LevelData>(LevelStaticDataGroupAddress);
+            return handle.ToDictionary(x => x.LevelKey, x => x);
+        }
 
-        public LevelData GetLevelData(string sceneKey) 
-            => _levels.TryGetValue(sceneKey, out LevelData data) 
-                ? data 
+        private async Task<Dictionary<EnemyType, EnemyData>> LoadEnemiesData()
+        {
+            IList<EnemyData> handle = await _assetProvider.LoadAll<EnemyData>(EnemyStaticDataGroupAddress);
+            return handle.ToDictionary(x => x.Type, x => x);
+        }
+
+        public EnemyData GetEnemyDataByType(EnemyType type)
+            => _enemies.TryGetValue(type, out EnemyData data)
+                ? data
                 : null;
 
-        public WindowConfig GetWindowData(WindowType windowType) 
-            => _windows.TryGetValue(windowType, out WindowConfig config) 
-                ? config 
+
+        public LevelData GetLevelData(string sceneKey)
+            => _levels.TryGetValue(sceneKey, out LevelData data)
+                ? data
                 : null;
 
-        public ItemPickUp GetPickUpByData(ItemData data) 
-            => _pickUps.TryGetValue(data, out ItemPickUp pickUp)
-                ? pickUp
+        public WindowConfig GetWindowData(WindowType windowType)
+            => _windows.TryGetValue(windowType, out WindowConfig config)
+                ? config
                 : null;
-        
     }
 }

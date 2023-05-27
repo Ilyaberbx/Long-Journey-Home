@@ -22,6 +22,9 @@ namespace Logic.Player
             => Look();
 
         private void Look() 
-            => transform.Rotate(Vector3.up * (_input.MouseX * _settings.SettingsData.Mouse.Sensitivity));
+            => transform.Rotate(HorizontalLook());
+
+        private Vector3 HorizontalLook() 
+            => Vector3.up * (_input.MouseX * _settings.SettingsData.Mouse.Sensitivity);
     }
 }

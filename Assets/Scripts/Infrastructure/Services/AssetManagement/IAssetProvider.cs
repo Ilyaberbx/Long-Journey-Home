@@ -1,7 +1,6 @@
-﻿using System.Threading.Tasks;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Audio;
 
 namespace Infrastructure.Services.AssetManagement
 {
@@ -11,5 +10,6 @@ namespace Infrastructure.Services.AssetManagement
         void CleanUp();
         Task<T> Load<T>(string address) where T : class;
         void Initialize();
+        Task<IList<T>> LoadAll<T>(string address) where T : class;
     }
 }

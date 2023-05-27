@@ -5,6 +5,7 @@ namespace Infrastructure.Services.Input
         public float Horizontal { get; }
         public float Vertical { get; }
         public float MouseX { get; }
+        public float MouseY { get; }
         bool IsAttackButtonPressed();
         bool IsInteractButtonPressed();
         bool IsInventoryButtonPressed();

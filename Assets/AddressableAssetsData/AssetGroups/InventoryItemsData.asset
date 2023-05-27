@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: InventoryItemsData
+  m_EditorClassIdentifier: 
+  m_GroupName: InventoryItemsData
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 85dfe7d5da3fdfc47ad1027d275bdb78
+  m_SerializeEntries:
+  - m_GUID: 72c842aeea02de840b9a737c7a0746b0
+    m_Address: ShootGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc45d1f53c382084ba1e9521a8b1afee
+    m_Address: ShotGunAmmo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 91cb99cb20ed0c44f876b8ddddd300a4
+    m_Address: Oil
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1a169c95a18618649ba1f966e6df29b5
+    m_Address: Axe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f4953665e5434b04aa31121a61c22cfd
+    m_Address: Lamp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: dd3b7074f5bb5014dbf2e9c639f39490, type: 2}
+    - {fileID: 11400000, guid: ca450191ed4ba634eafc74d80c26f1b5, type: 2}

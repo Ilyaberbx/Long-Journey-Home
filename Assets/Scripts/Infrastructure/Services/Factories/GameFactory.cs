@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Data;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
@@ -11,7 +12,6 @@ using Logic.Inventory.Item;
 using Logic.Player;
 using Logic.Spawners;
 using Logic.Weapons;
-using StaticData;
 using UI.Elements;
 using UI.Services.Window;
 using UnityEngine;

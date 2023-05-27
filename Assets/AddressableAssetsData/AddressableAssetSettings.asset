@@ -49,6 +49,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8343a18a4706e6743aa1f6c14d9a1007, type: 2}
   - {fileID: 11400000, guid: c7299a06effc0cf46a8eca1d1aa0082c, type: 2}
   - {fileID: 11400000, guid: d19eb999dd262df4b94ea961bb04ccd4, type: 2}
+  - {fileID: 11400000, guid: 56db79c775e154d4896a5551db5859de, type: 2}
+  - {fileID: 11400000, guid: 8c6a5dfbb7187704bb582921af5c0363, type: 2}
+  - {fileID: 11400000, guid: aacd75bdd744c504d80f6cbdf6ad869b, type: 2}
+  - {fileID: 11400000, guid: b6ccde45c64e6fe41a385354c8320a4b, type: 2}
+  - {fileID: 11400000, guid: 173bdfa21cbfb484e91569f4c011c9f8, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -90,6 +95,8 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - LevelStaticData
+    - EnemiesStaticData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 998bd4a3db049c941a098fc44fa03beb, type: 2}

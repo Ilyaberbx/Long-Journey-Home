@@ -39,6 +39,17 @@ namespace Infrastructure.Services.AssetManagement
 
             return await RunWithCacheOnComplete(handle, address);
         }
+        
+        public async Task<IList<T>> LoadAll<T>(string label) where T : class
+        {
+            if (_completedCache.TryGetValue(label, out AsyncOperationHandle completedHandle))
+                return completedHandle.Result as IList<T>;
+
+            AsyncOperationHandle<IList<T>> handle = Addressables.LoadAssetsAsync<T>(label, null);
+
+            return await RunWithAllCacheOnComplete(handle, label);
+        }
+
 
         public void CleanUp()
         {
@@ -53,6 +64,15 @@ namespace Infrastructure.Services.AssetManagement
         }
 
         private async Task<T> RunWithCacheOnComplete<T>(AsyncOperationHandle<T> handle, string key) where T : class
+        {
+            handle.Completed += completeHandle
+                => _completedCache[key] = completeHandle;
+
+            AddHandle(key, handle);
+
+            return await handle.Task;
+        }
+        private async Task<IList<T>> RunWithAllCacheOnComplete<T>(AsyncOperationHandle<IList<T>> handle, string key) where T : class
         {
             handle.Completed += completeHandle
                 => _completedCache[key] = completeHandle;
