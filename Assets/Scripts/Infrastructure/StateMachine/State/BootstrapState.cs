@@ -3,7 +3,6 @@ using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.StaticData;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -36,7 +35,7 @@ namespace Infrastructure.StateMachine.State
 
         private async Task PreWarmUp()
         {
-            _assetProvider.Initialize();
+            await _assetProvider.Initialize();
             await _staticData.Load();
         }
 

@@ -5,6 +5,7 @@ using Data;
 using Infrastructure.Services.AssetManagement;
 using Logic.Enemy;
 using UI.Services.Window;
+using UnityEngine;
 
 namespace Infrastructure.Services.StaticData
 {
@@ -27,8 +28,7 @@ namespace Infrastructure.Services.StaticData
             _levels = await LoadLevelsData();
             _windows = await LoadWindowData();
         }
-
-
+        
         private async Task<Dictionary<WindowType, WindowConfig>> LoadWindowData()
         {
             WindowsStaticData handle = await _assetProvider.Load<WindowsStaticData>(WindowsStaticDataAddress);
@@ -55,9 +55,15 @@ namespace Infrastructure.Services.StaticData
 
 
         public LevelData GetLevelData(string sceneKey)
-            => _levels.TryGetValue(sceneKey, out LevelData data)
+        {
+            foreach (KeyValuePair<string, LevelData> pair in _levels)
+            {
+                Debug.Log(pair.Key + " x " + pair.Value);
+            }
+            return _levels.TryGetValue(sceneKey, out LevelData data)
                 ? data
                 : null;
+        }
 
         public WindowConfig GetWindowData(WindowType windowType)
             => _windows.TryGetValue(windowType, out WindowConfig config)

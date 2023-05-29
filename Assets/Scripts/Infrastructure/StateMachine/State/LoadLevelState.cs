@@ -8,7 +8,6 @@ using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SceneManagement;
-using Infrastructure.Services.Settings;
 using Infrastructure.Services.StaticData;
 using Logic;
 using Logic.Animations;
@@ -65,6 +64,7 @@ namespace Infrastructure.StateMachine.State
         private async void OnLoaded()
         {
             _persistentProgressService.PlayerProgress.IsFirstLoad = false;
+            SaveScene();
             _gameFactory.CreateContainerForCreatedObjects();
             await InitUIRoot();
             await InitGameWorld();
@@ -90,6 +90,10 @@ namespace Infrastructure.StateMachine.State
             InitPlayerInteractWithCamera(player, camera);
         }
 
+        private void SaveScene() =>
+            _persistentProgressService.PlayerProgress.WorldData.PositionOnLevel.Level =
+                CurrentLevelName();
+
         private CinemachineVirtualCamera InitCamera()
         {
             GameCamera inGameCamera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
@@ -109,14 +113,18 @@ namespace Infrastructure.StateMachine.State
                     enemySpawnerData.EnemyType);
 
             foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
+            {
                 await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id,
                     lootSpawnerData.Rotation, lootSpawnerData.Prefab);
+            }
         }
 
         private LevelData LevelData()
         {
-            string sceneKey = SceneManager.GetActiveScene().name;
+            string sceneKey = CurrentLevelName();
+            Debug.Log(sceneKey);
             LevelData levelData = _staticData.GetLevelData(sceneKey);
+            Debug.Log(levelData);
             return levelData;
         }
 
@@ -152,5 +160,8 @@ namespace Infrastructure.StateMachine.State
             GameCamerasChanger cameraChanger = Camera.main.GetComponentInParent<GameCamerasChanger>();
             return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, player, true);
         }
+
+        private string CurrentLevelName()
+            => SceneManager.GetActiveScene().name;
     }
 }

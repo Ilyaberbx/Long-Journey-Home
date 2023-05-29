@@ -50,6 +50,7 @@ MonoBehaviour:
   _hitMarkFx: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   _smokeFx: {fileID: 7121546122736076860, guid: b3904c21c47c82348a47200eedff3c86, type: 3}
   _sparksFx: {fileID: 7015866563140457361, guid: 36af283bdb6aa1e42a77c8e48739f9eb, type: 3}
+  _bloodFx: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
   _shootPoint: {fileID: 1658175611116794669}
   _ammoItemData: {fileID: 11400000, guid: cc45d1f53c382084ba1e9521a8b1afee, type: 2}
   _attackSpeed: 2

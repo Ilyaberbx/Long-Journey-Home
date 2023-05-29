@@ -8,6 +8,7 @@ using Logic.Inventory.Item;
 using Logic.Player;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Logic.Weapons
@@ -22,6 +23,7 @@ namespace Logic.Weapons
         [SerializeField] private ParticleSystem _hitMarkFx;
         [SerializeField] private ParticleSystem _smokeFx;
         [SerializeField] private ParticleSystem _sparksFx;
+        [SerializeField] private GameObject _bloodFx;
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private AmmoItemData _ammoItemData;
         [SerializeField] private float _attackSpeed;
@@ -155,12 +157,18 @@ namespace Logic.Weapons
                 
                 if (!IsHit(out hit)) continue;
 
-                if (IsDamagable(hit, out var health)) 
+                if (IsDamagable(hit, out var health))
+                {
                     _ammoItemData.ApplyHit(health);
+                    ShowBloodFx(hit);
+                }
                 else
                     ShowHitMark(hit);
             }
         }
+
+        private void ShowBloodFx(RaycastHit hit)
+            => Instantiate(_bloodFx, hit.point + hit.normal, Quaternion.FromToRotation(Vector3.forward, hit.normal),hit.transform);
 
         private void ShowHitMark(RaycastHit hit) 
             => Instantiate(_hitMarkFx, hit.point + hit.normal * .01f, Quaternion.FromToRotation(Vector3.forward, hit.normal));

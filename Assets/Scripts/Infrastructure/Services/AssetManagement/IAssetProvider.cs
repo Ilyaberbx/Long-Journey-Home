@@ -9,7 +9,8 @@ namespace Infrastructure.Services.AssetManagement
         Task<T> Load<T>(AssetReference assetReference) where T : class;
         void CleanUp();
         Task<T> Load<T>(string address) where T : class;
-        void Initialize();
+        Task Initialize();
         Task<IList<T>> LoadAll<T>(string address) where T : class;
+        void CleanUpStatic();
     }
 }

@@ -39,6 +39,10 @@ namespace Infrastructure.StateMachine.State
             => _settingsService.SettingsData = _saveLoadService.LoadSettings() 
                                            ?? SettingsByDefault();
 
+        private void LoadProgressOrInitNew() 
+            => _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
+                                                 ?? _progressService.DefaultProgress();
+
         private SettingsData SettingsByDefault()
         {
             SettingsData settings = new SettingsData();
@@ -60,10 +64,6 @@ namespace Infrastructure.StateMachine.State
             for (int i = 0; i < Screen.resolutions.Length; i++)
                 settings.Screen.AvaliableResolutions[i] = Screen.resolutions[i].AsResolutionData();
         }
-
-        private void LoadProgressOrInitNew() 
-            => _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
-                                                 ?? _progressService.DefaultProgress();
     }
     
 }

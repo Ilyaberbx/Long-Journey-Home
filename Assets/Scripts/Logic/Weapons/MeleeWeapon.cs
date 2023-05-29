@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Logic.Weapons
 {
-    public class Axe : BaseEquippableItem, IWeapon
+    public class MeleeWeapon : BaseEquippableItem, IWeapon
     {
         private const string HittableLayerName = "Hittable";
 
@@ -15,7 +15,6 @@ namespace Logic.Weapons
         [SerializeField] private float _attackRadius;
         [SerializeField] private float _attackSpeed;
         [SerializeField] private GameObject _bloodFx;
-        [SerializeField] private float _offset;
 
         private readonly Collider[] _hits = new Collider[3];
         private IWeaponAnimator _animator;
@@ -40,7 +39,7 @@ namespace Logic.Weapons
             _animator.SetAnimatorSpeed(_attackSpeed);
             _isAttacking = true;
         }
-  
+
         public override void Appear()
         {
             _isAttacking = false;
@@ -65,8 +64,11 @@ namespace Logic.Weapons
 
         private void ShowFx(int index)
         {
-            Instantiate(_bloodFx.gameObject, _hits[index].attachedRigidbody.position + Vector3.up * _offset,
-                Quaternion.identity);
+            Vector3 position = transform.position;
+            Vector3 closestPoint = _hits[index].ClosestPoint(position);
+
+            Instantiate(_bloodFx.gameObject,closestPoint, Quaternion.LookRotation(-position),
+                _hits[index].transform.parent);
         }
 
         private int Hit()
