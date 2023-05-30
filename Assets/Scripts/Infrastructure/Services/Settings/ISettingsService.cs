@@ -12,7 +12,7 @@ namespace Infrastructure.Services.Settings
         void SetQuality(int index);
         void SetResolution(ResolutionData resolution);
         void SetFullScreen(bool isFullScreen);
-        void SetSensitivity(int value);
+        void SetSensitivity(float value);
         Task Init();
     }
 }

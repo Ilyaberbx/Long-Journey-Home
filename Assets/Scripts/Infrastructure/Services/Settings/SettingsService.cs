@@ -62,7 +62,7 @@ namespace Infrastructure.Services.Settings
             RefreshScreen();
         }
 
-        public void SetSensitivity(int value)
+        public void SetSensitivity(float value)
             => SettingsData.Mouse.Sensitivity = value;
 
         private void RefreshSoundsVolume() 

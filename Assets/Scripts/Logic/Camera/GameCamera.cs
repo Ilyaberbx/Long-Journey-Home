@@ -22,17 +22,15 @@ namespace Logic.Camera
         {
             Camera = GetComponent<CinemachineVirtualCamera>();
             _pov = Camera.GetCinemachineComponent<CinemachinePOV>();
+            ApplySensitivity();
         }
-
-        private void Update() 
-            => ApplySensitivity();
-
+        
         private void ApplySensitivity()
         {
-            _pov.m_HorizontalAxis.Value *=
+            _pov.m_HorizontalAxis.m_MaxSpeed =
                 _settings.Mouse.Sensitivity;
             
-            _pov.m_VerticalAxis.Value *=
+            _pov.m_VerticalAxis.m_MaxSpeed =
                 _settings.Mouse.Sensitivity;
         }
     }

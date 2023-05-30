@@ -36,7 +36,7 @@ namespace Logic.Enemy
             _health.OnHealthChanged -= HealthChanged;
             _attack.enabled = false;
             _aggro.enabled = false;
-            _agent.enabled = false;
+            _agent.Stop();
             _animator.PlayDeath();
             StartCoroutine(DestroyingRoutine());
 
@@ -47,7 +47,7 @@ namespace Logic.Enemy
         {
             yield return new WaitForSeconds(_delayBeforeDestroy);
 
-            var sequence = DOTween.Sequence();
+            Sequence sequence = DOTween.Sequence();
             sequence.AppendCallback(InstantiateDeathFX);
             sequence.Append(Disappear());
             sequence.AppendCallback(DestroyObject);

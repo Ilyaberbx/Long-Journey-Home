@@ -54,11 +54,8 @@ namespace UI.Settings
             _saveLoadService.SaveSettings(_settingsService.SettingsData);
         }
 
-        private void SetSensitivity(float value)
-        {
-            int valueToInt = RoundToInt(value);
-            _settingsService.SetSensitivity(valueToInt);
-        }
+        private void SetSensitivity(float value) 
+            => _settingsService.SetSensitivity(value);
 
         private void SetSoundsVolume(float value)
         {

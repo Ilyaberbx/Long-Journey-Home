@@ -20,8 +20,15 @@ namespace Logic.Enemy
                 _agent.destination = _agent.transform.position;
         }
 
+        public void Stop()
+        {
+            _agent.destination = transform.position;
+            _agent.isStopped = true;
+            enabled = false;
+        }
         private bool Initialized()
             => _playerTransform != null;
+        
 
         private bool HeroNotTouched()
             => Vector3.Distance(_agent.transform.position, _playerTransform.position) >= _minimalDistance;
