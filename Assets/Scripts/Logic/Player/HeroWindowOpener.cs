@@ -12,6 +12,7 @@ namespace Logic.Player
 {
     public class HeroWindowOpener : MonoBehaviour, IPauseHandler
     {
+        [SerializeField] private HeroCutsSceneProcessor _heroCutScene;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroLook _look;
         [SerializeField] private HeroCameraHolder _heroCamera;
@@ -32,16 +33,19 @@ namespace Logic.Player
 
         private async void Update()
         {
-            if (IsPaused())
+            if (IsPaused() || _heroCutScene.IsCutSceneActive)
                 return;
 
-            if (_input.IsInventoryButtonPressed())
-            {
-                if (_currentWindow is InventoryWindow)
-                    return;
+            if (_input.IsInventoryButtonPressed()) 
+                await OpenInventoryWindow();
+        }
 
-                _currentWindow = await OpenWindow(WindowType.Inventory);
-            }
+        private async Task OpenInventoryWindow()
+        {
+            if (_currentWindow is InventoryWindow)
+                return;
+
+            _currentWindow = await OpenWindow(WindowType.Inventory);
         }
 
         public async void HandlePause(bool isPaused)
@@ -57,9 +61,7 @@ namespace Logic.Player
         {
             CloseCurrentWindow();
             Cursor.lockState = CursorLockMode.Confined;
-            _heroCamera.ToggleCamera(false);
-            _look.enabled = false;
-            _attack.enabled = false;
+            ToggleHeroLook(false);
             _currentWindow = await _windowService.Open(type, WindowClosed);
             return _currentWindow;
         }
@@ -75,11 +77,20 @@ namespace Logic.Player
 
         private void WindowClosed()
         {
-            _look.enabled = true;
-            _attack.enabled = true;
-            _heroCamera.ToggleCamera(true);
             Cursor.lockState = CursorLockMode.Locked;
             _currentWindow = null;
+            
+            if(_heroCutScene.IsCutSceneActive)
+                return;
+            
+            ToggleHeroLook(true);
+        }
+
+        private void ToggleHeroLook(bool value)
+        {
+            _look.enabled = value;
+            _attack.enabled = value;
+            _heroCamera.ToggleCamera(value);
         }
     }
 }

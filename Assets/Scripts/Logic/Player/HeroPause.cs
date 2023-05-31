@@ -5,8 +5,10 @@ using Zenject;
 
 namespace Logic.Player
 {
-    public class HeroPauser : MonoBehaviour
+    public class HeroPause : MonoBehaviour,IPauseHandler
     {
+        [SerializeField] private HeroToggle _heroToggle;
+        [SerializeField] private HeroCutsSceneProcessor _heroCutsScene;
         private IPauseService _pause;
         private IInputService _input;
 
@@ -22,5 +24,16 @@ namespace Logic.Player
             if (_input.IsPauseButtonPressed()) 
                 _pause.SetPaused(true);
         }
+
+        public void HandlePause(bool isPaused)
+        {
+            if(IsInCutScene(isPaused))
+                return;
+            
+            _heroToggle.Toggle(!isPaused);
+        }
+
+        private bool IsInCutScene(bool isPaused) 
+            => !isPaused && _heroCutsScene.IsCutSceneActive;
     }
 }

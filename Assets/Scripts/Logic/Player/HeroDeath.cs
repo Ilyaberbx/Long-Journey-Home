@@ -1,5 +1,6 @@
 ﻿using Logic.Animations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Logic.Player
 {
@@ -10,7 +11,7 @@ namespace Logic.Player
         [SerializeField] private HeroMover _mover;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroWindowOpener _windowOpener;
-        [SerializeField] private HeroPauser _pauser;
+        [FormerlySerializedAs("_pauser")] [SerializeField] private HeroPause pause;
         [SerializeField] private HeroFreeze _freeze;
         [SerializeField] private HeroItemPicker _itemPicker;
         private ICameraAnimator _animator;
@@ -38,7 +39,7 @@ namespace Logic.Player
             _isDead = true;
             _mover.enabled = false;
             _attack.enabled = false;
-            _pauser.enabled = false;
+            pause.enabled = false;
             _freeze.enabled = false;
             _itemPicker.enabled = false;
             _windowOpener.enabled = false;

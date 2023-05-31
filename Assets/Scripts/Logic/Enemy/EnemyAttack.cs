@@ -12,8 +12,7 @@ namespace Logic.Enemy
     public class EnemyAttack : MonoBehaviour
     {
         private const string PlayerLayer = "Player";
-
-        [SerializeField] private AgentMoveToPlayer _agent;
+        
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
@@ -45,27 +44,18 @@ namespace Logic.Enemy
                 PerformAttack();
         }
 
-        public void DisableAttack()
-        {
-            _attackIsActive = false;
-            _agent.Continue();
-        }
+        public void DisableAttack() 
+            => _attackIsActive = false;
 
-        public void EnableAttack()
-        {
-            _attackIsActive = true;
-            _agent.Stop();
-        }
+        public void EnableAttack() 
+            => _attackIsActive = true;
 
         private void OnAttack()
         {
-            Debug.Log("OnAttack");
-            
             if (Hit(out Collider collider))
             {
-                var health = collider.transform.GetComponent<IHealth>();
+                IHealth health = collider.transform.GetComponent<IHealth>();
                 health.TakeDamage(_damage);
-                PhysicsDebug.DrawDebug(_checkPoint.Position, _checkPoint.Radius, 1f);
             }
         }
 
