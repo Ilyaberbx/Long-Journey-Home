@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: IntroRoad
   m_EditorClassIdentifier: 
   LevelKey: IntroRoad
-  EnemySpawners:
-  - Id: IntroRoad_de843bd7-b333-4bcb-b7e3-fddefc19fb0d
-    EnemyType: 1
-    Position: {x: -1227.5083, y: -0.000091552734, z: 1678.0491}
-  - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
-    EnemyType: 1
-    Position: {x: -1186.2083, y: -0.000091552734, z: 1876.649}
+  EnemySpawners: []
   LootSpawners: []
-  PlayerInitPoint: {x: -369.6, y: 83.9, z: 1851}
+  PlayerInitPoint: {x: -369.6, y: 40.8, z: 1851}
