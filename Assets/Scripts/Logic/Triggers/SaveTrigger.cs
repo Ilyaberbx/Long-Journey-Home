@@ -1,5 +1,7 @@
-﻿using Infrastructure.Services.SaveLoad;
-using Logic.Enemy;
+﻿using System.Collections.Generic;
+using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
+using Logic.Spawners;
 using UnityEngine;
 using Zenject;
 
@@ -7,27 +9,38 @@ namespace Logic.Triggers
 {
     public class SaveTrigger : MonoBehaviour
     {
-        [SerializeField] private TriggerObserver _triggerObserver;
+        [SerializeField] private UniqueId _idGiver;
         private bool _isSaved;
         private ISaveLoadService _saveLoadService;
+        private IPersistentProgressService _progressService;
 
         [Inject]
-        public void Construct(ISaveLoadService saveLoadService) 
-            => _saveLoadService = saveLoadService;
+        public void Construct(ISaveLoadService saveLoadService,IPersistentProgressService progressService)
+        {
+            _progressService = progressService;
+            _saveLoadService = saveLoadService;
+        }
 
         private void Awake()
-            => _triggerObserver.OnTriggerEntered += e => Save();
+            => _isSaved = SaveData().Contains(GetId());
 
-        private void OnDestroy()
-            => _triggerObserver.OnTriggerEntered -= e => Save();
+        private List<string> SaveData() 
+            => _progressService.PlayerProgress.SaveData.SaveList;
 
-        private void Save()
+        private void SetSaveData(string id)
+            => SaveData().Add(id);
+        private string GetId() 
+            => _idGiver.Id;
+
+        public void Save()
         {
             if (_isSaved) return;
 
-            Debug.Log("Save Trigger");
+            SetSaveData(_idGiver.Id);
             _saveLoadService.SaveProgress();
             _isSaved = true;
         }
+        
+        
     }
 }

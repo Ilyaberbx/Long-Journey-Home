@@ -16,8 +16,7 @@ namespace Infrastructure.Services.SceneManagement
                 return;
             }
 
-            AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(name, LoadSceneMode.Single);
-
+            AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(name);
             await handle.Task;
 
             onLoaded?.Invoke();

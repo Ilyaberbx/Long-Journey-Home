@@ -1,14 +1,12 @@
 ﻿using System;
 using Data;
 using DG.Tweening;
-using Infrastructure.Services.Factories;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using Logic.Inventory.Item;
 using Logic.Player;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Logic.Weapons
@@ -36,7 +34,6 @@ namespace Logic.Weapons
         private IInputService _input;
         private IPersistentProgressService _progressService;
         private InventoryData _inventoryData => _progressService.PlayerProgress.InventoryData;
-        private IGameFactory _gameFactory;
         private bool _isAttacking;
         private bool _isReloading;
         private int _ammoInMagazine;
@@ -66,10 +63,12 @@ namespace Logic.Weapons
                 Reload();
         }
 
-        private void OnDestroy()
+
+        public override void Hide()
         {
             _inventoryData.AddItem(_ammoItemData, _ammoInMagazine);
             OnDispose?.Invoke();
+            Destroy(gameObject);
         }
 
         public override void Appear()

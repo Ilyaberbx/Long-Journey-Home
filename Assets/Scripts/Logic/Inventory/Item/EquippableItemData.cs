@@ -8,7 +8,6 @@ namespace Logic.Inventory.Item
     [CreateAssetMenu(fileName = "Item", menuName = "Inventory/EquippableItem", order = 0)]
     public class EquippableItemData : ItemData, IItemAction
     {
-        public event Action OnDrop;
 
         [SerializeField] private BaseEquippableItem _itemPrefab;
         [SerializeField] private AudioClip _actionSfx;
@@ -19,9 +18,7 @@ namespace Logic.Inventory.Item
 
         public AudioClip ActionSfx => _actionSfx;
 
-
-        public void Drop()
-            => OnDrop?.Invoke();
+        
 
         public void PerformAction(GameObject character)
             => character.GetComponent<HeroEquiper>()

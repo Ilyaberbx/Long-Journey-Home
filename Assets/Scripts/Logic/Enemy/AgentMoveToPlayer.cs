@@ -24,7 +24,12 @@ namespace Logic.Enemy
         {
             _agent.destination = transform.position;
             _agent.isStopped = true;
-            enabled = false;
+        }
+
+        public void Continue()
+        {
+            _agent.destination = _playerTransform.position;
+            _agent.isStopped = false;
         }
         private bool Initialized()
             => _playerTransform != null;

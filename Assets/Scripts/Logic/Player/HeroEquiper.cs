@@ -13,6 +13,7 @@ namespace Logic.Player
         [SerializeField] private Transform _container;
         [SerializeField] private Transform _equipmentPoint;
         private EquippableItemData _equippedItemData;
+        private BaseEquippableItem _currentItem;
         private IGameFactory _gameFactory;
 
         [Inject]
@@ -27,12 +28,12 @@ namespace Logic.Player
             ClearUp();
 
             _equippedItemData = equippableItemData;
-            _equippedItemData.OnDrop += ClearUp;
 
             BaseEquippableItem equipment = _gameFactory.CreateEquippableItem(_equippedItemData.ItemPrefab, _equipmentPoint.position,_container);
 
-            equipment.transform.localScale = Vector3.zero;
-            equipment.Appear();
+            _currentItem = equipment;
+            _currentItem.transform.localScale = Vector3.zero;
+            _currentItem.Appear();
 
             if (equipment.TryGetComponent(out IWeapon weapon))
                 _attack.SetWeapon(weapon);
@@ -43,9 +44,7 @@ namespace Logic.Player
 
         private void ClearUp()
         {
-            foreach (Transform child in _container)
-                Destroy(child.gameObject);
-
+            _currentItem?.Hide();
             _attack.ClearUp();
         }
     }

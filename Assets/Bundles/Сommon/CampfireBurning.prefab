@@ -70,6 +70,8 @@ GameObject:
   - component: {fileID: 9015140918806812014}
   - component: {fileID: 9029014139487158522}
   - component: {fileID: 9029168616114486191}
+  - component: {fileID: 8588820321149687015}
+  - component: {fileID: 3769147454222425626}
   m_Layer: 0
   m_Name: CampfireBurning
   m_TagString: Untagged
@@ -167,11 +169,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2dbae78aa149439d2e6c33c40c26b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _saveTrigger: {fileID: 8588820321149687015}
   _healCoolDown: 0.05
   _healValue: 1
   _triggerObserver: {fileID: 9029014139058127577}
   _interactHintText: Toggle fire
   _fxContainer: {fileID: 9026257609175070680}
+--- !u!114 &8588820321149687015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029168616114486184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec3cf2dd33a4d88845eef4c76139ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _idGiver: {fileID: 3769147454222425626}
+--- !u!114 &3769147454222425626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029168616114486184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: CampfireBurning_c3db8c4c-4338-4de7-87d3-7d2a81f5f749
 --- !u!1 &9029168616240721144
 GameObject:
   m_ObjectHideFlags: 0

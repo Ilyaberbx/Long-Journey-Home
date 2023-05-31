@@ -33,6 +33,9 @@ namespace Logic.Weapons
             transform.DOScale(_cachedScale, 0.2f);
         }
 
+        public override void Hide() 
+            => Destroy(gameObject);
+
         private void Update()
         {
             _light.CurrentIntensity -= _lessValue;

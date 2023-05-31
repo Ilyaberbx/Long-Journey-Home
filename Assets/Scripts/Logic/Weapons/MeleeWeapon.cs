@@ -47,6 +47,9 @@ namespace Logic.Weapons
             transform.DOScale(_cachedScale, 0.2f);
         }
 
+        public override void Hide() 
+            => Destroy(gameObject);
+
         private void OnAttack()
         {
             for (int i = 0; i < Hit(); i++)

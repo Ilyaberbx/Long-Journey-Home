@@ -2,12 +2,14 @@
 using DG.Tweening;
 using Logic.Enemy;
 using Logic.Player;
+using Logic.Triggers;
 using UnityEngine;
 
 namespace Logic.Level
 {
     public class CampFire : MonoBehaviour, IInteractable
     {
+        [SerializeField] private SaveTrigger _saveTrigger;
         [SerializeField] private float _healCoolDown;
         [SerializeField] private int _healValue;
         [SerializeField] private TriggerObserver _triggerObserver;
@@ -28,6 +30,7 @@ namespace Logic.Level
             if (!player.TryGetComponent(out IHealth health) || !player.TryGetComponent(out IFreeze freeze)) return;
             
             _isFire = true;
+            _saveTrigger.Save();
             _healingRoutine = StartCoroutine(HealingRoutine(health, freeze));
         }
 

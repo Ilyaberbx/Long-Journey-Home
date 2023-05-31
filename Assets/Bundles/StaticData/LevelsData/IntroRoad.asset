@@ -14,38 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: IntroRoad
   EnemySpawners:
-  - Id: MainScene_f073497e-336f-4356-ae5f-c37acf377ab1
-    EnemyType: 0
-    Position: {x: 662, y: 14, z: 3567}
-  - Id: MainScene_b46cfd3c-baaf-4fca-8eb1-e32fa15142b8
-    EnemyType: 0
-    Position: {x: 856, y: 14, z: 3877}
-  - Id: MainScene_b95854a8-ee2f-4209-99a5-a3592321ee4e
+  - Id: IntroRoad_de843bd7-b333-4bcb-b7e3-fddefc19fb0d
     EnemyType: 1
-    Position: {x: 662, y: 14, z: 3877}
-  LootSpawners:
-  - Id: MainScene_57b4c623-54d0-453a-aaf4-b70a4fac7774
-    Prefab: {fileID: 5209323148249258876, guid: a0a89e2567d0bb34ca1cf521c5e4f5c8, type: 3}
-    Position: {x: 1621.1307, y: 5.699999, z: 3768.8}
-    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
-  - Id: MainScene_08ff4f11-fa26-47d9-8138-4924d50b8ab8
-    Prefab: {fileID: 7150283600269640286, guid: cbae169fc3ae8984082166a237e4cc37, type: 3}
-    Position: {x: 1502.8, y: 5.699999, z: 3722.6}
-    Rotation: {x: -0, y: -0, z: -0, w: 1}
-  - Id: IntroRoad_c7275637-1d85-4a7e-9e1e-2e8f065aface
-    Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
-    Position: {x: 1621.1307, y: 5.700001, z: 3727.3}
-    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
-  - Id: IntroRoad_7ae47bca-6b50-49c6-a5b6-7947761e6ad7
-    Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
-    Position: {x: 1653.1, y: 5.700001, z: 3727.3}
-    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
-  - Id: MainScene_2acdda32-9a85-46b9-8b6e-6898f0004ecb
-    Prefab: {fileID: 5180734948556888851, guid: d8bc3c64b31d0ca41a85628751f47790, type: 3}
-    Position: {x: 1502.8, y: 5.699999, z: 3654.7}
-    Rotation: {x: -0, y: -0, z: -0, w: 1}
-  - Id: IntroRoad_df643c62-8a6d-4db8-8aae-17a79c2e689d
-    Prefab: {fileID: 8267773133987680113, guid: 83f70ef1ddf59004bb825bce3fef46bb, type: 3}
-    Position: {x: 1588.4, y: 5.700001, z: 3659.5}
-    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
-  PlayerInitPoint: {x: 1590, y: 26.6, z: 3662}
+    Position: {x: -1227.5083, y: -0.000091552734, z: 1678.0491}
+  - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
+    EnemyType: 1
+    Position: {x: -1186.2083, y: -0.000091552734, z: 1876.649}
+  LootSpawners: []
+  PlayerInitPoint: {x: -369.6, y: 83.9, z: 1851}

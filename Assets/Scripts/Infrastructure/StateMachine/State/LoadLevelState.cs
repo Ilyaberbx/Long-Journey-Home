@@ -2,6 +2,7 @@
 using Cinemachine;
 using Data;
 using Enums;
+using Extensions;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.Pause;
@@ -33,11 +34,12 @@ namespace Infrastructure.StateMachine.State
         private readonly IStaticDataService _staticData;
         private readonly IUIFactory _uiFactory;
         private readonly IPauseService _pauseService;
+        private readonly ISaveLoadService _saveLoadService;
 
         public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
             LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService)
+            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService,ISaveLoadService saveLoadService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -47,12 +49,16 @@ namespace Infrastructure.StateMachine.State
             _staticData = staticData;
             _uiFactory = uiFactory;
             _pauseService = pauseService;
+            _saveLoadService = saveLoadService;
         }
 
         public async void Enter(string payLoad)
         {
             _gameFactory.CleanUp();
             _pauseService.CleanUp();
+            _persistentProgressService.PlayerProgress = _saveLoadService.LoadProgress() ?? _persistentProgressService.DefaultProgress();
+            
+            Debug.Log(_persistentProgressService.PlayerProgress.ToJson());
             await _gameFactory.WarmUp();
             _loadingCurtain.Show();
             _sceneLoader.Load(payLoad, OnLoaded);

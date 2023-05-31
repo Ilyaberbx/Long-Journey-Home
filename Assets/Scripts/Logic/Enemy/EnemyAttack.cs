@@ -13,6 +13,7 @@ namespace Logic.Enemy
     {
         private const string PlayerLayer = "Player";
 
+        [SerializeField] private AgentMoveToPlayer _agent;
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
@@ -45,10 +46,16 @@ namespace Logic.Enemy
         }
 
         public void DisableAttack()
-            => _attackIsActive = false;
+        {
+            _attackIsActive = false;
+            _agent.Continue();
+        }
 
         public void EnableAttack()
-            => _attackIsActive = true;
+        {
+            _attackIsActive = true;
+            _agent.Stop();
+        }
 
         private void OnAttack()
         {

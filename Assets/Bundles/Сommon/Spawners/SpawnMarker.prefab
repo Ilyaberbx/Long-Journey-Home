@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc39528e9884e4ca1851960c91338be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyType: 0
+  _indicatorColor: {r: 1, g: 0, b: 0, a: 1}
+  _enemyType: 1
 --- !u!114 &5387257290659867375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,4 +58,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: MainScene_4afa3ab6-9ff5-4b1d-83b1-1c3411c5bb5d
+  Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e

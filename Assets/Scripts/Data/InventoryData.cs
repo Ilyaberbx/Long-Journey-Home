@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Logic.Inventory.Item;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Data
 {
@@ -10,25 +11,24 @@ namespace Data
     public class InventoryData
     {
         public event Action OnStateChanged;
-
-        [SerializeField] private List<InventoryItem> _inventoryItems;
+        public List<InventoryItem> InventoryItems;
 
         public void Init(int size)
         {
-            _inventoryItems = new List<InventoryItem>();
+            InventoryItems = new List<InventoryItem>();
 
             for (int i = 0; i < size; i++)
-                _inventoryItems.Add(InventoryItem.GetEmptyItem());
+                InventoryItems.Add(InventoryItem.GetEmptyItem());
         }
 
         public int GetSize()
-            => _inventoryItems.Count;
+            => InventoryItems.Count;
 
         public int AddItem(ItemData itemData, int quantity)
         {
             if (!itemData.IsStackable)
             {
-                for (int i = 0; i < _inventoryItems.Count; i++)
+                for (int i = 0; i < InventoryItems.Count; i++)
                 {
                     while (quantity > 0 && !IsInventoryFull())
                         quantity -= AddToFirstSlot(itemData, 1);
@@ -45,35 +45,35 @@ namespace Data
         }
 
         public bool IsEmpty()
-            => _inventoryItems.All(item => item.IsEmpty);
+            => InventoryItems.All(item => item.IsEmpty);
 
         public Dictionary<int, InventoryItem> GetCurrentInventoryState()
         {
             Dictionary<int, InventoryItem> value = new Dictionary<int, InventoryItem>();
 
-            for (int i = 0; i < _inventoryItems.Count; i++)
+            for (int i = 0; i < InventoryItems.Count; i++)
             {
-                if (_inventoryItems[i].IsEmpty)
+                if (InventoryItems[i].IsEmpty)
                     continue;
 
-                value[i] = _inventoryItems[i];
+                value[i] = InventoryItems[i];
             }
 
             return value;
         }
 
         public InventoryItem GetItemByIndex(int index)
-            => _inventoryItems[index];
+            => InventoryItems[index];
 
 
         public bool HasItemById(int id)
         {
-            for (int i = 0; i < _inventoryItems.Count; i++)
+            for (int i = 0; i < InventoryItems.Count; i++)
             {
-                if (_inventoryItems[i].IsEmpty)
+                if (InventoryItems[i].IsEmpty)
                     continue;
                 
-                if (_inventoryItems[i].ItemData.Id == id)
+                if (InventoryItems[i].ItemData.Id == id)
                     return true;
             }
             return false;
@@ -81,15 +81,15 @@ namespace Data
         
         public bool TryRemoveItemById(int id, int amount)
         {
-            for (int i = 0; i < _inventoryItems.Count; i++)
+            for (int i = 0; i < InventoryItems.Count; i++)
             {
-                if (_inventoryItems[i].IsEmpty)
+                if (InventoryItems[i].IsEmpty)
                     continue;
 
-                if (_inventoryItems[i].ItemData.Id != id)
+                if (InventoryItems[i].ItemData.Id != id)
                     continue;
 
-                if (_inventoryItems[i].Quantity < amount)
+                if (InventoryItems[i].Quantity < amount)
                     continue;
 
                 RemoveItemByIndex(i, amount);
@@ -101,16 +101,16 @@ namespace Data
 
         public void RemoveItemByIndex(int index, int amount)
         {
-            if (_inventoryItems.Count > index)
+            if (InventoryItems.Count > index)
             {
-                if (_inventoryItems[index].IsEmpty) return;
+                if (InventoryItems[index].IsEmpty) return;
 
-                int reminder = _inventoryItems[index].Quantity - amount;
+                int reminder = InventoryItems[index].Quantity - amount;
 
                 if (reminder <= 0)
-                    _inventoryItems[index] = InventoryItem.GetEmptyItem();
+                    InventoryItems[index] = InventoryItem.GetEmptyItem();
                 else
-                    _inventoryItems[index] = _inventoryItems[index]
+                    InventoryItems[index] = InventoryItems[index]
                         .ChangeQuantity(reminder);
 
                 InformStateChanged();
@@ -126,11 +126,11 @@ namespace Data
                 Quantity = quantity
             };
 
-            for (int i = 0; i < _inventoryItems.Count; i++)
+            for (int i = 0; i < InventoryItems.Count; i++)
             {
-                if (!_inventoryItems[i].IsEmpty) continue;
+                if (!InventoryItems[i].IsEmpty) continue;
 
-                _inventoryItems[i] = newItem;
+                InventoryItems[i] = newItem;
                 return quantity;
             }
 
@@ -138,30 +138,30 @@ namespace Data
         }
 
         private bool IsInventoryFull()
-            => _inventoryItems.All(item => !item.IsEmpty);
+            => InventoryItems.All(item => !item.IsEmpty);
 
         private int AddStackableItem(ItemData itemData, int quantity)
         {
-            for (int i = 0; i < _inventoryItems.Count; i++)
+            for (int i = 0; i < InventoryItems.Count; i++)
             {
-                if (_inventoryItems[i].IsEmpty)
+                if (InventoryItems[i].IsEmpty)
                     continue;
 
-                if (_inventoryItems[i].ItemData.Id != itemData.Id)
+                if (InventoryItems[i].ItemData.Id != itemData.Id)
                     continue;
 
-                int amountPossibleToTake = _inventoryItems[i].ItemData.MaxStackSize - _inventoryItems[i].Quantity;
+                int amountPossibleToTake = InventoryItems[i].ItemData.MaxStackSize - InventoryItems[i].Quantity;
 
                 if (quantity > amountPossibleToTake)
                 {
-                    _inventoryItems[i] =
-                        _inventoryItems[i].ChangeQuantity(_inventoryItems[i].ItemData.MaxStackSize);
+                    InventoryItems[i] =
+                        InventoryItems[i].ChangeQuantity(InventoryItems[i].ItemData.MaxStackSize);
                     quantity -= amountPossibleToTake;
                 }
                 else
                 {
-                    _inventoryItems[i] =
-                        _inventoryItems[i].ChangeQuantity(_inventoryItems[i].Quantity + quantity);
+                    InventoryItems[i] =
+                        InventoryItems[i].ChangeQuantity(InventoryItems[i].Quantity + quantity);
                     InformStateChanged();
                     return 0;
                 }

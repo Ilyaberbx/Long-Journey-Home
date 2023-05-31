@@ -11,7 +11,7 @@ namespace Editor
         public static void RenderCustomGizmo(BaseMarker spawner, GizmoType type)
         {
             Gizmos.color = spawner.IndicatorColor;
-            Gizmos.DrawSphere(spawner.transform.position,3);
+            Gizmos.DrawSphere(spawner.transform.position,50);
             Gizmos.color = Color.white;
         }
     }
