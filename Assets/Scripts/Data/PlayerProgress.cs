@@ -11,6 +11,8 @@
         public PickUpLootData PickUpLootData;
         public FlashLightState FlashLightState;
         public InventoryData InventoryData;
+        public DialogueData DialogueData;
+        public CutSceneData CutSceneData;
         public bool IsFirstLoad = true;
 
         public PlayerProgress(string initialLevel)
@@ -22,6 +24,8 @@
             FreezeState = new FreezeState();
             InventoryData = new InventoryData();
             PickUpLootData = new PickUpLootData();
+            CutSceneData = new CutSceneData();
+            DialogueData = new DialogueData();
             SaveData = new SaveData();
         }
     }

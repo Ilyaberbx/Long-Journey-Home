@@ -8,6 +8,9 @@ namespace Logic.Player
 
     public class HeroCameraHolder : MonoBehaviour
     {
+        public Transform PovPoint => _povPoint;
+        public CinemachinePOV Camera => _cameraPov;
+        [SerializeField] private Transform _povPoint;
         private CinemachinePOV _cameraPov;
         private ISettingsService _settings;
 

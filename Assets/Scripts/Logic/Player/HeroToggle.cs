@@ -22,7 +22,7 @@ namespace Logic.Player
             _interactor.enabled = value;
             _itemPicker.enabled = value;
             _heroLight.enabled = value;
-            _heroFreeze.enabled = value;
+            _heroFreeze.enabled = value; 
             _heroLook.enabled = value;
             _cameraHolder.ToggleCamera(value);
         }

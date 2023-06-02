@@ -1,16 +1,35 @@
-﻿using Logic.Enemy;
+﻿using Infrastructure.Services.PersistentProgress;
+using Logic.Enemy;
+using Logic.Spawners;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.DialogueSystem
 {
     public class DialogueTrigger : MonoBehaviour
     {
+        [SerializeField] private UniqueId _uniqueId;
         [SerializeField] private Dialogue _dialogue;
         [SerializeField] private TriggerObserver _triggerObserver;
 
         private bool _isViewed;
-        private void Awake() 
-            => _triggerObserver.OnTriggerEntered += Trigger;
+        private IPersistentProgressService _progressService;
+
+        [Inject]
+        public void Construct(IPersistentProgressService progressService) 
+            => _progressService = progressService;
+
+        private void Awake()
+        {
+            _isViewed = IsPassed();
+            _triggerObserver.OnTriggerEntered += Trigger;
+        }
+
+        private bool IsPassed() 
+            => _progressService.PlayerProgress.DialogueData.Passed.Contains(_uniqueId.Id);
+
+        private void Pass()
+            => _progressService.PlayerProgress.DialogueData.Passed.Add(_uniqueId.Id);
 
         private void OnDestroy() 
             => _triggerObserver.OnTriggerEntered -= Trigger;
@@ -19,12 +38,11 @@ namespace Logic.DialogueSystem
         {
             if (_isViewed) return;
 
-            if (obj.TryGetComponent(out IDialogueActor actor))
-            {
-                actor.StartDialogue(_dialogue);
-                _isViewed = true;
-            }
-
+            if (!obj.TryGetComponent(out IDialogueActor actor)) return;
+            
+            actor.StartDialogue(_dialogue);
+            _isViewed = true;
+            Pass();
         }
     }
 }

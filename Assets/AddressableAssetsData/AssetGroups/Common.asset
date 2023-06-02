@@ -18,39 +18,39 @@ MonoBehaviour:
   m_GUID: a90def105d90c4846a83ca838848a301
   m_SerializeEntries:
   - m_GUID: 933532a4fcc9baf4fa0491de14d08ed7
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
+    m_Address: Lit
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader
+    m_Address: FallbackError
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 0c5a6f809c098af45968d9704b45f6f6
-    m_Address: Assets/Plugins/Magic VFX/Magic VFX - Ice (FREE)/Models/Materials/Glow_Ice_06.png
+    m_Address: Glow_Ice_06
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 86c6f42b8a49a4449b39bdbe4d27ffa2
-    m_Address: Assets/Bundles/Scenes/IntroRoad/Main Camera Profile.asset
+    m_Address: Main Camera Profile
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 46965f9cbaf525742a6da4c2172a99cd
-    m_Address: Packages/com.unity.cinemachine/Presets/Noise/Handheld_normal_mild.asset
+    m_Address: Handheld_normal_mild
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b218d35c8dc65164892039ea0aea3b4b
-    m_Address: Assets/Plugins/Lowpoly Style/Shared Materials and Textures/MAT_MAIN.mat
+    m_Address: MAT_MAIN
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 02d49609947026e41b35727959d37e2a
-    m_Address: Assets/Plugins/Lowpoly Style/Shared Materials and Textures/Main.psd
+    m_Address: Main
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 795ab1f41a8fd4142859110cee203fd7
-    m_Address: Assets/UnityTechnologies/EffectExamples/Misc Effects/Materials/SandSwirlsParticle.mat
+    m_Address: SandSwirlsParticle
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 1c1f5fdffb8c5a944a978e8debb8fdfe
-    m_Address: Assets/UnityTechnologies/EffectExamples/Shared/Textures/DustPuffSmallParticleSheet.png
+    m_Address: DustPuffSmallParticleSheet
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

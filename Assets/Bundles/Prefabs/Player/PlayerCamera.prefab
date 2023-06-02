@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4913069599347004015}
-  - component: {fileID: 4913069599347004010}
   - component: {fileID: 7960241259111024843}
   - component: {fileID: 4913069599347004006}
+  - component: {fileID: 4247840679344645203}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -34,19 +34,6 @@ Transform:
   m_Father: {fileID: 4913069599380653618}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4913069599347004010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4913069599347004009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraType: 0
 --- !u!114 &7960241259111024843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +86,19 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 86c6f42b8a49a4449b39bdbe4d27ffa2, type: 2}
+--- !u!114 &4247840679344645203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4913069599347004009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae641bad0b41caa1dd206074b24401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraType: 0
 --- !u!1 &4913069599347004012
 GameObject:
   m_ObjectHideFlags: 0

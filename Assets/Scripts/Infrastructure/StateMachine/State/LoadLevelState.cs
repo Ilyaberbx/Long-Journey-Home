@@ -163,8 +163,8 @@ namespace Infrastructure.StateMachine.State
 
         private GameCamera CameraFollowPlayer(Transform player)
         {
-            GameCamerasChanger cameraChanger = Camera.main.GetComponentInParent<GameCamerasChanger>();
-            return cameraChanger.ConstructCamera(GameCameraType.PlayerCamera, player, true);
+            GameCamerasChangerService cameraChangerService = Camera.main.GetComponentInParent<GameCamerasChangerService>();
+            return cameraChangerService.ConstructCamera(GameCameraType.PlayerCamera, player, true);
         }
 
         private string CurrentLevelName()

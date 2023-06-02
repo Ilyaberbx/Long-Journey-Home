@@ -2,6 +2,8 @@ namespace Enums
 {
     public enum GameCameraType 
     {
-        PlayerCamera
+        PlayerCamera,
+        FirstCamera,
+        SecondCamera
     }
 }

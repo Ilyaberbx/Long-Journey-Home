@@ -1,5 +1,4 @@
 ﻿using System;
-using Data;
 using DG.Tweening;
 using Logic.Inventory.Item;
 using Logic.Player;
@@ -9,7 +8,6 @@ namespace Logic.Weapons
 {
     public class FlashLight : BaseEquippableItem,IFlashLight
     {
-        public event Action OnIntensityChanged;
 
         [SerializeField] private float _lessValue;
         [SerializeField] private Light[] _lights;
@@ -42,8 +40,7 @@ namespace Logic.Weapons
 
             DecreaseLightIntensity();
             DecreaseLightSize();
-
-            OnIntensityChanged?.Invoke();
+            
         }
 
         private void DecreaseLightSize()
@@ -64,7 +61,7 @@ namespace Logic.Weapons
 
         private void DecreaseLightIntensity()
         {
-            foreach (var light in _lights)
+            foreach (Light light in _lights)
                 light.intensity = _light.CurrentIntensity;
         }
     }

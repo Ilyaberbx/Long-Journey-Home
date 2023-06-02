@@ -29,6 +29,14 @@ MonoBehaviour:
     m_Address: ShootGunSmoke
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 41c353e96afb2c54daa8f626ab85a357
+    m_Address: SnowFx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc3527b9456eaec4fa348a6c5045b3b1
+    m_Address: Smoke
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

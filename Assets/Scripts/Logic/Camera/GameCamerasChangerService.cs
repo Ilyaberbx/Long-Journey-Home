@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using Enums;
 using UnityEngine;
 
 namespace Logic.Camera
 {
-    public class GameCamerasChanger : MonoBehaviour
+    public class GameCamerasChangerService : MonoBehaviour, IGameCamerasChangerService
     {
         [SerializeField] private List<GameCamera> _cameras;
 
@@ -34,8 +35,12 @@ namespace Logic.Camera
             return null;
         }
 
-        private void ChangeCamerasPriority(GameCameraType type)
+        public GameCamera CurrentGameCamera() 
+            => _cameras.FirstOrDefault(camera => camera.Camera.Priority == 1);
+
+        public void ChangeCamerasPriority(GameCameraType type)
         {
+            Debug.Log("Camera changing");
             foreach (GameCamera gameCamera in _cameras)
                 gameCamera.Camera.Priority = gameCamera.CameraType == type ? 1 : 0;
         }

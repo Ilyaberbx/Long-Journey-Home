@@ -15,4 +15,4 @@ MonoBehaviour:
   LevelKey: IntroRoad
   EnemySpawners: []
   LootSpawners: []
-  PlayerInitPoint: {x: -369.6, y: 40.8, z: 1851}
+  PlayerInitPoint: {x: -333, y: 40.8, z: 1925}

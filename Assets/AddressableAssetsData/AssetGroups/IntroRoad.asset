@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: IntroRoad
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 5f27c8ffad44d3e49a5d22b8a75f7d62
+    m_Address: IntroRoadTerrain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

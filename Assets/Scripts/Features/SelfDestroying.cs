@@ -9,7 +9,7 @@ namespace Features
 
         private void Awake()
         {
-            var sequence = DOTween.Sequence();
+            Sequence sequence = DOTween.Sequence();
             sequence.AppendInterval(_delayBeforeDestroy);
             sequence.Append(Disappear());
             sequence.AppendCallback(Destroy);
