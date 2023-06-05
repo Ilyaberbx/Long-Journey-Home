@@ -498,10 +498,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deeccdf0362f4ba0af96a8e035810011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _equiper: {fileID: 4184236430028116523}
   _cameraHolder: {fileID: 5238980957427607552}
-  _heroLook: {fileID: 8427398397224038650}
-  _heroFreeze: {fileID: 4568631829993806250}
-  _heroLight: {fileID: 8758750815865675400}
+  _look: {fileID: 8427398397224038650}
+  _freeze: {fileID: 4568631829993806250}
+  _light: {fileID: 8758750815865675400}
   _attack: {fileID: 704864929059702421}
   _mover: {fileID: 3401435002938043442}
   _death: {fileID: 72199085430969277}

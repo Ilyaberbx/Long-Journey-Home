@@ -21,7 +21,7 @@ namespace Logic.Player
 
         private void Update()
         {
-            if (_input.IsPauseButtonPressed()) 
+            if (_input.IsPauseButtonPressed() && !_pause.IsPaused) 
                 _pause.SetPaused(true);
         }
 

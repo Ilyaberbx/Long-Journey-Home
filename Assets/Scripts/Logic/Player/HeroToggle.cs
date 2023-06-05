@@ -4,10 +4,11 @@ namespace Logic.Player
 {
     public class HeroToggle : MonoBehaviour
     {
+        [SerializeField] private HeroEquiper _equiper;
         [SerializeField] private HeroCameraHolder _cameraHolder;
-        [SerializeField] private HeroLook _heroLook;
-        [SerializeField] private HeroFreeze _heroFreeze;
-        [SerializeField] private HeroLight _heroLight;
+        [SerializeField] private HeroLook _look;
+        [SerializeField] private HeroFreeze _freeze;
+        [SerializeField] private HeroLight _light;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroMover _mover;
         [SerializeField] private HeroDeath _death;
@@ -21,10 +22,11 @@ namespace Logic.Player
             _death.enabled = value;
             _interactor.enabled = value;
             _itemPicker.enabled = value;
-            _heroLight.enabled = value;
-            _heroFreeze.enabled = value; 
-            _heroLook.enabled = value;
+            _light.enabled = value;
+            _freeze.enabled = value;
+            _look.enabled = value;
             _cameraHolder.ToggleCamera(value);
+            _equiper.ToggleEquipment(value);
         }
     }
 }
