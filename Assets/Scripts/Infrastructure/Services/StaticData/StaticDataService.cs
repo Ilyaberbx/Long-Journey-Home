@@ -56,10 +56,9 @@ namespace Infrastructure.Services.StaticData
 
         public LevelData GetLevelData(string sceneKey)
         {
-            foreach (KeyValuePair<string, LevelData> pair in _levels)
-            {
+            foreach (KeyValuePair<string, LevelData> pair in _levels) 
                 Debug.Log(pair.Key + " x " + pair.Value);
-            }
+            
             return _levels.TryGetValue(sceneKey, out LevelData data)
                 ? data
                 : null;

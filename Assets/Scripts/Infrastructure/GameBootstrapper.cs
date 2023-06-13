@@ -26,6 +26,7 @@ namespace Infrastructure
         {
             _stateFactory.Create(_stateMachine, typeof(BootstrapState));
             _stateFactory.Create(_stateMachine, typeof(LoadProgressState));
+            _stateFactory.Create(_stateMachine, typeof(LoadSettingsState));
             _stateFactory.Create(_stateMachine, typeof(LoadMainMenuState));
             _stateFactory.Create(_stateMachine, typeof(LoadLevelState));
             _stateFactory.Create(_stateMachine, typeof(GameLoopState));

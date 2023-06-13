@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace UI.Menu
 {
-
     public class OpenWindowButton : BaseButton
     {
         [SerializeField] private WindowType _windowType;

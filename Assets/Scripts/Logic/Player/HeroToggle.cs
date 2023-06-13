@@ -4,7 +4,6 @@ namespace Logic.Player
 {
     public class HeroToggle : MonoBehaviour
     {
-        [SerializeField] private HeroEquiper _equiper;
         [SerializeField] private HeroCameraHolder _cameraHolder;
         [SerializeField] private HeroLook _look;
         [SerializeField] private HeroFreeze _freeze;
@@ -26,7 +25,6 @@ namespace Logic.Player
             _freeze.enabled = value;
             _look.enabled = value;
             _cameraHolder.ToggleCamera(value);
-            _equiper.ToggleEquipment(value);
         }
     }
 }

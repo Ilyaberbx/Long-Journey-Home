@@ -40,19 +40,16 @@ namespace Infrastructure.StateMachine.State
             _sceneLoader.Load(MainMenu,OnLoaded);
         }
 
+        public void Exit() 
+            => _loadingCurtain.Hide();
+
         private async void OnLoaded()
         {
-            Debug.Log("MainMenu loaded");
             _pauseService.SetPaused(false);
             await _settingsService.Init();
             await _uiFactory.CreateUIRoot();
             await _windowService.Open(WindowType.MainMenu);
-            _loadingCurtain.Hide();
             _stateMachine.Enter<GameLoopState>();
-        }
-
-        public void Exit()
-        {
         }
     }
 }

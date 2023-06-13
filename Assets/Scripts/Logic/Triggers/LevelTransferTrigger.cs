@@ -1,8 +1,11 @@
-﻿using Infrastructure.StateMachine;
+﻿using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
+using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Enemy;
 using Logic.Spawners;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Logic.Triggers
@@ -14,11 +17,17 @@ namespace Logic.Triggers
         [SerializeField] private string _transferTo;
         [SerializeField] private TriggerObserver _triggerObserver;
         private IGameStateMachine _stateMachine;
+        private ISaveLoadService _saveLoad;
+        private IPersistentProgressService _progressService;
         private bool _triggered;
 
         [Inject]
-        public void Construct(IGameStateMachine stateMachine) 
-            => _stateMachine = stateMachine;
+        public void Construct(IGameStateMachine stateMachine,ISaveLoadService saveLoad,IPersistentProgressService progressService)
+        {
+            _stateMachine = stateMachine;
+            _saveLoad = saveLoad;
+            _progressService = progressService;
+        }
 
         private void Awake() 
             => _triggerObserver.OnTriggerEntered += Triggered;
@@ -33,7 +42,9 @@ namespace Logic.Triggers
 
             if (!other.CompareTag(PlayerTag)) return;
             
-            _stateMachine.Enter<LoadLevelState, string>(_transferTo);
+            _progressService.PlayerProgress.WorldData.PositionOnLevel.Level = _transferTo;
+            _saveLoad.SaveProgress();
+            _stateMachine.Enter<LoadProgressState, string>(_transferTo);
             _triggered = true;
         }
     }

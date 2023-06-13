@@ -53,6 +53,22 @@ MonoBehaviour:
     m_Address: DustPuffSmallParticleSheet
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: e823cd5b5d27c0f4b8256e7c12ee3e6d
+    m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/ParticlesUnlit.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ccf1cc4294a6844389bb2ed4863435b
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Items and Decoration/CampFireWinter.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0406db5a14f94604a8c57ccfbc9f3b46
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 31321ba15b8f8eb4c954353edc038b1d
+    m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

@@ -30,8 +30,7 @@ namespace Infrastructure.StateMachine.State
         }
 
         public void Exit()
-        {
-        }
+        {}
 
         private async Task PreWarmUp()
         {
@@ -40,6 +39,6 @@ namespace Infrastructure.StateMachine.State
         }
 
         private void EnterLoadLevel()
-            => _stateMachine.Enter<LoadProgressState>();
+            => _stateMachine.Enter<LoadSettingsState>();
     }
 }

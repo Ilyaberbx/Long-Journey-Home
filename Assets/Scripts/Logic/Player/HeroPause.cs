@@ -7,6 +7,7 @@ namespace Logic.Player
 {
     public class HeroPause : MonoBehaviour,IPauseHandler
     {
+        [SerializeField] private HeroEquiper _heroEquiper;
         [SerializeField] private HeroToggle _heroToggle;
         [SerializeField] private HeroCutsSceneProcessor _heroCutsScene;
         private IPauseService _pause;
@@ -27,6 +28,8 @@ namespace Logic.Player
 
         public void HandlePause(bool isPaused)
         {
+            _heroEquiper.ToggleEquipment(!isPaused);
+            
             if(IsInCutScene(isPaused))
                 return;
             

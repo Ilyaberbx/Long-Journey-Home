@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef93f389374647f4b7afd25788bbdbb6, type: 3}
+  m_Name: Camp
+  m_EditorClassIdentifier: 
+  LevelKey: Camp
+  EnemySpawners:
+  - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
+    EnemyType: 1
+    Position: {x: -89.40065, y: 258.35648, z: 1056.7026}
+  LootSpawners:
+  - Id: MainScene_57b4c623-54d0-453a-aaf4-b70a4fac7774
+    Prefab: {fileID: 8267773133987680113, guid: 83f70ef1ddf59004bb825bce3fef46bb, type: 3}
+    Position: {x: 1710.5842, y: 252.75647, z: 3868.5342}
+    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  PlayerInitPoint: {x: 0, y: 98, z: 0}

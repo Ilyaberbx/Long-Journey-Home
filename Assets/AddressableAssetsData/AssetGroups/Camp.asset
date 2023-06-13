@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Camp
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Camp
   m_Data:
     m_SerializedData: []
-  m_GUID: f0896bb49c48300489d097ad597504a3
-  m_SerializeEntries: []
+  m_GUID: b92a482b98e7f9045980ba28cc57708e
+  m_SerializeEntries:
+  - m_GUID: 180b430dad7fc2848aa85f8fe5592121
+    m_Address: Camp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: a6dcb094d3198c34e9e31c9e605950cb, type: 2}
-    - {fileID: 11400000, guid: 3f05221fc28baaa4f9a7df3fdcf86289, type: 2}
+    - {fileID: 11400000, guid: fcd7123179dba9143a0b71467cbbb86f, type: 2}
+    - {fileID: 11400000, guid: 3b7e7f5782172e44eb5ec317456b4690, type: 2}

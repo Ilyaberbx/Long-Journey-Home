@@ -6,12 +6,12 @@ namespace Logic.Camera
 {
     public class PovGameCamera : GameCamera
     {
-        private SettingsData _settings;
+        private ISettingsService _settings;
         private CinemachinePOV _pov;
 
         [Inject]
         public void Construct(ISettingsService settingsService)
-            => _settings = settingsService.SettingsData;
+            => _settings = settingsService;
 
         protected override void OnAwake()
         {
@@ -23,10 +23,10 @@ namespace Logic.Camera
         private void ApplySensitivity()
         {
             _pov.m_HorizontalAxis.m_MaxSpeed =
-                _settings.Mouse.Sensitivity;
+                _settings.SettingsData.Mouse.Sensitivity;
 
             _pov.m_VerticalAxis.m_MaxSpeed =
-                _settings.Mouse.Sensitivity;
+                _settings.SettingsData.Mouse.Sensitivity;
         }
     }
 }
