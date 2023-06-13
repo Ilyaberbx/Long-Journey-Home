@@ -5,7 +5,6 @@ using Infrastructure.StateMachine.State;
 using Logic.Enemy;
 using Logic.Spawners;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Logic.Triggers

@@ -11,6 +11,5 @@ namespace Infrastructure.Services.AssetManagement
         Task<T> Load<T>(string address) where T : class;
         Task Initialize();
         Task<IList<T>> LoadAll<T>(string address) where T : class;
-        void CleanUpStatic();
     }
 }

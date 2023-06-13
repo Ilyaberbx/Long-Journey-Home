@@ -70,17 +70,6 @@ namespace Infrastructure.Services.AssetManagement
 
         }
 
-        public void CleanUpStatic()
-        {
-            foreach (List<AsyncOperationHandle> resourceHandles in _staticHandles.Values)
-            {
-                foreach (AsyncOperationHandle handle in resourceHandles)
-                    Addressables.Release(handle);
-            }
-
-            _completedStaticCache.Clear();
-        }
-
         private async Task<T> RunWithCacheOnComplete<T>(AsyncOperationHandle<T> handle, string key) where T : class
         {
             handle.Completed += completeHandle
