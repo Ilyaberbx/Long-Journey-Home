@@ -71,15 +71,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5135909546672958754}
-  m_LocalRotation: {x: 0, y: -0.053102754, z: 0, w: 0.99858904}
-  m_LocalPosition: {x: 5.44, y: -6.5, z: 5.667652}
+  m_LocalRotation: {x: 0, y: -0.061048605, z: 0, w: 0.99813485}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 20751832772036976}
   - {fileID: 3421236480638579417}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -6.088, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -7, z: 0}
 --- !u!95 &5436020803730104271
 Animator:
   serializedVersion: 3
@@ -124,13 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b51307e7d94c37b594078c3584e00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
   _attackPoint: {fileID: 8954463793811037012}
   _damage: 1
   _attackRadius: 8
   _attackSpeed: 0.8
   _bloodFx: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
-  _offset: 1
 --- !u!1001 &559291688895229595
 PrefabInstance:
   m_ObjectHideFlags: 0

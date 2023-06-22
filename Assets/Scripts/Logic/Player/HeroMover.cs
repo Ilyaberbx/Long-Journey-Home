@@ -1,7 +1,5 @@
 using Data;
 using Extensions;
-using Infrastructure.Interfaces;
-using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.SaveLoad;
 using UnityEngine;
@@ -14,7 +12,9 @@ namespace Logic.Player
     [RequireComponent(typeof(Gravity.Gravity))]
     public class HeroMover : MonoBehaviour,ISavedProgressWriter
     {
-        private const float GravityConst = -10f;
+        private const float GravityConst = -20f;
+
+        public bool CanJump { get; set; } = true;
         
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float _speed;
@@ -46,8 +46,8 @@ namespace Logic.Player
 
         private void Move()
         {
-            Vector3 movement = new Vector3(_input.Horizontal, 0, _input.Vertical);
-            movement = _camera.transform.forward * movement.z + _camera.transform.right * movement.x;
+            Vector3 input = new Vector3(_input.Horizontal, 0, _input.Vertical);
+            Vector3 movement = CalculateMovement(input);
 
             if (_input.IsSprinting())
                 movement *= _sprintingCoefficient;
@@ -55,8 +55,14 @@ namespace Logic.Player
             _characterController.Move(movement * (_speed * Time.deltaTime));
         }
 
+        private Vector3 CalculateMovement(Vector3 input) 
+            => transform.forward * input.z + transform.right * input.x;
+
         private void Jump()
         {
+            if(!CanJump)
+                return;
+            
             Vector3 velocity = _gravity.GetVelocity();
             velocity.y += Mathf.Sqrt(_jumpHeight * (-3.0f * GravityConst));
             _gravity.SetVelocity(velocity);

@@ -74,7 +74,6 @@ namespace Logic.Weapons
         public override void Appear()
         {
             _isAttacking = false;
-            transform.localScale = Vector3.zero;
             transform.DOScale(_cachedScale, 0.2f);
         }
 

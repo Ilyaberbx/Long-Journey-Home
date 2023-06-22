@@ -13,7 +13,7 @@ namespace Infrastructure.Services.PersistentProgress
         {
             PlayerProgress progress = new PlayerProgress(SceneByDefault);
 
-            progress.HealthState.MaxHP = 100;
+            progress.HealthState.MaxHP = 300;
             progress.HealthState.ResetHp();
             progress.FlashLightState.MaxLightIntensity = 1500;
             progress.FlashLightState.Reset();

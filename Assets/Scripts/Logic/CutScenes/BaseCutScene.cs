@@ -1,11 +1,12 @@
-﻿using Infrastructure.Services.PersistentProgress;
+﻿using System;
+using Infrastructure.Services.PersistentProgress;
 using Logic.Spawners;
 using UnityEngine;
 using Zenject;
 
 namespace Logic.CutScenes
 {
-    public class BaseCutScene : BaseMarker
+    public abstract class BaseCutScene : BaseMarker,ICutScene
     {
         [SerializeField] private UniqueId _uniqueId;
         private IPersistentProgressService _progressService;
@@ -19,5 +20,7 @@ namespace Logic.CutScenes
 
         protected void PassCutScene()
             => _progressService.PlayerProgress.CutSceneData.Passed.Add(_uniqueId.Id);
+
+        public abstract void StartCutScene(Transform player, Action onCutSceneEnded);
     }
 }

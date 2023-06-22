@@ -18,12 +18,10 @@ namespace Logic.Gravity
 
         public void SetVelocity(Vector3 velocity) 
             => _velocity = velocity;
-
-        public float GetGravity()
-            => _gravity;
+        
         private void Awake() => Inititalize();
 
-        private void Update() => CalculateGravity();
+        private void LateUpdate() => CalculateGravity();
 
 
         public bool TryCatchGround()

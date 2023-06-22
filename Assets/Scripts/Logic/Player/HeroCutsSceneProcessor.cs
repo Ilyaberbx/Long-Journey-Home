@@ -24,7 +24,7 @@ namespace Logic.Player
             
             IsCutSceneActive = true;
             _heroToggle.Toggle(false);
-            cutScene.StartCutScene(transform,OnCutSceneEnded);
+            cutScene.StartCutScene(transform, OnCutSceneEnded);
         }
 
         private void OnCutSceneEnded()

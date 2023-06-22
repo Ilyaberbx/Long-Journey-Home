@@ -14,12 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: Camp
   EnemySpawners:
+  - Id: Camp_375d814d-b8c9-4d64-8401-a90458294d60
+    EnemyType: 1
+    Position: {x: 2039.862, y: 53.010628, z: 1708.7988}
+    IsRegisterInContainer: 0
   - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
     EnemyType: 1
-    Position: {x: -89.40065, y: 258.35648, z: 1056.7026}
+    Position: {x: 2123.862, y: 57.41063, z: 1595.7988}
+    IsRegisterInContainer: 0
   LootSpawners:
+  - Id: Camp_364d853c-8662-407b-b514-d5a7a65b2584
+    Prefab: {fileID: 5209323148249258876, guid: a0a89e2567d0bb34ca1cf521c5e4f5c8, type: 3}
+    Position: {x: 2558.2622, y: 38.14063, z: 2063.1987}
+    Rotation: {x: -1, y: -0, z: 0, w: 0}
+  - Id: Camp_5d8a5d5f-8c4d-4a2b-b114-fc5c555299aa
+    Prefab: {fileID: 5209323148249258876, guid: a0a89e2567d0bb34ca1cf521c5e4f5c8, type: 3}
+    Position: {x: 2539.292, y: 37.850628, z: 2055.9988}
+    Rotation: {x: -0.70710695, y: -0, z: 0.000000029802322, w: 0.7071067}
   - Id: MainScene_57b4c623-54d0-453a-aaf4-b70a4fac7774
-    Prefab: {fileID: 8267773133987680113, guid: 83f70ef1ddf59004bb825bce3fef46bb, type: 3}
-    Position: {x: 1710.5842, y: 252.75647, z: 3868.5342}
-    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  PlayerInitPoint: {x: 0, y: 98, z: 0}
+    Prefab: {fileID: 7150283600269640286, guid: cbae169fc3ae8984082166a237e4cc37, type: 3}
+    Position: {x: 954.86206, y: 470.9106, z: 804.0988}
+    Rotation: {x: 0.15212336, y: -0, z: -0, w: 0.98836154}
+  PlayerInitPoint: {x: 568.7, y: 584.5, z: 624.7}

@@ -5,14 +5,13 @@ using Enums;
 using Infrastructure.Services.AssetManagement;
 using Logic.Camera;
 using Logic.DialogueSystem;
-using Logic.Spawners;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Logic.CutScenes
 {
-    public class IntroCutScene : BaseCutScene, ICutScene
+    public class IntroCutScene : BaseCutScene
     {
         [SerializeField] private List<Collider> _cutSceneTriggers;
         [SerializeField] private AssetReference _smokeReference;
@@ -23,12 +22,12 @@ namespace Logic.CutScenes
         [SerializeField] private Transform _secondSmokePosition;
         [SerializeField] private float _firstTreeRotateValue;
         [SerializeField] private float _secondTreeRotateValue;
-        private IGameCamerasChangerService _camerasService;
+        private ICameraService _camerasService;
         private IAssetProvider _assetProvider;
         private GameObject _smokeFxPrefab;
 
         [Inject]
-        public void Construct(IGameCamerasChangerService camerasService,IAssetProvider assetProvider)
+        public void Construct(ICameraService camerasService,IAssetProvider assetProvider)
         {
             _camerasService = camerasService;
             _assetProvider = assetProvider;
@@ -44,7 +43,7 @@ namespace Logic.CutScenes
             _smokeFxPrefab = await _assetProvider.Load<GameObject>(_smokeReference);
         }
 
-        public void StartCutScene(Transform player, Action onCutSceneEnded)
+        public override void StartCutScene(Transform player, Action onCutSceneEnded)
         {
             IDialogueActor dialogue = player.GetComponent<IDialogueActor>();
             Sequence sequence = DOTween.Sequence();

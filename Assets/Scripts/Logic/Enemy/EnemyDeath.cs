@@ -10,6 +10,7 @@ namespace Logic.Enemy
     {
         public event Action OnDie;
 
+        [SerializeField] private Collider _hitBox;
         [SerializeField] private AgentMoveToPlayer _agent;
         [SerializeField] private EnemyAttack _attack;
         [SerializeField] private EnemyAggro _aggro;
@@ -34,6 +35,7 @@ namespace Logic.Enemy
         private void Die()
         {
             _health.OnHealthChanged -= HealthChanged;
+            _hitBox.enabled = false;
             _attack.enabled = false;
             _aggro.enabled = false;
             _agent.Stop();

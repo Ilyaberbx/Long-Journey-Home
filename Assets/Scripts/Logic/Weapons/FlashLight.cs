@@ -31,11 +31,8 @@ namespace Logic.Weapons
             => _light = light;
         
 
-        public override void Appear()
-        {
-            transform.localScale = Vector3.zero;
-            transform.DOScale(_cachedScale, 0.2f);
-        }
+        public override void Appear() 
+            => transform.DOScale(_cachedScale, 0.2f);
 
         public override void Hide() 
             => Destroy(gameObject);

@@ -7,7 +7,7 @@ namespace Logic.Animations
 {
     public class BearAnimator : BaseEnemyAnimator, IAnimationStateReader
     {
-        private const int MaxInclusiveAttackCountConst = 3;
+        private const int MaxExclusiveAttackTypes = 4;
         private static readonly string Attack = "Attack";
         private static readonly int Death = Animator.StringToHash("Death");
         private static readonly int Speed = Animator.StringToHash("Speed");
@@ -37,7 +37,7 @@ namespace Logic.Animations
 
         public override void PlayAttack()
         {
-            int rand = Random.Range(1,MaxInclusiveAttackCountConst);
+            int rand = Random.Range(1,MaxExclusiveAttackTypes);
             _animator.SetTrigger(Attack+ rand);
         }
 

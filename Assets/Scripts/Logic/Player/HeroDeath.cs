@@ -7,13 +7,13 @@ namespace Logic.Player
     [RequireComponent(typeof(HeroHealth))]
     public class HeroDeath : MonoBehaviour
     {
+        [SerializeField] private HeroInteractor _interactor;
         [SerializeField] private HeroHealth _health;
         [SerializeField] private HeroMover _mover;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroWindowOpener _windowOpener;
-        [FormerlySerializedAs("_pauser")] [SerializeField] private HeroPause pause;
+        [SerializeField] private HeroPause _pause;
         [SerializeField] private HeroFreeze _freeze;
-        [SerializeField] private HeroItemPicker _itemPicker;
         private ICameraAnimator _animator;
         private bool _isDead;
 
@@ -39,9 +39,9 @@ namespace Logic.Player
             _isDead = true;
             _mover.enabled = false;
             _attack.enabled = false;
-            pause.enabled = false;
+            _pause.enabled = false;
             _freeze.enabled = false;
-            _itemPicker.enabled = false;
+            _interactor.enabled = false;
             _windowOpener.enabled = false;
             _animator.PlayDeath();
         }

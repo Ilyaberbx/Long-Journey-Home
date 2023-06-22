@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1586682982283464345}
   m_LocalRotation: {x: -0, y: -0.053103518, z: -0, w: 0.99858904}
   m_LocalPosition: {x: 1658.1237, y: 221.33063, z: 3810.9138}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 5839713993576655563}
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quantity: 1
   _itemData: {fileID: 11400000, guid: 1a169c95a18618649ba1f966e6df29b5, type: 2}
-  _interactText: Pick up bear
+  _interactText: "\u0422\u043E\u043F\u043E\u0440"
 --- !u!1 &6503484024784416881
 GameObject:
   m_ObjectHideFlags: 0

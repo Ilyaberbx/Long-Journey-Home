@@ -16,8 +16,8 @@ namespace Infrastructure.Services.Factories
         Task<GameObject> CreatePlayer(Vector3 at);
         Task<GameObject> CreateHud();
         void CleanUp();
-        Task<GameObject> CreateEnemy(EnemyType enemyType, Transform transform);
-        Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType);
+        Task<GameObject> CreateEnemy(EnemyType enemyType, Transform transform, bool isRegisterInContainer = false);
+        Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType, bool isRegisterInContainer);
         ItemPickUp CreateItemPickUp(ItemPickUp prefab, Transform transform);
         Task<LootSpawnPoint> CreateLootSpawner(Vector3 position, string id, Quaternion rotation, ItemPickUp prefab);
         Task WarmUp();

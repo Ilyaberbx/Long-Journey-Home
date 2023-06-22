@@ -106,7 +106,7 @@ namespace Infrastructure.StateMachine.State
 
             foreach (EnemySpawnerData enemySpawnerData in levelData.EnemySpawners)
                 await _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id,
-                    enemySpawnerData.EnemyType);
+                    enemySpawnerData.EnemyType,enemySpawnerData.IsRegisterInContainer);
 
             foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
                 await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id,
@@ -149,7 +149,7 @@ namespace Infrastructure.StateMachine.State
 
         private GameCamera CameraFollowPlayer(Transform player)
         {
-            GameCamerasChangerService cameraChangerService = Camera.main.GetComponentInParent<GameCamerasChangerService>();
+            CameraService cameraChangerService = Camera.main.GetComponentInParent<CameraService>();
             return cameraChangerService.ConstructCamera(GameCameraType.PlayerCamera, player, true);
         }
 

@@ -69,6 +69,134 @@ MonoBehaviour:
     m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 29868e73b638e48ca99a19ea58c48d90
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrassBillboard.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ffa01093856b873448237de84289ee85
+    m_Address: Assets/Plugins/TerrainSampleAssets/Textures/Terrain/Snow_BaseColor.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: baca4d94b1d1d8046ab52ce1570a24c7
+    m_Address: Assets/Plugins/TerrainSampleAssets/Textures/Terrain/Snow_Normal.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce833e94f7f7eea468b012546444cf0c
+    m_Address: Assets/Plugins/TerrainSampleAssets/TerrainLayers/Black_Sand_TerrainLayer.terrainlayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b59c495bf285c442b1b799c94a9f8aa
+    m_Address: Assets/Plugins/TerrainSampleAssets/Textures/Terrain/Black_Sand_BaseColor.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28a478660ea9d9541b2118c5e95cbb4e
+    m_Address: Assets/Plugins/TerrainSampleAssets/Textures/Terrain/Black_Sand_Normal.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f6783ab646d374f94b199774402a5144
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainDetailLit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e507fdfead5ca47e8b9a768b51c291a1
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrass.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33e332af78571f249aa14092c01288cb
+    m_Address: Assets/Plugins/TerrainSampleAssets/Textures/Terrain/Black_Sand_MaskMap.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 594ea882c5a793440b60ff72d896021e
+    m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/TerrainLit.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f2a381e30dfffbb4e91456c1cc1b4963
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Pine_01.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9af23ba5fa5364ff598888460e0e2759
+    m_Address: Assets/Plugins/AllSkyFree/Cold Night/Cold Night.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dfbc2ece44a063d4ea9ba44278ccadca
+    m_Address: Assets/Plugins/Stylized Snow Forest/Materials/Environment_Atlas.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b201733d2df84602b3020984df58790
+    m_Address: Assets/Plugins/AllSkyFree/Cold Night/Cold Night__Cam_3_Right-X.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8cab6aa3331da40e68754e2214ce08fa
+    m_Address: Assets/Plugins/AllSkyFree/Cold Night/Cold Night__Cam_5_Down-Y.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3d6928c404a7c46c3991bb1b73521d66
+    m_Address: Assets/Plugins/AllSkyFree/Cold Night/Cold Night__Cam_4_Up+Y.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c36dbfb5156ebb746a0d4820345dd8aa
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Textures/T_EnvironmentAtlas_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7a03001a6d7c746a2a2467b3b3f51660
+    m_Address: Assets/Plugins/AllSkyFree/Cold Night/Cold Night__Cam_1_Back-Z.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3aa922ca8577f4f66b8810ab41310933
+    m_Address: Assets/Plugins/AllSkyFree/Cold Night/Cold Night__Cam_2_Left+X.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aad96e1c2baf24d3499e2ea1426ab824
+    m_Address: Assets/Plugins/AllSkyFree/Cold Night/Cold Night__Cam_0_Front+Z.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 46f0bdd23b7ab9b43a25ea3b295b43c0
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Plants/SnowyTreeLog.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ea8ace6ec6fbdf4eaf920ade68b9f10
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Rocks.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3f89a9191131d594c9631bcf976babae
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Tree_02.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff4f4a79524502045b5235ff4e6dd2a7
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Tree_03.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83cedf7dbfd0f4e46b5caf81a9967415
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Pine_02.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b50e689e0e34f5342b2c6effbd091f85
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Tree_01.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 705fd60fa80124045a2001a1f14c0ee0
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Grass.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69c1f799e772cb6438f56c23efccb782
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8fbe92a9edfe6074e841d6dd1509bc59
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitBasemapGen.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 21322c8b137c66e49b86085d3c8161f6
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitBase.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0a7e590f3cf1d4ee8a8fab5b6eff09ef
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitAdd.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 657f2b6c3d51b4d44bf4a659d2a287df
+    m_Address: Assets/Bundles/Scenes/IntroRoad/IntroRoad.lighting
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

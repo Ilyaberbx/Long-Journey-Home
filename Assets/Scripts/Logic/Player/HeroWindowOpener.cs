@@ -12,9 +12,9 @@ namespace Logic.Player
 {
     public class HeroWindowOpener : MonoBehaviour, IPauseHandler
     {
+        [SerializeField] private HeroLook _look;
         [SerializeField] private HeroCutsSceneProcessor _heroCutScene;
         [SerializeField] private HeroAttack _attack;
-        [SerializeField] private HeroLook _look;
         [SerializeField] private HeroCameraHolder _heroCamera;
 
         private IInputService _input;
@@ -61,7 +61,7 @@ namespace Logic.Player
         {
             CloseCurrentWindow();
             Cursor.lockState = CursorLockMode.Confined;
-            ToggleHeroLook(false);
+            ToggleHero(false);
             _currentWindow = await _windowService.Open(type, WindowClosed);
             return _currentWindow;
         }
@@ -83,13 +83,13 @@ namespace Logic.Player
             if(_heroCutScene.IsCutSceneActive)
                 return;
             
-            ToggleHeroLook(true);
+            ToggleHero(true);
         }
 
-        private void ToggleHeroLook(bool value)
+        private void ToggleHero(bool value)
         {
-            _look.enabled = value;
             _attack.enabled = value;
+            _look.enabled = value;
             _heroCamera.ToggleCamera(value);
         }
     }

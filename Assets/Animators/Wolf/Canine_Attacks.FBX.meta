@@ -486,7 +486,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5591365
+      - time: 1
         functionName: OnAttackEnded
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -615,7 +615,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.57001376
+      - time: 1
         functionName: OnAttackEnded
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -744,7 +744,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5539486
+      - time: 0.98545545
         functionName: OnAttackEnded
         data: 
         objectReferenceParameter: {instanceID: 0}

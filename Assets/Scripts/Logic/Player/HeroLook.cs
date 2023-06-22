@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Logic.Player
 {
+
     public class HeroLook : MonoBehaviour
     {
         private IInputService _input;
@@ -16,8 +17,7 @@ namespace Logic.Player
             _input = input;
             _settings = settings;
         }
-
-
+        
         private void Update() 
             => Look();
 

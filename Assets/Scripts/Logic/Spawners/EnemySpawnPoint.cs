@@ -15,6 +15,7 @@ namespace Logic.Spawners
         private string _id;
         private IGameFactory _factory;
         private EnemyDeath _enemyDeath;
+        private bool _isRegisterInContainer;
 
         [Inject]
         public void Construct(IGameFactory gameFactory) 
@@ -25,6 +26,9 @@ namespace Logic.Spawners
 
         public void SetType(EnemyType spawnerEnemyType) 
             => _enemyType = spawnerEnemyType;
+
+        public void SetRegisterInContainer(bool isRegisterInContainer) 
+            => _isRegisterInContainer = isRegisterInContainer;
 
         public void LoadProgress(PlayerProgress progress)
         {
@@ -43,7 +47,7 @@ namespace Logic.Spawners
 
         private async void Spawn()
         {
-            GameObject enemy = await _factory.CreateEnemy(_enemyType, transform);
+            GameObject enemy = await _factory.CreateEnemy(_enemyType, transform,_isRegisterInContainer);
             _enemyDeath = enemy.GetComponent<EnemyDeath>();
             _enemyDeath.OnDie += Slay;
         }

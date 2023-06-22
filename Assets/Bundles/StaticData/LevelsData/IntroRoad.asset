@@ -13,13 +13,7 @@ MonoBehaviour:
   m_Name: IntroRoad
   m_EditorClassIdentifier: 
   LevelKey: IntroRoad
-  EnemySpawners:
-  - Id: IntroRoad_898175e1-bac4-4e0a-8424-88e9d86785a1
-    EnemyType: 1
-    Position: {x: -1174.949, y: 3.180542, z: 2081.2336}
-  - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
-    EnemyType: 0
-    Position: {x: -1232.3202, y: 0.20306396, z: 2282.6345}
+  EnemySpawners: []
   LootSpawners:
   - Id: IntroRoad_286026f0-dd58-41b3-b59d-8c1860e2b293
     Prefab: {fileID: 7150283600269640286, guid: cbae169fc3ae8984082166a237e4cc37, type: 3}

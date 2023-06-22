@@ -70,7 +70,7 @@ namespace Infrastructure.Services.Factories
                 reader.LoadProgress(_progressService.PlayerProgress);
 
             if (equipItem.TryGetComponent(out IHudAmmoShowable ammoShowable))
-                _uiActor.RegisterAmmoShowableObject(ammoShowable);
+                _uiActor.RegisterAmmoShowableObject(ammoShowable); 
             
             equipItem.transform.SetParent(container);
 
@@ -80,12 +80,16 @@ namespace Infrastructure.Services.Factories
         public async Task<GameObject> CreatePlayer(Vector3 at)
         {
             GameObject playerPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
-            _heroGameObject = InstantiateRegistered(playerPrefab, at);
+            GameObject heroRoot = InstantiateRegistered(playerPrefab, at);
 
-            InventoryPresenter inventory = _heroGameObject.GetComponent<InventoryPresenter>();
+            _heroGameObject = GetHeroObjectFromRoot(heroRoot);
+            InventoryPresenter inventory = _heroGameObject.GetComponentInChildren<InventoryPresenter>();
             _windowService.Init(inventory);
             return _heroGameObject;
         }
+
+        private GameObject GetHeroObjectFromRoot(GameObject heroRoot) 
+            => heroRoot.transform.GetChild(0).gameObject;
 
         public async Task<GameObject> CreateHud()
         {
@@ -96,7 +100,8 @@ namespace Infrastructure.Services.Factories
         }
 
 
-        public async Task<GameObject> CreateEnemy(EnemyType enemyType, Transform parent)
+        public async Task<GameObject> CreateEnemy(EnemyType enemyType, Transform parent,
+            bool isRegisterInContainer = false)
         {
             EnemyData enemyData = _staticData.GetEnemyDataByType(enemyType);
             GameObject enemyPrefab = await _assetProvider.Load<GameObject>(enemyData.PrefabReference);
@@ -109,15 +114,19 @@ namespace Infrastructure.Services.Factories
             health.MaxHp = enemyData.MaxHp;
 
             enemy.GetComponent<UIActor>()?.Construct(health);
-            enemy.GetComponent<AgentMoveToPlayer>().Construct(_heroGameObject.transform);
+            AgentMoveToPlayer follow = enemy.GetComponent<AgentMoveToPlayer>();
+            follow.Construct(_heroGameObject.transform);
             enemy.GetComponent<NavMeshAgent>().speed = enemyData.MoveSpeed;
+
+            if (isRegisterInContainer)
+                _container.Bind<AgentMoveToPlayer>().FromInstance(follow).AsTransient().NonLazy();
 
             EnemyAttack attack = enemy.GetComponent<EnemyAttack>();
             attack.Construct(_heroGameObject.transform, enemyData.Damage, enemyData.AttackCoolDown);
             return enemy;
         }
 
-        public async Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType)
+        public async Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType,bool isRegisterInContainer)
         {
             GameObject prefab = await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
 
@@ -126,6 +135,7 @@ namespace Infrastructure.Services.Factories
 
             spawner.SetId(spawnerId);
             spawner.SetType(spawnerEnemyType);
+            spawner.SetRegisterInContainer(isRegisterInContainer);
             return spawner;
         }
         

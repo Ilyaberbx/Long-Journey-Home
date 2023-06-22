@@ -21,7 +21,7 @@ namespace Editor
             if (GUILayout.Button(CollectLabel))
             {
                 levelData.EnemySpawners = FindObjectsOfType<EnemyMarker>()
-                    .Select(x => new EnemySpawnerData(x.GetComponent<UniqueId>().Id,x.EnemyType,x.transform.position))
+                    .Select(x => new EnemySpawnerData(x.GetComponent<UniqueId>().Id,x.EnemyType,x.transform.position,x.IsRegisterInContainer))
                     .ToList();
                 
                 levelData.LootSpawners= FindObjectsOfType<LootMarker>()

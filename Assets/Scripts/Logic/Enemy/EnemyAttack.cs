@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using DG.Tweening;
-using Extensions;
 using Logic.Animations;
 using Logic.Gravity;
 using Logic.Player;
@@ -12,6 +11,7 @@ namespace Logic.Enemy
     public class EnemyAttack : MonoBehaviour
     {
         private const string PlayerLayer = "Player";
+        public bool IsAttacking => _isAttacking;
         
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private CheckPoint _checkPoint;

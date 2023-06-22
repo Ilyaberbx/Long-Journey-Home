@@ -10,7 +10,7 @@ namespace Logic.Player
     {
         [SerializeField] private HeroLight _light;
         [SerializeField] private HeroAttack _attack;
-        [SerializeField] private Transform _container;
+        [SerializeField] private Transform _equipmentContainer;
         [SerializeField] private Transform _equipmentPoint;
         private EquippableItemData _currentItemData;
         private BaseEquippableItem _currentItem;
@@ -28,13 +28,13 @@ namespace Logic.Player
             Equip(item);
         }
         
-
         private void Equip(EquippableItemData item)
         {
             _currentItemData = item;
 
             BaseEquippableItem equipment =
-                _gameFactory.CreateEquippableItem(_currentItemData.ItemPrefab, _equipmentPoint.position, _container);
+                _gameFactory.CreateEquippableItem(_currentItemData.ItemPrefab, _equipmentPoint.position,
+                    _equipmentContainer);
 
             _currentItem = equipment;
             _currentItem.transform.localScale = Vector3.zero;
@@ -47,20 +47,20 @@ namespace Logic.Player
                 flashLight.Init(_light);
         }
 
-        private bool CanEquip(EquippableItemData item) 
+        private bool CanEquip(EquippableItemData item)
             => _currentItemData?.Id != item.Id;
 
         public void ToggleEquipment(bool value)
         {
-            if(_currentItemData == null)
+            if (_currentItemData == null)
                 return;
-            
+
             if (value)
                 Equip(_currentItemData);
             else
                 _currentItem.Hide();
         }
-        
+
         private void ClearUp()
         {
             _currentItem?.Hide();

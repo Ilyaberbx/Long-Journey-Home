@@ -7,15 +7,14 @@ namespace Installers
 
     public class LocalServiceInstaller : MonoInstaller
     {
-         [SerializeField] private GameCamerasChangerService _camerasChangerService;
+         [SerializeField] private CameraService _camerasChangerService;
 
         public override void InstallBindings() 
             => BindCameraService();
 
-        private void BindCameraService() 
-            => Container.BindInterfacesTo<GameCamerasChangerService>()
+        private void BindCameraService()
+            => Container.BindInterfacesTo<CameraService>()
                 .FromInstance(_camerasChangerService)
-                .AsSingle()
-                .NonLazy();
+                .AsSingle();
     }
 }

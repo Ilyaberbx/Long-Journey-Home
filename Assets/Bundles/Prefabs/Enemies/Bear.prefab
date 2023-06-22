@@ -792,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee89043f9790bf4b81f39023aa4d4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attack: {fileID: 9005375646851193113}
   _minimalDistance: 25
   _agent: {fileID: 6970521316953751053}
 --- !u!114 &881871735049929625
@@ -891,6 +892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a11ae9f9b724530be131743fabcec0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitBox: {fileID: 6882831176106672486}
   _agent: {fileID: 5287697185329625257}
   _attack: {fileID: 9005375646851193113}
   _aggro: {fileID: 1506085082334501513}

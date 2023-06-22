@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Logic.Player
 {
     public class HeroToggle : MonoBehaviour
     {
-        [SerializeField] private HeroCameraHolder _cameraHolder;
         [SerializeField] private HeroLook _look;
+        [SerializeField] private HeroCameraHolder cameraHolder;
         [SerializeField] private HeroFreeze _freeze;
         [SerializeField] private HeroLight _light;
         [SerializeField] private HeroAttack _attack;
@@ -21,10 +22,10 @@ namespace Logic.Player
             _death.enabled = value;
             _interactor.enabled = value;
             _itemPicker.enabled = value;
+            _look.enabled = value;
             _light.enabled = value;
             _freeze.enabled = value;
-            _look.enabled = value;
-            _cameraHolder.ToggleCamera(value);
+            cameraHolder.ToggleCamera(value);
         }
     }
 }

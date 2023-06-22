@@ -18,7 +18,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _type: 1
-  _maxHp: 5
-  _damage: 8
+  _maxHp: 6
+  _damage: 24
   _attackCoolDown: 0.35
-  _moveSpeed: 80
+  _moveSpeed: 120

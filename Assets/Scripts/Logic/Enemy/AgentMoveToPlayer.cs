@@ -5,6 +5,7 @@ namespace Logic.Enemy
 {
     public class AgentMoveToPlayer : MonoBehaviour
     {
+        [SerializeField] private EnemyAttack _attack;
         [SerializeField] private float _minimalDistance;
         [SerializeField] private NavMeshAgent _agent;
         private Transform _playerTransform;
@@ -14,23 +15,21 @@ namespace Logic.Enemy
         
         private void Update()
         {
-            if (Initialized() && HeroNotTouched() && _agent.isOnNavMesh)
+            if (CanChase())
                 _agent.destination = _playerTransform.position;
             else
                 _agent.destination = _agent.transform.position;
         }
+
+        private bool CanChase() 
+            => Initialized() && HeroNotTouched() && _agent.isOnNavMesh && !_attack.IsAttacking;
 
         public void Stop()
         {
             _agent.destination = transform.position;
             _agent.isStopped = true;
         }
-
-        public void Continue()
-        {
-            _agent.destination = _playerTransform.position;
-            _agent.isStopped = false;
-        }
+        
         private bool Initialized()
             => _playerTransform != null;
         
