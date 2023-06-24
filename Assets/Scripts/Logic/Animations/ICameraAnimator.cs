@@ -4,5 +4,6 @@
     {
         void PlayTakeDamage();
         void PlayDeath();
+        void PlayGrounded();
     }
 }

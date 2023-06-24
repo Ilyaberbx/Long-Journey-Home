@@ -8,6 +8,7 @@ namespace Logic.Player
 {
     public class HeroEquiper : MonoBehaviour
     {
+        public Transform EquipmentContainer => _equipmentContainer;
         [SerializeField] private HeroLight _light;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private Transform _equipmentContainer;
@@ -46,7 +47,7 @@ namespace Logic.Player
             if (equipment.TryGetComponent(out IFlashLight flashLight))
                 flashLight.Init(_light);
         }
-
+        
         private bool CanEquip(EquippableItemData item)
             => _currentItemData?.Id != item.Id;
 

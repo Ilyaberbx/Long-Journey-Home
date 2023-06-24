@@ -40,5 +40,8 @@ namespace Extensions
 
         public static Vector3 AddX(this Vector3 vector3, float value)
             => new Vector3(vector3.x + value, vector3.y, vector3.z);
+        
+        public static Vector3 AddZ(this Vector3 vector3, float value)
+            => new Vector3(vector3.x, vector3.y, vector3.z + value);
     }
 }

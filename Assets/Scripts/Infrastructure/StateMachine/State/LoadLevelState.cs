@@ -2,6 +2,7 @@
 using Cinemachine;
 using Data;
 using Enums;
+using Extensions;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.Pause;
@@ -13,6 +14,7 @@ using Logic;
 using Logic.Animations;
 using Logic.Camera;
 using Logic.DialogueSystem;
+using Logic.Gravity;
 using Logic.Player;
 using UI.Elements;
 using UI.Services.Factory;
@@ -88,13 +90,13 @@ namespace Infrastructure.StateMachine.State
             CinemachineVirtualCamera camera = InitCamera();
             InitPlayerInteractWithCamera(player, camera);
         }
-        
+
 
         private CinemachineVirtualCamera InitCamera()
         {
             GameCamera inGameCamera = CameraFollowPlayer(GameObject.FindGameObjectWithTag(PovPoint).transform);
 
-            if (inGameCamera is IPauseHandler cameraPause) 
+            if (inGameCamera is IPauseHandler cameraPause)
                 _pauseService.Register(cameraPause);
 
             return inGameCamera.Camera;
@@ -106,7 +108,7 @@ namespace Infrastructure.StateMachine.State
 
             foreach (EnemySpawnerData enemySpawnerData in levelData.EnemySpawners)
                 await _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id,
-                    enemySpawnerData.EnemyType,enemySpawnerData.IsRegisterInContainer);
+                    enemySpawnerData.EnemyType, enemySpawnerData.IsRegisterInContainer);
 
             foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
                 await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id,
@@ -122,9 +124,19 @@ namespace Infrastructure.StateMachine.State
 
         private void InitPlayerInteractWithCamera(GameObject player, CinemachineVirtualCamera camera)
         {
-            player.GetComponent<HeroHealth>().Construct(camera.GetComponentInParent<ICameraAnimator>());
+            ICameraAnimator cameraAnimator = camera.GetComponentInParent<ICameraAnimator>();
+            player.GetComponent<HeroHealth>().Construct(cameraAnimator);
+            player.GetComponent<Gravity>().Construct(cameraAnimator);
             player.GetComponent<HeroDeath>().SetCameraAnimator(camera.GetComponentInParent<ICameraAnimator>());
             player.GetComponent<HeroCameraHolder>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
+            ApplyEquipmentToCamera(player, camera);
+        }
+
+        private void ApplyEquipmentToCamera(GameObject player, CinemachineVirtualCamera camera)
+        {
+            Transform equipment = player.GetComponent<HeroEquiper>().EquipmentContainer;
+            equipment.SetParent(camera.transform);
+            equipment.localPosition = Vector3.zero.AddZ(2);
         }
 
         private async Task InitHud(GameObject player)

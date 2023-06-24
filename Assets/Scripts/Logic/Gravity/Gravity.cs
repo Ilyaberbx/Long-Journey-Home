@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Logic.Animations;
+using UnityEngine;
 
 namespace Logic.Gravity
 {
@@ -12,13 +13,18 @@ namespace Logic.Gravity
 
         [SerializeField] private CharacterController _characterController;
         private Vector3 _velocity;
+        private ICameraAnimator _cameraAnimator;
+        private bool _isGrounded;
 
-        public Vector3 GetVelocity() 
+        public Vector3 GetVelocity()
             => _velocity;
 
-        public void SetVelocity(Vector3 velocity) 
+        public void SetVelocity(Vector3 velocity)
             => _velocity = velocity;
-        
+
+        public void Construct(ICameraAnimator cameraAnimator)
+            => _cameraAnimator = cameraAnimator;
+
         private void Awake() => Inititalize();
 
         private void LateUpdate() => CalculateGravity();
@@ -31,24 +37,28 @@ namespace Logic.Gravity
             foreach (var check in hits)
             {
                 if (check.transform != null)
-                    
-                    if (check.transform.GetComponentInParent<Ground>() != null) 
-                        return true;
+
+                    if (check.transform.GetComponentInParent<Ground>() != null)
+                    {
+                        if (!_isGrounded)
+                            _cameraAnimator.PlayGrounded();
+                        
+                        return _isGrounded = true;
+                    }
             }
 
-            return false;
+            return _isGrounded = false;
         }
 
         private void Inititalize()
-        {
-            _gravity *= GravityCoefficientConst;
-        }
+            => _gravity *= GravityCoefficientConst;
 
 
         private void CalculateGravity()
         {
-            if (TryCatchGround() && _velocity.y < 0) _velocity.y = GroundedGravityConst;
-            
+            if (TryCatchGround() && _velocity.y < 0)
+                _velocity.y = GroundedGravityConst;
+
             _velocity.y -= _gravity * Time.deltaTime;
             _characterController.Move(_velocity * Time.deltaTime);
         }

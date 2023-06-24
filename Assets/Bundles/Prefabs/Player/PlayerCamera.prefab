@@ -282,6 +282,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 86c6f42b8a49a4449b39bdbe4d27ffa2, type: 2}
-  _takeDamageDuration: 1
+  _groundedDuration: 0.25
+  _groundedStrenght: 1
+  _groundedRandomness: 6
   _takeDamageStrenght: 5
+  _takeDamageDuration: 0.5
   _takeDamageRandomness: 6
