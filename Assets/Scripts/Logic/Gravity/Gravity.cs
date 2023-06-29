@@ -10,11 +10,12 @@ namespace Logic.Gravity
 
         [SerializeField] private float _gravity = 120f;
         [SerializeField] private CheckPoint _checkingGroundPoint;
-
+        [SerializeField] private float _jumpingLevitationTime;
         [SerializeField] private CharacterController _characterController;
         private Vector3 _velocity;
         private ICameraAnimator _cameraAnimator;
         private bool _isGrounded;
+        private float _timeInLevitation;
 
         public Vector3 GetVelocity()
             => _velocity;
@@ -25,32 +26,39 @@ namespace Logic.Gravity
         public void Construct(ICameraAnimator cameraAnimator)
             => _cameraAnimator = cameraAnimator;
 
-        private void Awake() => Inititalize();
+        private void Awake() => Init();
 
-        private void LateUpdate() => CalculateGravity();
+        private void LateUpdate()
+        {
+            _timeInLevitation += Time.deltaTime;
+            CalculateGravity();
+        }
 
 
         public bool TryCatchGround()
         {
             Collider[] hits = Physics.OverlapSphere(_checkingGroundPoint.Position, _checkingGroundPoint.Radius);
 
-            foreach (var check in hits)
+            foreach (Collider check in hits)
             {
-                if (check.transform != null)
+                if (check.transform == null) continue;
 
-                    if (check.transform.GetComponentInParent<Ground>() != null)
-                    {
-                        if (!_isGrounded)
-                            _cameraAnimator.PlayGrounded();
-                        
-                        return _isGrounded = true;
-                    }
+                if (check.transform.GetComponentInParent<Ground>() == null) continue;
+                
+                if (IsBigFall())
+                    _cameraAnimator.PlayGrounded();
+
+                _timeInLevitation = 0f;
+                return _isGrounded = true;
             }
 
             return _isGrounded = false;
         }
 
-        private void Inititalize()
+        private bool IsBigFall() 
+            => !_isGrounded && _timeInLevitation >= _jumpingLevitationTime;
+
+        private void Init()
             => _gravity *= GravityCoefficientConst;
 
 

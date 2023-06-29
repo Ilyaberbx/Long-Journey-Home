@@ -8,7 +8,6 @@ namespace Logic.Animations
     public class PlayerCameraAnimator : MonoBehaviour, ICameraAnimator
     {
         [SerializeField] private VolumeProfile _profile;
-
         [SerializeField] private float _groundedDuration;
         [SerializeField] private float _groundedStrenght;
         [SerializeField] private int _groundedRandomness;
@@ -16,11 +15,13 @@ namespace Logic.Animations
         [SerializeField] private float _takeDamageDuration;
         [SerializeField] private int _takeDamageRandomness;
 
+        private Sequence _animationSequence;
         private Vignette _vignette;
-        private Sequence _animationSequence = DOTween.Sequence();
 
         private void Awake()
         {
+            _animationSequence = DOTween.Sequence();
+            
             if (_profile.TryGet(out Vignette vignette))
                 _vignette = vignette;
 

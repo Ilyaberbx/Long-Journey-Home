@@ -261,7 +261,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 15
   m_Radius: 1.57
-  m_SlopeLimit: 40
+  m_SlopeLimit: 45
   m_StepOffset: 0.2
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravity: 300
   _checkingGroundPoint: {fileID: 3933543477306920566}
+  _jumpingLevitationTime: 0.25
   _characterController: {fileID: 3950152820267360752}
 --- !u!114 &7119355605494549768
 MonoBehaviour:
@@ -583,7 +584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6231490332984145265}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.4, z: 0}
+  m_LocalPosition: {x: 0, y: 23.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5033458637689131941}
@@ -676,7 +677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7995979508108311700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.4, z: 0}
+  m_LocalPosition: {x: 0, y: 23.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2970240177481772349}
