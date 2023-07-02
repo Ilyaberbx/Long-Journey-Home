@@ -70,6 +70,9 @@ namespace Logic.Inventory
                 item.ItemData.Description);
         }
 
+        public bool HasItem(int id) 
+            => _inventoryData.HasItemById(id);
+
         public void LoadProgress(PlayerProgress progress)
         {
             _inventoryData = progress.InventoryData;

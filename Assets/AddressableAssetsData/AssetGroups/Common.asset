@@ -197,6 +197,90 @@ MonoBehaviour:
     m_Address: Assets/Bundles/Scenes/IntroRoad/IntroRoad.lighting
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4dae5e179051fbb48987578fc500c245
+    m_Address: Canine_Death
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3bf1035c7dbf15646a1e8f553516eb77
+    m_Address: Wolf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 020cacdb2dbc00b439659271ffd9309c
+    m_Address: palitra_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 886231ddf2287214996c0fc40b174be1
+    m_Address: House1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 59b98ca43f27d8c4a89d4058d2a962e5
+    m_Address: Snow_TerrainLayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d46f74cdeedd7941ba8cd7cb7ebb40c
+    m_Address: Snow_MaskMap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd0c9c3155e0e3944a594cd5ed045de0
+    m_Address: Material.012
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 653a4c81756c7c040940e1e59d1f683c
+    m_Address: Material.008
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f2ca0cd152699ef449d12b3eee9c52ce
+    m_Address: MAT_DESERT1.001
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 16ea46e14850f624d9326d4b64f28322
+    m_Address: Material.003
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0519ec32772a1394c80b9a6cebc5fdce
+    m_Address: Material.011
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fedad5a22f372514db81cb81dbc95d1f
+    m_Address: Material.007
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ffd58cc21eebe39418654cbb2a0e2587
+    m_Address: MAT_MAIN.002
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cb729cc49ae0ffc4082adc1323f14d85
+    m_Address: Material.004
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12f25b4681cc8c84c8315095a216be39
+    m_Address: Material.001
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e7368848fecc5c4408dc73ea8c771e20
+    m_Address: Material.013
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c0ed1d6d71d55ac4f902b7c546b83ea4
+    m_Address: Material.005
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: de3e2d9d2c588aa47a920b229ff49a0d
+    m_Address: MAT_MAIN.001
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 41a0512e49aa5ca49bf98048315a890c
+    m_Address: Material.009
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 62553aaeb65440f4fb0375834eb59ac8
+    m_Address: Material.006
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c0582dde5b5439140973dc6aecd9ddaf
+    m_Address: Material.010
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

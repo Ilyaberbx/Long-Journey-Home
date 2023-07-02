@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: Lamp
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: bde9c7ca050f87d42b63785080fffc50
+    m_Address: Keys
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

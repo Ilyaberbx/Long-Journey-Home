@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: House
   EnemySpawners: []
-  LootSpawners: []
+  LootSpawners:
+  - Id: House_563a245a-2a83-45d5-a4c0-f4951f23dbf7
+    Prefab: {fileID: 7764010429717162071, guid: 0ae0da3eee663184791c6c3f2ecc2551, type: 3}
+    Position: {x: 613.89996, y: 70.85, z: 1284.2397}
+    Rotation: {x: -0, y: -0.05310347, z: -0, w: 0.99858904}
   PlayerInitPoint: {x: 1658.5918, y: 141, z: 2563.6602}

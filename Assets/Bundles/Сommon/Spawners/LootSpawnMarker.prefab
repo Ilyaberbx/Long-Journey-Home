@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1235487934307895450}
-  - component: {fileID: 1235487934307895451}
   - component: {fileID: 1235487934307895448}
+  - component: {fileID: 546317489}
   m_Layer: 0
   m_Name: LootSpawnMarker
   m_TagString: Untagged
@@ -25,26 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235487934307895449}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 1621.1307, y: 5.7, z: 3768.856}
-  m_LocalScale: {x: 200, y: 199.99997, z: 199.99997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1235487934307895451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235487934307895449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Id: MainScene_57b4c623-54d0-453a-aaf4-b70a4fac7774
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!114 &1235487934307895448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,4 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db846e405614405bcd29bef803cfcf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemData: {fileID: 11400000, guid: 91cb99cb20ed0c44f876b8ddddd300a4, type: 2}
+  _indicatorColor: {r: 1, g: 0, b: 0, a: 1}
+  _itemPickUp: {fileID: 7764010429717162071, guid: 0ae0da3eee663184791c6c3f2ecc2551, type: 3}
+--- !u!114 &546317489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235487934307895449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: House_563a245a-2a83-45d5-a4c0-f4951f23dbf7
