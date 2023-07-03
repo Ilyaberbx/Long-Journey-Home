@@ -33,6 +33,14 @@ MonoBehaviour:
     m_Address: DoorRoot
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d127c7e57e039bc45bc063b43522dbb5
+    m_Address: Keys
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 57fb642b40759014092444d92b69954d
+    m_Address: Closet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

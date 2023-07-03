@@ -10,6 +10,7 @@ namespace Logic.Level
 {
     public class Door : MonoBehaviour,IInteractable
     {
+        [SerializeField] private Collider _interactCollider;
         [SerializeField] private GameObject _key;
         [SerializeField] private ItemData _keyData;
         [SerializeField] private Dialogue _noKeyDialogue;
@@ -27,6 +28,7 @@ namespace Logic.Level
                 {
                     Open();
                     _key.SetActive(true);
+                    _interactCollider.enabled = false;
                     _isOpened = true;
                 }
                 else
