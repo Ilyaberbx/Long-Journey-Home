@@ -4,6 +4,11 @@ namespace Enums
     {
         PlayerCamera,
         FirstCamera,
-        SecondCamera
+        SecondCamera,
+        ThirdCamera,
+        FourthCamera,
+        FifthCamera,
+        SixthCamera,
+        SeventhCamera
     }
 }

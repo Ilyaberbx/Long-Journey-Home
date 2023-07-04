@@ -478,6 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1594963431294893147}
   - component: {fileID: 8508488430798201083}
+  - component: {fileID: 4558917596330167498}
   m_Layer: 0
   m_Name: Hud
   m_TagString: Untagged
@@ -518,6 +519,18 @@ MonoBehaviour:
   _dialogueText: {fileID: 1402678172445115166}
   _ammoText: {fileID: 6400126170150605957}
   _interactHint: {fileID: 3705155142670034348}
+--- !u!225 &4558917596330167498
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5666931374312116815}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &9151603638448416702
 GameObject:
   m_ObjectHideFlags: 0

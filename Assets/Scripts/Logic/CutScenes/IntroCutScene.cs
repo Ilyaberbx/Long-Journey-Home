@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DG.Tweening;
 using Enums;
 using Infrastructure.Services.AssetManagement;
@@ -13,7 +12,6 @@ namespace Logic.CutScenes
 {
     public class IntroCutScene : BaseCutScene
     {
-        [SerializeField] private List<Collider> _cutSceneTriggers;
         [SerializeField] private AssetReference _smokeReference;
         [SerializeField] private Dialogue _dialogueOnEnd;
         [SerializeField] private Transform _firstTree;
@@ -62,12 +60,7 @@ namespace Logic.CutScenes
             sequence.AppendCallback(DisableTriggers);
             sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
-
-        private void DisableTriggers()
-        {
-            foreach (Collider trigger in _cutSceneTriggers)
-                trigger.enabled = false;
-        }
+        
 
         private void ShakeCamera(float strength) 
             => _camerasService.CurrentGameCamera().Camera.transform.DOShakePosition(1f, strength);

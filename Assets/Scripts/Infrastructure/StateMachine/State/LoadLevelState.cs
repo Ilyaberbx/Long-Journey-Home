@@ -135,8 +135,8 @@ namespace Infrastructure.StateMachine.State
         private void ApplyEquipmentToCamera(GameObject player, CinemachineVirtualCamera camera)
         {
             Transform equipment = player.GetComponent<HeroEquiper>().EquipmentContainer;
-            equipment.SetParent(camera.transform);
-            equipment.localPosition = Vector3.zero.AddZ(2);
+            equipment.SetParent(Camera.main.transform);
+            equipment.localPosition = Vector3.zero.AddZ(8).AddX(9);
         }
 
         private async Task InitHud(GameObject player)
@@ -153,7 +153,7 @@ namespace Infrastructure.StateMachine.State
 
         private async Task<GameObject> InitPlayer()
         {
-            LevelData levelData = LevelData();
+            LevelData levelData = LevelData(); 
             Vector3 initPoint = levelData.PlayerInitPoint;
             GameObject player = await _gameFactory.CreatePlayer(initPoint);
             return player;

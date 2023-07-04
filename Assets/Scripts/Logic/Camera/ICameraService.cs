@@ -1,4 +1,5 @@
-﻿using Enums;
+﻿using Cinemachine;
+using Enums;
 
 namespace Logic.Camera
 {
@@ -7,5 +8,6 @@ namespace Logic.Camera
         void ChangeCamerasPriority(GameCameraType type);
 
         GameCamera CurrentGameCamera();
+        CinemachineBrain Brain { get; }
     }
 }

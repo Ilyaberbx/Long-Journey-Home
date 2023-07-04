@@ -18,7 +18,6 @@ namespace Logic.CutScenes
         [SerializeField] private AssetReference _smokeReference;
         [SerializeField] private GameObject _block;
         [SerializeField] private Transform _pillar;
-        [SerializeField] private List<Collider> _cutSceneTriggers;
         private ICameraService _camerasService;
         private IAssetProvider _assetProvider;
         private GameObject _smokeFxPrefab;
@@ -57,13 +56,8 @@ namespace Logic.CutScenes
             sequence.AppendCallback(SetPlayerCamera);
             sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
-        
 
-        private void DisableTriggers()
-        {
-            foreach (Collider trigger in _cutSceneTriggers)
-                trigger.enabled = false;
-        }
+
         private void ShakeCamera(float duration, float strength) 
             => _camerasService.CurrentGameCamera().Camera.transform.DOShakePosition(duration, strength);
 

@@ -1668,11 +1668,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8902611594753834559, guid: 95b93fca60564f4418914ac3df16c455, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8902611594753834559, guid: 95b93fca60564f4418914ac3df16c455, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 568.7
+      value: 607
       objectReference: {fileID: 0}
     - target: {fileID: 8902611594753834559, guid: 95b93fca60564f4418914ac3df16c455, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1680,7 +1680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8902611594753834559, guid: 95b93fca60564f4418914ac3df16c455, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 624.7
+      value: 639.8
       objectReference: {fileID: 0}
     - target: {fileID: 8902611594753834559, guid: 95b93fca60564f4418914ac3df16c455, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6237,6 +6237,7 @@ MonoBehaviour:
   - {fileID: 1247724127}
   - {fileID: 253985579}
   - {fileID: 461986113}
+  _brain: {fileID: 141465160}
 --- !u!4 &551228567
 Transform:
   m_ObjectHideFlags: 0
@@ -10233,6 +10234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indicatorColor: {r: 0.5611061, g: 1, b: 0, a: 1}
   _uniqueId: {fileID: 837411612}
+  _cutSceneTriggers:
+  - {fileID: 837411613}
   _smokeSpawnPoints:
   - {fileID: 1248747942}
   - {fileID: 1023422197}
@@ -10244,8 +10247,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _block: {fileID: 375281089}
   _pillar: {fileID: 1112870215}
-  _cutSceneTriggers:
-  - {fileID: 837411613}
 --- !u!114 &837411612
 MonoBehaviour:
   m_ObjectHideFlags: 0

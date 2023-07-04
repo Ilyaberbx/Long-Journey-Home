@@ -4,6 +4,7 @@ using UI.Elements;
 using UI.Inventory;
 using UI.Menu;
 using UI.Settings;
+using UnityEngine;
 
 namespace UI.Services.Factory
 {
@@ -14,5 +15,6 @@ namespace UI.Services.Factory
         Task<MenuWindow> CreateMainMenu();
         Task<SettingsWindow> CreateSettingsWindow();
         Task<WindowBase> CreatePauseMenu();
+        Task<GameObject> CreateEyeCurtain();
     }
 }

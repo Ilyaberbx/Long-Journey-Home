@@ -1,8 +1,10 @@
 ﻿using Infrastructure.Services.PersistentProgress;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
+using UI.Elements;
+using UnityEngine;
 
-namespace UI.Elements
+namespace UI.Menu
 {
     public class LoadLastSaveButton : BaseButton
     {
@@ -18,6 +20,7 @@ namespace UI.Elements
         public override void Execute()
         {
             string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.Level;
+            Debug.Log(level);
             _stateMachine.Enter<LoadLevelState,string>(level);
         }
     }

@@ -27923,6 +27923,7 @@ MonoBehaviour:
   - {fileID: 4913069599255755999}
   - {fileID: 1073887244}
   - {fileID: 1522090574}
+  _brain: {fileID: 963194229}
 --- !u!1001 &2036627170
 PrefabInstance:
   m_ObjectHideFlags: 0

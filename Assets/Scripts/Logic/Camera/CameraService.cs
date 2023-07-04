@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using Enums;
 using UnityEngine;
 
@@ -7,7 +8,11 @@ namespace Logic.Camera
 {
     public class CameraService : MonoBehaviour, ICameraService
     {
+        public CinemachineBrain Brain => _brain;
+        
         [SerializeField] private List<GameCamera> _cameras;
+        [SerializeField] private CinemachineBrain _brain;
+        
 
         public GameCamera ConstructCamera(GameCameraType type, Transform target = null, bool isLookAt = false)
         {

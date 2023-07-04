@@ -21,7 +21,7 @@ namespace UI.Services.Factory
         private Transform _uiRoot;
         private IPersistentProgressService _progressService;
 
-        public UIFactory(IAssetProvider assets,IStaticDataService staticData,DiContainer container)
+        public UIFactory(IAssetProvider assets, IStaticDataService staticData, DiContainer container)
         {
             _assets = assets;
             _staticData = staticData;
@@ -35,6 +35,7 @@ namespace UI.Services.Factory
             InventoryWindow window = _container.InstantiatePrefabForComponent<InventoryWindow>(prefab, _uiRoot);
             return window;
         }
+
         public async Task<MenuWindow> CreateMainMenu()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.MainMenu);
@@ -57,6 +58,12 @@ namespace UI.Services.Factory
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
             PauseWindow window = _container.InstantiatePrefabForComponent<PauseWindow>(prefab, _uiRoot);
             return window;
+        }
+
+        public async Task<GameObject> CreateEyeCurtain()
+        {
+            GameObject eyeCurtain = await _assets.Load<GameObject>(AssetsAddress.EyeCurtain);
+            return Object.Instantiate(eyeCurtain, _uiRoot);
         }
 
         public async Task CreateUIRoot()

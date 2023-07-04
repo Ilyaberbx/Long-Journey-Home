@@ -13,6 +13,9 @@
         }
 
         public PositionOnLevel(string initialLevel)
-            => Level = initialLevel;
+        {
+            Position = null;
+            Level = initialLevel;
+        }
     }
 }
