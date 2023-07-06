@@ -149,6 +149,9 @@ namespace Infrastructure.StateMachine.State
                 player.GetComponent<IDialogueActor>(),
                 player.GetComponent<IFreeze>(),
                 player.GetComponent<IInteractor>());
+            
+            player.GetComponent<HeroHudWrapper>()
+                .SetHud(hud.GetComponent<IHud>());
         }
 
         private async Task<GameObject> InitPlayer()

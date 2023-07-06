@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using DG.Tweening;
+using Infrastructure.StateMachine;
+using Infrastructure.StateMachine.State;
 using Logic.Camera;
 using UI.Services.Factory;
 using UnityEngine;
@@ -12,15 +13,18 @@ namespace Logic.CutScenes
     public class HouseCutScene : BaseCutScene
     {
         [SerializeField] private List<CutSceneCameraTransitionData> _camerasTransitionData;
+        [SerializeField] private string _transferTo;
         private ICameraService _cameraService;
         private IUIFactory _uiFactory;
         private CanvasGroup _eyeCurtain;
+        private IGameStateMachine _stateMachine;
 
         [Inject]
-        public void Construct(ICameraService cameraService,IUIFactory uiFactory)
+        public void Construct(ICameraService cameraService,IUIFactory uiFactory,IGameStateMachine stateMachine)
         {
             _cameraService = cameraService;
             _uiFactory = uiFactory;
+            _stateMachine = stateMachine;
         }
 
         private void Start()
@@ -49,6 +53,8 @@ namespace Logic.CutScenes
             sequence.AppendCallback(() => EyeCurtainSequence());
             sequence.AppendInterval(_camerasTransitionData[5].BlendTime);
             sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
+            sequence.AppendInterval(1f);
+            sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
             sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
 
