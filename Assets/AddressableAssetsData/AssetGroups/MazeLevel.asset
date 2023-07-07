@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: MazeTerrain
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 21df185f40cf2c5439fab7cab9fa7204
+    m_Address: BodiesOnChair
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

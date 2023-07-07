@@ -281,10 +281,6 @@ MonoBehaviour:
     m_Address: Material.010
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: df758d7aa28f20e4989786ae1b35000e
-    m_Address: XMark
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

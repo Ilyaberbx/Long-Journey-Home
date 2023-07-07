@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
 using Logic.Player;
 using UnityEngine;
 
@@ -7,15 +7,12 @@ namespace Logic.Level
 
     public class MazeMark : MonoBehaviour, IInteractable
     {
-        public bool IsLastMark => _isLastMark;
-        
+        [SerializeField] private float _enabledDuration;
         [SerializeField] private bool _isLastMark;
         [SerializeField] private MazeMark _nextMark;
+        [SerializeField] private GameObject _selfInteractor;
         [SerializeField] private GameObject _objectToDisable;
         [SerializeField] private GameObject _objectToEnable;
-        
-        [SerializeField] private List<Collider> _collidersToAppear;
-        [SerializeField] private List<Collider> _collidersToDisappear;
 
         public void Interact(Transform interactor) 
             => HandleInteract();
@@ -24,32 +21,36 @@ namespace Logic.Level
             => string.Empty;
 
         private void EnableMark() 
-            => _objectToEnable.SetActive(true);
+            => _selfInteractor.SetActive(true);
 
-        private void DisableObjects()
+        private void DisableMark()
+            => _selfInteractor.SetActive(false);
+
+        private void DisableObjects() 
+            => _objectToDisable.SetActive(false);
+
+        private Sequence EnableObjectsSequence()
         {
-            foreach (Collider collider in _collidersToDisappear) 
-                collider.enabled = false;
-
-            _objectToDisable.SetActive(false);
-        }
-
-        private void EnableObjects()
-        {
-            foreach (Collider collider in _collidersToAppear) 
-                collider.enabled = true;
+            Sequence sequence = DOTween.Sequence();
+            sequence.AppendCallback(() => _objectToEnable.SetActive(true));
+            sequence.AppendInterval(_enabledDuration);
+            sequence.AppendCallback(() => _objectToDisable.SetActive(false));
+            return sequence;
         }
 
         private void HandleInteract()
         {
-            EnableObjects();
+            EnableObjectsSequence().OnComplete(() =>
+            {
+                if (_nextMark._isLastMark)
+                    return;
 
-            if (_nextMark._isLastMark)
-                return;
+                _nextMark.EnableMark();
 
-            _nextMark.EnableMark();
+                DisableObjects();
+                DisableMark();
+            });
             
-            DisableObjects();
         }
     }
 }
