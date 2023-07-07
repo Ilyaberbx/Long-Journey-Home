@@ -9,9 +9,9 @@ namespace Logic.Level
         [SerializeField] private Dialogue _dialogue;
         [SerializeField] private string _hintName;
 
-        public void Interact(Transform interactorTransform)
+        public void Interact(Transform interactor)
         {
-            IDialogueActor dialogueActor = interactorTransform.GetComponent<IDialogueActor>();
+            IDialogueActor dialogueActor = interactor.GetComponent<IDialogueActor>();
             dialogueActor.StartDialogue(_dialogue);
         }
 

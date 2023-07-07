@@ -54,7 +54,7 @@ namespace Logic.Level
             }
         }
 
-        public void Interact(Transform interactorTransform)
+        public void Interact(Transform interactor)
         {
             if (_isFire)
             {
@@ -62,7 +62,7 @@ namespace Logic.Level
                 return;
             }
 
-            StartHealing(interactorTransform);
+            StartHealing(interactor);
             AppearFx();
         }
 

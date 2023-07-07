@@ -18,7 +18,7 @@ namespace Logic.Level
         private void Start()
             => _sequence = DOTween.Sequence();
 
-        public void Interact(Transform interactorTransform)
+        public void Interact(Transform interactor)
         {
             if (_isOpened)
                 Close();

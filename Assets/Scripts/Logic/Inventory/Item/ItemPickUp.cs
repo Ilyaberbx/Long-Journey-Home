@@ -11,9 +11,9 @@ namespace Logic.Inventory.Item
         [SerializeField] private ItemData _itemData;
         [SerializeField] private string _interactText;
 
-        public void Interact(Transform interactorTransform)
+        public void Interact(Transform interactor)
         {
-            IItemPicker picker = interactorTransform.GetComponent<IItemPicker>();
+            IItemPicker picker = interactor.GetComponent<IItemPicker>();
             
             if (picker == null)
                 return;
