@@ -43,9 +43,16 @@ namespace Logic.Camera
         public GameCamera CurrentGameCamera() 
             => _cameras.FirstOrDefault(camera => camera.Camera.Priority == 1);
 
+        public GameCamera GetCameraByType(GameCameraType type)
+        {
+            foreach (GameCamera gameCamera in _cameras)
+                if (gameCamera.CameraType == type)
+                    return gameCamera;
+
+            return null;
+        }
         public void ChangeCamerasPriority(GameCameraType type)
         {
-            Debug.Log("Camera changing");
             foreach (GameCamera gameCamera in _cameras)
                 gameCamera.Camera.Priority = gameCamera.CameraType == type ? 1 : 0;
         }

@@ -10,7 +10,6 @@ namespace Logic.Camera
         public GameCameraType CameraType => _cameraType;
         public CinemachineVirtualCamera Camera { get; private set; }
         
-
         private void Awake() 
             => OnAwake();
 

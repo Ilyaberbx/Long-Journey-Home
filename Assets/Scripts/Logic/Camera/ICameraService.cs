@@ -9,5 +9,6 @@ namespace Logic.Camera
 
         GameCamera CurrentGameCamera();
         CinemachineBrain Brain { get; }
+        GameCamera GetCameraByType(GameCameraType type);
     }
 }

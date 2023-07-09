@@ -1624,7 +1624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 5
+  _cameraType: 6
 --- !u!1001 &155944908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2974,7 +2974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 2
+  _cameraType: 3
 --- !u!114 &314378497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5664,7 +5664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 4
+  _cameraType: 5
 --- !u!1001 &577809224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9434,7 +9434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 6
+  _cameraType: 7
 --- !u!1001 &995769938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9961,7 +9961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 1
+  _cameraType: 2
 --- !u!114 &1074469469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10688,7 +10688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 3
+  _cameraType: 4
 --- !u!1001 &1156856310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14633,7 +14633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 7
+  _cameraType: 8
 --- !u!1001 &1688825674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17278,6 +17278,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1113509221}
     m_Modifications:
+    - target: {fileID: 4247840679344645203, guid: 3593a6d56ee504b4786fcaf32504a61c, type: 3}
+      propertyPath: _cameraType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4913069599347004011, guid: 3593a6d56ee504b4786fcaf32504a61c, type: 3}
       propertyPath: m_RecenterTarget
       value: 2

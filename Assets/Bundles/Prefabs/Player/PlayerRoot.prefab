@@ -485,7 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hudWrapper: {fileID: 8071613259115006391}
   _look: {fileID: 7308672361779659170}
-  _cameraHolder: {fileID: 5672463797853710604}
+  cameraWrapper: {fileID: 5672463797853710604}
   _freeze: {fileID: 4137454390573635750}
   _light: {fileID: 9187747719706402692}
   _attack: {fileID: 1136055281313859481}
@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f444a8b94c7954b851c72c3c337819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _equiper: {fileID: 4331722270868525863}
 --- !u!114 &3903739620445181443
 MonoBehaviour:
   m_ObjectHideFlags: 0

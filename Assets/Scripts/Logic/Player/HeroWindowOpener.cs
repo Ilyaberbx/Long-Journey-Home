@@ -15,7 +15,7 @@ namespace Logic.Player
         [SerializeField] private HeroLook _look;
         [SerializeField] private HeroCutsSceneProcessor _heroCutScene;
         [SerializeField] private HeroAttack _attack;
-        [SerializeField] private HeroCameraHolder _heroCamera;
+        [SerializeField] private HeroCameraWrapper _heroCamera;
 
         private IInputService _input;
         private IWindowService _windowService;

@@ -13893,7 +13893,7 @@ MonoBehaviour:
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
-  m_Dithering: 0
+  m_Dithering: 1
   m_ClearDepth: 1
   m_AllowXRRendering: 1
   m_RequiresDepthTexture: 0
@@ -15378,7 +15378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 1
+  _cameraType: 2
 --- !u!1001 &1074722517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20618,7 +20618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraType: 2
+  _cameraType: 3
 --- !u!1001 &1524213877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29166,6 +29166,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2036474691}
     m_Modifications:
+    - target: {fileID: 4247840679344645203, guid: 3593a6d56ee504b4786fcaf32504a61c, type: 3}
+      propertyPath: _cameraType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4913069599347004011, guid: 3593a6d56ee504b4786fcaf32504a61c, type: 3}
       propertyPath: m_RecenterTarget
       value: 2

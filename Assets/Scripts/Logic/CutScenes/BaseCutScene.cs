@@ -11,7 +11,7 @@ namespace Logic.CutScenes
     {
         [SerializeField] private UniqueId _uniqueId;
         [SerializeField] protected List<Collider> _cutSceneTriggers;
-        private IPersistentProgressService _progressService;
+        protected IPersistentProgressService _progressService;
 
         [Inject]
         public void Construct(IPersistentProgressService progressService) 

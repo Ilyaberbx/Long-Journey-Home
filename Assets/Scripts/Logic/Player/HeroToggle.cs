@@ -7,7 +7,7 @@ namespace Logic.Player
     {
         [SerializeField] private HeroHudWrapper _hudWrapper;
         [SerializeField] private HeroLook _look;
-        [SerializeField] private HeroCameraHolder _cameraHolder;
+        [FormerlySerializedAs("_cameraHolder")] [SerializeField] private HeroCameraWrapper cameraWrapper;
         [SerializeField] private HeroFreeze _freeze;
         [SerializeField] private HeroLight _light;
         [SerializeField] private HeroAttack _attack;
@@ -26,7 +26,7 @@ namespace Logic.Player
             _look.enabled = value;
             _light.enabled = value;
             _freeze.enabled = value;
-            _cameraHolder.ToggleCamera(value);
+            cameraWrapper.ToggleCamera(value);
             
             if (value)
                 _hudWrapper.Open();

@@ -128,15 +128,15 @@ namespace Infrastructure.StateMachine.State
             player.GetComponent<HeroHealth>().Construct(cameraAnimator);
             player.GetComponent<Gravity>().Construct(cameraAnimator);
             player.GetComponent<HeroDeath>().SetCameraAnimator(camera.GetComponentInParent<ICameraAnimator>());
-            player.GetComponent<HeroCameraHolder>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
+            player.GetComponent<HeroCameraWrapper>().Init(camera.GetCinemachineComponent<CinemachinePOV>());
             ApplyEquipmentToCamera(player, camera);
         }
 
         private void ApplyEquipmentToCamera(GameObject player, CinemachineVirtualCamera camera)
         {
             Transform equipment = player.GetComponent<HeroEquiper>().EquipmentContainer;
-            equipment.SetParent(Camera.main.transform);
-            equipment.localPosition = Vector3.zero.AddZ(8).AddX(9);
+            equipment.SetParent(camera.transform,true);
+            equipment.localPosition = Vector3.zero.AddZ(2);
         }
 
         private async Task InitHud(GameObject player)

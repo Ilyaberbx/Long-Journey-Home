@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Camera;
+using Logic.Player;
 using UI.Services.Factory;
 using UnityEngine;
 using Zenject;
@@ -18,13 +21,15 @@ namespace Logic.CutScenes
         private IUIFactory _uiFactory;
         private CanvasGroup _eyeCurtain;
         private IGameStateMachine _stateMachine;
+        private ISaveLoadService _saveLoadService;
 
         [Inject]
-        public void Construct(ICameraService cameraService,IUIFactory uiFactory,IGameStateMachine stateMachine)
+        public void Construct(ICameraService cameraService,IUIFactory uiFactory,IGameStateMachine stateMachine,ISaveLoadService saveLoadService)
         {
             _cameraService = cameraService;
             _uiFactory = uiFactory;
             _stateMachine = stateMachine;
+            _saveLoadService = saveLoadService;
         }
 
         private void Start()
@@ -38,6 +43,8 @@ namespace Logic.CutScenes
         public override void StartCutScene(Transform player, Action onCutSceneEnded)
         {
             Sequence sequence = DOTween.Sequence();
+            HeroCameraWrapper cameraWrapper = player.GetComponent<HeroCameraWrapper>();
+            sequence.AppendCallback(ParentEquipmentToMain(cameraWrapper));
             sequence.AppendCallback(DisableTriggers);
             sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
             sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 1f);
@@ -54,7 +61,17 @@ namespace Logic.CutScenes
             sequence.AppendInterval(_camerasTransitionData[5].BlendTime);
             sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
             sequence.AppendInterval(1f);
+            sequence.AppendCallback(SaveProgress);
             sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
+        }
+
+        private TweenCallback ParentEquipmentToMain(HeroCameraWrapper wrapper) 
+            => wrapper.ParentEquipmentToMainCamera;
+
+        private void SaveProgress()
+        {
+            _progressService.PlayerProgress.WorldData.PositionOnLevel.Level = _transferTo;
+           _saveLoadService.SaveProgress();
         }
 
         private Sequence EyeCurtainSequence()
