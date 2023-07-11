@@ -4862,32 +4862,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     _blendTime: 3
-    _type: 1
-  - _blendCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-    _blendTime: 0.5
     _type: 2
   - _blendCurve:
       serializedVersion: 2
@@ -4913,8 +4887,34 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    _blendTime: 1.5
+    _blendTime: 0.5
     _type: 3
+  - _blendCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    _blendTime: 1.5
+    _type: 4
   - _blendCurve:
       serializedVersion: 2
       m_Curve:
@@ -4940,7 +4940,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     _blendTime: 4
-    _type: 4
+    _type: 5
   - _blendCurve:
       serializedVersion: 2
       m_Curve:
@@ -4966,7 +4966,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     _blendTime: 0
-    _type: 5
+    _type: 6
   - _blendCurve:
       serializedVersion: 2
       m_Curve:
@@ -4992,7 +4992,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     _blendTime: 1
-    _type: 6
+    _type: 7
   - _blendCurve:
       serializedVersion: 2
       m_Curve:
@@ -5027,7 +5027,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     _blendTime: 0.5
-    _type: 7
+    _type: 8
   _transferTo: Maze
 --- !u!114 &519457142
 MonoBehaviour:
@@ -18119,6 +18119,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2524471396472259267, guid: 0caa5011b7a90bc4591584ca6f4d1bb3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6277915674086440834, guid: 0caa5011b7a90bc4591584ca6f4d1bb3, type: 3}
       propertyPath: m_Name
       value: House1
@@ -18166,6 +18170,10 @@ PrefabInstance:
     - target: {fileID: 6653069713472955704, guid: 0caa5011b7a90bc4591584ca6f4d1bb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706011690056835317, guid: 0caa5011b7a90bc4591584ca6f4d1bb3, type: 3}
+      propertyPath: _requiersKey
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8351890796687650066, guid: 0caa5011b7a90bc4591584ca6f4d1bb3, type: 3}
       propertyPath: m_LocalScale.x

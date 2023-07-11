@@ -46,7 +46,7 @@ Light:
   m_Intensity: 500
   m_Range: 500
   m_SpotAngle: 179
-  m_InnerSpotAngle: 106.64103
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -24362,7 +24362,7 @@ GameObject:
   - component: {fileID: 4784781190800943196}
   - component: {fileID: 212525874405105175}
   - component: {fileID: 4832853714968137859}
-  - component: {fileID: 8276693403569258647}
+  - component: {fileID: 8408372850562658892}
   m_Layer: 7
   m_Name: FlashLight
   m_TagString: Untagged
@@ -24428,7 +24428,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8276693403569258647
+--- !u!114 &8408372850562658892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24440,7 +24440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7863cecaef0a4e5886cb197b65eb98be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shakeCoeficient: 0.1
+  _shakeCoeficient: 1.02
 --- !u!1 &4934778246461064283
 GameObject:
   m_ObjectHideFlags: 0
@@ -24487,7 +24487,7 @@ Light:
   m_Intensity: 500
   m_Range: 500
   m_SpotAngle: 179
-  m_InnerSpotAngle: 106.64103
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -24616,7 +24616,7 @@ Light:
   m_Intensity: 500
   m_Range: 500
   m_SpotAngle: 179
-  m_InnerSpotAngle: 106.64103
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -24708,8 +24708,8 @@ Light:
   m_Color: {r: 0.99215686, g: 0.7372176, b: 0.2078431, a: 1}
   m_Intensity: 500
   m_Range: 150
-  m_SpotAngle: 134.33516
-  m_InnerSpotAngle: 33.68251
+  m_SpotAngle: 179
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0

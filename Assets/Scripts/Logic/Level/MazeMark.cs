@@ -10,7 +10,6 @@ namespace Logic.Level
         [SerializeField] private Collider _colliderToEnable;
         [SerializeField] private Collider _colliderToDisable;
         [SerializeField] private float _enabledDuration;
-        [SerializeField] private bool _isLastMark;
         [SerializeField] private MazeMark _nextMark;
         [SerializeField] private GameObject _selfInteractor;
         [SerializeField] private GameObject _objectToDisable;
@@ -45,12 +44,10 @@ namespace Logic.Level
             DisableMark();
             EnableObjectsSequence().OnComplete(() =>
             {
-                if (_nextMark._isLastMark)
-                    return;
-
-                _nextMark.EnableMark();
-                DisableObjects();
                 ToggleColliders();
+                DisableObjects();
+
+                _nextMark?.EnableMark();
             });
             
         }

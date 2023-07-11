@@ -1984,6 +1984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 6739744034331343376, guid: 612dee07d643c1345b11537622eaef37, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6963216605765468459, guid: 612dee07d643c1345b11537622eaef37, type: 3}
       propertyPath: m_RootOrder
       value: 0

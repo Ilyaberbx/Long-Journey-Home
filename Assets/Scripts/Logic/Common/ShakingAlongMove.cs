@@ -5,11 +5,10 @@ using Zenject;
 
 namespace Logic.Common
 {
-    public class ShakingAloneMove : MonoBehaviour
+    public class ShakingAlongMove : MonoBehaviour
     {
         [SerializeField] private float _shakeCoeficient;
         private IInputService _input;
-        private Tween _shakingTween;
         private Tween _returningTween;
         private Vector3 _cachedPosition;
         private bool _isShaking;
@@ -32,17 +31,17 @@ namespace Logic.Common
             else if(_isShaking)
             {
                 DOTween.Kill(gameObject);
-                _returningTween = transform.DOLocalMove(_cachedPosition, 0.5f).OnComplete(Shaked);
+                _returningTween = transform.DOLocalMove(_cachedPosition, 0.5f).OnComplete(HandleShake);
             }
         }
 
         private void Shake()
         {
             _isShaking = true;
-            _shakingTween = transform.DOShakePosition(1, _shakeCoeficient, 0,10f).OnComplete(Shaked);
+            transform.DOShakePosition(1, _shakeCoeficient, 0,10f).OnComplete(HandleShake);
         }
 
-        private void Shaked() 
+        private void HandleShake() 
             => _isShaking = false;
 
         private bool IsMoving() 
