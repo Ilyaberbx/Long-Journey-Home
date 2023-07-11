@@ -26,7 +26,6 @@ namespace Logic.Level
 
             if (_requiersKey)
             {
-
                 if (TryGetInventory(interactor, out InventoryPresenter inventory))
                 {
                     if (inventory.HasItem(_keyData.Id))

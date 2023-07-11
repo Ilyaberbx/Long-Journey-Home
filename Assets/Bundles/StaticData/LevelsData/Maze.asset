@@ -15,4 +15,4 @@ MonoBehaviour:
   LevelKey: Maze
   EnemySpawners: []
   LootSpawners: []
-  PlayerInitPoint: {x: 699, y: 2, z: 1374}
+  PlayerInitPoint: {x: 749.3, y: 2, z: 1422.1}
