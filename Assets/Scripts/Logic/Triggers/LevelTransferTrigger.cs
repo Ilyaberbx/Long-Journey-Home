@@ -42,7 +42,7 @@ namespace Logic.Triggers
 
             if (!other.CompareTag(PlayerTag)) return;
 
-            _progressService.PlayerProgress.WorldData.PositionOnLevel = new PositionOnLevel(_transferTo);
+            _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel = _transferTo;
             _saveLoad.SaveProgress();
             _stateMachine.Enter<LoadProgressState, string>(_transferTo);
             _triggered = true;

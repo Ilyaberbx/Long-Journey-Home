@@ -1,21 +1,19 @@
-﻿namespace Data
+﻿using System.Collections.Generic;
+
+namespace Data
 {
     [System.Serializable]
     public class PositionOnLevel
     {
-        public Vector3Data Position;
-        public string Level;
-
-        public PositionOnLevel(string level, Vector3Data position)
+        public List<Vector3Data> Positions;
+        public List<string> Levels;
+        public string CurrentLevel;
+        
+        public PositionOnLevel(string initialCurrentLevel)
         {
-            Position = position;
-            Level = level;
-        }
-
-        public PositionOnLevel(string initialLevel)
-        {
-            Position = null;
-            Level = initialLevel;
+            CurrentLevel = initialCurrentLevel;
+            Positions = new List<Vector3Data>();
+            Levels = new List<string>();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace UI.Menu
 
         public override void Execute()
         {
-            string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.Level;
+            string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel;
             Debug.Log(level);
             _stateMachine.Enter<LoadLevelState,string>(level);
         }

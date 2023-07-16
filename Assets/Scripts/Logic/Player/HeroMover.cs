@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Data;
 using Extensions;
 using Infrastructure.Services.Input;
@@ -10,12 +11,12 @@ namespace Logic.Player
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(Gravity.Gravity))]
-    public class HeroMover : MonoBehaviour,ISavedProgressWriter
+    public class HeroMover : MonoBehaviour, ISavedProgressWriter
     {
         private const float GravityConst = -20f;
 
         public bool CanJump { get; set; } = true;
-        
+
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpHeight;
@@ -24,16 +25,13 @@ namespace Logic.Player
         private IInputService _input;
         private Gravity.Gravity _gravity;
 
-        private UnityEngine.Camera _camera;
-
         [Inject]
-        public void Construct(IInputService inputService) 
+        public void Construct(IInputService inputService)
             => _input = inputService;
 
         private void Awake()
         {
             _gravity = GetComponent<Gravity.Gravity>();
-            _camera = UnityEngine.Camera.main;
             Cursor.lockState = CursorLockMode.Locked;
         }
 
@@ -55,14 +53,14 @@ namespace Logic.Player
             _characterController.Move(movement * (_speed * Time.deltaTime));
         }
 
-        private Vector3 CalculateMovement(Vector3 input) 
+        private Vector3 CalculateMovement(Vector3 input)
             => transform.forward * input.z + transform.right * input.x;
 
         private void Jump()
         {
-            if(!CanJump)
+            if (!CanJump)
                 return;
-            
+
             Vector3 velocity = _gravity.GetVelocity();
             velocity.y += Mathf.Sqrt(_jumpHeight * (-3.0f * GravityConst));
             _gravity.SetVelocity(velocity);
@@ -71,25 +69,34 @@ namespace Logic.Player
         public void UpdateProgress(PlayerProgress progress)
             => UpdatePlayerPositionOnLevelProgress(progress);
 
-        private void UpdatePlayerPositionOnLevelProgress(PlayerProgress progress)
-        {
-            if (CurrentLevel() != progress.WorldData.PositionOnLevel.Level) return;
-
-            progress.WorldData.PositionOnLevel.Position = transform.position.AsVector3Data();
-        }
-
         public void LoadProgress(PlayerProgress progress)
         {
-            if (!CanLoadPosition(progress)) return;
-            
-            Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
+            PositionOnLevel positionOnLevel = progress.WorldData.PositionOnLevel;
 
-            if (savedPosition != null)
-                WarpPlayerPosition(savedPosition);
+            if (!positionOnLevel.Levels.Contains(CurrentLevel()))
+                return;
+
+            int index = positionOnLevel.Levels.IndexOf(CurrentLevel());
+
+            WarpPlayerPosition(positionOnLevel.Positions[index]);
         }
 
-        private bool CanLoadPosition(PlayerProgress progress) 
-            => CurrentLevel() == progress.WorldData.PositionOnLevel.Level && progress.WorldData.PositionOnLevel.Position != null && progress.WorldData.PositionOnLevel.Position.AsUnityVector() != Vector3.zero;
+        private void UpdatePlayerPositionOnLevelProgress(PlayerProgress progress)
+        {
+            PositionOnLevel positionOnLevel = progress.WorldData.PositionOnLevel;
+
+            if (positionOnLevel.Levels.Contains(CurrentLevel()))
+            {
+                int index = positionOnLevel.Levels.IndexOf(CurrentLevel());
+                positionOnLevel.Positions[index] = transform.position.AsVector3Data();
+            }
+            else
+            {
+                positionOnLevel.Levels.Add(CurrentLevel());
+                positionOnLevel.Positions.Add(transform.position.AsVector3Data());
+            }
+        }
+
 
         private void WarpPlayerPosition(Vector3Data to)
         {

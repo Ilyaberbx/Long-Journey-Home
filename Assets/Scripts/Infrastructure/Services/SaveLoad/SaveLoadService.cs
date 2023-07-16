@@ -24,8 +24,7 @@ namespace Infrastructure.Services.SaveLoad
         {
             foreach (ISavedProgressWriter progressWriter in _gameFactory.ProgressWriters)
                 progressWriter.UpdateProgress(_persistentProgressService.PlayerProgress);
-
-            Debug.Log(_persistentProgressService.PlayerProgress.WorldData.PositionOnLevel.Level);
+            
             PlayerPrefs.SetString(ProgressKey,_persistentProgressService.PlayerProgress.ToJson());
         }
 

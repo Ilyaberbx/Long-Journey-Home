@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
-using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
@@ -68,7 +67,7 @@ namespace Logic.CutScenes
 
         private void SaveProgress()
         {
-            _progressService.PlayerProgress.WorldData.PositionOnLevel.Level = _transferTo;
+            _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel = _transferTo;
            _saveLoadService.SaveProgress();
         }
 
