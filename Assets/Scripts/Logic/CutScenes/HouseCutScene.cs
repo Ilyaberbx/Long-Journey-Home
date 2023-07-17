@@ -58,6 +58,7 @@ namespace Logic.CutScenes
             sequence.AppendCallback(() => EyeCurtainSequence());
             sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
             sequence.AppendInterval(3f);
+            sequence.AppendCallback(PassCutScene);
             sequence.AppendCallback(SaveProgress);
             sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
         }

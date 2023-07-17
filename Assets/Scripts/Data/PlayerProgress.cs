@@ -3,6 +3,7 @@
     [System.Serializable]
     public class PlayerProgress
     {
+        public DoorData DoorData;
         public HealthState HealthState;
         public FreezeState FreezeState;
         public WorldData WorldData;
@@ -27,6 +28,7 @@
             CutSceneData = new CutSceneData();
             DialogueData = new DialogueData();
             SaveData = new SaveData();
+            DoorData = new DoorData();
         }
     }
 }

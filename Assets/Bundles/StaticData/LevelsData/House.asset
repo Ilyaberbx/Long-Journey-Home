@@ -15,8 +15,24 @@ MonoBehaviour:
   LevelKey: House
   EnemySpawners: []
   LootSpawners:
-  - Id: House_563a245a-2a83-45d5-a4c0-f4951f23dbf7
+  - Id: House_dd5a3e9a-797e-4084-bed2-2a8f0625bee7
+    Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
+    Position: {x: 603.9, y: 66.12, z: 1289.3042}
+    Rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  - Id: House_e7d2d078-29ae-4d29-a1aa-1af942d1e411
+    Prefab: {fileID: 5209323148249258876, guid: a0a89e2567d0bb34ca1cf521c5e4f5c8, type: 3}
+    Position: {x: 647.2, y: 72.61, z: 1316.19}
+    Rotation: {x: -0.82820714, y: -0, z: -0, w: 0.56042224}
+  - Id: House_30a26953-f0f4-4c14-81c7-9041c7666a71
+    Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
+    Position: {x: 602.91, y: 66.12, z: 1288.57}
+    Rotation: {x: 0.27059805, y: 0.27059805, z: 0.6532815, w: 0.6532815}
+  - Id: House_e76438ad-b5e4-4df1-acba-77c3ecbacef2
+    Prefab: {fileID: 8267773133987680113, guid: 83f70ef1ddf59004bb825bce3fef46bb, type: 3}
+    Position: {x: 601.88, y: 69.18, z: 1278.46}
+    Rotation: {x: -0.13983056, y: -0.016871817, z: -0.11859607, w: 0.98290277}
+  - Id: House_0038da87-f44e-42ef-b2b3-925e45973eb3
     Prefab: {fileID: 7764010429717162071, guid: 0ae0da3eee663184791c6c3f2ecc2551, type: 3}
-    Position: {x: 613.89996, y: 72.58, z: 1284.2397}
-    Rotation: {x: -0, y: -0.05310347, z: -0, w: 0.99858904}
+    Position: {x: 614.74, y: 80.98, z: 1282.47}
+    Rotation: {x: 0.16153479, y: -0.004723717, z: -0.98643404, w: 0.028846016}
   PlayerInitPoint: {x: 1658.5918, y: 141, z: 2563.6602}
