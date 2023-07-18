@@ -6,6 +6,7 @@
         Inventory,
         MainMenu,
         Pause,
+        Envelope,
         Settings
     }
 }

@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 507985396289753777}
   - component: {fileID: 7162431190216540211}
   - component: {fileID: 8998662930169183514}
-  - component: {fileID: 1019572363352987414}
   - component: {fileID: 4137454390573635750}
   - component: {fileID: 7853545874161488478}
   - component: {fileID: 4331722270868525863}
@@ -223,6 +222,7 @@ GameObject:
   - component: {fileID: 3903739620445181443}
   - component: {fileID: 7308672361779659170}
   - component: {fileID: 8071613259115006391}
+  - component: {fileID: 8258285280771886049}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -340,7 +340,7 @@ MonoBehaviour:
   _health: {fileID: 7119355605494549768}
   _mover: {fileID: 2970240177481772350}
   _attack: {fileID: 1136055281313859481}
-  _windowOpener: {fileID: 1019572363352987414}
+  _windowOpener: {fileID: 0}
   _pause: {fileID: 8728874985912032053}
   _freeze: {fileID: 4137454390573635750}
 --- !u!114 &7162431190216540211
@@ -370,22 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactRange: 15
---- !u!114 &1019572363352987414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2970240177481772348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71feceaf4ede4c099c7beeb68cc97d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _look: {fileID: 7308672361779659170}
-  _heroCutScene: {fileID: 3903739620445181443}
-  _attack: {fileID: 1136055281313859481}
-  _heroCamera: {fileID: 5672463797853710604}
 --- !u!114 &4137454390573635750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,6 +528,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017724966b0442480faa12317fef3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8258285280771886049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970240177481772348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71feceaf4ede4c099c7beeb68cc97d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _look: {fileID: 7308672361779659170}
+  _heroCutScene: {fileID: 3903739620445181443}
+  _attack: {fileID: 1136055281313859481}
+  _heroCamera: {fileID: 5672463797853710604}
 --- !u!1 &3401435002938043440
 GameObject:
   m_ObjectHideFlags: 0

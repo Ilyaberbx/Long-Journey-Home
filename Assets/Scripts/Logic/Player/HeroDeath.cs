@@ -17,19 +17,19 @@ namespace Logic.Player
         private ICameraAnimator _animator;
         private bool _isDead;
 
-        public void SetCameraAnimator(ICameraAnimator animator) => 
+        public void SetCameraAnimator(ICameraAnimator animator) =>
             _animator = animator;
 
-        private void Awake() => 
+        private void Awake() =>
             _health.OnHealthChanged += HealthChanged;
 
-        private void OnDestroy() => 
+        private void OnDestroy() =>
             _health.OnHealthChanged -= HealthChanged;
 
         private void HealthChanged()
         {
-            if(_isDead) return;
-            
+            if (_isDead) return;
+
             if (_health.CurrentHealth <= 0)
                 Die();
         }

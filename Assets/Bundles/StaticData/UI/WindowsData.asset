@@ -25,7 +25,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 4
+  - Type: 5
     Prefab:
       m_AssetGUID: d8438bab9f9ba994ea18e4d016cd3861
       m_SubObjectName: 
@@ -34,6 +34,12 @@ MonoBehaviour:
   - Type: 3
     Prefab:
       m_AssetGUID: 026a62b29448d6f49be708a6738326dc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: 4
+    Prefab:
+      m_AssetGUID: b39822cd72a716b47aa760dee4f22665
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

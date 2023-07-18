@@ -18,7 +18,7 @@ namespace UI.Inventory
         [SerializeField] private ItemView _itemPrefab;
         [SerializeField] private RectTransform _contentPanel;
 
-        private List<ItemView> _itemViews = new List<ItemView>();
+        private readonly List<ItemView> _itemViews = new List<ItemView>();
         private InventoryData _inventoryData => _progress.InventoryData;
 
         protected override void Initialize()

@@ -26,9 +26,7 @@ namespace Logic.Player
             _cameraPov.m_HorizontalAxis.m_MaxSpeed = value ? _settings.SettingsData.Mouse.Sensitivity : 0;
             _cameraPov.m_VerticalAxis.m_MaxSpeed = value ? _settings.SettingsData.Mouse.Sensitivity : 0;
         }
-
-        public void ParentEquipmentToCachedCamera() 
-            => _equiper.EquipmentContainer.SetParent(_cameraPov.transform);
+        
 
         public void ParentEquipmentToMainCamera()
         {

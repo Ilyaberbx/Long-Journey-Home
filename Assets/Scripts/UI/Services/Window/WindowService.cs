@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Logic.Inventory;
 using UI.Elements;
+using UI.Envelope;
 using UI.Inventory;
 using UI.Services.Factory;
 using UI.Settings;
@@ -45,6 +46,11 @@ namespace UI.Services.Window
                     SettingsWindow settingsView = await _uiFactory.CreateSettingsWindow();
                     settingsView.SubscribeCloseListener(onClose);
                     window = settingsView;
+                    break;
+                case WindowType.Envelope:
+                    EnvelopeWindow envelopeView = await _uiFactory.CreateEnvelopeWindow();
+                    envelopeView.SubscribeCloseListener(onClose);
+                    window = envelopeView;
                     break;
                 default:
                     Debug.LogError("There is no type behaviour for this type: " + windowType);

@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
+using Data;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Pause;
 using UI.Elements;
+using UI.Envelope;
 using UI.Inventory;
 using UI.Pause;
 using UI.Services.Window;
@@ -10,7 +12,7 @@ using Zenject;
 
 namespace Logic.Player
 {
-    public class HeroWindowOpener : MonoBehaviour, IPauseHandler
+    public class HeroWindowOpener : MonoBehaviour, IPauseHandler, IEnvelopeOpenHandler
     {
         [SerializeField] private HeroLook _look;
         [SerializeField] private HeroCutsSceneProcessor _heroCutScene;
@@ -36,8 +38,31 @@ namespace Logic.Player
             if (IsPaused() || _heroCutScene.IsCutSceneActive)
                 return;
 
-            if (_input.IsInventoryButtonPressed()) 
+            if (_input.IsInventoryButtonPressed())
                 await OpenInventoryWindow();
+        }
+
+        public async void HandlePause(bool isPaused)
+        {
+            if (_currentWindow is PauseWindow)
+                return;
+
+            if (isPaused)
+                _currentWindow = await OpenWindow(WindowType.Pause);
+        }
+
+        public async Task OpenEnvelopeWindow(EnvelopeData data)
+        {
+            if (_currentWindow is EnvelopeWindow)
+                return;
+
+            if (_currentWindow is InventoryWindow)
+                return;
+
+            EnvelopeWindow envelopeWindow = (EnvelopeWindow)await OpenWindow(WindowType.Envelope);
+            envelopeWindow.UpdateContent(data.EnvelopeText);
+
+            _currentWindow = envelopeWindow;
         }
 
         private async Task OpenInventoryWindow()
@@ -46,15 +71,6 @@ namespace Logic.Player
                 return;
 
             _currentWindow = await OpenWindow(WindowType.Inventory);
-        }
-
-        public async void HandlePause(bool isPaused)
-        {
-            if (_currentWindow is PauseWindow)
-                return;
-            
-            if (isPaused)
-                _currentWindow = await OpenWindow(WindowType.Pause);
         }
 
         private async Task<WindowBase> OpenWindow(WindowType type)
@@ -79,10 +95,10 @@ namespace Logic.Player
         {
             Cursor.lockState = CursorLockMode.Locked;
             _currentWindow = null;
-            
-            if(_heroCutScene.IsCutSceneActive)
+
+            if (_heroCutScene.IsCutSceneActive)
                 return;
-            
+
             ToggleHero(true);
         }
 

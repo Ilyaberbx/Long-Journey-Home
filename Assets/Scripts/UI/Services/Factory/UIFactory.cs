@@ -3,6 +3,7 @@ using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.StaticData;
 using UI.Elements;
+using UI.Envelope;
 using UI.Inventory;
 using UI.Menu;
 using UI.Pause;
@@ -52,7 +53,7 @@ namespace UI.Services.Factory
             return window;
         }
 
-        public async Task<WindowBase> CreatePauseMenu()
+        public async Task<PauseWindow> CreatePauseMenu()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Pause);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
@@ -64,6 +65,14 @@ namespace UI.Services.Factory
         {
             GameObject eyeCurtain = await _assets.Load<GameObject>(AssetsAddress.EyeCurtain);
             return Object.Instantiate(eyeCurtain, _uiRoot);
+        }
+
+        public async Task<EnvelopeWindow> CreateEnvelopeWindow()
+        {
+            WindowConfig config = _staticData.GetWindowData(WindowType.Envelope);
+            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            EnvelopeWindow window = _container.InstantiatePrefabForComponent<EnvelopeWindow>(prefab, _uiRoot);
+            return window;
         }
 
         public async Task CreateUIRoot()
