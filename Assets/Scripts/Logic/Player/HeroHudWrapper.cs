@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Logic.Player
 {
-    public class HeroHudWrapper : MonoBehaviour
+    public class  HeroHudWrapper : MonoBehaviour
     {
         private IHud _hud;
 

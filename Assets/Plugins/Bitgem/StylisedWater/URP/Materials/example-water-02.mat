@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: example-water-02
-  m_Shader: {fileID: -6465566751694194690, guid: 2cddf2ee6a74aca44af00f5a49bd2cf1,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2cddf2ee6a74aca44af00f5a49bd2cf1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -52,21 +51,33 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_17E53C12: 0.77
-    - Vector1_244B0600: 1.5
+    - Vector1_17E53C12: 0.16
+    - Vector1_244B0600: 0.3
     - Vector1_34CF798A: 1.75
     - Vector1_36E8227: 0
-    - Vector1_3D886DA1: 0.05
-    - Vector1_46E42935: 0.4
-    - Vector1_47683D42: 0.77
-    - Vector1_A0EAD698: 0.5
+    - Vector1_3D886DA1: 1
+    - Vector1_46E42935: 1
+    - Vector1_47683D42: 0.23
+    - Vector1_A0EAD698: 68.7
     - Vector1_A6A0BC26: 0.025
     - Vector1_B9F56378: 0.17
     - Vector1_C360A163: 0
     - Vector1_DF445019: 1.5
     - Vector1_E03AB928: 0.025
-    - Vector1_E5C51606: 0
+    - Vector1_E5C51606: 4.2
     - Vector1_F38B44AA: 0.35
     - _AlphaClip: 0
     - _Blend: 0
@@ -87,9 +98,9 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaveFrequency: 2.75
-    - _WaveScale: 0.05
-    - _WaveSpeed: 1.75
+    - _WaveFrequency: 0
+    - _WaveScale: 3
+    - _WaveSpeed: 1.5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -100,6 +111,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
 --- !u!114 &5702210360403225776
 MonoBehaviour:
   m_ObjectHideFlags: 11

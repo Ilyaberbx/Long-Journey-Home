@@ -7,9 +7,9 @@ namespace UI.Elements
     {
         [SerializeField] private CanvasGroup _canvasGroup;
         public void Open() 
-            => _canvasGroup.DOFade(1, 1f);
+            => _canvasGroup.DOFade(1, 0.5f);
 
         public void Hide() 
-            => _canvasGroup.DOFade(0, 1f);
+            => _canvasGroup.DOFade(0, 0.5f);
     }
 }

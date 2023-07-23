@@ -17,6 +17,7 @@ namespace Logic.Player
         [SerializeField] private HeroLook _look;
         [SerializeField] private HeroCutsSceneProcessor _heroCutScene;
         [SerializeField] private HeroAttack _attack;
+        [SerializeField] private HeroHudWrapper _hudWrapper;
         [SerializeField] private HeroCameraWrapper _heroCamera;
 
         private IInputService _input;
@@ -77,6 +78,7 @@ namespace Logic.Player
         {
             CloseCurrentWindow();
             Cursor.lockState = CursorLockMode.Confined;
+            _hudWrapper.Hide();
             ToggleHero(false);
             _currentWindow = await _windowService.Open(type, WindowClosed);
             return _currentWindow;
@@ -94,6 +96,7 @@ namespace Logic.Player
         private void WindowClosed()
         {
             Cursor.lockState = CursorLockMode.Locked;
+            _hudWrapper.Open();
             _currentWindow = null;
 
             if (_heroCutScene.IsCutSceneActive)

@@ -543,6 +543,7 @@ MonoBehaviour:
   _look: {fileID: 7308672361779659170}
   _heroCutScene: {fileID: 3903739620445181443}
   _attack: {fileID: 1136055281313859481}
+  _hudWrapper: {fileID: 8071613259115006391}
   _heroCamera: {fileID: 5672463797853710604}
 --- !u!1 &3401435002938043440
 GameObject:

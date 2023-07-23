@@ -24440,7 +24440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7863cecaef0a4e5886cb197b65eb98be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shakeCoeficient: 1.02
+  _shakeCoeficient: 0.1
 --- !u!1 &4934778246461064283
 GameObject:
   m_ObjectHideFlags: 0
