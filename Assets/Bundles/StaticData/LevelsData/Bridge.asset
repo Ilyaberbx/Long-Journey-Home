@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Bridge
   m_EditorClassIdentifier: 
   LevelKey: Bridge
-  EnemySpawners: []
+  EnemySpawners:
+  - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
+    EnemyType: 0
+    Position: {x: 3167.7236, y: 100.1655, z: 5932.0347}
+    IsRegisterInContainer: 0
   LootSpawners: []
   PlayerInitPoint: {x: 4247, y: 119.2, z: 5664}

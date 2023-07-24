@@ -9,6 +9,7 @@ namespace Logic.Player
 
     public class HeroCameraWrapper : MonoBehaviour
     {
+        public Transform CameraTransform => _cameraPov.transform;
         [SerializeField] private HeroEquiper _equiper;
         private CinemachinePOV _cameraPov;
         private ISettingsService _settings;
