@@ -19,6 +19,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _type: 0
   _maxHp: 9
-  _damage: 21
+  _damage: 30
   _attackCoolDown: 0.9
-  _moveSpeed: 50
+  _moveSpeed: 110

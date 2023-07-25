@@ -43,7 +43,6 @@ MonoBehaviour:
   - {fileID: 5335881460945992925}
   - {fileID: -8219919642775243594}
   - {fileID: 29097725886080339}
-  - {fileID: 2861477107211555732}
 --- !u!114 &29097725886080339
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -60,13 +59,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 0
-    m_Value: {x: 0.98470116, y: 0.96940166, z: 1, w: -0.029673707}
+    m_Value: {x: 0.98470116, y: 0.96940166, z: 1, w: 0.0021227987}
   gamma:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 0.9827308, z: 0.9643157, w: 0}
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.9827308, z: 0.9643157, w: 0.15898253}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0, y: 0.35674977, z: 1, w: -0.55334127}
+    m_Value: {x: 0, y: 0.49472284, z: 1, w: -0.48229364}
 --- !u!114 &1980477243470732679
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -83,7 +82,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 0.03
+    m_Value: 0.07
     min: 0
   intensity:
     m_OverrideState: 1
@@ -91,16 +90,16 @@ MonoBehaviour:
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.5
     min: 0
     max: 1
   clamp:
     m_OverrideState: 0
-    m_Value: 65932.23
+    m_Value: 65982.31
     min: 0
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.06386613, g: 0.1676037, b: 0.3679245, a: 1}
+    m_Value: {r: 0.08330364, g: 0.26673186, b: 0.6132076, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -109,7 +108,7 @@ MonoBehaviour:
     m_Value: 0
   skipIterations:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 16
     min: 0
     max: 16
   dirtTexture:
@@ -119,37 +118,6 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.2
     min: 0
---- !u!114 &2861477107211555732
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
-  m_Name: SplitToning
-  m_EditorClassIdentifier: 
-  active: 0
-  m_AdvancedMode: 0
-  shadows:
-    m_OverrideState: 1
-    m_Value: {r: 0.18796723, g: 0.40173978, b: 0.754717, a: 1}
-    hdr: 0
-    showAlpha: 0
-    showEyeDropper: 1
-  highlights:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 0.6511937, b: 0, a: 1}
-    hdr: 0
-    showAlpha: 0
-    showEyeDropper: 1
-  balance:
-    m_OverrideState: 1
-    m_Value: 2
-    min: -100
-    max: 100
 --- !u!114 &3293446014831044287
 MonoBehaviour:
   m_ObjectHideFlags: 3

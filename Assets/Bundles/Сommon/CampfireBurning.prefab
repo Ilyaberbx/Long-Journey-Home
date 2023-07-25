@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: CampfireBurning_c3db8c4c-4338-4de7-87d3-7d2a81f5f749
+  Id: CampfireBurning_7585e0be-d425-4bf3-bfa9-b42b16d7c7c9
 --- !u!1 &9029168616240721144
 GameObject:
   m_ObjectHideFlags: 0

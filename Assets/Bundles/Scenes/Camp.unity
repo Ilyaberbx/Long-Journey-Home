@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.122641504, g: 0.10817906, b: 0.10817906, a: 1}
+  m_FogColor: {r: 0, g: 0.023529412, b: 0.16078432, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.004
+  m_FogDensity: 0.0015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.3670393, g: 0.35844606, b: 0.4245283, a: 1}

@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: BridgeLevel
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: BridgeLevel
   m_Data:
     m_SerializedData: []
-  m_GUID: f0896bb49c48300489d097ad597504a3
-  m_SerializeEntries: []
+  m_GUID: d58508cac71fe194c974a3d17a5764ba
+  m_SerializeEntries:
+  - m_GUID: 7ad8aa0b4208e4c4bb8f9022e266bf46
+    m_Address: Bridge
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: a6dcb094d3198c34e9e31c9e605950cb, type: 2}
-    - {fileID: 11400000, guid: 3f05221fc28baaa4f9a7df3fdcf86289, type: 2}
+    - {fileID: 11400000, guid: ba73fd6411e825444b58c8c719491137, type: 2}
+    - {fileID: 11400000, guid: e6f3e32c140bd314c88fb8b282a9eabe, type: 2}

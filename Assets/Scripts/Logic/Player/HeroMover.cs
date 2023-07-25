@@ -16,8 +16,7 @@ namespace Logic.Player
         private const float GravityConst = -20f;
 
         public bool CanJump { get; set; } = true;
-
-        [SerializeField] private HeroCameraWrapper _cameraWrapper;
+        
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpHeight;
@@ -55,7 +54,7 @@ namespace Logic.Player
         }
 
         private Vector3 CalculateMovement(Vector3 input)
-            => _cameraWrapper.CameraTransform.forward * input.z + _cameraWrapper.CameraTransform.right * input.x;
+            => transform.forward * input.z + transform.right * input.x;
 
         private void Jump()
         {

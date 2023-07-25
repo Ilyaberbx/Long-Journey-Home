@@ -16,7 +16,15 @@ MonoBehaviour:
   EnemySpawners:
   - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
     EnemyType: 0
-    Position: {x: 3167.7236, y: 100.1655, z: 5932.0347}
+    Position: {x: 3208, y: 96, z: 1966}
+    IsRegisterInContainer: 0
+  - Id: Bridge_62fe62a5-f9e8-42e3-b3b9-2ca8d40969e3
+    EnemyType: 1
+    Position: {x: 5924, y: 59.5, z: 2917}
+    IsRegisterInContainer: 0
+  - Id: Bridge_211dad2f-77fb-41cc-9d0a-347149592acb
+    EnemyType: 1
+    Position: {x: 5587, y: 59.5, z: 3088}
     IsRegisterInContainer: 0
   LootSpawners: []
-  PlayerInitPoint: {x: 4247, y: 119.2, z: 5664}
+  PlayerInitPoint: {x: 2404, y: 217, z: 5629.5}
