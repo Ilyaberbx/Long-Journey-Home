@@ -11,16 +11,22 @@ namespace Logic.Inventory
     public class InventoryPresenter : MonoBehaviour, ISavedProgressWriter
     {
         private const string Drop = "Drop";
-        
+
         [SerializeField] private List<InventoryItem> _initialItems;
         private InventoryWindow _inventoryWindow;
         private InventoryData _inventoryData;
-        
+
         public void InitUI(InventoryWindow window)
         {
             _inventoryWindow = window;
             PrepareUI();
         }
+
+        public bool TryRemoveItemById(int id, int amount)
+            => _inventoryData.TryRemoveItemById(id, amount);
+
+        public bool HasItem(int id)
+            => _inventoryData.HasItemById(id);
 
         private void AddInitialItems()
         {
@@ -44,14 +50,13 @@ namespace Logic.Inventory
 
             if (item.IsEmpty)
                 return;
-            
+
             if (item.ItemData is IItemAction action)
             {
                 itemAction = new ExecuteItemAction(_inventoryData, _inventoryWindow, index, gameObject);
                 _inventoryWindow.ShowActionPanelByIndex(index);
                 _inventoryWindow.AddAction(action.ActionName, itemAction);
             }
-
         }
 
         private void HandleDescriptionRequest(int index)
@@ -69,9 +74,6 @@ namespace Logic.Inventory
                 item.ItemData.Name,
                 item.ItemData.Description);
         }
-
-        public bool HasItem(int id) 
-            => _inventoryData.HasItemById(id);
 
         public void LoadProgress(PlayerProgress progress)
         {

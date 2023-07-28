@@ -29,8 +29,8 @@ MonoBehaviour:
     m_Address: Oil
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 1a169c95a18618649ba1f966e6df29b5
-    m_Address: Axe
+  - m_GUID: b8695a167c6062440809829711dbc56b
+    m_Address: Ladder
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: f4953665e5434b04aa31121a61c22cfd
@@ -39,6 +39,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: bde9c7ca050f87d42b63785080fffc50
     m_Address: Keys
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a8e717c837d7f748b7eb639f54ca5a6
+    m_Address: Axe
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

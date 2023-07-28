@@ -26,5 +26,9 @@ MonoBehaviour:
     EnemyType: 1
     Position: {x: 5587, y: 59.5, z: 3088}
     IsRegisterInContainer: 0
-  LootSpawners: []
+  LootSpawners:
+  - Id: Bridge_2e37ef50-1505-4fad-a525-87402dca0b21
+    Prefab: {fileID: 2593742848479733624, guid: 65f8bd0b6e9873b40860d0a764521cc5, type: 3}
+    Position: {x: 2256.8, y: 151.39998, z: 5402.4}
+    Rotation: {x: 0.000000029802322, y: -0.053103507, z: -0, w: 0.99858904}
   PlayerInitPoint: {x: 2404, y: 217, z: 5629.5}

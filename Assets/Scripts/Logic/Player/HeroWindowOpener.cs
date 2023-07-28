@@ -96,12 +96,12 @@ namespace Logic.Player
         private void WindowClosed()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            _hudWrapper.Open();
             _currentWindow = null;
 
             if (_heroCutScene.IsCutSceneActive)
                 return;
-
+            
+            _hudWrapper.Open();
             ToggleHero(true);
         }
 

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quantity: 1
-  _itemData: {fileID: 11400000, guid: 1a169c95a18618649ba1f966e6df29b5, type: 2}
+  _itemData: {fileID: 11400000, guid: 2a8e717c837d7f748b7eb639f54ca5a6, type: 2}
   _interactText: "\u0422\u043E\u043F\u043E\u0440"
 --- !u!1 &6503484024784416881
 GameObject:

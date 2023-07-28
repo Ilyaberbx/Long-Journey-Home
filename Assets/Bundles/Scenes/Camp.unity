@@ -5477,6 +5477,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1708697877}
     m_Modifications:
+    - target: {fileID: 546317489, guid: 7e394479cb8106e4fa14b988d1e4b22a, type: 3}
+      propertyPath: Id
+      value: Camp_73682bd3-965c-4530-912c-bf4b3791c7a3
+      objectReference: {fileID: 0}
     - target: {fileID: 1235487934307895448, guid: 7e394479cb8106e4fa14b988d1e4b22a, type: 3}
       propertyPath: _itemPickUp
       value: 
@@ -22589,6 +22593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1708697877}
     m_Modifications:
+    - target: {fileID: 546317489, guid: 7e394479cb8106e4fa14b988d1e4b22a, type: 3}
+      propertyPath: Id
+      value: Camp_f04e2e8c-d4c6-466f-b678-eb5ca72cfefe
+      objectReference: {fileID: 0}
     - target: {fileID: 1235487934307895448, guid: 7e394479cb8106e4fa14b988d1e4b22a, type: 3}
       propertyPath: _itemPickUp
       value: 
