@@ -126,7 +126,7 @@ namespace Infrastructure.Services.Factories
             return enemy;
         }
 
-        public async Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType,bool isRegisterInContainer)
+        public async Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType, bool isRegisterInContainer)
         {
             GameObject prefab = await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
 

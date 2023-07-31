@@ -107,8 +107,10 @@ namespace Infrastructure.StateMachine.State
             LevelData levelData = LevelData();
 
             foreach (EnemySpawnerData enemySpawnerData in levelData.EnemySpawners)
+            {
                 await _gameFactory.CreateEnemySpawner(enemySpawnerData.Position, enemySpawnerData.Id,
                     enemySpawnerData.EnemyType, enemySpawnerData.IsRegisterInContainer);
+            }
 
             foreach (LootSpawnerData lootSpawnerData in levelData.LootSpawners)
                 await _gameFactory.CreateLootSpawner(lootSpawnerData.Position, lootSpawnerData.Id,

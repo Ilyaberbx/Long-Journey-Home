@@ -12,6 +12,7 @@ namespace Data
         public Vector3 Position;
         public bool IsRegisterInContainer;
 
+
         public EnemySpawnerData(string id, EnemyType enemyType, Vector3 position,bool isRegisterInContainer)
         {
             Id = id;

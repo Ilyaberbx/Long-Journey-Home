@@ -15,6 +15,7 @@ namespace Logic.Enemy
         
         private void Update()
         {
+            Debug.Log(CanChase());
             if (CanChase())
                 _agent.destination = _playerTransform.position;
             else

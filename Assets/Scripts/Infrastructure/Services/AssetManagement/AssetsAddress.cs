@@ -8,5 +8,6 @@
         public const string EnemySpawnPoint = "EnemySpawnPoint";
         public const string LootSpawnPoint = "LootSpawnPoint";
         public const string EyeCurtain = "EyeCurtain";
+        public const string EnemySpawnPointWithCutScene = "EnemySpawnPointWithCutScene";
     }
 }

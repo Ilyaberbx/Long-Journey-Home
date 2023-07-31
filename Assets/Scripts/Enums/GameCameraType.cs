@@ -10,6 +10,8 @@ namespace Enums
         FourthCamera,
         FifthCamera,
         SixthCamera,
-        SeventhCamera
+        SeventhCamera,
+        EightCamera,
+        NineCamera,
     }
 }
