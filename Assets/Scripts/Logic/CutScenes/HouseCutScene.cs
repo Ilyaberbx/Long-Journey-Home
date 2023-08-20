@@ -88,7 +88,7 @@ namespace Logic.CutScenes
 
         private async void SpawnEyeCurtain()
         {
-            GameObject handle = await _uiFactory.CreateEyeCurtain();
+            GameObject handle = await _uiFactory.CreateCurtain();
             _eyeCurtain = handle.GetComponent<CanvasGroup>();
         }
 

@@ -61,7 +61,7 @@ namespace UI.Services.Factory
             return window;
         }
 
-        public async Task<GameObject> CreateEyeCurtain()
+        public async Task<GameObject> CreateCurtain()
         {
             GameObject eyeCurtain = await _assets.Load<GameObject>(AssetsAddress.EyeCurtain);
             return Object.Instantiate(eyeCurtain, _uiRoot);

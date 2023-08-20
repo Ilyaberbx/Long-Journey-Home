@@ -17,7 +17,7 @@ namespace UI.Services.Factory
         Task<MenuWindow> CreateMainMenu();
         Task<SettingsWindow> CreateSettingsWindow();
         Task<PauseWindow> CreatePauseMenu();
-        Task<GameObject> CreateEyeCurtain();
+        Task<GameObject> CreateCurtain();
         Task<EnvelopeWindow> CreateEnvelopeWindow();
     }
 }

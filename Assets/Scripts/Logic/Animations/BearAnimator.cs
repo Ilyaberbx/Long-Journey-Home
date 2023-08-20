@@ -12,7 +12,7 @@ namespace Logic.Animations
         private static readonly int Death = Animator.StringToHash("Death");
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
-        private static readonly int IsDead= Animator.StringToHash("IsDead");
+        private static readonly int IsDead = Animator.StringToHash("IsDead");
         private static readonly int TakeDamage = Animator.StringToHash("TakeDamage");
 
         private readonly int _movementStateHash = Animator.StringToHash("Movement");
@@ -32,16 +32,19 @@ namespace Logic.Animations
         public override void PlayDeath()
         {
             _animator.SetTrigger(Death);
-            _animator.SetBool(IsDead,true);
+            _animator.SetBool(IsDead, true);
         }
 
-        public override void PlayAttack()
+        public override void PlayAttack(int index)
+            => _animator.SetTrigger(Attack + index);
+
+        public override void PlayRandomAttack()
         {
-            int rand = Random.Range(1,MaxExclusiveAttackTypes);
-            _animator.SetTrigger(Attack+ rand);
+            int rand = Random.Range(1, MaxExclusiveAttackTypes);
+            _animator.SetTrigger(Attack + rand);
         }
 
-        public override void PlayTakeDamage() 
+        public override void PlayTakeDamage()
             => _animator.SetTrigger(TakeDamage);
 
         public override void Move(float speed)

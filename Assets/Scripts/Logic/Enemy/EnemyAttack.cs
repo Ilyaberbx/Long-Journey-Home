@@ -89,7 +89,7 @@ namespace Logic.Enemy
         private void PerformAttack()
         {
             transform.DOLookAt(_playerTransform.position, _rotationToPlayerDuration,AxisConstraint.Y);
-            _animator.PlayAttack();
+            _animator.PlayRandomAttack();
 
             _isAttacking = true;
         }
