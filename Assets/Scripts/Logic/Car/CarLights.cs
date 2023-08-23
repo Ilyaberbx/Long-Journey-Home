@@ -11,10 +11,7 @@ namespace Logic.Car
         [SerializeField] private float _enabledLightsIntensity;
         [SerializeField] private Color _enabledLightsColor;
         [SerializeField] private Material _lightsMaterial;
-
-        private void Start()
-            => KickstartLights(1, 1.5f);
-
+        
         public Tween KickstartLights(float enableDuration, float disableDuration)
         {
             Sequence sequence = DOTween.Sequence();
@@ -27,7 +24,7 @@ namespace Logic.Car
             return sequence;
         }
 
-        private void ToggleLights(float duration, float value)
+        public void ToggleLights(float duration, float value)
         {
             foreach (Light light in _frontlights)
                 light.DOIntensity(value, duration).SetEase(Ease.InBounce);

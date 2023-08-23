@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Final
   m_EditorClassIdentifier: 
   LevelKey: Final
-  EnemySpawners: []
+  EnemySpawners:
+  - Id: Final_cacd50e2-40db-4488-bac0-c1ad0cb76b25
+    EnemyType: 1
+    Position: {x: 1925.9, y: 76.5, z: 3226.8}
+    IsRegisterInContainer: 0
+  - Id: Final_6af553a1-8e4d-4cd2-905e-319e562ef2b6
+    EnemyType: 1
+    Position: {x: 1208, y: 118.3, z: 4109.5}
+    IsRegisterInContainer: 0
+  - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
+    EnemyType: 1
+    Position: {x: 948.5, y: 118.3, z: 3491.2}
+    IsRegisterInContainer: 0
   LootSpawners: []
   PlayerInitPoint: {x: 3708.6426, y: 137.6, z: 1318.2}

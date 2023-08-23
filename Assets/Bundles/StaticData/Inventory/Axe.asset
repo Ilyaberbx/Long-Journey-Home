@@ -18,5 +18,5 @@ MonoBehaviour:
   MaxStackSize: 1
   Name: Axe
   Description: Cuts thing
-  _itemPrefab: {fileID: 4640128210367593071, guid: 47908ba3bd4b0c442a205c1f285a1202, type: 3}
+  _itemPrefab: {fileID: 712674874826844517, guid: 74168a21e16d1cc40a77f357c388cf5c, type: 3}
   _actionSfx: {fileID: 8300000, guid: 9cb65eb2505fbf443ac876ba177374f9, type: 3}
