@@ -1,5 +1,4 @@
-﻿using Logic.DialogueSystem;
-using Logic.Player;
+﻿using Logic.Player;
 using Logic.Weapons;
 using TMPro;
 using UnityEngine;
@@ -10,35 +9,28 @@ namespace UI.Elements
     {
         [SerializeField] private Bar _flashLightBar;
         [SerializeField] private Bar _freezeBar;
-        [SerializeField] private TextMeshProUGUI _dialogueText;
         [SerializeField] private TextMeshProUGUI _ammoText;
         [SerializeField] private InteractHint _interactHint;
 
         private IHeroLight _light;
-        private IDialogueActor _dialogueActor;
         private IFreeze _freeze;
         private IInteractor _interactor;
         private IHudAmmoShowable _ammoShowableObject;
 
-        public void Construct(IHealth health,IHeroLight light,IDialogueActor dialogueActor,IFreeze freeze,IInteractor interactor)
+        public void Construct(IHealth health,IHeroLight light,IFreeze freeze,IInteractor interactor)
         {
             base.Construct(health);
 
             _freeze = freeze;
             _interactor = interactor;
-            _dialogueActor = dialogueActor;
             _light = light;
             _light.OnIntensityChanged += UpdateFlashLightBar;
-            _dialogueActor.OnSentenceCleared += ClearDialogueText;
-            _dialogueActor.OnSentenceTyping += TypeDialogueText;
             _freeze.OnFreezeChanged += UpdateFreezeBar;
         }
         protected override void OnDestroy()
         {
             base.OnDestroy();
             _light.OnIntensityChanged -= UpdateFlashLightBar;
-            _dialogueActor.OnSentenceCleared -= ClearDialogueText;
-            _dialogueActor.OnSentenceTyping -= TypeDialogueText;
             _freeze.OnFreezeChanged -= UpdateFreezeBar;
         }
 
@@ -70,12 +62,7 @@ namespace UI.Elements
 
         private void UpdateFreezeBar()
             => _freezeBar.SetValue(_freeze.CurrentFreeze,_freeze.MaxFreeze);
-
-        private void ClearDialogueText() 
-            => _dialogueText.text = "";
-
-        private void TypeDialogueText(char letter) 
-            => _dialogueText.text += letter;
+        
 
         private void UpdateFlashLightBar() 
             => _flashLightBar.SetValue(_light.CurrentIntensity,_light.MaxIntensity);

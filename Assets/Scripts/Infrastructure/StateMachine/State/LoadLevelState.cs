@@ -87,8 +87,17 @@ namespace Infrastructure.StateMachine.State
             await InitSpawners();
             GameObject player = await InitPlayer();
             await InitHud(player);
+            await InitDialogueView(player);
             CinemachineVirtualCamera camera = InitCamera();
             InitPlayerInteractWithCamera(player, camera);
+        }
+
+        private async Task InitDialogueView(GameObject player)
+        {
+            GameObject dialogueView = await _gameFactory.CreateDialogueView();
+            
+            dialogueView.GetComponent<DialogueView>()
+                .Init(player.GetComponent<IDialogueActor>());
         }
 
 
@@ -148,7 +157,6 @@ namespace Infrastructure.StateMachine.State
             uiActor.Construct(
                 player.GetComponent<HeroHealth>(),
                 player.GetComponent<HeroLight>(),
-                player.GetComponent<IDialogueActor>(),
                 player.GetComponent<IFreeze>(),
                 player.GetComponent<IInteractor>());
             

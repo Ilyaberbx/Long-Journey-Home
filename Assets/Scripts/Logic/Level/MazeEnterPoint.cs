@@ -34,7 +34,7 @@ namespace Logic.Level
             heroFreeze.GetComponent<HeroWindowOpener>().enabled = false;
             heroFreeze.GetComponent<HeroAttack>().enabled = false;
             heroFreeze.GetComponent<HeroLight>().enabled = false;
-            heroFreeze.GetComponent<HeroPause>().enabled = false;
+            heroFreeze.GetComponent<HeroPauseHandler>().enabled = false;
             heroFreeze.GetComponent<HeroHudWrapper>().Hide();
         }
     }

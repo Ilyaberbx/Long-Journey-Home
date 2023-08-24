@@ -56,6 +56,14 @@ namespace Infrastructure.Services.Factories
             await _assetProvider.Load<GameObject>(AssetsAddress.PlayerPrefabPath);
             await _assetProvider.Load<GameObject>(AssetsAddress.HudPath);
             await _assetProvider.Load<GameObject>(AssetsAddress.UIRoot);
+            await _assetProvider.Load<GameObject>(AssetsAddress.DialogueView);
+        }
+
+        public void CleanUp()
+        {
+            ProgressReaders.Clear();
+            ProgressWriters.Clear();
+            _assetProvider.CleanUp();
         }
 
         public void CreateContainerForCreatedObjects()
@@ -99,6 +107,13 @@ namespace Infrastructure.Services.Factories
             return hud;
         }
 
+        public async Task<GameObject> CreateDialogueView()
+        {
+            GameObject dialogueViewPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.DialogueView);
+            GameObject dialogueView = InstantiateRegistered(dialogueViewPrefab);
+            return dialogueView;
+        }
+
 
         public async Task<GameObject> CreateEnemy(EnemyType enemyType, Transform parent,
             bool isRegisterInContainer = false)
@@ -138,7 +153,7 @@ namespace Infrastructure.Services.Factories
             spawner.SetRegisterInContainer(isRegisterInContainer);
             return spawner;
         }
-        
+
 
         public ItemPickUp CreateItemPickUp(ItemPickUp prefab, Transform parent)
         {
@@ -157,13 +172,6 @@ namespace Infrastructure.Services.Factories
             spawner.SetItemPickUp(data);
             spawner.transform.rotation = rotation;
             return spawner;
-        }
-
-        public void CleanUp()
-        {
-            ProgressReaders.Clear();
-            ProgressWriters.Clear();
-            _assetProvider.CleanUp();
         }
 
         private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)

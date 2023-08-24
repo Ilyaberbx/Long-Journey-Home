@@ -13,8 +13,6 @@ namespace UI.Inventory
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _amount;
         [SerializeField] private Image _borderImage;
-        
-        private bool _isEmpty;
 
         private void Awake()
         {
@@ -39,7 +37,6 @@ namespace UI.Inventory
             _image.gameObject.SetActive(true);
             _image.sprite = sprite;
             _amount.text = amount + "";
-            _isEmpty = false;
         }
 
         public void Select() 
@@ -51,7 +48,6 @@ namespace UI.Inventory
         public void CleanUp()
         {
             _image.gameObject.SetActive(false);
-            _isEmpty = true;
         }
         
     }

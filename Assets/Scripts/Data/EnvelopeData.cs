@@ -5,8 +5,8 @@ namespace Data
     [System.Serializable]
     public class EnvelopeData
     {
-        [SerializeField] private string _envelopeText;
+        [SerializeField] private string _content;
 
-        public string EnvelopeText => _envelopeText;
+        public string Content => _content;
     }
 }

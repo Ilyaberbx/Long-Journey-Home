@@ -5,27 +5,12 @@ using Zenject;
 
 namespace Logic.Player
 {
-    public class HeroPause : MonoBehaviour,IPauseHandler
+    public class HeroPauseHandler : MonoBehaviour,IPauseHandler
     {
         [SerializeField] private HeroEquiper _heroEquiper;
         [SerializeField] private HeroToggle _heroToggle;
         [SerializeField] private HeroCutsSceneProcessor _heroCutsScene;
-        private IPauseService _pause;
-        private IInputService _input;
-
-        [Inject]
-        public void Construct(IInputService input, IPauseService pause)
-        {
-            _input = input;
-            _pause = pause;
-        }
-
-        private void Update()
-        {
-            if (_input.IsPauseButtonPressed() && !_pause.IsPaused) 
-                _pause.SetPaused(true);
-        }
-
+        
         public void HandlePause(bool isPaused)
         {
             _heroEquiper.ToggleEquipment(!isPaused);

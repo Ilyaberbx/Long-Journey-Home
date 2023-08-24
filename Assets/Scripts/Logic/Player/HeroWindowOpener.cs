@@ -61,7 +61,7 @@ namespace Logic.Player
                 return;
 
             EnvelopeWindow envelopeWindow = (EnvelopeWindow)await OpenWindow(WindowType.Envelope);
-            envelopeWindow.UpdateContent(data.EnvelopeText);
+            envelopeWindow.UpdateContent(data.Content);
 
             _currentWindow = envelopeWindow;
         }

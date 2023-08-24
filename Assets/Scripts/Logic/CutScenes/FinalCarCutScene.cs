@@ -94,10 +94,7 @@ namespace Logic.CutScenes
             _cameraService.ChangeCamerasPriority(data.Type);
         }
 
-        private void DisablePlayer(Transform player)
-        {
-            player.GetComponent<HeroToggle>().Toggle(false);
-            player.gameObject.SetActive(false);
-        }
+        private void DisablePlayer(Transform player) 
+            => player.gameObject.SetActive(false);
     }
 }

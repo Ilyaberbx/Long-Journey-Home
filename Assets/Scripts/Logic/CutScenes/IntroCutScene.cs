@@ -18,22 +18,26 @@ namespace Logic.CutScenes
         [SerializeField] private int _zigZagStartIndex;
         [SerializeField] private int _zigZagEndIndex;
         [SerializeField] private List<Transform> _carWayPoints;
+        [SerializeField] private List<CutSceneCameraTransitionData> _cameraTransitions;
         [SerializeField] private Transform _car;
         [SerializeField] private PathType _pathSystem;
         [SerializeField] private float _carMovingDuration;
         [SerializeField] private Transform _door;
-        [SerializeField] private Transform _wheel;
 
 
         private CarLights _carLights;
         private IGameStateMachine _stateMachine;
         private Vector3[] _wayPointPositions;
         private Tween _carMovingTween;
+        private ICameraService _cameraService;
 
 
         [Inject]
-        public void Construct(ICameraService cameraService, IGameStateMachine stateMachine) 
-            => _stateMachine = stateMachine;
+        public void Construct(ICameraService cameraService, IGameStateMachine stateMachine)
+        {
+            _cameraService = cameraService;
+            _stateMachine = stateMachine;
+        }
 
         private void Awake()
         {
@@ -72,14 +76,14 @@ namespace Logic.CutScenes
             sequence.Append(_carLights.KickstartLights(4f, 4f));
             sequence.AppendInterval(8f);
             sequence.Append(OpenDoor());
-            sequence.AppendInterval(8f);
+            sequence.AppendInterval(4f);
+            sequence.AppendCallback(() => ChangeCamera(_cameraTransitions[0]));
+            sequence.AppendInterval(_cameraTransitions[0].BlendTime + 3f);
+            sequence.AppendCallback(() => ChangeCamera(_cameraTransitions[1]));
+            sequence.AppendInterval(_cameraTransitions[1].BlendTime + 3f);
             sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
-
-        private void Update()
-        {
-            _wheel.rotation = new Quaternion(0,0,_car.rotation.y,0);
-        }
+        
 
         private Tween OpenDoor() 
             => _door.DOLocalRotate(Vector3.zero.AddY(70f), 1f).SetEase(Ease.OutExpo);
@@ -102,7 +106,12 @@ namespace Logic.CutScenes
             else if (IsEndOfZigZag(index)) 
                 _carMovingTween.DOTimeScale(1, 2f).SetEase(Ease.Linear);
         }
-
+        private void ChangeCamera(CutSceneCameraTransitionData data)
+        {
+            _cameraService.Brain.m_DefaultBlend.m_CustomCurve = data.BlendCurve;
+            _cameraService.Brain.m_DefaultBlend.m_Time = data.BlendTime;
+            _cameraService.ChangeCamerasPriority(data.Type);
+        }
         private bool IsEndOfZigZag(int index) 
             => _zigZagEndIndex == index;
 

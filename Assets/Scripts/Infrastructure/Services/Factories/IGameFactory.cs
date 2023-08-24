@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Infrastructure.Services.SaveLoad;
-using Logic.CutScenes;
 using Logic.Enemy;
 using Logic.Inventory.Item;
 using Logic.Spawners;
@@ -16,6 +15,7 @@ namespace Infrastructure.Services.Factories
 
         Task<GameObject> CreatePlayer(Vector3 at);
         Task<GameObject> CreateHud();
+        Task<GameObject> CreateDialogueView();
         void CleanUp();
         Task<GameObject> CreateEnemy(EnemyType enemyType, Transform transform, bool isRegisterInContainer = false);
 
