@@ -43,13 +43,10 @@ namespace Logic.Player
                 await OpenInventoryWindow();
         }
 
-        public async void HandlePause(bool isPaused)
+        public void HandlePause(bool isPaused)
         {
-            if (_currentWindow is PauseWindow)
-                return;
-
             if (isPaused)
-                _currentWindow = await OpenWindow(WindowType.Pause);
+                CloseCurrentWindow();
         }
 
         public async Task OpenEnvelopeWindow(EnvelopeData data)
@@ -95,14 +92,22 @@ namespace Logic.Player
 
         private void WindowClosed()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            _currentWindow = null;
-
+            Reset();
+            
+            if (IsPaused())
+                return;
+            
             if (_heroCutScene.IsCutSceneActive)
                 return;
             
             _hudWrapper.Open();
             ToggleHero(true);
+        }
+
+        private void Reset()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            _currentWindow = null;
         }
 
         private void ToggleHero(bool value)

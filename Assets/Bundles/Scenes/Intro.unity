@@ -4737,9 +4737,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 486705034}
-  - component: {fileID: 486705037}
   - component: {fileID: 486705036}
   - component: {fileID: 486705035}
+  - component: {fileID: 486705037}
   m_Layer: 0
   m_Name: SecondCamera
   m_TagString: Untagged
@@ -4823,7 +4823,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 486705033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
+  m_Script: {fileID: 11500000, guid: b4ae641bad0b41caa1dd206074b24401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraType: 3
@@ -9681,9 +9681,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1073887241}
-  - component: {fileID: 1073887244}
   - component: {fileID: 1073887243}
   - component: {fileID: 1073887242}
+  - component: {fileID: 1073887244}
   m_Layer: 0
   m_Name: FirstCamera
   m_TagString: Untagged
@@ -9767,7 +9767,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1073887240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
+  m_Script: {fileID: 11500000, guid: b4ae641bad0b41caa1dd206074b24401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraType: 2
@@ -13521,8 +13521,6 @@ MonoBehaviour:
   _indicatorColor: {r: 1, g: 0, b: 0, a: 1}
   _uniqueId: {fileID: 1577167994}
   _cutSceneTriggers: []
-  _zigZagStartIndex: 2
-  _zigZagEndIndex: 3
   _carWayPoints:
   - {fileID: 1849979215}
   - {fileID: 1133698769}
@@ -13583,9 +13581,16 @@ MonoBehaviour:
       m_RotationOrder: 0
     _blendTime: 14
     _type: 4
+  _test:
+    _sentences:
+    - "\u043F\u0456\u0441\u044F \u043F\u043E\u043F\u0430 \u043F\u043E\u043F\u0430
+      \u043E\u043F\u0430 \u043F\u043E\u043F\u0430 \u043F\u043E\u0430\u043F \u043F\u043E\u0430\u0430\u0430\u0430\u0430\u0430\u0430
+      \u043A\u0430\u043A\u0430\u0448\u043A\u0430 "
   _car: {fileID: 543450653677563699}
   _pathSystem: 1
-  _carMovingDuration: 35
+  _zigZagStartIndex: 2
+  _zigZagEndIndex: 3
+  _carMovingDuration: 5
   _door: {fileID: 610505632}
 --- !u!4 &1577167993
 Transform:
@@ -15587,9 +15592,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1803667845}
-  - component: {fileID: 1803667848}
   - component: {fileID: 1803667847}
   - component: {fileID: 1803667846}
+  - component: {fileID: 1803667848}
   m_Layer: 0
   m_Name: ThirdCamera
   m_TagString: Untagged
@@ -15673,7 +15678,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1803667844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae3733d2ef43c9448dca5b962751c3f, type: 3}
+  m_Script: {fileID: 11500000, guid: b4ae641bad0b41caa1dd206074b24401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraType: 4

@@ -12,8 +12,9 @@ namespace Infrastructure.Services.Pause
         private readonly IWindowService _windowService;
         private readonly List<IPauseHandler> _handlers = new List<IPauseHandler>();
         public bool IsPaused { get; private set; }
+        public bool CanBePaused { get; set; }
 
-        public PauseService(IInputService input,IWindowService windowService)
+        public PauseService(IInputService input, IWindowService windowService)
         {
             _input = input;
             _windowService = windowService;
@@ -21,28 +22,42 @@ namespace Infrastructure.Services.Pause
 
         public void Tick()
         {
-            if(!CanPause())
+            if (!CanPause() || !CanBePaused)
                 return;
-            
+
+            SetPaused(true);
+            OpenPauseWindow();
         }
 
-        private bool CanPause() 
+        private void OpenPauseWindow()
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            _windowService.Open(WindowType.Pause, Resume);
+        }
+
+        private void Resume()
+        {
+            SetPaused(false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        private bool CanPause()
             => !IsPaused && _input.IsPauseButtonPressed();
 
         public void Register(IPauseHandler handler)
             => _handlers.Add(handler);
-        
+
         public void SetPaused(bool isPaused)
         {
             IsPaused = isPaused;
 
             Time.timeScale = isPaused ? 0 : 1;
-            
+
             foreach (IPauseHandler handler in _handlers)
                 handler.HandlePause(isPaused);
         }
 
-        public void CleanUp() 
+        public void CleanUp()
             => _handlers.Clear();
     }
 }

@@ -1,29 +1,23 @@
-﻿using Infrastructure.Services.PersistentProgress;
-using Infrastructure.Services.SaveLoad;
+﻿using System;
+using Infrastructure.StateMachine;
+using Infrastructure.StateMachine.State;
 using UI.Elements;
-using UnityEngine;
 using Zenject;
 
 namespace UI.Menu
 {
     public class NewGameButton : BaseButton
     {
-        [SerializeField] private LoadLastSaveButton _lastSaveButton;
-        private IPersistentProgressService _progressService;
-        private ISaveLoadService _saveLoad;
+        private IGameStateMachine _stateMachine;
 
         [Inject]
-        public void Construct(IPersistentProgressService progressService,ISaveLoadService saveLoad)
-        {
-            _progressService = progressService;
-            _saveLoad = saveLoad;
-        }
+        public void Construct(IGameStateMachine stateMachine) 
+            => _stateMachine = stateMachine;
 
-        public override void Execute()
-        {
-            _saveLoad.CleanUpProgress();
-            _progressService.PlayerProgress = _progressService.DefaultProgress();
-            _lastSaveButton.Execute();
-        }
+        public override void Execute() 
+            => _stateMachine.Enter<ResetProgressState, Action>(LoadNewGame);
+
+        private void LoadNewGame() 
+            => _stateMachine.Enter<LoadNewGameState>();
     }
 }

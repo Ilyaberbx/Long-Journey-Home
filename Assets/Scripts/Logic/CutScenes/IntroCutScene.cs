@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Extensions;
+using Infrastructure.Services.Dialogue;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Camera;
 using Logic.Car;
+using Logic.DialogueSystem;
 using UnityEngine;
 using Zenject;
 
@@ -15,27 +17,28 @@ namespace Logic.CutScenes
     {
         private const string IntroRoadScene = "IntroRoad";
 
-        [SerializeField] private int _zigZagStartIndex;
-        [SerializeField] private int _zigZagEndIndex;
         [SerializeField] private List<Transform> _carWayPoints;
         [SerializeField] private List<CutSceneCameraTransitionData> _cameraTransitions;
+        [SerializeField] private Dialogue _test;
         [SerializeField] private Transform _car;
         [SerializeField] private PathType _pathSystem;
+        [SerializeField] private int _zigZagStartIndex;
+        [SerializeField] private int _zigZagEndIndex;
         [SerializeField] private float _carMovingDuration;
         [SerializeField] private Transform _door;
-
-
+        
         private CarLights _carLights;
         private IGameStateMachine _stateMachine;
         private Vector3[] _wayPointPositions;
         private Tween _carMovingTween;
         private ICameraService _cameraService;
-
+        private IDialogueService _dialogueService;
 
         [Inject]
-        public void Construct(ICameraService cameraService, IGameStateMachine stateMachine)
+        public void Construct(ICameraService cameraService, IDialogueService dialogueService,IGameStateMachine stateMachine)
         {
             _cameraService = cameraService;
+            _dialogueService = dialogueService;
             _stateMachine = stateMachine;
         }
 
@@ -59,13 +62,17 @@ namespace Logic.CutScenes
         }
 
         private void EntryRoadScene()
-            => _stateMachine.Enter<LoadLevelState, string>(IntroRoadScene);
+        {
+            Debug.Log("End intro");
+            _stateMachine.Enter<LoadLevelState, string>(IntroRoadScene);
+        }
 
         public override void StartCutScene(Transform car, Action onCutSceneEnded)
         {
             Sequence sequence = DOTween.Sequence();
             sequence.AppendCallback(() => MoveCar(_carMovingDuration));
             sequence.AppendCallback(() => _carLights.ToggleLights(0f, 500000));
+            sequence.AppendCallback(() => _dialogueService.StartDialogue(_test));
             sequence.AppendInterval(_carMovingDuration + 2f);
             sequence.AppendCallback(() => _carLights.ToggleLights(3f, 0f));
             sequence.AppendInterval(8f);

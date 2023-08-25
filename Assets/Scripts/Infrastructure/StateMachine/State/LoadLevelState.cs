@@ -55,13 +55,17 @@ namespace Infrastructure.StateMachine.State
         {
             _gameFactory.CleanUp();
             _pauseService.CleanUp();
+            _pauseService.CanBePaused = false;
             await _gameFactory.WarmUp();
             _loadingCurtain.Show();
             _sceneLoader.Load(payLoad, OnLoaded);
         }
 
         public void Exit()
-            => _loadingCurtain.Hide();
+        {
+            _loadingCurtain.Hide();
+            _pauseService.CanBePaused = true;
+        }
 
         private async void OnLoaded()
         {
@@ -87,18 +91,13 @@ namespace Infrastructure.StateMachine.State
             await InitSpawners();
             GameObject player = await InitPlayer();
             await InitHud(player);
-            await InitDialogueView(player);
+            await InitDialogueView();
             CinemachineVirtualCamera camera = InitCamera();
             InitPlayerInteractWithCamera(player, camera);
         }
 
-        private async Task InitDialogueView(GameObject player)
-        {
-            GameObject dialogueView = await _gameFactory.CreateDialogueView();
-            
-            dialogueView.GetComponent<DialogueView>()
-                .Init(player.GetComponent<IDialogueActor>());
-        }
+        private async Task InitDialogueView() 
+            => await _gameFactory.CreateDialogueView();
 
 
         private CinemachineVirtualCamera InitCamera()

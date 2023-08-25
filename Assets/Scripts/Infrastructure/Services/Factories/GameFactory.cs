@@ -6,6 +6,7 @@ using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
+using Logic.DialogueSystem;
 using Logic.Enemy;
 using Logic.Inventory;
 using Logic.Inventory.Item;
@@ -106,11 +107,12 @@ namespace Infrastructure.Services.Factories
             _uiActor = hud.GetComponent<PlayerUIActor>();
             return hud;
         }
+        
 
-        public async Task<GameObject> CreateDialogueView()
+        public async Task<DialogueView> CreateDialogueView()
         {
             GameObject dialogueViewPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.DialogueView);
-            GameObject dialogueView = InstantiateRegistered(dialogueViewPrefab);
+            DialogueView dialogueView = InstantiateRegistered(dialogueViewPrefab).GetComponent<DialogueView>();
             return dialogueView;
         }
 

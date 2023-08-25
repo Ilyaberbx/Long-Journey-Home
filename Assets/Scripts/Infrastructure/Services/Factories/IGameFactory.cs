@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Infrastructure.Services.SaveLoad;
+using Logic.DialogueSystem;
 using Logic.Enemy;
 using Logic.Inventory.Item;
 using Logic.Spawners;
+using UI.Elements;
 using UnityEngine;
 
 namespace Infrastructure.Services.Factories
@@ -15,7 +17,7 @@ namespace Infrastructure.Services.Factories
 
         Task<GameObject> CreatePlayer(Vector3 at);
         Task<GameObject> CreateHud();
-        Task<GameObject> CreateDialogueView();
+        Task<DialogueView> CreateDialogueView();
         void CleanUp();
         Task<GameObject> CreateEnemy(EnemyType enemyType, Transform transform, bool isRegisterInContainer = false);
 

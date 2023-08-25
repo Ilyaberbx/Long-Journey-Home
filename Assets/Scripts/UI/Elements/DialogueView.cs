@@ -1,21 +1,22 @@
-﻿using Logic.DialogueSystem;
+﻿using Infrastructure.Services.Dialogue;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace UI.Elements
 {
-
     public class DialogueView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _dialogueText;
-        private IDialogueActor _actor;
+        private IDialogueService _dialogueService;
 
-        public void Init(IDialogueActor actor)
+        [Inject]
+        public void Construct(IDialogueService dialogueService)
         {
-            _actor = actor;
+            _dialogueService = dialogueService;
             
-            _actor.OnSentenceCleared += ClearDialogueText;
-            _actor.OnSentenceTyping += TypeDialogueText;
+            _dialogueService.OnSentenceCleared += ClearDialogueText;
+            _dialogueService.OnSentenceTyping += TypeDialogueText;
         }
 
         private void ClearDialogueText() 

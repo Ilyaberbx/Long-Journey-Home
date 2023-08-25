@@ -279,7 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300cafc163aced34e8383f6a6516ab17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraWrapper: {fileID: 5672463797853710604}
   _characterController: {fileID: 3950152820267360752}
   _speed: 50
   _jumpHeight: 130
@@ -342,7 +341,7 @@ MonoBehaviour:
   _mover: {fileID: 2970240177481772350}
   _attack: {fileID: 1136055281313859481}
   _windowOpener: {fileID: 8258285280771886049}
-  _pause: {fileID: 8728874985912032053}
+  pauseHandler: {fileID: 8728874985912032053}
   _freeze: {fileID: 4137454390573635750}
 --- !u!114 &7162431190216540211
 MonoBehaviour:
@@ -470,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hudWrapper: {fileID: 8071613259115006391}
   _look: {fileID: 7308672361779659170}
-  cameraWrapper: {fileID: 5672463797853710604}
+  _cameraWrapper: {fileID: 5672463797853710604}
   _freeze: {fileID: 4137454390573635750}
   _light: {fileID: 9187747719706402692}
   _attack: {fileID: 1136055281313859481}

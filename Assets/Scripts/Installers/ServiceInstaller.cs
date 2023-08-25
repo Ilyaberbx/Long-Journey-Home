@@ -1,4 +1,6 @@
+using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Pause;
@@ -10,13 +12,11 @@ using Infrastructure.Services.StaticData;
 using Infrastructure.StateMachine;
 using UI.Services.Factory;
 using UI.Services.Window;
-using UnityEngine;
 using Zenject;
 
 namespace Installers
 {
-    [CreateAssetMenu]
-    public class ServiceInstaller : ScriptableObjectInstaller
+    public class ServiceInstaller : MonoInstaller, ICoroutineRunner
     {
         public override void InstallBindings()
         {
@@ -32,9 +32,16 @@ namespace Installers
             BindSceneLoader();
             BindStateMachine();
             BindSettings();
+            BindDialogueService();
         }
 
-        private void BindSettings() 
+        private void BindDialogueService()
+            => Container.Bind<IDialogueService>()
+                .To<DialogueService>().AsSingle()
+                .WithArguments(this)
+                .NonLazy();
+
+        private void BindSettings()
             => Container.Bind<ISettingsService>()
                 .To<SettingsService>()
                 .AsSingle()
@@ -46,9 +53,8 @@ namespace Installers
                 .AsSingle()
                 .NonLazy();
 
-        private void BindPause() 
-            => Container.Bind<IPauseService>()
-                .To<PauseService>()
+        private void BindPause()
+            => Container.BindInterfacesTo<PauseService>()
                 .AsSingle()
                 .NonLazy();
 

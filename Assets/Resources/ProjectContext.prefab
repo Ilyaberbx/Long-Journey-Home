@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5742848732140264413}
   - component: {fileID: 5521181959183856862}
   - component: {fileID: 6012239205056091997}
+  - component: {fileID: -2701235517337570338}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -44,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e6589720da476459dc6dd71624b071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers:
-  - {fileID: 11400000, guid: 462e41632f8d64c479a1abce6d8ef854, type: 2}
+  _scriptableObjectInstallers: []
   _monoInstallers:
+  - {fileID: -2701235517337570338}
   - {fileID: 6012239205056091997}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 0
@@ -75,3 +76,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingCurtainPrefab: {fileID: 6453964606486672618, guid: 5b23c195707a2e5478f6746fe90ecbfa, type: 3}
+--- !u!114 &-2701235517337570338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5973181171564701784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16906eb3399472e4f89d32c7e78bfebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

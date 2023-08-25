@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2055450663306622645}
   - component: {fileID: 6988789559933228285}
   - component: {fileID: 5816602165807047141}
-  - component: {fileID: 4446453184476634291}
   m_Layer: 0
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -121,19 +120,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4446453184476634291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420106189638421807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53544f63ecd442f393ad051ec9fb48f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 5816602165807047141}
 --- !u!1 &814614753997227145
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7e2775e6b84a0d8280ebf699e72324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resumeButton: {fileID: 4446453184476634291}
+  _closeButton: {fileID: 5816602165807047141}
   _openWindowButton: {fileID: 4560691882016347049}
   _menuButton: {fileID: 3773784641723441406}
 --- !u!1 &3092234167310774585
@@ -360,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 6263070420001449929}
-  _windowType: 4
+  _windowType: 5
 --- !u!1 &4147086051291979668
 GameObject:
   m_ObjectHideFlags: 0
