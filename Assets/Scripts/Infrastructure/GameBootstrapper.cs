@@ -1,5 +1,4 @@
-﻿using Infrastructure.Interfaces;
-using Infrastructure.Services.Factories;
+﻿using Infrastructure.Services.Factories;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using UnityEngine;
@@ -7,7 +6,7 @@ using Zenject;
 
 namespace Infrastructure
 {
-    public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
+    public class GameBootstrapper : MonoBehaviour
     {
         private IStateFactory _stateFactory;
         private IGameStateMachine _stateMachine;
@@ -19,11 +18,12 @@ namespace Infrastructure
             _stateMachine = stateMachine;
         }
 
-        private void Awake()
+        private void Start()
             => StartGame();
 
         private void StartGame()
         {
+            Debug.Log(gameObject);
             _stateFactory.Create(_stateMachine, typeof(BootstrapState));
             _stateFactory.Create(_stateMachine, typeof(LoadProgressState));
             _stateFactory.Create(_stateMachine, typeof(LoadSettingsState));

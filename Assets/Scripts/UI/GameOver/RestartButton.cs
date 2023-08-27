@@ -4,24 +4,23 @@ using Infrastructure.StateMachine.State;
 using UI.Elements;
 using Zenject;
 
-namespace UI.Menu
+namespace UI.GameOver
 {
-    public class LoadLastSaveButton : BaseButton
+    public class RestartButton : BaseButton
     {
-        private IGameStateMachine _stateMachine;
         private IPersistentProgressService _progressService;
+        private IGameStateMachine _stateMachine;
 
         [Inject]
-        public void Construct(IGameStateMachine stateMachine,IPersistentProgressService progressService)
+        public void Construct(IGameStateMachine stateMachine, IPersistentProgressService progressService)
         {
             _stateMachine = stateMachine;
             _progressService = progressService;
         }
-
         public override void Execute()
         {
             string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel;
-            _stateMachine.Enter<LoadLevelState,string>(level);
+            _stateMachine.Enter<LoadProgressState,string>(level);
         }
     }
 }

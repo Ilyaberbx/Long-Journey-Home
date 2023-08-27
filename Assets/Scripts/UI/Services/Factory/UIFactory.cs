@@ -4,6 +4,7 @@ using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.StaticData;
 using UI.Elements;
 using UI.Envelope;
+using UI.GameOver;
 using UI.Inventory;
 using UI.Menu;
 using UI.Pause;
@@ -72,6 +73,14 @@ namespace UI.Services.Factory
             WindowConfig config = _staticData.GetWindowData(WindowType.Envelope);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
             EnvelopeWindow window = _container.InstantiatePrefabForComponent<EnvelopeWindow>(prefab, _uiRoot);
+            return window;
+        }
+
+        public async Task<GameOverWindow> CreateGameOverMenu()
+        {
+            WindowConfig config = _staticData.GetWindowData(WindowType.GameOver);
+            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            GameOverWindow window = _container.InstantiatePrefabForComponent<GameOverWindow>(prefab, _uiRoot);
             return window;
         }
 

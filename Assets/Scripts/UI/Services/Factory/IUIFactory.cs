@@ -2,6 +2,7 @@
 using Infrastructure.Services;
 using UI.Elements;
 using UI.Envelope;
+using UI.GameOver;
 using UI.Inventory;
 using UI.Menu;
 using UI.Pause;
@@ -19,5 +20,6 @@ namespace UI.Services.Factory
         Task<PauseWindow> CreatePauseMenu();
         Task<GameObject> CreateCurtain();
         Task<EnvelopeWindow> CreateEnvelopeWindow();
+        Task<GameOverWindow> CreateGameOverMenu();
     }
 }

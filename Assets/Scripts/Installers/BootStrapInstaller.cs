@@ -1,5 +1,4 @@
-﻿using Infrastructure;
-using Infrastructure.Services.Factories;
+﻿using Infrastructure.Services.Factories;
 using Logic;
 using UnityEngine;
 using Zenject;

@@ -341,7 +341,7 @@ MonoBehaviour:
   _mover: {fileID: 2970240177481772350}
   _attack: {fileID: 1136055281313859481}
   _windowOpener: {fileID: 8258285280771886049}
-  pauseHandler: {fileID: 8728874985912032053}
+  _pauseHandler: {fileID: 8728874985912032053}
   _freeze: {fileID: 4137454390573635750}
 --- !u!114 &7162431190216540211
 MonoBehaviour:
@@ -355,8 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe9f468884249aba8189eb660c8fe5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typingOneWordDuration: 0.1
-  _nextSentenceInterval: 4
 --- !u!114 &8998662930169183514
 MonoBehaviour:
   m_ObjectHideFlags: 0

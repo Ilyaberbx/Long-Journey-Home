@@ -69,6 +69,10 @@ MonoBehaviour:
     m_Address: DialogueView
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 34e28b188a35b0f46ab559260ca16a8d
+    m_Address: GameOverWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

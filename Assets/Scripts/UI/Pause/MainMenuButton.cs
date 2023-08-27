@@ -1,6 +1,7 @@
 ﻿using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using UI.Elements;
+using Zenject;
 
 namespace UI.Pause
 {
@@ -9,6 +10,7 @@ namespace UI.Pause
         private const string MainMenuKey = "MainMenu";
         private IGameStateMachine _gameStateMachine;
 
+        [Inject]
         public void Construct(IGameStateMachine gameStateMachine)
             => _gameStateMachine = gameStateMachine;
 

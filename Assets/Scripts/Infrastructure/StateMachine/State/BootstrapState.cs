@@ -9,7 +9,7 @@ namespace Infrastructure.StateMachine.State
 {
     public class BootstrapState : IState
     {
-        private const string Initial = "InitialScene";
+        private const string MainMenu = "MainMenu";
         private readonly IGameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
         private readonly IAssetProvider _assetProvider;
@@ -30,7 +30,7 @@ namespace Infrastructure.StateMachine.State
         {
             await PreWarmUp();
             _pause.CanBePaused = false;
-            _sceneLoader.Load(Initial, EnterLoadLevel);
+            _sceneLoader.Load(MainMenu, EnterLoadLevel);
         }
 
         public void Exit()

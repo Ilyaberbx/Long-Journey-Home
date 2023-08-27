@@ -14,7 +14,7 @@ namespace Infrastructure.Services.Factories
 
         public IExitableState Create(IGameStateMachine machine, Type type)
         {
-            IExitableState state = _container.Instantiate(type, new[] { machine }) as IExitableState;
+            IExitableState state = _container.Instantiate(type) as IExitableState;
             machine.StatesMap.Add(type,state);
             return state;
         }

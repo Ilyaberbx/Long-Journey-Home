@@ -52,6 +52,10 @@ namespace UI.Services.Window
                     envelopeView.SubscribeCloseListener(onClose);
                     window = envelopeView;
                     break;
+                case WindowType.GameOver:
+                    window = await _uiFactory.CreateGameOverMenu();
+                    break;
+                    
                 default:
                     Debug.LogError("There is no type behaviour for this type: " + windowType);
                     break;

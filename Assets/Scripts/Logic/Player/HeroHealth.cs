@@ -50,13 +50,12 @@ namespace Logic.Player
         public void LoadProgress(PlayerProgress progress)
         {
             _state = progress.HealthState;
+            Debug.Log("Current health: " + _state.CurrentHP);
             OnHealthChanged?.Invoke();
         }
 
-        public void UpdateProgress(PlayerProgress progress)
-        {
-            progress.HealthState = _state;
-        }
+        public void UpdateProgress(PlayerProgress progress) 
+            => progress.HealthState = _state;
 
         private int ClampHealthPoints(int damage)
             => Mathf.Clamp(CurrentHealth - damage, 0, MaxHp);

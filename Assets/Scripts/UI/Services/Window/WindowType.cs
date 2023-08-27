@@ -7,6 +7,7 @@
         MainMenu,
         Pause,
         Envelope,
-        Settings
+        Settings,
+        GameOver
     }
 }
