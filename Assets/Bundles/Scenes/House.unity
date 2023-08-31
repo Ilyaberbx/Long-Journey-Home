@@ -16450,7 +16450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1727905746
 Transform:
   m_ObjectHideFlags: 0
@@ -19993,19 +19993,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 290096845598861777, guid: c53589fd05733bf4daa37677a3e6a829, type: 3}
   m_PrefabInstance: {fileID: 2126615566}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3769147452980851372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9029168617087358750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Id: CampfireBurning_7585e0be-d425-4bf3-bfa9-b42b16d7c7c9
 --- !u!1001 &3847920052796779135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20013,6 +20000,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6619951543473903964}
     m_Modifications:
+    - target: {fileID: -1806302148727697455, guid: 3d07d82a0a1f5b34fbebec1ee8c9b80a, type: 3}
+      propertyPath: _interactText
+      value: Read envelope
+      objectReference: {fileID: 0}
+    - target: {fileID: -1806302148727697455, guid: 3d07d82a0a1f5b34fbebec1ee8c9b80a, type: 3}
+      propertyPath: _envelopeData._content
+      value: 'Contrary to popular belief, Lorem Ipsum is not simply random text.
+        It has roots in a piece of classical Latin literature from 45 BC, making
+        it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur,
+        from a Lorem Ipsum passage, and going through the cites of the word in classical
+        literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+        1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good
+        and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory
+        of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
+        "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.  '
+      objectReference: {fileID: 0}
     - target: {fileID: 3847920052780901078, guid: 3d07d82a0a1f5b34fbebec1ee8c9b80a, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -20259,7 +20263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3cf2dd33a4d88845eef4c76139ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idGiver: {fileID: 3769147452980851372}
+  _idGiver: {fileID: 9029168617087358751}
 --- !u!108 &8949270340009562368
 Light:
   m_ObjectHideFlags: 0
@@ -20568,7 +20572,7 @@ GameObject:
   - component: {fileID: 9029014140460444748}
   - component: {fileID: 9029168617087358745}
   - component: {fileID: 8588820322122971217}
-  - component: {fileID: 3769147452980851372}
+  - component: {fileID: 9029168617087358751}
   m_Layer: 0
   m_Name: CampfireBurning
   m_TagString: Untagged
@@ -20576,6 +20580,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9029168617087358751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029168617087358750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: House_4ce61037-4cb0-400a-a3ee-38b19cb7b47d
 --- !u!1 &9029168617482158158
 GameObject:
   m_ObjectHideFlags: 0

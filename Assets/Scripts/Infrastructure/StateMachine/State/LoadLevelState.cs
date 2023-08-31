@@ -64,6 +64,7 @@ namespace Infrastructure.StateMachine.State
         {
             _loadingCurtain.Hide();
             _pauseService.CanBePaused = true;
+            _pauseService.SetPaused(false);
         }
 
         private async void OnLoaded()

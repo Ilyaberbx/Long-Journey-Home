@@ -14,7 +14,7 @@ namespace UI.Menu
         public void Construct(IWindowService windowService)
             => _windowService = windowService;
 
-        public override void Execute()
+        protected override void Execute()
             => _windowService.Open(_windowType);
     }
 }

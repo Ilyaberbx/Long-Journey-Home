@@ -396,8 +396,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialItems:
-  - Quantity: 1
+  - Quantity: 5
     ItemData: {fileID: 11400000, guid: f4953665e5434b04aa31121a61c22cfd, type: 2}
+  - Quantity: 7
+    ItemData: {fileID: 11400000, guid: 2a8e717c837d7f748b7eb639f54ca5a6, type: 2}
+  - Quantity: 9
+    ItemData: {fileID: 11400000, guid: 91cb99cb20ed0c44f876b8ddddd300a4, type: 2}
 --- !u!114 &4331722270868525863
 MonoBehaviour:
   m_ObjectHideFlags: 0

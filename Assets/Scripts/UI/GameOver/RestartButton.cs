@@ -17,7 +17,8 @@ namespace UI.GameOver
             _stateMachine = stateMachine;
             _progressService = progressService;
         }
-        public override void Execute()
+
+        protected override void Execute()
         {
             string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel;
             _stateMachine.Enter<LoadProgressState,string>(level);

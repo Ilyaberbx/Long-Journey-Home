@@ -14,7 +14,7 @@ namespace UI.Pause
         public void Construct(IGameStateMachine gameStateMachine)
             => _gameStateMachine = gameStateMachine;
 
-        public override void Execute()
+        protected override void Execute()
             => _gameStateMachine.Enter<LoadProgressState,string>(MainMenuKey);
     }
 }

@@ -19,7 +19,7 @@ namespace Infrastructure.Services.PersistentProgress
             progress.FlashLightState.Reset();
             progress.FreezeState.MaxFreeze = 100;
             progress.FreezeState.ResetFreeze();
-            progress.InventoryData.Init(30);
+            progress.InventoryData.Init(20);
 
             return progress;
         }

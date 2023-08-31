@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using DG.Tweening;
+using Infrastructure.Services.Pause;
 using Logic.Animations;
 using Logic.Gravity;
 using Logic.Player;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Enemy
 {
@@ -17,6 +19,7 @@ namespace Logic.Enemy
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
 
+        private IPauseService _pauseService;
         private readonly Collider[] _colliders = new Collider[1];
         private Transform _playerTransform;
         private int _damage;
@@ -26,7 +29,11 @@ namespace Logic.Enemy
         private int _layerMask;
         private bool _attackIsActive;
 
-        public void Construct(Transform playerTransform,int damage,float attackCoolDown)
+        [Inject]
+        public void Construct(IPauseService pauseService) 
+            => _pauseService = pauseService;
+
+        public void Init(Transform playerTransform,int damage,float attackCoolDown)
         {
             _damage = damage;
             _attackCoolDown = attackCoolDown;
@@ -88,6 +95,9 @@ namespace Logic.Enemy
 
         private void PerformAttack()
         {
+            if(_pauseService.IsPaused)
+                return;
+            
             transform.DOLookAt(_playerTransform.position, _rotationToPlayerDuration,AxisConstraint.Y);
             _animator.PlayRandomAttack();
 

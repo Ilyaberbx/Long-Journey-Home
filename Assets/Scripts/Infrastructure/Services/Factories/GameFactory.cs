@@ -139,7 +139,7 @@ namespace Infrastructure.Services.Factories
                 _container.Bind<AgentMoveToPlayer>().FromInstance(follow).AsTransient().NonLazy();
 
             EnemyAttack attack = enemy.GetComponent<EnemyAttack>();
-            attack.Construct(_heroGameObject.transform, enemyData.Damage, enemyData.AttackCoolDown);
+            attack.Init(_heroGameObject.transform, enemyData.Damage, enemyData.AttackCoolDown);
             return enemy;
         }
 

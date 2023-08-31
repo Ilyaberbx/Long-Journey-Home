@@ -9,10 +9,10 @@ namespace UI.Elements
 
         private void Awake() 
             => _button.onClick.AddListener(Execute);
-
+        
         private void OnDestroy() 
             => _button.onClick.RemoveListener(Execute);
-
-        public abstract void Execute();
+        
+        protected abstract void Execute();
     }
 }

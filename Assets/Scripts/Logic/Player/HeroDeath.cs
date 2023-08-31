@@ -1,5 +1,8 @@
-﻿using Infrastructure.Services.Pause;
+﻿using System.Threading.Tasks;
+using Infrastructure.Services.Pause;
 using Logic.Animations;
+using UI.Elements;
+using UI.GameOver;
 using UI.Services.Window;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -38,15 +41,15 @@ namespace Logic.Player
         private void OnDestroy() =>
             _health.OnHealthChanged -= HealthChanged;
 
-        private void HealthChanged()
+        private async void HealthChanged()
         {
             if (_isDead) return;
 
             if (_health.CurrentHealth <= 0)
-                Die();
+                await Die();
         }
 
-        private void Die()
+        private async Task Die()
         {
             Debug.Log("Die");
             _pauseService.CanBePaused = false;
@@ -59,7 +62,8 @@ namespace Logic.Player
             _windowOpener.enabled = false;
             _animator.PlayDeath();
             Cursor.lockState = CursorLockMode.Confined;
-            _windowService.Open(WindowType.GameOver);
+            GameOverWindow gameOverWindow = (GameOverWindow)await _windowService.Open(WindowType.GameOver);
+            gameOverWindow.Show();
         }
     }
 }

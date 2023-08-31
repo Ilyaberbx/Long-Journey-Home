@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: Final
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9f87b214e15deab4cb60366ff6253f43
+    m_Address: FinalFirstTerrain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e14ed6198566bf2459a06678c3dc9267
+    m_Address: FinalSecondTerrain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:
