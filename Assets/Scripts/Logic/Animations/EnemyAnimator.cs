@@ -1,11 +1,12 @@
 using System;
 using Enums;
+using Infrastructure.Services.Pause;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Logic.Animations
 {
-    public class BearAnimator : BaseEnemyAnimator, IAnimationStateReader
+    public class EnemyAnimator : BaseEnemyAnimator, IAnimationStateReader, IPauseHandler
     {
         private const int MaxExclusiveAttackTypes = 4;
         private static readonly string Attack = "Attack";
@@ -21,13 +22,12 @@ namespace Logic.Animations
         private readonly int _attackThirdStateHash = Animator.StringToHash("Bear_Attack3");
         private readonly int _deathStateHash = Animator.StringToHash("Bear_Death");
 
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Animator _animator;
 
         public AnimatorState State { get; private set; }
 
         public event Action<AnimatorState> StateEntered;
         public event Action<AnimatorState> StateExited;
-
 
         public override void PlayDeath()
         {
@@ -87,5 +87,8 @@ namespace Logic.Animations
 
             return state;
         }
+
+        public void HandlePause(bool isPaused) 
+            => _animator.speed = isPaused ? 0 : 1;
     }
 }

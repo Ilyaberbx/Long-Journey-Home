@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Services.Factories;
+using Logic.Common;
 using Logic.Inventory.Item;
 using Logic.Weapons;
 using UnityEngine;
@@ -6,7 +7,7 @@ using Zenject;
 
 namespace Logic.Player
 {
-    public class HeroEquiper : MonoBehaviour
+    public class HeroEquiper : MonoBehaviour, ICutSceneHandler
     {
         public Transform EquipmentContainer => _equipmentContainer;
         [SerializeField] private HeroLight _light;
@@ -67,5 +68,12 @@ namespace Logic.Player
             _currentItem?.Hide();
             _attack.ClearUp();
         }
+
+        public void HandleCutScene(bool isInCutScene)
+        {
+            if (_currentItem != null && _currentItem.TryGetComponent(out ShakingAlongMove shakingAlongMove)) 
+                shakingAlongMove.enabled = !isInCutScene;
+        }
+        
     }
 }

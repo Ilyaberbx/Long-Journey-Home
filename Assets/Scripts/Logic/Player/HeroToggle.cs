@@ -32,5 +32,6 @@ namespace Logic.Player
             else
                 _hudWrapper.Hide();
         }
+        
     }
 }

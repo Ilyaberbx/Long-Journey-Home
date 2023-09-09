@@ -8,5 +8,6 @@
         void Register(IPauseHandler handler);
         void SetPaused(bool isPaused);
         void CleanUp();
+        void UnRegister(IPauseHandler handler);
     }
 }

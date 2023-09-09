@@ -1,6 +1,4 @@
-﻿using Infrastructure.Interfaces;
-using Infrastructure.Services.Input;
-using Logic.Gravity;
+﻿using Infrastructure.Services.Input;
 using Logic.Weapons;
 using UnityEngine;
 using Zenject;
@@ -9,8 +7,6 @@ namespace Logic.Player
 {
     public class HeroAttack : MonoBehaviour
     {
-        [SerializeField] private CheckPoint _attackPoint;
-        
         private IInputService _input;
         private IWeapon _currentWeapon;
 

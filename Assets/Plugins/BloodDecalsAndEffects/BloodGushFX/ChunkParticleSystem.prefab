@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.005
+      scalar: 0.002
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -607,7 +607,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.98
+      scalar: 8
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1000,7 +1000,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.707317
+          time: 1
           value: 0
           inSlope: -2.307693
           outSlope: -2.307693
@@ -4838,4 +4838,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfb3736711f4f999901fb4db9a1bf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayBeforeDestroy: 1
+  _delayBeforeDestroy: 4

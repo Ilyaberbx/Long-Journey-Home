@@ -69,8 +69,7 @@ namespace Logic.Weapons
             Vector3 position = transform.position;
             Vector3 closestPoint = _hits[index].ClosestPoint(position);
 
-            Instantiate(_bloodFx.gameObject,closestPoint, Quaternion.LookRotation(-position),
-                _hits[index].transform.parent);
+            Instantiate(_bloodFx.gameObject,closestPoint + Vector3.down * 8f, Quaternion.LookRotation(-position));
         }
 
         private int Hit()

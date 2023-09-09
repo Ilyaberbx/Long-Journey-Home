@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.Settings;
+﻿using System;
+using System.Collections.Generic;
 using Logic.CutScenes;
 using Logic.Enemy;
 using UnityEngine;
@@ -10,10 +11,25 @@ namespace Logic.Player
         public bool IsCutSceneActive { get; private set; }
         
         [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private HeroToggle _heroToggle;
 
-        private void Awake() 
-            => _triggerObserver.OnTriggerEntered += Process;
+        private List<ICutSceneHandler> _cutSceneHandlers;
+
+        private void Awake()
+        {
+            _triggerObserver.OnTriggerEntered += Process;
+            _cutSceneHandlers = new List<ICutSceneHandler>();
+            
+            CollectHandlers();
+        }
+
+        private void CollectHandlers()
+        {
+            foreach (ICutSceneHandler handler in GetComponents<ICutSceneHandler>())
+            {
+                Debug.Log("Handler: " + handler);
+                _cutSceneHandlers.Add(handler);
+            }
+        }
 
         private void OnDestroy() 
             => _triggerObserver.OnTriggerEntered -= Process;
@@ -23,14 +39,20 @@ namespace Logic.Player
             if (!IsCutscene(obj, out ICutScene cutScene)) return;
             
             IsCutSceneActive = true;
-            _heroToggle.Toggle(false);
             cutScene.StartCutScene(transform, OnCutSceneEnded);
+            InformHandlers(IsCutSceneActive);
         }
 
         private void OnCutSceneEnded()
         {
             IsCutSceneActive = false;
-            _heroToggle.Toggle(true);
+            InformHandlers(IsCutSceneActive);
+        }
+
+        private void InformHandlers(bool isInCutScene)
+        {
+            foreach (ICutSceneHandler handler in _cutSceneHandlers) 
+                handler.HandleCutScene(isInCutScene);
         }
 
         private bool IsCutscene(Collider obj, out ICutScene cutScene) 

@@ -39,7 +39,7 @@ namespace Logic.CutScenes
         private GameObject _smokeFxPrefab;
         private ISaveLoadService _saveLoad;
         private IGameStateMachine _stateMachine;
-        private BearAnimator _bearAnimator;
+        private EnemyAnimator _enemyAnimator;
         
         [Inject]
         public void Construct(ICameraService cameraService, IAssetProvider assetProvider,
@@ -51,13 +51,13 @@ namespace Logic.CutScenes
             _stateMachine = stateMachine;
         }
 
-        private async void Start()
+        protected override async void OnAwake()
         {
             if (IsCutScenePassed())
                 DisableTriggers();
 
             _smokeFxPrefab = await _assetProvider.Load<GameObject>(_smokeReference);
-            _bearAnimator = _bear.GetComponent<BearAnimator>();
+            _enemyAnimator = _bear.GetComponent<EnemyAnimator>();
         }
 
         public override void StartCutScene(Transform player, Action onCutSceneEnded)
@@ -77,59 +77,59 @@ namespace Logic.CutScenes
 
         private void CutSceneSequence(Transform player)
         {
-            Sequence sequence = DOTween.Sequence();
             HeroCameraWrapper cameraWrapper = player.GetComponent<HeroCameraWrapper>();
-            sequence.AppendCallback(ParentEquipmentToMain(cameraWrapper));
-            sequence.AppendCallback(DisableTriggers);
-            sequence.AppendCallback(PassCutScene);
-            sequence.AppendCallback(DisableBridgeObstacle);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
-            sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 0.4f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[1]));
-            sequence.AppendInterval(_camerasTransitionData[1].BlendTime + 0.4f);
-            sequence.AppendCallback(EnableLadder);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
-            sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 0.4f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[2]));
-            sequence.AppendCallback(() => BearRunningSequence(_bearFirstTarget.position));
-            sequence.AppendInterval(2f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[3]));
-            sequence.AppendInterval(_camerasTransitionData[3].BlendTime);
-            sequence.AppendCallback(() => _bear.SetActive(false));
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[4]));
-            sequence.AppendInterval(_camerasTransitionData[4].BlendTime + 0.3f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[5]));
-            sequence.AppendInterval(_camerasTransitionData[5].BlendTime + 0.4f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
-            sequence.AppendInterval(_camerasTransitionData[6].BlendTime + 0.2f);
-            sequence.AppendCallback(() => _bear.transform.position = _bearSecondPosition.position);
-            sequence.AppendCallback(() => BearRunningSequence(_bearSecondTarget.position));
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[7]));
-            sequence.AppendInterval(2f);
-            sequence.AppendCallback(FallPlank);
-            sequence.AppendCallback(AnimateBearAttack);
-            sequence.AppendInterval(0.1f);
-            sequence.AppendCallback(() => SpawnSmoke(_firstSmokeSpawnPoint.position));
-            sequence.AppendCallback(FallLadder);
-            sequence.AppendInterval(0.3f);
-            sequence.AppendCallback(FallBear);
-            sequence.AppendInterval(0.4f);
-            sequence.AppendCallback(() => SpawnSmoke(_secondSmokeSpawnPoint.position));
-            sequence.AppendInterval(1f);
-            sequence.AppendCallback(() => _bearAnimator.PlayDeath());
-            sequence.AppendInterval(1f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
-            sequence.AppendInterval(_camerasTransitionData[6].BlendTime);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[8]));
-            sequence.AppendInterval(0.7f);
-            sequence.AppendCallback(SaveProgress);
-            sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
+            _sequence = DOTween.Sequence();
+            _sequence.AppendCallback(ParentEquipmentToMain(cameraWrapper));
+            _sequence.AppendCallback(DisableTriggers);
+            _sequence.AppendCallback(PassCutScene);
+            _sequence.AppendCallback(DisableBridgeObstacle);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
+            _sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 0.4f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[1]));
+            _sequence.AppendInterval(_camerasTransitionData[1].BlendTime + 0.4f);
+            _sequence.AppendCallback(EnableLadder);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
+            _sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 0.4f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[2]));
+            _sequence.AppendCallback(() => BearRunningSequence(_bearFirstTarget.position));
+            _sequence.AppendInterval(2f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[3]));
+            _sequence.AppendInterval(_camerasTransitionData[3].BlendTime);
+            _sequence.AppendCallback(() => _bear.SetActive(false));
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[4]));
+            _sequence.AppendInterval(_camerasTransitionData[4].BlendTime + 0.3f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[5]));
+            _sequence.AppendInterval(_camerasTransitionData[5].BlendTime + 0.4f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
+            _sequence.AppendInterval(_camerasTransitionData[6].BlendTime + 0.2f);
+            _sequence.AppendCallback(() => _bear.transform.position = _bearSecondPosition.position);
+            _sequence.AppendCallback(() => BearRunningSequence(_bearSecondTarget.position));
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[7]));
+            _sequence.AppendInterval(2f);
+            _sequence.AppendCallback(FallPlank);
+            _sequence.AppendCallback(AnimateBearAttack);
+            _sequence.AppendInterval(0.1f);
+            _sequence.AppendCallback(() => SpawnSmoke(_firstSmokeSpawnPoint.position));
+            _sequence.AppendCallback(FallLadder);
+            _sequence.AppendInterval(0.3f);
+            _sequence.AppendCallback(FallBear);
+            _sequence.AppendInterval(0.4f);
+            _sequence.AppendCallback(() => SpawnSmoke(_secondSmokeSpawnPoint.position));
+            _sequence.AppendInterval(1f);
+            _sequence.AppendCallback(() => _enemyAnimator.PlayDeath());
+            _sequence.AppendInterval(1f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
+            _sequence.AppendInterval(_camerasTransitionData[6].BlendTime);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[8]));
+            _sequence.AppendInterval(0.7f);
+            _sequence.AppendCallback(SaveProgress);
+            _sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
         }
 
         private void AnimateBearAttack()
         {
             _bear.GetComponent<Animator>().speed = 0.3f;
-            _bearAnimator.PlayAttack(1);
+            _enemyAnimator.PlayAttack(1);
         }
 
         private void SpawnSmoke(Vector3 position)
@@ -153,7 +153,7 @@ namespace Logic.CutScenes
         private Tween BearRunningSequence(Vector3 target)
         {
             _bear.SetActive(true);
-            _bearAnimator.Move(1);
+            _enemyAnimator.Move(1);
             return _bear.transform.DOMove(target, 2.5f).SetEase(Ease.Linear);
         }
 

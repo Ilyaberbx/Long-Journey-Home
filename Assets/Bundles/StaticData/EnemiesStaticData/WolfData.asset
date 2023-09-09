@@ -21,4 +21,4 @@ MonoBehaviour:
   _maxHp: 6
   _damage: 24
   _attackCoolDown: 0.35
-  _moveSpeed: 120
+  _moveSpeed: 140

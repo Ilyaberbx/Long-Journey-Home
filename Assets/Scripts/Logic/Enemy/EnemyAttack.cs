@@ -13,8 +13,8 @@ namespace Logic.Enemy
     public class EnemyAttack : MonoBehaviour
     {
         private const string PlayerLayer = "Player";
-        public bool IsAttacking => _isAttacking;
-        
+  
+        [SerializeField] private AgentMoveToPlayer _agent;
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private CheckPoint _checkPoint;
         [SerializeField] private float _rotationToPlayerDuration;
@@ -68,8 +68,7 @@ namespace Logic.Enemy
 
         private void OnAttackEnded()
         {
-            Debug.Log("OnAttackEnded");
-            
+            _agent.Resume();
             _currentCoolDown = _attackCoolDown;
             _isAttacking = false;
         }
@@ -98,11 +97,16 @@ namespace Logic.Enemy
             if(_pauseService.IsPaused)
                 return;
             
-            transform.DOLookAt(_playerTransform.position, _rotationToPlayerDuration,AxisConstraint.Y);
+            _agent.Stop();
+            LookAtVictim();
             _animator.PlayRandomAttack();
 
             _isAttacking = true;
         }
+
+        private void LookAtVictim() =>
+            transform.DOLookAt(_playerTransform.position, _rotationToPlayerDuration, AxisConstraint.Y, transform.up)
+                .SetEase(Ease.OutExpo);
 
         private bool IsCoolDownEnded()
             => _currentCoolDown <= 0;

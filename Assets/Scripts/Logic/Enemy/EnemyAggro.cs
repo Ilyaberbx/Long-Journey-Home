@@ -11,7 +11,8 @@ namespace Logic.Enemy
 
         private bool _isFollowing;
         private Coroutine _aggroCoroutine;
-        
+        protected Transform _victimTransform;
+
         private void Start()
         {
             _triggerObserver.OnTriggerEntered += TriggerEnter;
@@ -22,7 +23,14 @@ namespace Logic.Enemy
         private void TriggerEnter(Collider collider)
         {
             if(_isFollowing) return;
+
+            _victimTransform = collider.transform;
             
+            Aggro();
+        }
+
+        protected virtual void Aggro()
+        {
             StopPrevAggro();
             SwitchFollowActive(true);
         }

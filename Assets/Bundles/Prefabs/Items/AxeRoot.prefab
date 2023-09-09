@@ -129,7 +129,7 @@ MonoBehaviour:
   _damage: 1
   _attackRadius: 8
   _attackSpeed: 0.8
-  _bloodFx: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
+  _bloodFx: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
 --- !u!114 &-355366306521151843
 MonoBehaviour:
   m_ObjectHideFlags: 0

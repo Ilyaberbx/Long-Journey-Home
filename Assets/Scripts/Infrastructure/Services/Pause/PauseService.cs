@@ -60,5 +60,8 @@ namespace Infrastructure.Services.Pause
 
         public void CleanUp()
             => _handlers.Clear();
+
+        public void UnRegister(IPauseHandler handler) 
+            => _handlers.Remove(handler);
     }
 }

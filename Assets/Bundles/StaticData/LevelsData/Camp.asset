@@ -16,22 +16,22 @@ MonoBehaviour:
   EnemySpawners:
   - Id: Camp_375d814d-b8c9-4d64-8401-a90458294d60
     EnemyType: 1
-    Position: {x: 2039.862, y: 53.010628, z: 1708.7988}
+    Position: {x: 2045.462, y: 53.010628, z: 1897.2988}
     IsRegisterInContainer: 0
   - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
     EnemyType: 1
-    Position: {x: 2123.862, y: 57.41063, z: 1595.7988}
+    Position: {x: 2389.162, y: 69.51063, z: 1587.2988}
     IsRegisterInContainer: 0
   LootSpawners:
   - Id: House_563a245a-2a83-45d5-a4c0-f4951f23dbf7
     Prefab: {fileID: 5209323148249258876, guid: a0a89e2567d0bb34ca1cf521c5e4f5c8, type: 3}
     Position: {x: 2558.2622, y: 38.14063, z: 2063.1987}
     Rotation: {x: -1, y: -0, z: 0, w: 0}
-  - Id: House_563a245a-2a83-45d5-a4c0-f4951f23dbf7
+  - Id: Camp_f04e2e8c-d4c6-466f-b678-eb5ca72cfefe
     Prefab: {fileID: 5209323148249258876, guid: a0a89e2567d0bb34ca1cf521c5e4f5c8, type: 3}
     Position: {x: 2539.292, y: 37.850628, z: 2055.9988}
     Rotation: {x: -0.70710695, y: -0, z: 0.000000029802322, w: 0.7071067}
-  - Id: House_563a245a-2a83-45d5-a4c0-f4951f23dbf7
+  - Id: Camp_73682bd3-965c-4530-912c-bf4b3791c7a3
     Prefab: {fileID: 7150283600269640286, guid: cbae169fc3ae8984082166a237e4cc37, type: 3}
     Position: {x: 954.86206, y: 470.9106, z: 804.0988}
     Rotation: {x: 0.15212336, y: -0, z: -0, w: 0.98836154}

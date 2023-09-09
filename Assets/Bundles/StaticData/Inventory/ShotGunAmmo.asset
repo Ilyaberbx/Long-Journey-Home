@@ -18,4 +18,4 @@ MonoBehaviour:
   MaxStackSize: 8
   Name: Shotgun ammo
   Description: Handmade ammo for shotgun
-  _damage: 2
+  _damage: 15

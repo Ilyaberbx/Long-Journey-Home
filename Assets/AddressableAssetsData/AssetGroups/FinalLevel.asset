@@ -17,16 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 30443ab4fdf979e498b08bfe29d2f411
   m_SerializeEntries:
-  - m_GUID: 2b8aed6ad4b3db7469eaf5f504695491
+  - m_GUID: 41d87147df3f60a43b9cb95e56b1960e
     m_Address: Final
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9f87b214e15deab4cb60366ff6253f43
-    m_Address: FinalFirstTerrain
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e14ed6198566bf2459a06678c3dc9267
-    m_Address: FinalSecondTerrain
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

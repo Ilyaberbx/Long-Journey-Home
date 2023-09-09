@@ -139,11 +139,11 @@ namespace Logic.Weapons
             _animator.SetAnimatorSpeed(1);
             _isAttacking = false;
         }
-        
-        private Vector3 CalculateCastDirection() 
+
+        private Vector3 CalculateCastDirection()
             => (-_cachedTransform.right + _randomRayDirection) * 150f;
 
-        private float CalculateScatter() 
+        private float CalculateScatter()
             => Random.Range(-_scatter, _scatter);
 
         private void Hit()
@@ -152,7 +152,7 @@ namespace Logic.Weapons
             for (int i = 0; i < _shotsPerBullet; i++)
             {
                 _randomRayDirection = new Vector3(CalculateScatter(), CalculateScatter(), 0);
-                
+
                 if (!IsHit(out hit)) continue;
 
                 if (IsDamagable(hit, out var health))
@@ -166,15 +166,16 @@ namespace Logic.Weapons
         }
 
         private void ShowBloodFx(RaycastHit hit)
-            => Instantiate(_bloodFx, hit.point + hit.normal, Quaternion.FromToRotation(Vector3.forward, hit.normal),hit.transform);
+            => Instantiate(_bloodFx, hit.point - Vector3.up * 5, Quaternion.identity);
 
-        private void ShowHitMark(RaycastHit hit) 
-            => Instantiate(_hitMarkFx, hit.point + hit.normal * .01f, Quaternion.FromToRotation(Vector3.forward, hit.normal));
+        private void ShowHitMark(RaycastHit hit)
+            => Instantiate(_hitMarkFx, hit.point + hit.normal * .01f,
+                Quaternion.FromToRotation(Vector3.forward, hit.normal));
 
-        private bool IsDamagable(RaycastHit hit, out IHealth health) 
+        private bool IsDamagable(RaycastHit hit, out IHealth health)
             => hit.transform.gameObject.TryGetComponent(out health);
 
-        private bool IsHit(out RaycastHit hit) 
+        private bool IsHit(out RaycastHit hit)
             => Physics.Raycast(_cachedTransform.position, CalculateCastDirection(), out hit);
 
         private void InformAmmoChanged()

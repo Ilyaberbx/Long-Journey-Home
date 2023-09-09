@@ -5,7 +5,6 @@ using DG.Tweening;
 using Logic.Animations;
 using Logic.Camera;
 using Logic.Car;
-using Logic.Player;
 using UI.Services.Factory;
 using UnityEngine;
 using Zenject;
@@ -20,21 +19,21 @@ namespace Logic.CutScenes
         [SerializeField] private List<Transform> _bearCutScenePositions;
         [SerializeField] private List<CutSceneCameraTransitionData> _camerasTransitionData;
         private ICameraService _cameraService;
-        private BearAnimator _bearAnimator;
+        private EnemyAnimator _enemyAnimator;
         private IUIFactory _uiFactory;
         private CanvasGroup _finalCurtain;
 
         [Inject]
-        public void Construct(ICameraService cameraService,IUIFactory uiFactory)
+        public void Construct(ICameraService cameraService, IUIFactory uiFactory)
         {
             _cameraService = cameraService;
             _uiFactory = uiFactory;
         }
 
-        private async void Start()
+        protected override async void OnAwake()
         {
             _bear.SetActive(false);
-            _bearAnimator = _bear.GetComponent<BearAnimator>();
+            _enemyAnimator = _bear.GetComponent<EnemyAnimator>();
 
             if (IsCutScenePassed())
                 DisableTriggers();
@@ -44,49 +43,50 @@ namespace Logic.CutScenes
 
         public override void StartCutScene(Transform player, Action onCutSceneEnded)
         {
-            Sequence sequence = DOTween.Sequence();
             DisablePlayer(player);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
-            sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 1.5f);
-            sequence.Append(_lights.KickstartLights(0.5f, 0.8f));
-            sequence.AppendInterval(0.8f);
-            sequence.AppendCallback(() => BearRunningSequence(_bearTarget.position));
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[1]));
-            sequence.AppendInterval(_camerasTransitionData[1].BlendTime +  0.8f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
-            sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 0.4f);
-            sequence.Append(_lights.KickstartLights(0.8f, 0.5f));
-            sequence.Append(_lights.KickstartLights(1f, 0.8f));
-            sequence.Append(_lights.KickstartLights(1.4f, 2f));
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[2]));
-            sequence.AppendInterval(0.6f);
-            sequence.AppendCallback(AnimateBearAttack);
-            sequence.AppendInterval(_camerasTransitionData[2].BlendTime);
-            sequence.AppendCallback(ShowEndCurtain);
+            _sequence = DOTween.Sequence();
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
+            _sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 1.5f);
+            _sequence.Append(_lights.KickstartLights(0.5f, 0.8f));
+            _sequence.AppendInterval(0.8f);
+            _sequence.AppendCallback(() => BearRunningSequence(_bearTarget.position));
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[1]));
+            _sequence.AppendInterval(_camerasTransitionData[1].BlendTime + 0.8f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
+            _sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 0.4f);
+            _sequence.Append(_lights.KickstartLights(0.8f, 0.5f));
+            _sequence.Append(_lights.KickstartLights(1f, 0.8f));
+            _sequence.Append(_lights.KickstartLights(1.4f, 2f));
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[2]));
+            _sequence.AppendInterval(0.6f);
+            _sequence.AppendCallback(AnimateBearAttack);
+            _sequence.AppendInterval(_camerasTransitionData[2].BlendTime);
+            _sequence.AppendCallback(ShowEndCurtain);
         }
 
-        private void ShowEndCurtain() 
+        private void ShowEndCurtain()
             => _finalCurtain.DOFade(1, 0f);
 
         private async Task LoadCurtain()
         {
-           GameObject handle = await _uiFactory.CreateCurtain();
-           _finalCurtain = handle.GetComponent<CanvasGroup>();
+            GameObject handle = await _uiFactory.CreateCurtain();
+            _finalCurtain = handle.GetComponent<CanvasGroup>();
         }
 
         private void AnimateBearAttack()
         {
             _bear.transform.position = _bearCutScenePositions[0].position;
             _bear.GetComponent<Animator>().speed = 0.8f;
-            _bearAnimator.PlayAttack(2);
+            _enemyAnimator.PlayAttack(2);
         }
 
         private Tween BearRunningSequence(Vector3 target)
         {
             _bear.SetActive(true);
-            _bearAnimator.Move(1);
+            _enemyAnimator.Move(1);
             return _bear.transform.DOMove(target, 3).SetEase(Ease.Linear);
         }
+
         private void ChangeCamera(CutSceneCameraTransitionData data)
         {
             _cameraService.Brain.m_DefaultBlend.m_CustomCurve = data.BlendCurve;
@@ -94,7 +94,7 @@ namespace Logic.CutScenes
             _cameraService.ChangeCamerasPriority(data.Type);
         }
 
-        private void DisablePlayer(Transform player) 
+        private void DisablePlayer(Transform player)
             => player.gameObject.SetActive(false);
     }
 }

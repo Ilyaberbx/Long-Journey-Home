@@ -132,7 +132,7 @@ namespace Infrastructure.Services.Factories
 
             enemy.GetComponent<UIActor>()?.Construct(health);
             AgentMoveToPlayer follow = enemy.GetComponent<AgentMoveToPlayer>();
-            follow.Construct(_heroGameObject.transform);
+            follow.Init(_heroGameObject.transform);
             enemy.GetComponent<NavMeshAgent>().speed = enemyData.MoveSpeed;
 
             if (isRegisterInContainer)

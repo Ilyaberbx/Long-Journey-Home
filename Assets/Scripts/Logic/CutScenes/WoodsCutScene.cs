@@ -31,7 +31,7 @@ namespace Logic.CutScenes
             _assetProvider = assetProvider;
         }
 
-        private async void Awake()
+        protected override async void OnAwake()
         {
             if (IsCutScenePassed())
             {
@@ -44,21 +44,21 @@ namespace Logic.CutScenes
         public override void StartCutScene(Transform player, Action onCutSceneEnded)
         {
             IDialogueActor dialogue = player.GetComponent<IDialogueActor>();
-            Sequence sequence = DOTween.Sequence();
-            sequence.AppendCallback(() => _camerasService.ChangeCamerasPriority(GameCameraType.FirstCamera));
-            sequence.Append(FallFirstTree());
-            sequence.AppendCallback(() => ShakeCamera(50f));
-            sequence.AppendCallback(() => ShowFx(_firstSmokePosition));
-            sequence.AppendCallback(() => _camerasService.ChangeCamerasPriority(GameCameraType.SecondCamera));
-            sequence.Append(FallSecondTree());
-            sequence.AppendCallback(() => ShakeCamera(10f));
-            sequence.AppendCallback(() => ShowFx(_secondSmokePosition));
-            sequence.AppendCallback(() => _camerasService.ChangeCamerasPriority(GameCameraType.PlayerCamera));
-            sequence.AppendInterval(1f);
-            sequence.AppendCallback(() => dialogue.StartDialogue(_dialogueOnEnd));
-            sequence.AppendCallback(PassCutScene);
-            sequence.AppendCallback(DisableTriggers);
-            sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
+            _sequence = DOTween.Sequence();
+            _sequence.AppendCallback(() => _camerasService.ChangeCamerasPriority(GameCameraType.FirstCamera));
+            _sequence.Append(FallFirstTree());
+            _sequence.AppendCallback(() => ShakeCamera(50f));
+            _sequence.AppendCallback(() => ShowFx(_firstSmokePosition));
+            _sequence.AppendCallback(() => _camerasService.ChangeCamerasPriority(GameCameraType.SecondCamera));
+            _sequence.Append(FallSecondTree());
+            _sequence.AppendCallback(() => ShakeCamera(10f));
+            _sequence.AppendCallback(() => ShowFx(_secondSmokePosition));
+            _sequence.AppendCallback(() => _camerasService.ChangeCamerasPriority(GameCameraType.PlayerCamera));
+            _sequence.AppendInterval(1f);
+            _sequence.AppendCallback(() => dialogue.StartDialogue(_dialogueOnEnd));
+            _sequence.AppendCallback(PassCutScene);
+            _sequence.AppendCallback(DisableTriggers);
+            _sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
         
 

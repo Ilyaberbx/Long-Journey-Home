@@ -31,7 +31,7 @@ namespace Logic.CutScenes
             _saveLoadService = saveLoadService;
         }
 
-        private void Start()
+        protected override void OnAwake()
         {
             if (IsCutScenePassed()) 
                 DisableTriggers();
@@ -41,26 +41,26 @@ namespace Logic.CutScenes
 
         public override void StartCutScene(Transform player, Action onCutSceneEnded)
         {
-            Sequence sequence = DOTween.Sequence();
             HeroCameraWrapper cameraWrapper = player.GetComponent<HeroCameraWrapper>();
-            sequence.AppendCallback(ParentEquipmentToMain(cameraWrapper));
-            sequence.AppendCallback(DisableTriggers);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
-            sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 1f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[1]));
-            sequence.AppendInterval(_camerasTransitionData[1].BlendTime + 2f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[2]));
-            sequence.AppendInterval(_camerasTransitionData[2].BlendTime);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[3]));
-            sequence.AppendInterval(_camerasTransitionData[3].BlendTime + 0.7f);
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[4]));
-            sequence.AppendInterval(_camerasTransitionData[4].BlendTime + 1f);
-            sequence.AppendCallback(() => EyeCurtainSequence());
-            sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[6]));
-            sequence.AppendInterval(3f);
-            sequence.AppendCallback(PassCutScene);
-            sequence.AppendCallback(SaveProgress);
-            sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
+            _sequence = DOTween.Sequence();
+            _sequence.AppendCallback(ParentEquipmentToMain(cameraWrapper));
+            _sequence.AppendCallback(DisableTriggers);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
+            _sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 1f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[1]));
+            _sequence.AppendInterval(_camerasTransitionData[1].BlendTime + 2f);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[2]));
+            _sequence.AppendInterval(_camerasTransitionData[2].BlendTime);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[3]));
+            _sequence.AppendInterval(_camerasTransitionData[3].BlendTime);
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[4]));
+            _sequence.AppendInterval(_camerasTransitionData[4].BlendTime + 3f);
+            _sequence.AppendCallback(() => EyeCurtainSequence());
+            _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[5]));
+            _sequence.AppendInterval(3f);
+            _sequence.AppendCallback(PassCutScene);
+            _sequence.AppendCallback(SaveProgress);
+            _sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
         }
 
         private TweenCallback ParentEquipmentToMain(HeroCameraWrapper wrapper) 

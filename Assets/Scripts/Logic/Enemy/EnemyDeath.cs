@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using Infrastructure.Services.Pause;
 using Logic.Animations;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Enemy
 {
@@ -15,10 +17,15 @@ namespace Logic.Enemy
         [SerializeField] private EnemyAttack _attack;
         [SerializeField] private EnemyAggro _aggro;
         [SerializeField] private EnemyHealth _health;
-        [SerializeField] private BaseEnemyAnimator _animator;
+        [SerializeField] private EnemyAnimator _animator;
         [SerializeField] private float _delayBeforeDestroy;
         [SerializeField] private ParticleSystem _deathFx;
         [SerializeField] private float _fxOffSet = 5f;
+        private IPauseService _pauseService;
+
+        [Inject]
+        public void Construct(IPauseService pauseService) 
+            => _pauseService = pauseService;
 
         private void Awake() =>
             _health.OnHealthChanged += HealthChanged;
@@ -39,10 +46,18 @@ namespace Logic.Enemy
             _attack.enabled = false;
             _aggro.enabled = false;
             _agent.Stop();
+            _agent.enabled = false;
             _animator.PlayDeath();
+            UnsubscribeComponents();
             StartCoroutine(DestroyingRoutine());
 
             OnDie?.Invoke();
+        }
+
+        private void UnsubscribeComponents()
+        {
+            _pauseService.UnRegister(_agent);
+            _pauseService.UnRegister(_animator);
         }
 
         private IEnumerator DestroyingRoutine()

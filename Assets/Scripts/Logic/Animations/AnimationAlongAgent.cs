@@ -4,7 +4,7 @@ using UnityEngine.AI;
 namespace Logic.Animations
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(BearAnimator))]
+    [RequireComponent(typeof(EnemyAnimator))]
     public class AnimationAlongAgent : MonoBehaviour
     {
         private const float MinimalSpeedVelocity = 0.1f;

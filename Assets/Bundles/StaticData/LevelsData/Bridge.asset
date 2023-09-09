@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: Bridge
   EnemySpawners:
-  - Id: SpawnMarker_de5aeb90-c3ae-4974-9232-5ce4ebebe33e
+  - Id: SpawnMarker_de5aebs90-c3ae-4974-9232-5ce4ebebe33e
     EnemyType: 0
-    Position: {x: 3208, y: 96, z: 1966}
+    Position: {x: 2884.2, y: 96, z: 1354.1}
     IsRegisterInContainer: 0
   - Id: Bridge_62fe62a5-f9e8-42e3-b3b9-2ca8d40969e3
     EnemyType: 1
@@ -31,4 +31,4 @@ MonoBehaviour:
     Prefab: {fileID: 2593742848479733624, guid: 65f8bd0b6e9873b40860d0a764521cc5, type: 3}
     Position: {x: 2256.8, y: 151.39998, z: 5402.4}
     Rotation: {x: 0.000000029802322, y: -0.053103507, z: -0, w: 0.99858904}
-  PlayerInitPoint: {x: 1706, y: 217, z: 1273}
+  PlayerInitPoint: {x: 1226.5322, y: 136, z: 1106.8}

@@ -1,7 +1,5 @@
-﻿using Infrastructure.Services.Input;
-using Infrastructure.Services.Pause;
+﻿using Infrastructure.Services.Pause;
 using UnityEngine;
-using Zenject;
 
 namespace Logic.Player
 {
@@ -9,19 +7,19 @@ namespace Logic.Player
     {
         [SerializeField] private HeroEquiper _heroEquiper;
         [SerializeField] private HeroToggle _heroToggle;
-        [SerializeField] private HeroCutsSceneProcessor _heroCutsScene;
+        [SerializeField] private HeroCutSceneHandler _heroCutScene;
         
         public void HandlePause(bool isPaused)
         {
             _heroEquiper.ToggleEquipment(!isPaused);
             
-            if(IsInCutScene(isPaused))
+            if(IsInCutScene())
                 return;
             
             _heroToggle.Toggle(!isPaused);
         }
 
-        private bool IsInCutScene(bool isPaused) 
-            => !isPaused && _heroCutsScene.IsCutSceneActive;
+        private bool IsInCutScene() 
+            => _heroCutScene.IsInCutScene;
     }
 }
