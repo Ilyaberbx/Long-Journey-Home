@@ -15,4 +15,4 @@ MonoBehaviour:
   LevelKey: Final
   EnemySpawners: []
   LootSpawners: []
-  PlayerInitPoint: {x: 8448.955, y: 16, z: 8383.411}
+  PlayerInitPoint: {x: 4344.6504, y: 66, z: 10665}
