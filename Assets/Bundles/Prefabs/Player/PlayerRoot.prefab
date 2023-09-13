@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6483897062500456673}
   - component: {fileID: 6277595170587148778}
   - component: {fileID: 3492387379473860323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CutsSceneCheckTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3401435002938043441}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerRoot
   m_TagString: Player
   m_Icon: {fileID: 0}
