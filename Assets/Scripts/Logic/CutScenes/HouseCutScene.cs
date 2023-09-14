@@ -77,9 +77,10 @@ namespace Logic.CutScenes
             Sequence sequence = DOTween.Sequence();
             sequence.Append(ToggleEyeCurtain(0.4f,2f));
             sequence.Append(ToggleEyeCurtain(0f,1f));
-            sequence.Append(ToggleEyeCurtain(0.4f,1f));
-            sequence.Append(ToggleEyeCurtain(0.5f,1f));
+            sequence.Append(ToggleEyeCurtain(1f,1f));
+            sequence.Append(ToggleEyeCurtain(0f,1f));
             sequence.Append(ToggleEyeCurtain(1f,2f));
+            sequence.AppendInterval(2f);
             return sequence;
         }
 

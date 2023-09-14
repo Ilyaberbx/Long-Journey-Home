@@ -63,7 +63,7 @@ namespace Logic.Player
                 _currentItem.Hide();
         }
 
-        private void ClearUp()
+        public void ClearUp()
         {
             _currentItem?.Hide();
             _attack.ClearUp();

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Logic.CutScenes;
 using Logic.Enemy;
 using UnityEngine;
@@ -24,11 +23,8 @@ namespace Logic.Player
 
         private void CollectHandlers()
         {
-            foreach (ICutSceneHandler handler in GetComponents<ICutSceneHandler>())
-            {
-                Debug.Log("Handler: " + handler);
+            foreach (ICutSceneHandler handler in GetComponents<ICutSceneHandler>()) 
                 _cutSceneHandlers.Add(handler);
-            }
         }
 
         private void OnDestroy() 

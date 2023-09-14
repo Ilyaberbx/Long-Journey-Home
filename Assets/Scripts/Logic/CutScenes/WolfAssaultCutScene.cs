@@ -29,6 +29,14 @@ namespace Logic.CutScenes
         private GameObject _magicFxPrefab;
         private IDialogueService _dialogueService;
 
+        [Inject]
+        public void Construct(ICameraService camerasService, IAssetProvider assetProvider,IDialogueService dialogueService)
+        {
+            _camerasService = camerasService;
+            _assetProvider = assetProvider;
+            _dialogueService = dialogueService;
+        }
+
         protected override async void OnAwake()
         {
             if (IsCutScenePassed())
@@ -39,14 +47,6 @@ namespace Logic.CutScenes
 
             _smokeFxPrefab = await _assetProvider.Load<GameObject>(_smokeReference);
             _magicFxPrefab = await _assetProvider.Load<GameObject>(_magicFxReference);
-        }
-
-        [Inject]
-        public void Construct(ICameraService camerasService, IAssetProvider assetProvider,IDialogueService dialogueService)
-        {
-            _camerasService = camerasService;
-            _assetProvider = assetProvider;
-            _dialogueService = dialogueService;
         }
 
         public override void StartCutScene(Transform player, Action onCutSceneEnded)

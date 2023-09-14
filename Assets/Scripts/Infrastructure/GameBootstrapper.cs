@@ -10,12 +10,14 @@ namespace Infrastructure
     {
         private IStateFactory _stateFactory;
         private IGameStateMachine _stateMachine;
+        private IGameFactory _gameFactory;
 
         [Inject]
-        public void Construct(IStateFactory stateFactory, IGameStateMachine stateMachine)
+        public void Construct(IStateFactory stateFactory, IGameStateMachine stateMachine,IGameFactory gameFactory)
         {
             _stateFactory = stateFactory;
             _stateMachine = stateMachine;
+            _gameFactory = gameFactory;
         }
 
         private void Start()
@@ -37,5 +39,8 @@ namespace Infrastructure
 
             DontDestroyOnLoad(this);
         }
+
+        private void OnApplicationQuit() 
+            => _gameFactory.CleanUp();
     }
 }
