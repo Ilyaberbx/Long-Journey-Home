@@ -13,22 +13,23 @@ namespace Infrastructure.Services.SaveLoad
         private readonly IPersistentProgressService _persistentProgressService;
         private const string ProgressKey = "Progress";
         private const string SettingsKey = "Settings";
+        private const string GlobalProgressKey = "GlobalProgress";
 
-        public SaveLoadService(IGameFactory gameFactory,IPersistentProgressService persistentProgressService)
+        public SaveLoadService(IGameFactory gameFactory, IPersistentProgressService persistentProgressService)
         {
             _gameFactory = gameFactory;
             _persistentProgressService = persistentProgressService;
         }
 
-        public void SaveProgress()
+        public void SavePlayerProgress()
         {
             foreach (ISavedProgressWriter progressWriter in _gameFactory.ProgressWriters)
                 progressWriter.UpdateProgress(_persistentProgressService.PlayerProgress);
-            
-            PlayerPrefs.SetString(ProgressKey,_persistentProgressService.PlayerProgress.ToJson());
+
+            PlayerPrefs.SetString(ProgressKey, _persistentProgressService.PlayerProgress.ToJson());
         }
 
-        public PlayerProgress LoadProgress()
+        public PlayerProgress LoadPlayerProgress()
             => PlayerPrefs.GetString(ProgressKey)?.ToDeserialized<PlayerProgress>();
 
         public void SaveSettings(SettingsData settingsData)
@@ -37,8 +38,13 @@ namespace Infrastructure.Services.SaveLoad
         public SettingsData LoadSettings()
             => PlayerPrefs.GetString(SettingsKey)?.ToDeserialized<SettingsData>();
 
+        public void SaveGlobalProgress(GlobalPlayerProgress globalProgress)
+            => PlayerPrefs.SetString(GlobalProgressKey, globalProgress.ToJson());
 
-        public void CleanUpProgress()
+        public GlobalPlayerProgress LoadGlobalProgress()
+            => PlayerPrefs.GetString(GlobalProgressKey)?.ToDeserialized<GlobalPlayerProgress>();
+
+        public void CleanUpPlayerProgress()
             => PlayerPrefs.DeleteKey(ProgressKey);
     }
 }

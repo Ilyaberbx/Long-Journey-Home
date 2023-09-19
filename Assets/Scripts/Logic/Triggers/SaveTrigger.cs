@@ -37,7 +37,7 @@ namespace Logic.Triggers
             if (_isSaved) return;
 
             SetSaveData(_idGiver.Id);
-            _saveLoadService.SaveProgress();
+            _saveLoadService.SavePlayerProgress();
             _isSaved = true;
         }
         

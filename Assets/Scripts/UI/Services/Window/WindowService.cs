@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Infrastructure.StateMachine;
 using Logic.Inventory;
 using UI.Elements;
+using UI.Ending;
 using UI.Envelope;
 using UI.Inventory;
 using UI.Services.Factory;
@@ -55,7 +57,10 @@ namespace UI.Services.Window
                 case WindowType.GameOver:
                     window = await _uiFactory.CreateGameOverMenu();
                     break;
-                    
+
+                case WindowType.Ending:
+                    window = await _uiFactory.CreateEndingWindow();
+                    break;
                 default:
                     Debug.LogError("There is no type behaviour for this type: " + windowType);
                     break;
@@ -63,6 +68,12 @@ namespace UI.Services.Window
             
             return window;
         }
-        
+
+        public async Task<EndingWindow> OpenEndingWindow(EndingType ending)
+        {
+            EndingWindow endingWindow = (EndingWindow)await Open(WindowType.Ending);
+            endingWindow.UpdateUI(ending);
+            return endingWindow;
+        }
     }
 }

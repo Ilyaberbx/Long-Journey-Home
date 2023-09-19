@@ -1,7 +1,10 @@
+using Data;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.Achievements;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.Factories;
+using Infrastructure.Services.GlobalProgress;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
@@ -23,7 +26,9 @@ namespace Installers
             BindInput();
             BindAssets();
             BindStaticData();
-            BindProgress();
+            BindPlayerProgress();
+            BindGlobalProgress();
+            BindAchievementService();
             BindUIFactory();
             BindWindowService();
             BindGameFactory();
@@ -34,6 +39,16 @@ namespace Installers
             BindSettings();
             BindDialogueService();
         }
+
+        private void BindAchievementService()
+            => Container.BindInterfacesTo<AchievementService>()
+                .AsSingle()
+                .NonLazy();
+
+        private void BindGlobalProgress()
+            => Container.BindInterfacesTo<GlobalPlayerProgressService>()
+                .AsSingle()
+                .NonLazy();
 
         private void BindDialogueService()
             => Container.Bind<IDialogueService>()
@@ -89,7 +104,7 @@ namespace Installers
                 .AsSingle()
                 .NonLazy();
 
-        private void BindProgress()
+        private void BindPlayerProgress()
             => Container.Bind<IPersistentProgressService>()
                 .To<PersistentProgressService>()
                 .AsSingle()

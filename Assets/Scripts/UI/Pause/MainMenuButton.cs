@@ -15,6 +15,9 @@ namespace UI.Pause
             => _gameStateMachine = gameStateMachine;
 
         protected override void Execute()
-            => _gameStateMachine.Enter<LoadProgressState,string>(MainMenuKey);
+        {
+            DisableButton();
+            _gameStateMachine.Enter<LoadProgressState, string>(MainMenuKey);
+        }
     }
 }

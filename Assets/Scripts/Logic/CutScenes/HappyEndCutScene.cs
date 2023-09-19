@@ -1,6 +1,8 @@
 ﻿using System;
 using DG.Tweening;
 using Extensions;
+using Infrastructure.StateMachine;
+using Infrastructure.StateMachine.State;
 using Logic.Camera;
 using Logic.Car;
 using Logic.Player;
@@ -18,12 +20,14 @@ namespace Logic.CutScenes
         private ICameraService _cameraService;
         private IUIFactory _uiFactory;
         private CanvasGroup _eyeCurtain;
+        private IGameStateMachine _stateMachine;
 
         [Inject]
-        public void Construct(ICameraService cameraService, IUIFactory uiFactory)
+        public void Construct(ICameraService cameraService, IUIFactory uiFactory,IGameStateMachine stateMachine)
         {
             _cameraService = cameraService;
             _uiFactory = uiFactory;
+            _stateMachine = stateMachine;
         }
 
         protected override void OnAwake()
@@ -39,6 +43,7 @@ namespace Logic.CutScenes
             Debug.Log("Enter Happy CutScene");
             HeroCameraWrapper cameraWrapper = player.GetComponent<HeroCameraWrapper>();
             HeroEquiper equiper = player.GetComponent<HeroEquiper>();
+            HeroToggle heroToggle = player.GetComponent<HeroToggle>();
             _sequence = DOTween.Sequence();
             _sequence.AppendCallback(DisableTriggers);
             _sequence.AppendCallback(equiper.ClearUp);
@@ -57,7 +62,12 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => _carLights.ToggleLights(1f, 500000));
             _sequence.AppendInterval(2f);
             _sequence.Append(ToggleEyeCurtain(1,1f));
+            _sequence.AppendInterval(1f);
+            _sequence.AppendCallback(() => EnterEndingState(heroToggle));
         }
+
+        private void EnterEndingState(HeroToggle heroToggle)
+            => _stateMachine.Enter<GameEndState, HeroToggle, EndingType>(heroToggle, EndingType.HappyEnd);
 
         private void ChangeCamera(CutSceneCameraTransitionData data)
         {

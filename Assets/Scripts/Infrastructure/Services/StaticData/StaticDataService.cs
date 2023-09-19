@@ -14,9 +14,11 @@ namespace Infrastructure.Services.StaticData
         private const string EnemyStaticDataGroupAddress = "EnemiesStaticData";
         private const string LevelStaticDataGroupAddress = "LevelStaticData";
         private const string WindowsStaticDataAddress = "WindowsData";
+        private const string AchievementsStaticDataAddress = "AchievementsConfig";
         private Dictionary<EnemyType, EnemyData> _enemies;
         private Dictionary<string, LevelData> _levels;
         private Dictionary<WindowType, WindowConfig> _windows;
+        private Dictionary<AchievementType, AchievementData> _achievements;
         private readonly IAssetProvider _assetProvider;
 
         public StaticDataService(IAssetProvider assetProvider)
@@ -26,10 +28,17 @@ namespace Infrastructure.Services.StaticData
         {
             _enemies = await LoadEnemiesData();
             _levels = await LoadLevelsData();
-            _windows = await LoadWindowData();
+            _windows = await LoadWindowsData();
+            _achievements = await LoadAchievementsData();
         }
-        
-        private async Task<Dictionary<WindowType, WindowConfig>> LoadWindowData()
+
+        private async Task<Dictionary<AchievementType, AchievementData>> LoadAchievementsData()
+        {
+            AchievementsConfig handle = await _assetProvider.Load<AchievementsConfig>(AchievementsStaticDataAddress);
+            return handle.Config.ToDictionary(x => x.Type, x => x);
+        }
+
+        private async Task<Dictionary<WindowType, WindowConfig>> LoadWindowsData()
         {
             WindowsStaticData handle = await _assetProvider.Load<WindowsStaticData>(WindowsStaticDataAddress);
             return handle.Configs.ToDictionary(x => x.Type, x => x);
@@ -66,6 +75,11 @@ namespace Infrastructure.Services.StaticData
 
         public WindowConfig GetWindowData(WindowType windowType)
             => _windows.TryGetValue(windowType, out WindowConfig config)
+                ? config
+                : null;
+
+        public AchievementData GetAchievementData(AchievementType type) =>
+            _achievements.TryGetValue(type, out AchievementData config)
                 ? config
                 : null;
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6277595170587148778}
   - component: {fileID: 3492387379473860323}
   m_Layer: 7
-  m_Name: CutsSceneCheckTrigger
+  m_Name: TriggerObserver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 8071613259115006391}
   - component: {fileID: 8258285280771886049}
   - component: {fileID: 1444372982462732103}
+  - component: {fileID: 1061579614610160239}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -283,7 +284,7 @@ MonoBehaviour:
   _characterController: {fileID: 3950152820267360752}
   _speed: 50
   _jumpHeight: 130
-  _sprintingCoefficient: 30
+  _sprintingCoefficient: 1.5
 --- !u!114 &6692625439099448067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +560,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroToggle: {fileID: 9027241732933969611}
+--- !u!114 &1061579614610160239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970240177481772348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b341ff9828c843c7b6dfbab427fd3c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerObserver: {fileID: 6277595170587148778}
 --- !u!1 &3401435002938043440
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,6 +46,7 @@ namespace Infrastructure.StateMachine.State
         private async void OnLoaded()
         {
             _pauseService.SetPaused(false);
+            _pauseService.CanBePaused = false;
             await _settingsService.Init();
             await _uiFactory.CreateUIRoot();
             await _windowService.Open(WindowType.MainMenu);

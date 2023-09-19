@@ -22,6 +22,13 @@ namespace Infrastructure.StateMachine
             state.Enter(payLoad);
         }
 
+        public void Enter<TState, TPayLoad, TVPayload>(TPayLoad payLoad, TVPayload secondPayLoad)
+            where TState : class, IPayloadedState<TPayLoad, TVPayload>
+        {
+            TState state = ChangeState<TState>();
+            state.Enter(payLoad, secondPayLoad);
+        }
+
         private TState GetState<TState>() where TState : class, IExitableState
             => StatesMap[typeof(TState)] as TState;
 

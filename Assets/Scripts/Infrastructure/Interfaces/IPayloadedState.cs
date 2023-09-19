@@ -4,4 +4,9 @@
     {
         void Enter(TPayload payLoad);
     }
+    
+    public interface IPayloadedState<in TPayload, in TVPayload> : IExitableState
+    {
+        void Enter(TPayload tPayLoad,TVPayload tvPayload);
+    }
 }

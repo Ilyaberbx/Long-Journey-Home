@@ -20,6 +20,7 @@ namespace UI.GameOver
 
         protected override void Execute()
         {
+            DisableButton();
             string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel;
             _stateMachine.Enter<LoadProgressState,string>(level);
         }

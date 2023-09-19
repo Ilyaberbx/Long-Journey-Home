@@ -1,8 +1,10 @@
 ﻿using System.Threading.Tasks;
+using Data;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.StaticData;
 using UI.Elements;
+using UI.Ending;
 using UI.Envelope;
 using UI.GameOver;
 using UI.Inventory;
@@ -11,17 +13,20 @@ using UI.Pause;
 using UI.Services.Window;
 using UI.Settings;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace UI.Services.Factory
 {
     public class UIFactory : IUIFactory
     {
+        private const string AchievementViewKey = "AchievementPopUp";
         private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
         private readonly DiContainer _container;
         private Transform _uiRoot;
         private IPersistentProgressService _progressService;
+
 
         public UIFactory(IAssetProvider assets, IStaticDataService staticData, DiContainer container)
         {
@@ -82,6 +87,25 @@ namespace UI.Services.Factory
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
             GameOverWindow window = _container.InstantiatePrefabForComponent<GameOverWindow>(prefab, _uiRoot);
             return window;
+        }
+
+        public async Task<EndingWindow> CreateEndingWindow()
+        {
+            WindowConfig config = _staticData.GetWindowData(WindowType.Ending);
+            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            EndingWindow window = _container.InstantiatePrefabForComponent<EndingWindow>(prefab, _uiRoot);
+            return window;
+        }
+
+        public async Task<AchievementView> CreateAchievementView(AchievementType type)
+        {
+            GameObject prefab = await _assets.Load<GameObject>(AchievementViewKey);
+            AchievementView view = _container.InstantiatePrefabForComponent<AchievementView>(prefab);
+            AchievementData data = _staticData.GetAchievementData(type);
+            AchievementDto dataDto = new AchievementDto() { Icon = data.Icon, Text = data.Text};
+            
+            view.UpdateUI(dataDto);
+            return view;
         }
 
         public async Task CreateUIRoot()

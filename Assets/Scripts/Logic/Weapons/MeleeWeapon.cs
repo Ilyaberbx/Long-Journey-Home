@@ -9,11 +9,12 @@ namespace Logic.Weapons
     public class MeleeWeapon : BaseEquippableItem, IWeapon
     {
         private const string HittableLayerName = "Hittable";
+        private const int AttackMinIndex = 0;
+        private const int AttackMaxIndex = 3;
 
         [SerializeField] private CheckPoint _attackPoint;
         [SerializeField] private int _damage;
         [SerializeField] private float _attackRadius;
-        [SerializeField] private float _attackSpeed;
         [SerializeField] private GameObject _bloodFx;
 
         private readonly Collider[] _hits = new Collider[3];
@@ -35,10 +36,12 @@ namespace Logic.Weapons
         {
             if (_isAttacking) return;
 
-            _animator.PlayAttack();
-            _animator.SetAnimatorSpeed(_attackSpeed);
+            _animator.PlayAttack(CalculateAttackIndex());
             _isAttacking = true;
         }
+
+        private int CalculateAttackIndex() 
+            => Random.Range(AttackMinIndex,AttackMaxIndex);
 
         public override void Appear()
         {
@@ -46,7 +49,7 @@ namespace Logic.Weapons
             transform.DOScale(_cachedScale, 0.2f);
         }
 
-        public override void Hide() 
+        public override void Hide()
             => Destroy(gameObject);
 
         private void OnAttack()
@@ -54,7 +57,6 @@ namespace Logic.Weapons
             for (int i = 0; i < Hit(); i++)
                 ProcessAttack(i);
 
-            _animator.SetAnimatorSpeed(1);
             _isAttacking = false;
         }
 
@@ -69,7 +71,7 @@ namespace Logic.Weapons
             Vector3 position = transform.position;
             Vector3 closestPoint = _hits[index].ClosestPoint(position);
 
-            Instantiate(_bloodFx.gameObject,closestPoint + Vector3.down * 8f, Quaternion.LookRotation(-position));
+            Instantiate(_bloodFx.gameObject, closestPoint + Vector3.down * 8f, Quaternion.LookRotation(-position));
         }
 
         private int Hit()

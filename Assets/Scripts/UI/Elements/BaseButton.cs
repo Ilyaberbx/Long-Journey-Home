@@ -14,5 +14,8 @@ namespace UI.Elements
             => _button.onClick.RemoveListener(Execute);
         
         protected abstract void Execute();
+
+        protected void DisableButton()
+            => _button.interactable = false;
     }
 }

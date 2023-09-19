@@ -2,7 +2,7 @@
 {
     public interface IWeaponAnimator
     {
-        void PlayAttack();
+        void PlayAttack(int index);
         void SetAnimatorSpeed(float speed);
     }
 }

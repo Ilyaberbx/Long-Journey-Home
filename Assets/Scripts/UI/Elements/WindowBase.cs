@@ -10,7 +10,7 @@ namespace UI.Elements
     {
         private Action _close;
         protected PlayerProgress _progress => _progressService.PlayerProgress;
-        protected IPersistentProgressService _progressService;
+        private IPersistentProgressService _progressService;
 
         [Inject]
         public void Construct(IPersistentProgressService progressService)

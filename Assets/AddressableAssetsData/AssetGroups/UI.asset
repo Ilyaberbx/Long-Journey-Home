@@ -77,6 +77,14 @@ MonoBehaviour:
     m_Address: CloseButton
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d6e8b4a083ba7914db66f818c7365aae
+    m_Address: EndingWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ff6d4d2f6fc49442947c73df1463408
+    m_Address: AchievementPopUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

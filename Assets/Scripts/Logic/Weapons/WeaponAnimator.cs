@@ -4,14 +4,14 @@ namespace Logic.Weapons
 {
     public class WeaponAnimator : MonoBehaviour, IWeaponAnimator
     {
-        private static readonly int Attack = Animator.StringToHash("Attack");
-        
-        [SerializeField] protected Animator _animator;
-        
-        public void PlayAttack()
-            => _animator.SetTrigger(Attack);
+        private const string Attack = "Attack";
 
-        public void SetAnimatorSpeed(float speed) 
+        [SerializeField] protected Animator _animator;
+
+        public void PlayAttack(int index) 
+            => _animator.SetTrigger(Attack + index);
+
+        public void SetAnimatorSpeed(float speed)
             => _animator.speed = speed;
     }
 }

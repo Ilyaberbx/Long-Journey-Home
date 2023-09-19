@@ -20,6 +20,7 @@ namespace UI.Menu
 
         protected override void Execute()
         {
+            DisableButton();
             string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel;
             _stateMachine.Enter<LoadLevelState,string>(level);
         }

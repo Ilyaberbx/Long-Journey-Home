@@ -22,7 +22,6 @@ namespace Infrastructure.Services.Settings
         public async Task Init()
         {
             _audioMixer = await _assetProvider.Load<AudioMixer>(GlobalMixer);
-            Debug.Log(_audioMixer);
             RefreshAllSettings();
         }
 
@@ -68,11 +67,8 @@ namespace Infrastructure.Services.Settings
         private void RefreshSoundsVolume() 
             => _audioMixer.SetFloat(SoundKey, SettingsData.Audio.SoundsVolume);
 
-        private void RefreshGlobalVolume()
-        {
-            Debug.Log("Refresh");
-            _audioMixer.SetFloat(MasterKey, SettingsData.Audio.GlobalVolume);
-        }
+        private void RefreshGlobalVolume() 
+            => _audioMixer.SetFloat(MasterKey, SettingsData.Audio.GlobalVolume);
 
         private void RefreshMusicVolume() 
             => _audioMixer.SetFloat(MusicKey, SettingsData.Audio.MusicVolume);

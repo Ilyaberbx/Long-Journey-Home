@@ -21,7 +21,7 @@ namespace Infrastructure.StateMachine.State
         }
         public void Enter(Action onCleaned)
         {
-            _saveLoad.CleanUpProgress();
+            _saveLoad.CleanUpPlayerProgress();
             _progressService.PlayerProgress = _progressService.DefaultProgress();
             onCleaned?.Invoke();
         }

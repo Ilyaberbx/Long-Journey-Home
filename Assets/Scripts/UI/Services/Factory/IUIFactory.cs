@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
+using Data;
 using Infrastructure.Services;
 using UI.Elements;
+using UI.Ending;
 using UI.Envelope;
 using UI.GameOver;
 using UI.Inventory;
@@ -21,5 +23,7 @@ namespace UI.Services.Factory
         Task<GameObject> CreateCurtain();
         Task<EnvelopeWindow> CreateEnvelopeWindow();
         Task<GameOverWindow> CreateGameOverMenu();
+        Task<EndingWindow> CreateEndingWindow();
+        Task<AchievementView> CreateAchievementView(AchievementType type);
     }
 }

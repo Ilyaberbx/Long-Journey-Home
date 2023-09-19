@@ -1,5 +1,4 @@
-﻿using Data;
-using Infrastructure.Services.PersistentProgress;
+﻿using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
@@ -43,7 +42,7 @@ namespace Logic.Triggers
             if (!other.CompareTag(PlayerTag)) return;
 
             _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel = _transferTo;
-            _saveLoad.SaveProgress();
+            _saveLoad.SavePlayerProgress();
             _stateMachine.Enter<LoadProgressState, string>(_transferTo);
             _triggered = true;
         }

@@ -1,7 +1,8 @@
-﻿using Infrastructure.Interfaces;
+﻿using Data;
+using Infrastructure.Interfaces;
+using Infrastructure.Services.GlobalProgress;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
-using Infrastructure.Services.Settings;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -11,30 +12,40 @@ namespace Infrastructure.StateMachine.State
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IPersistentProgressService _progressService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly IGlobalProgressService _globalProgressService;
 
-        public LoadProgressState(IGameStateMachine gameStateMachine,IPersistentProgressService progressService,ISaveLoadService saveLoadService,ISettingsService settingsService)
+        public LoadProgressState(IGameStateMachine gameStateMachine, IPersistentProgressService progressService,
+            ISaveLoadService saveLoadService, IGlobalProgressService globalProgressService)
         {
             _gameStateMachine = gameStateMachine;
             _progressService = progressService;
             _saveLoadService = saveLoadService;
+            _globalProgressService = globalProgressService;
         }
-        
-        public void Enter(string payLoad)
+
+        public void Enter(string scene)
         {
             LoadProgressOrInitNew();
 
-            if (payLoad == MainMenuKey) 
+            if (IsMenuScene(scene))
                 _gameStateMachine.Enter<LoadMainMenuState>();
             else
-                _gameStateMachine.Enter<LoadLevelState, string>(payLoad);
+                _gameStateMachine.Enter<LoadLevelState, string>(scene);
         }
 
+        private bool IsMenuScene(string scene) 
+            => scene == MainMenuKey;
+
         public void Exit()
-        {}
-        
-        private void LoadProgressOrInitNew() 
-            => _progressService.PlayerProgress = _saveLoadService.LoadProgress() 
-                                                 ?? _progressService.DefaultProgress();
+        { }
+
+        private void LoadProgressOrInitNew()
+        {
+            _globalProgressService.GlobalPlayerProgress = _saveLoadService.LoadGlobalProgress()
+                                                          ?? new GlobalPlayerProgress();
+
+            _progressService.PlayerProgress = _saveLoadService.LoadPlayerProgress()
+                                              ?? _progressService.DefaultProgress();
+        }
     }
-    
 }

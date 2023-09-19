@@ -69,7 +69,7 @@ namespace Logic.CutScenes
         private void SaveProgress()
         {
             _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel = _transferTo;
-           _saveLoadService.SaveProgress();
+           _saveLoadService.SavePlayerProgress();
         }
 
         private Sequence EyeCurtainSequence()

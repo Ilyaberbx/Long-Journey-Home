@@ -82,7 +82,7 @@ namespace Logic.Weapons
             if (!CanShoot()) return;
 
             _ammoInMagazine--;
-            _animator.PlayAttack();
+            _animator.PlayAttack(0);
             _animator.SetAnimatorSpeed(_attackSpeed);
             _isAttacking = true;
         }

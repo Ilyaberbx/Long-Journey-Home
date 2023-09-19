@@ -14,8 +14,11 @@ namespace UI.Menu
         public void Construct(IGameStateMachine stateMachine) 
             => _stateMachine = stateMachine;
 
-        protected override void Execute() 
-            => _stateMachine.Enter<ResetProgressState, Action>(LoadNewGame);
+        protected override void Execute()
+        {
+            DisableButton();
+            _stateMachine.Enter<ResetProgressState, Action>(LoadNewGame);
+        }
 
         private void LoadNewGame() 
             => _stateMachine.Enter<LoadNewGameState>();

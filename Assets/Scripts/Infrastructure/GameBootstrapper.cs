@@ -34,6 +34,7 @@ namespace Infrastructure
             _stateFactory.Create(_stateMachine, typeof(LoadNewGameState));
             _stateFactory.Create(_stateMachine, typeof(ResetProgressState));
             _stateFactory.Create(_stateMachine, typeof(GameLoopState));
+            _stateFactory.Create(_stateMachine, typeof(GameEndState));
 
             _stateMachine.Enter<BootstrapState>();
 

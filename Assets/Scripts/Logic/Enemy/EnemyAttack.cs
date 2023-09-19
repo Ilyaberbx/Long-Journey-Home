@@ -20,7 +20,7 @@ namespace Logic.Enemy
         [SerializeField] private float _rotationToPlayerDuration;
 
         private IPauseService _pauseService;
-        private readonly Collider[] _colliders = new Collider[1];
+        private readonly Collider[] _colliders = new Collider[3];
         private Transform _playerTransform;
         private int _damage;
         private float _attackCoolDown;
@@ -59,11 +59,8 @@ namespace Logic.Enemy
 
         private void OnAttack()
         {
-            if (Hit(out Collider collider))
-            {
-                IHealth health = collider.transform.GetComponent<IHealth>();
+            if (Hit(out Collider collider) && collider.TryGetComponent(out IHealth health))
                 health.TakeDamage(_damage);
-            }
         }
 
         private void OnAttackEnded()

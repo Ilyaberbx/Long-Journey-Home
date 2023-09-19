@@ -61,6 +61,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f060428b4c3784244a02267c346c860a, type: 2}
   - {fileID: 11400000, guid: 4479e89e060607e4bab8ab0f23dac842, type: 2}
   - {fileID: 11400000, guid: 41ab1056a408ff049bb4c21184fce085, type: 2}
+  - {fileID: 11400000, guid: 4f45eba1638a6fa4ca6daeda268a8f0f, type: 2}
+  - {fileID: 11400000, guid: 4f8bd34aa63ed1a47b346f7bcee231fd, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -104,6 +106,7 @@ MonoBehaviour:
     - default
     - LevelStaticData
     - EnemiesStaticData
+    - AchievementsStaticData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 998bd4a3db049c941a098fc44fa03beb, type: 2}

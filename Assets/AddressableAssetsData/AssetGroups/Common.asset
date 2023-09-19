@@ -29,10 +29,6 @@ MonoBehaviour:
     m_Address: Glow_Ice_06
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 86c6f42b8a49a4449b39bdbe4d27ffa2
-    m_Address: Main Camera Profile
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 46965f9cbaf525742a6da4c2172a99cd
     m_Address: Handheld_normal_mild
     m_ReadOnly: 0
@@ -283,6 +279,795 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 3f0fc4b03e1060843806fa848d318849
     m_Address: DialogueActor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ae95582372343334983a763b150ebcf7
+    m_Address: AchivementTrigger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b241f91b9ccf8ff489abf204b30d3112
+    m_Address: Packages/com.unity.cinemachine/Presets/Noise/Handheld_normal_strong.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7baba72e51e669f43a2a837ede95e7fc
+    m_Address: Assets/Plugins/Blood decal pack/blood/blood3 1.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6054318fc678eef4e97655493b73c580
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Icons/Bear3.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ab61e70786ce27449cbb57c2fe646ca
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_WalkForward.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec7b850318e029f4ca2ea8e49339fa84
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Textures/Stylized_Bear_Emissive.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b7822eb5951163b48830b6d9bcbf48b4
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Meshes/Bear.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e22ae1e52f5a40b4d9b12395f2ea4b24
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Textures/Stylized_Bear_AO.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6b74c0471f91af34f8e98a4d46810410
+    m_Address: Assets/Animators/Bear/BearAnimator.controller
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d614bdd708fc9914da3949d1b0c9cad8
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_Buff.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d28fabf885861fb48ae21d198e816aaf
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Textures/Stylized_Bear_Normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4988406988758b843b0f0d89fd78ebfc
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_Attack1.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf9ab18afee2f164d9b48f5591a2e137
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_Attack2.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b614f09dade340f4aa841aafe3df42b9
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Materials/Bear_4.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e009b06e60bb7a34ab1c435503be5c01
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_GetHitFromFront.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 93fb1fce8497ab447a7cc4f7faa1f322
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Textures/Stylized_Bear_Albedo4.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8a572efe21c51fe4aae52075a5bfe620
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_RunForward.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 786582bf61e76c242b37956059d4c209
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_Attack3.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d4e01fbfd601a224e83e1bafb2b0a0b7
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_Death.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aab8b0cfc53d18840993589acb4626fa
+    m_Address: Assets/Plugins/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_IdleCombat.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c1d80a365f4a9aa489135d8f81afb136
+    m_Address: Assets/Plugins/Stylized Snow Forest/Terrain/Layer.terrainlayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 586505a90fdcf0b49beea12bcb2b95f1
+    m_Address: Assets/Plugins/_TerrainAutoUpgrade/layer_Snow_BaseColorcc0f254a2c535401.terrainlayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4aaecffc607741f47bf1e1c7faa24cbe
+    m_Address: Assets/Plugins/Malbers Animations/Common/Materials & Textures/Environment/Grass.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e69c8c236ea65447a07e24d8cbed40b
+    m_Address: Assets/Plugins/Hovl Studio/Procedural fire/Materials/FireSphere2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 20e729147a4dad247abfc2305c3dd963
+    m_Address: Assets/Plugins/Hovl Studio/Procedural fire/Materials/SparkSphere.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9bbb3bc4224899547b9d7da05307bfbd
+    m_Address: Assets/CreatedModels/Lamp/Material.001.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 021a1d25127bbd34bb0f6830bd283648
+    m_Address: Assets/CreatedModels/Lamp/LampFrame.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 53bcb426812ccb244ac869c8d55fcc21
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/brainsAndBlood/Materials/Brains_Material.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4829d668fc3806d40a3df77bd918eef1
+    m_Address: Assets/Plugins/SurvivalPack/FBX/Backpack2.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 339c1c4a1b1840d43a678e2fb921ebea
+    m_Address: Assets/CreatedModels/Axe/Axe.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 14fab0de6c54324468738e7b38a88207
+    m_Address: Assets/Plugins/Hovl Studio/Procedural fire/Materials/FireSphere1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a52c2b00382a3264cbea32cfc2c36b34
+    m_Address: Assets/Plugins/Hovl Studio/Procedural fire/Textures/FireSphere2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 204abc37f1ef2084c8551a7afbe60edc
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/brainsAndBlood/Textures/Brains_Diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 19b640978e503864fb00091c821c4935
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/brainsAndBlood/Textures/Brains_Gloss.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cba40c9f7d32254585baf3702bf4507
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/brainsAndBlood/Textures/Brains_Normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 31679c4b857f0d140bd9566b86eb8674
+    m_Address: Assets/Plugins/Hovl Studio/Procedural fire/Textures/FireSphere1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0cb56ffe7180509448c25434f23a23fb
+    m_Address: Assets/Plugins/SurvivalPack/Textures/T_Pallet.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3d94dcdf086297049943a0b0e7566fad
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/brainsAndBlood/Textures/Brains_SpecGloss.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 16c53fef92528674fbf2fab05e0bf9a7
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/brainsAndBlood/Textures/Brains_Displacement.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 16de22c3bd0cb9947b0911a828f6c952
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/Models/RockSet2.obj
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 459eee467071a7c41aa4eda9b632516b
+    m_Address: Assets/CreatedModels/Axe/Axe.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aa0e76bc9014ab0428f6f8ed3eb3ea50
+    m_Address: Assets/CreatedModels/Lamp/Lamp.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 97ae18f56456e864badd6796dec2d5a7
+    m_Address: Assets/Plugins/Hovl Studio/Procedural fire/Shaders/FireSphere.shadergraph
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ee7e4c9a5f6364b688a332c67fc32cca
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/ComplexLit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b32b0a8af7bc13e42aa43aad85aea30c
+    m_Address: Assets/Animators/Bear/Idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b18ccbcdd46ec6547a4b8e6144f60560
+    m_Address: Assets/Animators/Player/Axe/Attack.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7f26748736d1b104782d93e40d5d8a4e
+    m_Address: Assets/Animators/Player/Axe/SwordAnimator.controller
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d5f26854a8904624c8073139cd2eb346
+    m_Address: Assets/Plugins/BloodDecalsAndEffects/BloodGushFX/ChunkParticleSystem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff9dea42d0cbd8c48b3b8ce32c77840b
+    m_Address: Assets/Plugins/Stylized Snow Forest/Prefabs/Tree03.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ea9a143b856dd14b908cd4f03fa6c70
+    m_Address: Assets/Plugins/Stylized Snow Forest/Prefabs/Pine_02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3889c614b2caf0c44b6bbd331a4f67e7
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Rocks/SnowyRock1.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a599b2a4c5f4ab49854ee80aff5636e
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Terrain/SnowyHillFlat.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dbd1831d037bfa8499e607fa786bbdf7
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Rocks/IceBerg.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1836d35f907c7b04daee14d0239e90ce
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Rocks/IceFloeLow.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ae8ff8d03fc06194cbc8a32d93c201e8
+    m_Address: Assets/Bundles/Scenes/Road/NavMesh.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 14bad8d0b7fe38a4eb19f20e21fec46c
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/character lp.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8eb747711880d3648b386b80705fe4ba
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/armor 0 upper normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e9c47a52b7ac0cc49a57d80900523e0f
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/Armor 0 Color 0/Armor
+      0 boots.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6a1ad3a292eaa234099657e81bd9f800
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 2 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2859acd26cc76bb4fa5ac99050af08e6
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 belt normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d341dfe273c0b24498cf3074010d9dcc
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 4 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6b2e8f2a5588df4697d9b215486bd24
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 belt diffuse
+      2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ff477137efa09645b66672f6f639ab5
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 2 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c08c2c3ab0dc9d47916a341151a87f2
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/Armor 0 Color 0/Armor
+      0 lower.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8a5d75f33d4dcee46b4d2af4e641dfbe
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 1 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9e5f0e342529c2d41bfb2ba9e90b5c15
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 2 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 42f3d6c45f180104a9f252f345424255
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 4 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e54c21353485d6241b5f086eef480e27
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/hair 1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb68a545b98b039419d6a0bd6982f09d
+    m_Address: Assets/Plugins/Blood decal pack/blood/blood7.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2343545522e287941aef25f970486770
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 2 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 045ab6850d697424aa937f55bd9e6f14
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/hair 4.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 723cf5c593ec0ba4c87f777826dccc8c
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/hair 2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3fe85064158d464faf8ec5700dc2a49
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 lower diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e0fc1ac6d6563d6448358afcbb065dad
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/Armor 0 Color 0/Armor
+      0 upper.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 095733b74fa37e348bc1e77e671fdfa3
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 1 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9bbd86d7e272a674c9d7d282629767b7
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/Armor 0 Color 2/Armor
+      0 belt.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5c5765080f6cb5c489d6615a8ba591ef
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 upper diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bba548981a0f0e943af3c2ec8118c1b6
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/facial hair 2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c50d21e882be90d4088407a4dfecbb2f
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 boots diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 19f438093cb16884abc7ac181ebd97fb
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/facial hair 4.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b18c5ea953cccf044a060b02cc86ffdb
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 3 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4efde9e91d843b646b16e44827381c21
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/hair 3.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e0f0544afef448b4a890010c67d8204d
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/facial hair 1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dac6117a0d12d6440923b3366b805db1
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 boots normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e3cc5f8a983b50740a1ec771ababb57a
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 4 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2d93d1aaaf744f541b7e132d71e48689
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 3 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cf4bd20c49d8bf94caf9ddec1b4efc49
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 boots metalic.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8d2bb70cbf9db8d4da26e15b26e74248
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7149bfbc9d12fab48b367b9490dfc47e
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/character diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6793770d179eb204eac183a49f46f430
+    m_Address: Assets/Plugins/Modular Fantasy Character/Models/Modular Fantasy Character.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02edfb7da51a3cc449d20a796fc28ada
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 3 diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cd1bbe8da83efce4a8a8a7e40fe0c8da
+    m_Address: Assets/Plugins/Blood decal pack/blood/Materials/blood7.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 452dd90e79d94b8429c57db2d2c6573c
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 1 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 92a4991e4e6bfb9489f365c58150f187
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 3 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 05b3928e2f7eb8a44879c9a193b92543
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Facial hair 1 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1487463ff15017d48aed9467129bcbcc
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Armor 0 lower normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c930566f7769a1641a3630552b87a382
+    m_Address: Assets/Plugins/Modular Fantasy Character/Materials/facial hair 3.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02e4c98f84c981b43b73b6ffd5d19aa1
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/Hair 4 normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 866551ef05d5b6b49b2a88eb91e0f4dc
+    m_Address: Assets/Plugins/Modular Fantasy Character/Textures/character normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d2f778d04caa2bf4fb549d4f1a594c19
+    m_Address: Assets/CreatedModels/XMark.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 552443300a031944ea9f71c853b15f67
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_Lights_AO.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d830a4634a9cc9d4bb86f10b2b5eea9d
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_Windows_AO.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab465283673f30b418c0aabb3a53bfd5
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_Windows_AL.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 536e6f93bd4b5e04bbaeaf2ee384f3b4
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_Lights_AL.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 15613d854636c43469d9c4b626173cc6
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_AL.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 89e312362c264ee4c9a8f1edc24a7495
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_MS.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 27c1627742e5e374888e7694364558e7
+    m_Address: Assets/Plugins/CarSedan/Materials/MAT_Blue_Sedan_Lights.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3bf54487c860afd45a9a911e5ced2e3f
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_Lights_MS.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9cf2245b57e3afa4d87f64d9884bdf53
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_AO.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c8205ead17538f24da1f3be824da3d0d
+    m_Address: Assets/Plugins/CarSedan/Materials/MAT_Blue_Sedan.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f66d9fed4c159e34a8ff91801d17470a
+    m_Address: Assets/CreatedModels/Car/Car.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce95b4fdf0c990742805cd761eaea142
+    m_Address: Assets/Plugins/CarSedan/Textures/TEX_Blue_Sedan_Windows_MS.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c2e6c8fdcc67db143ad1b41a9313c941
+    m_Address: Assets/Plugins/CarSedan/Materials/MAT_Blue_Sedan_Windows.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ddf7731641149041bfcfd617790bf9d
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Items and Decoration/Ladder.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65f8bd0b6e9873b40860d0a764521cc5
+    m_Address: Assets/Bundles/Prefabs/Items/ItemsPickUp/LadderPickUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 70062ce0abc87524aac73486097c6d74
+    m_Address: Assets/Plugins/Blood decal pack/blood/Materials/blood.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 292e2c0caaabe0543b654be5f70d5eb1
+    m_Address: Assets/Plugins/Blood decal pack/blood/Materials/blood3.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 815ba632b4464eb4a813592a7f01fb7b
+    m_Address: Assets/Plugins/Blood decal pack/blood/blood3.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 493e3d4c4724c804f8bbebe749c9ff77
+    m_Address: Assets/Plugins/Blood decal pack/blood/blood.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 31a13ee2e1cc2714f8b3c4a7f146a239
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Branches.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1d337b23624bf9543bb81e817ea459b9
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Items and Decoration/SnowyBarrel1.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0635c8de5e239534d9cb16dabad3abe4
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Items and Decoration/Barrel.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f1c8640aac8abf745b35b3f9981bbbe1
+    m_Address: Assets/Plugins/Blood decal pack/blood/Materials/blood6.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e7327cab4c8de24696ab0ad11955926
+    m_Address: Assets/Plugins/Blood decal pack/blood/blood6.tif
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 87b4d4d5c9a20e547bf9d6d3b3669ead
+    m_Address: Assets/Plugins/SurvivalPack/FBX/Pan.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f579dddef0cb4f4489014299f15e0365
+    m_Address: Assets/Plugins/Stylized Snow Forest/Materials/Environment_Atlas 1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc81c91070c6cb44892dbd0d9be15c67
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-15_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 826c44804f3958e4d86a81e9d611fb93
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-10_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ca29490bea1db64fb2804f18465f191
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-3_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c1618a09f95bde43863305286580cf6
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-17_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2df3dfa0ec9dd62489a25a6ae39d51bf
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-7_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 08d008b0cba02f9458ca6cc46fae6010
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-2_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 85b5feb0116b948488cd1f12d5786490
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-15_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a5fe03d0f3faf1d4a96352cfcba7fed1
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-4_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 409bb1f09817ba7408e4de39bb81937f
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-14_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc807c41eeda7b842b2cd25764757c66
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-7_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e297c251ca0e90f4ea6fbf6b2b5df9f3
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-19_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc024b61373bdb84c8381c03f940caf8
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-7_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b784e71e825a9540b7de8dbf089e56d
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-20_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6393cca1439215a45a6c6328a9deafca
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-2_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 210553423ea12e94b8419cc3dbdaccbb
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-1_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 166f917206b41f145871faec1534a57d
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-0_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e80d9582c5f148f4886532f403ce8d37
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-14_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a0bb50f2868480c46b1a8cbd0b2de434
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-18_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b993c1639debed24a9a2244a7e745b62
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-8_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51dbde736c381754cb6fe4fa4ce082a3
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-6_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 508518b352fc3a649aea73a05836afbe
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-0_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 80221d3435e1ef345a23fdbe14692f4f
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-19_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0164738409fd24b4dbbdd5563a22e837
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-4_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2dc7c79456960f74f839c62e6f349b13
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-8_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8fa49a49e626e041be199c9ffaea9d5
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-10_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d68422e4b152b7c4ab334bf311c8f814
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-1_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e30ca305230d45d4384029705f4801a4
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-20_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9635d415e60c4c94fa5c33ad3f2f6da6
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-9_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 25eb5425e3f6ead41ac9557e5c3c5d0c
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-16_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 545f3065d4758ab4582fc0737a3a8b2b
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-13_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b9e3fd58362d34409fe6d7e234cdd6b
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-16_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b1da1c16cd39f69458654bded1f25b09
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-14_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9c2e3556c5ef47645ad2d47810960b25
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-9_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 44a63d86a98999444989e89cb74b5e80
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-8_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9732d696920b18747b10a939fd51661b
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-6_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 01d63cf6e3531334381ab6b2b0196f35
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-18_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 118d48071d60095448ca3ac1e5700441
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-11_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c9c6b6971a6053442af59f5f8590cfec
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-16_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 11380ba882a0d4e41a134a14bb3437e5
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-17_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e94c4399607376346a87197278cb49f0
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-13_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dff863a972d17174fb358cebf9ed2911
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-4_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bdf338b9d5d9c294da7bfcfa6d260966
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-5_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff68226a840898a4ab2a02a345d3ccb0
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-5_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7470577a5005310478e59bddfc6207fe
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-15_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 99120f8a5957d6446903e8dc5ee080b0
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-9_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 512682aa27689b545949a9178ba03999
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-3_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e527e26bccec384498384ebe58f51386
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-17_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb4556bbd820af44b944e265e5cc8688
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-18_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b4a04dbb6040c554687556a08628c714
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-3_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 86fdfbdbb7b0bbd4882e33a81cadcbb9
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-20_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e78258fb7c5d26b4dac63d38fd28a100
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-11_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 07b36d8ccc77df64f811731dffbff0f3
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-10_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1c77a3cc2b405634db83c568e7709c69
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-19_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0ca326d189ebec4186fa5dfe4630120
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-11_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 21da6b5e27f40804694ab7add5ea4502
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-13_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5970469e7b0f9c545b855e49de00190b
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-12_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 101e7b2fa8aa3b340a02eb73bae8aa48
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-6_comp_light.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 06d9a54fe74f18649900bd0e8635687a
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-12_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 824d30af1008c004b81b9cc396016248
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-0_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 395859afd38b85d4a8d92c3aa54f8c69
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-12_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a44b1ccf63e51f649bebc0996705285f
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-1_comp_dir.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d42df0eff16100c4089550bac69b390e
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-5_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7055a2ffe86d4bc4ba69e87c3e6ac7df
+    m_Address: Assets/Bundles/Scenes/Intro/Lightmap-2_comp_shadowmask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e9ef120b7b7e834d8873c39ecde60bf
+    m_Address: Assets/Plugins/Stylized Snow Forest/Resourses/Models/SM_Road.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0202ad932ba668842aced3b150b47bd4
+    m_Address: Assets/Plugins/Stylized Snow Forest/Prefabs/shatered_iceflore.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fd0552835790223449a30d045f88e02b
+    m_Address: Assets/Bundles/Scenes/Intro/ReflectionProbe-0.exr
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 77b2008fc6197f44a82570617d274355
+    m_Address: Assets/UnityTechnologies/EffectExamples/Shared/PhysicsMaterials/Metal.physicMaterial
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b2d68ff8f9c61d443b7f3973105fc380
+    m_Address: Assets/Bundles/Scenes/Intro/LightingData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 37bce6fe56076cb4caa81c0ea6b282f8
+    m_Address: Assets/Plugins/Stylized Snow Forest/Prefabs/ShatteredIceFloeLow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 20e46be82478fa24b90f748044c06b4b
+    m_Address: Packages/com.unity.cinemachine/Presets/Noise/Handheld_wideangle_strong.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

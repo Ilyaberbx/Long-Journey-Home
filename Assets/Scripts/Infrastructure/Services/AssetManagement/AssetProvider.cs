@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ModestTree;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Audio;
@@ -59,6 +60,9 @@ namespace Infrastructure.Services.AssetManagement
 
         public void CleanUp()
         {
+            if (_handles.Values.Count == 0)
+                return;
+
             foreach (List<AsyncOperationHandle> resourceHandles in _handles.Values)
             {
                 foreach (AsyncOperationHandle handle in resourceHandles)
@@ -67,7 +71,6 @@ namespace Infrastructure.Services.AssetManagement
 
             _completedCache.Clear();
             _handles.Clear();
-
         }
 
         private async Task<T> RunWithCacheOnComplete<T>(AsyncOperationHandle<T> handle, string key) where T : class

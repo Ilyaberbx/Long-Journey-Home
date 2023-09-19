@@ -8,6 +8,7 @@
         Pause,
         Envelope,
         Settings,
-        GameOver
+        GameOver,
+        Ending
     }
 }

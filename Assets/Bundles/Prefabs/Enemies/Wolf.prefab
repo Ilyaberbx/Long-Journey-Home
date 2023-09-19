@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkPointTransform: {fileID: 2032680335537620079}
-  _radius: 27
+  _radius: 35
 --- !u!1 &7038520648416229767
 GameObject:
   m_ObjectHideFlags: 0

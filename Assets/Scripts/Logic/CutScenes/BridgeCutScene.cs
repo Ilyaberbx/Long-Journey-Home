@@ -147,7 +147,7 @@ namespace Logic.CutScenes
         private void SaveProgress()
         {
             _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel = _transferTo;
-            _saveLoad.SaveProgress();
+            _saveLoad.SavePlayerProgress();
         }
 
         private Tween BearRunningSequence(Vector3 target)

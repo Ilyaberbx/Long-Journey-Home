@@ -10,7 +10,8 @@ namespace Infrastructure.Services.StaticData
         Task Load();
         EnemyData GetEnemyDataByType(EnemyType type);
         LevelData  GetLevelData(string sceneKey);
-        WindowConfig GetWindowData(WindowType windowType);
-        
+        WindowConfig GetWindowData(WindowType type);
+        AchievementData GetAchievementData(AchievementType type);
+
     }
 }

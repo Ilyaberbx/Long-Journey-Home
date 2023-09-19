@@ -30,18 +30,12 @@ namespace Logic.CutScenes
             OnAwake();
             Subscribe();
         }
-
-        private void OnDestroy()
-            => Unsubscribe();
-
+        
         protected abstract void OnAwake();
 
         private void Subscribe()
             => _pauseService.Register(this);
-
-        private void Unsubscribe()
-            => _pauseService.UnRegister(this);
-
+        
         protected bool IsCutScenePassed()
             => _progressService.PlayerProgress.CutSceneData.Passed.Contains(_uniqueId.Id);
 
