@@ -9,7 +9,7 @@ namespace Logic.Weapons
     public class MeleeWeapon : BaseEquippableItem, IWeapon
     {
         private const string HittableLayerName = "Hittable";
-        private const int AttackMinIndex = 0;
+        private const int AttackMinIndex = 1;
         private const int AttackMaxIndex = 3;
 
         [SerializeField] private CheckPoint _attackPoint;
