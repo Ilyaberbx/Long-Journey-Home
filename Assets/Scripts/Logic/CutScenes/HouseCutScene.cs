@@ -42,7 +42,10 @@ namespace Logic.CutScenes
         public override void StartCutScene(Transform player, Action onCutSceneEnded)
         {
             HeroCameraWrapper cameraWrapper = player.GetComponent<HeroCameraWrapper>();
+            HeroEquiper equiper =player.GetComponent<HeroEquiper>();
+            
             _sequence = DOTween.Sequence();
+            _sequence.AppendCallback(equiper.ClearUp);
             _sequence.AppendCallback(ParentEquipmentToMain(cameraWrapper));
             _sequence.AppendCallback(DisableTriggers);
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));

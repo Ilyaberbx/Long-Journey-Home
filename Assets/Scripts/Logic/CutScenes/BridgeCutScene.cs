@@ -66,6 +66,7 @@ namespace Logic.CutScenes
             {
                 onCutSceneEnded?.Invoke();
                 player.GetComponent<DialogueActor>().StartDialogue(_noLadderDialogue);
+                player.GetComponent<HeroEquiper>().ClearUp();
                 return;
             }
 

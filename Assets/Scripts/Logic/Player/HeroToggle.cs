@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Logic.Player
 {
@@ -7,7 +8,7 @@ namespace Logic.Player
         [SerializeField] private HeroHudWrapper _hudWrapper;
         [SerializeField] private HeroLook _look;
         [SerializeField] private HeroCameraWrapper _cameraWrapper;
-        [SerializeField] private HeroFreeze _freeze;
+        [FormerlySerializedAs("_freeze")] [SerializeField] private HeroFreezable freezable;
         [SerializeField] private HeroLight _light;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroMover _mover;
@@ -24,7 +25,7 @@ namespace Logic.Player
             _itemPicker.enabled = value;
             _look.enabled = value;
             _light.enabled = value;
-            _freeze.enabled = value;
+            freezable.enabled = value;
             _cameraWrapper.ToggleCamera(value);
 
             if (value)

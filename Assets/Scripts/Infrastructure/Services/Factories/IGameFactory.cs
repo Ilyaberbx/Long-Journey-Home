@@ -14,6 +14,7 @@ namespace Infrastructure.Services.Factories
     {
         List<ISavedProgressReader> ProgressReaders { get; }
         List<ISavedProgressWriter> ProgressWriters { get; }
+        GameObject HeroGameObject { get; }
 
         Task<GameObject> CreatePlayer(Vector3 at);
         Task<GameObject> CreateHud();

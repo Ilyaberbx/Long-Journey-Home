@@ -34,6 +34,8 @@ namespace Infrastructure.Services.Factories
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
 
+        public GameObject HeroGameObject => _heroGameObject;
+
         private GameObject _heroGameObject;
         private GameObject _createdObjectsContainer;
         private PlayerUIActor _uiActor;

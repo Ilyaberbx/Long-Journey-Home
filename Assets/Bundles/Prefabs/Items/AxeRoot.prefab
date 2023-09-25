@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b51307e7d94c37b594078c3584e00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitApplySpeed: 0.3
   _attackPoint: {fileID: 8954463793811037012}
   _damage: 1
   _attackRadius: 8
@@ -171,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 371f3f0936e07a0459b92cae5742432b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 371f3f0936e07a0459b92cae5742432b, type: 3}
       propertyPath: m_LocalPosition.z

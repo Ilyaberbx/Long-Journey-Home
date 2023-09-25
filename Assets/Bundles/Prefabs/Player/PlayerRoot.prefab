@@ -174,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839096278732625482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.007900953, y: -4.36, z: -0.037132263}
+  m_LocalPosition: {x: 0.007900953, y: -2.76, z: -0.037132263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2970240177481772349}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkPointTransform: {fileID: 2002345618839491120}
-  _radius: 2
+  _radius: 1.3
 --- !u!1 &2970240177481772348
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,13 +262,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 15
+  m_Height: 18
   m_Radius: 1.57
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 3.34, z: -0.03}
+  m_Center: {x: 0, y: 6.34, z: -0.03}
 --- !u!114 &2970240177481772350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   _attack: {fileID: 1136055281313859481}
   _windowOpener: {fileID: 8258285280771886049}
   _pauseHandler: {fileID: 8728874985912032053}
-  _freeze: {fileID: 4137454390573635750}
+  freezable: {fileID: 4137454390573635750}
 --- !u!114 &7162431190216540211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   _hudWrapper: {fileID: 8071613259115006391}
   _look: {fileID: 7308672361779659170}
   _cameraWrapper: {fileID: 5672463797853710604}
-  _freeze: {fileID: 4137454390573635750}
+  freezable: {fileID: 4137454390573635750}
   _light: {fileID: 9187747719706402692}
   _attack: {fileID: 1136055281313859481}
   _mover: {fileID: 2970240177481772350}

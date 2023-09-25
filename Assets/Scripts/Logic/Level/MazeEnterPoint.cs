@@ -16,26 +16,26 @@ namespace Logic.Level
 
         private void Entered(Collider collider)
         {
-            if (!collider.TryGetComponent(out HeroFreeze heroFreeze)) return;
+            if (!collider.TryGetComponent(out HeroFreezable heroFreeze)) return;
             
             DisableComponents(heroFreeze);
             BlendLightToFeet(heroFreeze);
         }
 
-        private void BlendLightToFeet(HeroFreeze heroFreeze)
+        private void BlendLightToFeet(HeroFreezable heroFreezable)
         {
-            _lightToParent.transform.SetParent(heroFreeze.transform);
+            _lightToParent.transform.SetParent(heroFreezable.transform);
             _lightToParent.transform.localPosition = Vector3.zero.AddY(_lightParentedHeight);
         }
 
-        private void DisableComponents(HeroFreeze heroFreeze)
+        private void DisableComponents(HeroFreezable heroFreezable)
         {
-            heroFreeze.enabled = false;
-            heroFreeze.GetComponent<HeroWindowOpener>().enabled = false;
-            heroFreeze.GetComponent<HeroAttack>().enabled = false;
-            heroFreeze.GetComponent<HeroLight>().enabled = false;
-            heroFreeze.GetComponent<HeroPauseHandler>().enabled = false;
-            heroFreeze.GetComponent<HeroHudWrapper>().Hide();
+            heroFreezable.enabled = false;
+            heroFreezable.GetComponent<HeroWindowOpener>().enabled = false;
+            heroFreezable.GetComponent<HeroAttack>().enabled = false;
+            heroFreezable.GetComponent<HeroLight>().enabled = false;
+            heroFreezable.GetComponent<HeroPauseHandler>().enabled = false;
+            heroFreezable.GetComponent<HeroHudWrapper>().Hide();
         }
     }
 }

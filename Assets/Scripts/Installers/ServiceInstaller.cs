@@ -3,6 +3,7 @@ using Infrastructure.Interfaces;
 using Infrastructure.Services.Achievements;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Dialogue;
+using Infrastructure.Services.EventBus;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.GlobalProgress;
 using Infrastructure.Services.Input;
@@ -23,6 +24,7 @@ namespace Installers
     {
         public override void InstallBindings()
         {
+            BindEventBus();
             BindInput();
             BindAssets();
             BindStaticData();
@@ -39,6 +41,11 @@ namespace Installers
             BindSettings();
             BindDialogueService();
         }
+
+        private void BindEventBus()
+            => Container.BindInterfacesTo<EventBusService>()
+                .AsSingle()
+                .NonLazy();
 
         private void BindAchievementService()
             => Container.BindInterfacesTo<AchievementService>()

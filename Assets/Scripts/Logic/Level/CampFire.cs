@@ -27,7 +27,7 @@ namespace Logic.Level
 
         private void StartHealing(Transform player)
         {
-            if (!player.TryGetComponent(out IHealth health) || !player.TryGetComponent(out IFreeze freeze)) return;
+            if (!player.TryGetComponent(out IHealth health) || !player.TryGetComponent(out IFreezable freeze)) return;
             
             _isFire = true;
             _saveTrigger.Save();
@@ -44,12 +44,12 @@ namespace Logic.Level
             _healingRoutine = null;
         }
 
-        private IEnumerator HealingRoutine(IHealth health, IFreeze freeze)
+        private IEnumerator HealingRoutine(IHealth health, IFreezable freezable)
         {
             while (true)
             {
                 health.CurrentHealth += _healValue;
-                freeze.CurrentFreeze += _healValue;
+                freezable.CurrentFreeze += _healValue;
                 yield return new WaitForSeconds(_healCoolDown);
             }
         }

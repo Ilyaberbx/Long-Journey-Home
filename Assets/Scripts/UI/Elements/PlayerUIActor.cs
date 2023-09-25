@@ -13,25 +13,25 @@ namespace UI.Elements
         [SerializeField] private InteractHint _interactHint;
 
         private IHeroLight _light;
-        private IFreeze _freeze;
+        private IFreezable _freezable;
         private IInteractor _interactor;
         private IHudAmmoShowable _ammoShowableObject;
 
-        public void Construct(IHealth health,IHeroLight light,IFreeze freeze,IInteractor interactor)
+        public void Construct(IHealth health,IHeroLight light,IFreezable freezable,IInteractor interactor)
         {
             base.Construct(health);
 
-            _freeze = freeze;
+            _freezable = freezable;
             _interactor = interactor;
             _light = light;
             _light.OnIntensityChanged += UpdateFlashLightBar;
-            _freeze.OnFreezeChanged += UpdateFreezeBar;
+            _freezable.OnFreezeChanged += UpdateFreezableBar;
         }
         protected override void OnDestroy()
         {
             base.OnDestroy();
             _light.OnIntensityChanged -= UpdateFlashLightBar;
-            _freeze.OnFreezeChanged -= UpdateFreezeBar;
+            _freezable.OnFreezeChanged -= UpdateFreezableBar;
         }
 
         private void Update() 
@@ -60,8 +60,8 @@ namespace UI.Elements
                 _interactHint.Hide();
         }
 
-        private void UpdateFreezeBar()
-            => _freezeBar.SetValue(_freeze.CurrentFreeze,_freeze.MaxFreeze);
+        private void UpdateFreezableBar()
+            => _freezeBar.SetValue(_freezable.CurrentFreeze,_freezable.MaxFreeze);
         
 
         private void UpdateFlashLightBar() 

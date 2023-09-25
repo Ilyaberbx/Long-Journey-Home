@@ -19,7 +19,7 @@ namespace Logic.Player
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroWindowOpener _windowOpener;
         [SerializeField] private HeroPauseHandler _pauseHandler;
-        [SerializeField] private HeroFreeze _freeze;
+        [FormerlySerializedAs("_freeze")] [SerializeField] private HeroFreezable freezable;
         private ICameraAnimator _animator;
         private bool _isDead;
         private IPauseService _pauseService;
@@ -57,7 +57,7 @@ namespace Logic.Player
             _mover.enabled = false;
             _attack.enabled = false;
             _pauseHandler.enabled = false;
-            _freeze.enabled = false;
+            freezable.enabled = false;
             _interactor.enabled = false;
             _windowOpener.enabled = false;
             _animator.PlayDeath();

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Logic.Player
 {
-    public class HeroFreeze : MonoBehaviour, ISavedProgressWriter, IFreeze
+    public class HeroFreezable : MonoBehaviour, ISavedProgressWriter, IFreezable
     {
         public event Action OnFreezeChanged;
 
@@ -28,7 +28,7 @@ namespace Logic.Player
 
         private void Update()
         {
-            DecreaseCurrentWarmLevel();
+            DecreaseCurrentWarmLevel(_freezeValue);
             OnFreezeChanged?.Invoke();
             
             if (IsFroze())
@@ -41,11 +41,11 @@ namespace Logic.Player
         private void TakeDamage() 
             => _health.TakeDamage(_damage,false);
 
-        private void DecreaseCurrentWarmLevel() 
-            => CurrentFreeze = ClampFreezeLevel();
+        public void DecreaseCurrentWarmLevel(float value) 
+            => CurrentFreeze = ClampFreezeLevel(value);
 
-        private float ClampFreezeLevel() 
-            => Mathf.Clamp(CurrentFreeze - _freezeValue, 0, MaxFreeze);
+        private float ClampFreezeLevel(float value) 
+            => Mathf.Clamp(CurrentFreeze - value, 0, MaxFreeze);
 
 
         public void LoadProgress(PlayerProgress progress)

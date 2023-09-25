@@ -8,16 +8,14 @@ namespace Logic.Level
 {
     public class Closet : MonoBehaviour, IInteractable
     {
+        [SerializeField] private Collider _closetCollider;
         [SerializeField] private List<ClosetDoorData> _doors;
         [SerializeField] private string _openedText;
         [SerializeField] private string _closedText;
 
         private bool _isOpened;
         private Sequence _sequence;
-
-        private void Start()
-            => _sequence = DOTween.Sequence();
-
+        
         public void Interact(Transform interactor)
         {
             if (_isOpened)
@@ -27,19 +25,23 @@ namespace Logic.Level
         }
 
         public string GetInteractText()
-            => _isOpened ? _openedText : _closedText;
+            => _isOpened ? _closedText : _openedText;
 
         private void Close()
         {
             _isOpened = false;
+            _sequence = DOTween.Sequence();
             
             foreach (ClosetDoorData door in _doors)
                 _sequence.Append(CloseDoor(door));
+            
         }
 
         private void Open()
         {
             _isOpened = true;
+            _sequence = DOTween.Sequence();
+            _closetCollider.enabled = false;
             
             foreach (ClosetDoorData door in _doors)
                 _sequence.Append(OpenDoor(door));

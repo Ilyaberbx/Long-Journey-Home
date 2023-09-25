@@ -4,6 +4,8 @@ using Data;
 using Enums;
 using Extensions;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.EventBus;
+using Infrastructure.Services.EventBus.Handlers;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
@@ -34,11 +36,12 @@ namespace Infrastructure.StateMachine.State
         private readonly IStaticDataService _staticData;
         private readonly IUIFactory _uiFactory;
         private readonly IPauseService _pauseService;
+        private readonly IEventBusService _eventBusService;
 
         public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
             LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService)
+            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService,IEventBusService eventBusService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -48,12 +51,14 @@ namespace Infrastructure.StateMachine.State
             _staticData = staticData;
             _uiFactory = uiFactory;
             _pauseService = pauseService;
+            _eventBusService = eventBusService;
         }
 
         public async void Enter(string payLoad)
         {
             _gameFactory.CleanUp();
             _pauseService.CleanUp();
+            _eventBusService.CleanUp();
             _pauseService.CanBePaused = false;
             await _gameFactory.WarmUp();
             _loadingCurtain.Show();
@@ -90,6 +95,7 @@ namespace Infrastructure.StateMachine.State
         {
             await InitSpawners();
             GameObject player = await InitPlayer();
+            InformPlayerSpawned(player.transform);
             await InitHud(player);
             await InitDialogueView();
             CinemachineVirtualCamera camera = InitCamera();
@@ -149,6 +155,9 @@ namespace Infrastructure.StateMachine.State
             equipment.localPosition = Vector3.zero.AddZ(2);
         }
 
+        private void InformPlayerSpawned(Transform player) 
+            => _eventBusService.RaiseEvent<IPlayerSpawnHandler>(handler =>handler.HandlePlayerSpawn(player));
+
         private async Task InitHud(GameObject player)
         {
             GameObject hud = await _gameFactory.CreateHud();
@@ -156,7 +165,7 @@ namespace Infrastructure.StateMachine.State
             uiActor.Construct(
                 player.GetComponent<HeroHealth>(),
                 player.GetComponent<HeroLight>(),
-                player.GetComponent<IFreeze>(),
+                player.GetComponent<IFreezable>(),
                 player.GetComponent<IInteractor>());
             
             player.GetComponent<HeroHudWrapper>()

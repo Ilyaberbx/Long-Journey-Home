@@ -12,6 +12,7 @@ namespace Logic.Weapons
         private const int AttackMinIndex = 1;
         private const int AttackMaxIndex = 3;
 
+        [SerializeField] private float _hitApplySpeed;
         [SerializeField] private CheckPoint _attackPoint;
         [SerializeField] private int _damage;
         [SerializeField] private float _attackRadius;
@@ -55,10 +56,17 @@ namespace Logic.Weapons
         private void OnAttack()
         {
             for (int i = 0; i < Hit(); i++)
+            {
                 ProcessAttack(i);
-
-            _isAttacking = false;
+                _animator.SetAnimatorSpeed(_hitApplySpeed);
+            }
         }
+
+        private void OnAttackEnd() 
+            => _animator.SetAnimatorSpeed(1);
+
+        private void OnCanNextAttack() 
+            => _isAttacking = false;
 
         private void ProcessAttack(int index)
         {
