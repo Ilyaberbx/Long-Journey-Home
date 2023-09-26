@@ -28,14 +28,15 @@ namespace Logic.Level
             _lightToParent.transform.localPosition = Vector3.zero.AddY(_lightParentedHeight);
         }
 
-        private void DisableComponents(HeroFreezable heroFreezable)
+        private void DisableComponents(HeroFreezable hero)
         {
-            heroFreezable.enabled = false;
-            heroFreezable.GetComponent<HeroWindowOpener>().enabled = false;
-            heroFreezable.GetComponent<HeroAttack>().enabled = false;
-            heroFreezable.GetComponent<HeroLight>().enabled = false;
-            heroFreezable.GetComponent<HeroPauseHandler>().enabled = false;
-            heroFreezable.GetComponent<HeroHudWrapper>().Hide();
+            hero.enabled = false;
+            hero.GetComponent<HeroWindowOpener>().enabled = false;
+            hero.GetComponent<HeroAttack>().enabled = false;
+            hero.GetComponent<HeroLight>().enabled = false;
+            hero.GetComponent<HeroPauseHandler>().enabled = false;
+            hero.GetComponent<HeroHudWrapper>().Hide();
+            hero.GetComponent<HeroCutsSceneProcessor>().IsCutSceneActive = true;
         }
     }
 }

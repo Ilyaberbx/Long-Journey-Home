@@ -59,7 +59,8 @@ namespace Logic.Enemy
 
         private void OnAttack()
         {
-            if (Hit(out Collider collider) && collider.TryGetComponent(out IHealth health))
+            Debug.Log("OnAttack");
+            if (Hit(out Collider collider) && collider.TryGetComponent(out HeroHealth health))
                 health.TakeDamage(_damage);
         }
 

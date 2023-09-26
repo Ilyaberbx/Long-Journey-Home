@@ -7,7 +7,7 @@ namespace Logic.Player
 {
     public class HeroCutsSceneProcessor : MonoBehaviour
     {
-        public bool IsCutSceneActive { get; private set; }
+        public bool IsCutSceneActive { get; set; }
         
         [SerializeField] private TriggerObserver _triggerObserver;
 

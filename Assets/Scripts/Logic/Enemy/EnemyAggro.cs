@@ -33,6 +33,7 @@ namespace Logic.Enemy
         {
             StopPrevAggro();
             SwitchFollowActive(true);
+            _triggerObserver.gameObject.SetActive(false);
         }
 
         private void TriggerExit(Collider collider)

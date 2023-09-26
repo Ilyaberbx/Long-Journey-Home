@@ -9,7 +9,7 @@ namespace Logic.Common
     {
         private IEventBusService _eventBus;
         private Transform _player;
-
+        
         [Inject]
         public void Construct(IEventBusService eventBus)
             => _eventBus = eventBus;
@@ -25,8 +25,10 @@ namespace Logic.Common
 
         private void Update()
         {
-            if (_player != null)
-                transform.position = _player.position;
+            if (_player == null)
+                return;
+            
+            transform.position = Vector3.Lerp(transform.position, _player.position, Time.deltaTime);
         }
     }
 }

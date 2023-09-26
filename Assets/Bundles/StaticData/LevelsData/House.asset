@@ -35,4 +35,4 @@ MonoBehaviour:
     Prefab: {fileID: 7764010429717162071, guid: 0ae0da3eee663184791c6c3f2ecc2551, type: 3}
     Position: {x: 614.74, y: 80.98, z: 1282.47}
     Rotation: {x: 0.16153479, y: -0.004723717, z: -0.98643404, w: 0.028846016}
-  PlayerInitPoint: {x: 1659.8607, y: 140.93182, z: 2601.5283}
+  PlayerInitPoint: {x: 1659.8607, y: 167.1, z: 2601.5283}

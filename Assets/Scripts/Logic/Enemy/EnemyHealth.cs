@@ -9,6 +9,7 @@ namespace Logic.Enemy
     {
         public event Action OnHealthChanged;
 
+        [SerializeField] private AgentMoveToPlayer _follow;
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private int _maxHealth;
 
@@ -38,5 +39,11 @@ namespace Logic.Enemy
 
         private int ClampHealthValue(int damage)
             => Mathf.Clamp(CurrentHealth - damage, 0, _maxHealth);
+
+        private void OnHitApplyStart() 
+            => _follow.Stop();
+
+        private void OnHitApplyEnd()
+            => _follow.Resume();
     }
 }
