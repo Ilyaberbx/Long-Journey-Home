@@ -1,9 +1,11 @@
-﻿using Data;
+﻿using System.Threading.Tasks;
+using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.GlobalProgress;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.SaveLoad;
 using Logic.Player;
+using UI.Ending;
 using UI.Services.Window;
 using UnityEngine;
 
@@ -24,24 +26,24 @@ namespace Infrastructure.StateMachine.State
             _saveLoadService = saveLoadService;
             _globalProgressService = globalProgressService;
         }
-        
-        public void Enter(HeroToggle heroToggle, EndingType ending)
+
+        public async Task Enter(HeroToggle heroToggle, EndingType ending)
         {
             Cursor.lockState = CursorLockMode.Confined;
-            
+
             _pauseService.SetPaused(false);
             _pauseService.CanBePaused = false;
 
             SaveEnding(ending);
-            OpenEndingWindow(ending);
             DisablePlayer(heroToggle);
             CleanPlayerProgress();
+            await OpenEndingWindow(ending);
         }
 
         private void SaveEnding(EndingType ending)
         {
             GlobalPlayerProgress globalProgress = _globalProgressService.GlobalPlayerProgress;
-            
+
             if (globalProgress.Endings.PassedEndings.Contains(ending))
                 return;
 
@@ -49,7 +51,7 @@ namespace Infrastructure.StateMachine.State
             _saveLoadService.SaveGlobalProgress(globalProgress);
         }
 
-        private void OpenEndingWindow(EndingType ending)
+        private Task<EndingWindow> OpenEndingWindow(EndingType ending)
             => _windowService.OpenEndingWindow(ending);
 
         private void DisablePlayer(HeroToggle heroToggle)

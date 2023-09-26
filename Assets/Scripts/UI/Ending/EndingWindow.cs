@@ -14,5 +14,7 @@ namespace UI.Ending
         
         public void UpdateUI(EndingType endingType) 
             => _endingText.text = endingType == EndingType.HappyEnd ? _happyEndText : _badEndText;
+
+    
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace Infrastructure.Interfaces
 {
     public interface IPayloadedState<TPayload> : IExitableState
     {
@@ -7,6 +9,6 @@
     
     public interface IPayloadedState<in TPayload, in TVPayload> : IExitableState
     {
-        void Enter(TPayload tPayLoad,TVPayload tvPayload);
+        Task Enter(TPayload tPayLoad, TVPayload tvPayload);
     }
 }

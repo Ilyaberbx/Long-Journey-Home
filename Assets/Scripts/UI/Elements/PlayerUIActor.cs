@@ -15,7 +15,7 @@ namespace UI.Elements
         private IHeroLight _light;
         private IFreezable _freezable;
         private IInteractor _interactor;
-        private IHudAmmoShowable _ammoShowableObject;
+        private IAmmoUsable _ammoUsableObject;
 
         public void Construct(IHealth health,IHeroLight light,IFreezable freezable,IInteractor interactor)
         {
@@ -37,20 +37,20 @@ namespace UI.Elements
         private void Update() 
             => ShowHint(_interactor.GetInteractableObject());
 
-        public void RegisterAmmoShowableObject(IHudAmmoShowable ammoShowable)
+        public void RegisterAmmoShowableObject(IAmmoUsable ammoUsable)
         {
-            _ammoShowableObject = ammoShowable;
+            _ammoUsableObject = ammoUsable;
             ToggleAmmoBar(true);
             UpdateAmmoBar();
-            _ammoShowableObject.OnAmmoChanged += UpdateAmmoBar;
-            _ammoShowableObject.OnDispose += () => ToggleAmmoBar(false);
+            _ammoUsableObject.OnAmmoChanged += UpdateAmmoBar;
+            _ammoUsableObject.OnDispose += () => ToggleAmmoBar(false);
         }
 
         private void ToggleAmmoBar(bool isActive) 
             => _ammoText.gameObject.SetActive(isActive);
 
         private void UpdateAmmoBar() 
-            => _ammoText.text = _ammoShowableObject.CurrentAmmo + "/" + _ammoShowableObject.MaxAmmo;
+            => _ammoText.text = _ammoUsableObject.CurrentAmmo + "/" + _ammoUsableObject.MaxAmmo;
 
         private void ShowHint(IInteractable interactable)
         {

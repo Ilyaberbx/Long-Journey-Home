@@ -2,7 +2,7 @@
 
 namespace Logic.Weapons
 {
-    public interface IHudAmmoShowable
+    public interface IAmmoUsable
     {
         public event Action OnAmmoChanged;
         public event Action OnDispose;

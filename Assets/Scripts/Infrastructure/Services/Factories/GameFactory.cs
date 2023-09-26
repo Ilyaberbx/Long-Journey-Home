@@ -80,7 +80,7 @@ namespace Infrastructure.Services.Factories
             if(equipItem.TryGetComponent(out  ISavedProgressReader reader))
                 reader.LoadProgress(_progressService.PlayerProgress);
 
-            if (equipItem.TryGetComponent(out IHudAmmoShowable ammoShowable))
+            if (equipItem.TryGetComponent(out IAmmoUsable ammoShowable))
                 _uiActor.RegisterAmmoShowableObject(ammoShowable); 
             
             equipItem.transform.SetParent(container);

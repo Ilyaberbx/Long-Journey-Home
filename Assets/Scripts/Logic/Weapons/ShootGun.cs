@@ -3,6 +3,7 @@ using Data;
 using DG.Tweening;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
 using Logic.Inventory.Item;
 using Logic.Player;
 using UnityEngine;
@@ -11,11 +12,11 @@ using Random = UnityEngine.Random;
 
 namespace Logic.Weapons
 {
-    public class ShootGun : BaseEquippableItem, IWeapon, IHudAmmoShowable
+    public class ShootGun : BaseEquippableItem, IWeapon, IAmmoUsable,ISavedProgressWriter
     {
         public event Action OnAmmoChanged;
         public event Action OnDispose;
-        public int CurrentAmmo => _ammoInMagazine;
+        int IAmmoUsable.CurrentAmmo => _ammoInMagazine;
         public int MaxAmmo => _magazineCapacity;
 
         [SerializeField] private ParticleSystem _hitMarkFx;
@@ -33,7 +34,7 @@ namespace Logic.Weapons
         private IReloadableWeaponAnimator _animator;
         private IInputService _input;
         private IPersistentProgressService _progressService;
-        private InventoryData _inventoryData => _progressService.PlayerProgress.InventoryData;
+        private InventoryData InventoryData => _progressService.PlayerProgress.InventoryData;
         private bool _isAttacking;
         private bool _isReloading;
         private int _ammoInMagazine;
@@ -63,13 +64,20 @@ namespace Logic.Weapons
                 Reload();
         }
 
-
-        public override void Hide()
+        private void OnDestroy()
         {
-            _inventoryData.AddItem(_ammoItemData, _ammoInMagazine);
+            PutAmmoBackToInventory();
             OnDispose?.Invoke();
-            Destroy(gameObject);
         }
+
+        private void PutAmmoBackToInventory()
+        {
+            InventoryData.AddItem(_ammoItemData, _ammoInMagazine);
+            _ammoInMagazine = 0;
+        }
+
+        public override void Hide() 
+            => Destroy(gameObject);
 
         public override void Appear()
         {
@@ -89,14 +97,15 @@ namespace Logic.Weapons
 
         private void ShowFx()
         {
-            Instantiate(_smokeFx, _shootPoint.position, Quaternion.identity);
-            Instantiate(_sparksFx, _shootPoint.position, Quaternion.LookRotation(-_cachedTransform.right),
+            Vector3 position = _shootPoint.position;
+            Instantiate(_smokeFx, position, Quaternion.identity);
+            Instantiate(_sparksFx, position, Quaternion.LookRotation(-_cachedTransform.right),
                 _cachedTransform);
         }
 
 
         private bool TryWithDrawAmmo()
-            => _inventoryData.TryRemoveItemById(_ammoItemData.Id, 1);
+            => InventoryData.TryRemoveItemById(_ammoItemData.Id, 1);
 
 
         private bool CanShoot()
@@ -112,7 +121,7 @@ namespace Logic.Weapons
         }
 
         private bool CanReload()
-            => _inventoryData.HasItemById(_ammoItemData.Id) && !_isReloading && CalculateAmmoReminder() > 0;
+            => InventoryData.HasItemById(_ammoItemData.Id) && !_isReloading && CalculateAmmoReminder() > 0;
 
         private void OnReload()
         {
@@ -183,5 +192,11 @@ namespace Logic.Weapons
 
         private int CalculateAmmoReminder()
             => _magazineCapacity - _ammoInMagazine;
+
+        public void LoadProgress(PlayerProgress progress)
+        { }
+
+        public void UpdateProgress(PlayerProgress progress) 
+            => PutAmmoBackToInventory();
     }
 }

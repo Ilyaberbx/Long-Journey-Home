@@ -1,5 +1,4 @@
-﻿using System;
-using Logic.Inventory.Actions;
+﻿using Logic.Inventory.Actions;
 using Logic.Player;
 using UnityEngine;
 

@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.Factories;
+﻿using System;
+using Infrastructure.Services.Factories;
 using Logic.Common;
 using Logic.Inventory.Item;
 using Logic.Weapons;
@@ -29,7 +30,8 @@ namespace Logic.Player
             ClearUp();
             Equip(item);
         }
-        
+
+
         private void Equip(EquippableItemData item)
         {
             _currentItemData = item;
