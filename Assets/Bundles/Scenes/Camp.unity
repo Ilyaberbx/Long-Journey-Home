@@ -7379,7 +7379,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 9143c589aa0181e4e9307322abc2a5c4, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 1
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
