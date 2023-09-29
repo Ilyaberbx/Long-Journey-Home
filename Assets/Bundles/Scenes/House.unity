@@ -5191,6 +5191,84 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1139330003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1938495455}
+    m_Modifications:
+    - target: {fileID: -660504830406043742, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: Id
+      value: House_ce846b77-197e-4c7b-abe4-9ca7b9092ce3
+      objectReference: {fileID: 0}
+    - target: {fileID: 706168311597362908, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801341877388983764, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_Radius
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: _dialogue._sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: _dialogue._sentences.Array.data[0]
+      value: Whose blood is this?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1290.1365
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.355675
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1416.0166
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+--- !u!4 &1139330004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+  m_PrefabInstance: {fileID: 1139330003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1159118108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5268,6 +5346,88 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012082070442, guid: f9677ab3f01b6be44802c8775918ce03, type: 3}
   m_PrefabInstance: {fileID: 1159118108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1175708655
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1938495455}
+    m_Modifications:
+    - target: {fileID: -660504830406043742, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: Id
+      value: House_c19fbef6-288c-4075-8a41-74d888412240
+      objectReference: {fileID: 0}
+    - target: {fileID: 400554305517975283, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 706168311597362908, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801341877388983764, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_Radius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: _dialogue._sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: _dialogue._sentences.Array.data[0]
+      value: "\rIs there anyone alive here?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 715.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.997581
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1346
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+--- !u!4 &1175708656 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5567826027652981820, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
+  m_PrefabInstance: {fileID: 1175708655}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1201536364
 GameObject:
@@ -8949,6 +9109,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
   m_PrefabInstance: {fileID: 1895740246}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938495454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938495455}
+  m_Layer: 0
+  m_Name: DialogueTriggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938495455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938495454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1139330004}
+  - {fileID: 1175708656}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2027129207
 GameObject:
   m_ObjectHideFlags: 3
@@ -9538,13 +9730,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089471093}
-  m_LocalRotation: {x: -0, y: -0.48288634, z: -0, w: 0.87568307}
-  m_LocalPosition: {x: 2153, y: 49.4, z: 674}
+  m_LocalRotation: {x: 0, y: -0.3915343, z: 0, w: 0.9201635}
+  m_LocalPosition: {x: 2105, y: 49.4, z: 734}
   m_LocalScale: {x: 353.1, y: 200, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: -57.748, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -46.1, z: 0}
 --- !u!1001 &2111186519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10513,7 +10705,7 @@ MonoBehaviour:
     - "\u0421\u0445\u043E\u0436\u0435,\u0449\u043E \u043C\u0435\u043D\u0456 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E
       \u0437\u043D\u0430\u0439\u0442\u0438 \u043A\u043B\u044E\u0447\u0456 \u0432\u0456\u0434
       \u0434\u0432\u0435\u0440\u0435\u0439"
-  _interactText: "\u0412\u0456\u0434\u0447\u0438\u0442\u0438 \u0434\u0432\u0435\u0440\u0456"
+  _interactText: Open Door
   _requiersKey: 1
   _openValue: 90
 --- !u!23 &3760648493796209595
@@ -11119,8 +11311,8 @@ MonoBehaviour:
   - _transform: {fileID: 3141720530641791621}
     _closeAngle: 0
     _openAngle: 90
-  _openedText: "\u0412\u0456\u0434\u0447\u0438\u043D\u0438\u0442\u0438 \u0448\u0430\u0444\u0443"
-  _closedText: "\u0417\u0430\u043A\u0440\u0438\u0442\u0438 \u0448\u0430\u0444\u0443"
+  _openedText: Open Closet
+  _closedText: Close Closet
 --- !u!33 &7606442907396869986
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Logic.Common
 {
-
     public class Alarm : MonoBehaviour
     {
         [SerializeField] private float _tickRotationValue;

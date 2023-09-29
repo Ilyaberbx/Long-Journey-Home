@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Cinemachine;
 using Data;
+using DG.Tweening;
 using Enums;
 using Extensions;
 using Infrastructure.Interfaces;
@@ -41,7 +42,8 @@ namespace Infrastructure.StateMachine.State
         public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
             LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
-            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService,IEventBusService eventBusService)
+            IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService,
+            IEventBusService eventBusService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -61,8 +63,8 @@ namespace Infrastructure.StateMachine.State
             _eventBusService.CleanUp();
             _pauseService.CanBePaused = false;
             await _gameFactory.WarmUp();
-            _loadingCurtain.Show();
-            _sceneLoader.Load(payLoad, OnLoaded);
+            _loadingCurtain.Show()
+                .OnComplete(() => _sceneLoader.Load(payLoad, OnLoaded));
         }
 
         public void Exit()
@@ -102,7 +104,7 @@ namespace Infrastructure.StateMachine.State
             InitPlayerInteractWithCamera(player, camera);
         }
 
-        private async Task InitDialogueView() 
+        private async Task InitDialogueView()
             => await _gameFactory.CreateDialogueView();
 
 
@@ -151,12 +153,12 @@ namespace Infrastructure.StateMachine.State
         private void ApplyEquipmentToCamera(GameObject player, CinemachineVirtualCamera camera)
         {
             Transform equipment = player.GetComponent<HeroEquiper>().EquipmentContainer;
-            equipment.SetParent(camera.transform,true);
+            equipment.SetParent(camera.transform, true);
             equipment.localPosition = Vector3.zero.AddZ(2);
         }
 
-        private void InformPlayerSpawned(Transform player) 
-            => _eventBusService.RaiseEvent<IPlayerSpawnHandler>(handler =>handler.HandlePlayerSpawn(player));
+        private void InformPlayerSpawned(Transform player)
+            => _eventBusService.RaiseEvent<IPlayerSpawnHandler>(handler => handler.HandlePlayerSpawn(player));
 
         private async Task InitHud(GameObject player)
         {
@@ -167,14 +169,14 @@ namespace Infrastructure.StateMachine.State
                 player.GetComponent<HeroLight>(),
                 player.GetComponent<IFreezable>(),
                 player.GetComponent<IInteractor>());
-            
+
             player.GetComponent<HeroHudWrapper>()
                 .SetHud(hud.GetComponent<IHud>());
         }
 
         private async Task<GameObject> InitPlayer()
         {
-            LevelData levelData = LevelData(); 
+            LevelData levelData = LevelData();
             Vector3 initPoint = levelData.PlayerInitPoint;
             GameObject player = await _gameFactory.CreatePlayer(initPoint);
             return player;

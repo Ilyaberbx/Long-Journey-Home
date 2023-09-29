@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quantity: 1
   _itemData: {fileID: 11400000, guid: bde9c7ca050f87d42b63785080fffc50, type: 2}
-  _interactText: "\u041A\u043B\u044E\u0447\u0456"
+  _interactText: Door Keys
 --- !u!1 &7685309004395772605
 GameObject:
   m_ObjectHideFlags: 0

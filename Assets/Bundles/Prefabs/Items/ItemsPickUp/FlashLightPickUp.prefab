@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quantity: 1
   _itemData: {fileID: 11400000, guid: f4953665e5434b04aa31121a61c22cfd, type: 2}
-  _interactText: Pick Up Lamp
+  _interactText: Oil Lamp
 --- !u!136 &5180734948556888850
 CapsuleCollider:
   m_ObjectHideFlags: 0

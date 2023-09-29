@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quantity: 1
   _itemData: {fileID: 11400000, guid: b8695a167c6062440809829711dbc56b, type: 2}
-  _interactText: "\u0414\u0440\u0430\u0431\u0438\u043D\u0430"
+  _interactText: Ladder
 --- !u!1001 &4666919349894589581
 PrefabInstance:
   m_ObjectHideFlags: 0

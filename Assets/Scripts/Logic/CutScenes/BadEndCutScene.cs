@@ -1,11 +1,13 @@
 ﻿using System;
 using DG.Tweening;
 using Extensions;
+using Infrastructure.Services.Dialogue;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Animations;
 using Logic.Camera;
 using Logic.Car;
+using Logic.DialogueSystem;
 using Logic.Player;
 using UI.Services.Factory;
 using UnityEngine;
@@ -16,6 +18,7 @@ namespace Logic.CutScenes
 {
     public class BadEndCutScene : BaseCutScene
     {
+        [SerializeField] private Dialogue[] _dialogues;
         [SerializeField] private CutSceneCameraTransitionData[] _transitionDatas;
         [SerializeField] private CarLights _carLights;
         [SerializeField] private Transform _bear;
@@ -28,6 +31,7 @@ namespace Logic.CutScenes
         private IUIFactory _uiFactory;
         private BearAnimator _bearAnimator;
         private IGameStateMachine _stateMachine;
+        private IDialogueService _dialogueService;
 
         protected override void OnAwake()
         {
@@ -46,11 +50,13 @@ namespace Logic.CutScenes
         }
 
         [Inject]
-        public void Construct(ICameraService cameraService, IUIFactory uiFactory, IGameStateMachine stateMachine)
+        public void Construct(ICameraService cameraService, IUIFactory uiFactory, IGameStateMachine stateMachine,
+            IDialogueService dialogueService)
         {
             _cameraService = cameraService;
             _uiFactory = uiFactory;
             _stateMachine = stateMachine;
+            _dialogueService = dialogueService;
         }
 
         public override void StartCutScene(Transform player, Action onCutSceneEnded)
@@ -69,6 +75,7 @@ namespace Logic.CutScenes
             _sequence.AppendInterval(1f);
             _sequence.Append(_carLights.KickstartLights(3f, 2f));
             _sequence.Append(_carLights.KickstartLights(3f, 4f));
+            _sequence.AppendCallback(() => StartDialogue(_dialogues[0]));
             _sequence.Append(_carLights.KickstartLights(1f, 1f));
             _sequence.AppendCallback(() => MoveBearTo(_bearWayPoints[0], _bearMovingDurations[0]));
             _sequence.AppendInterval(1f);
@@ -90,6 +97,9 @@ namespace Logic.CutScenes
             _sequence.AppendInterval(1f);
             _sequence.AppendCallback(() => EnterEndingState(heroToggle));
         }
+
+        private void StartDialogue(Dialogue dialogue)
+            => _dialogueService.StartDialogue(dialogue);
 
         private void MoveBearTo(Transform destination, float duration)
         {

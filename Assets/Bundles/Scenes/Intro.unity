@@ -2450,9 +2450,9 @@ MonoBehaviour:
       m_RotationOrder: 0
     _blendTime: 14
     _type: 4
-  _test:
-    _sentences:
-    - Oh home , sweet home
+  _dialogues:
+  - _sentences:
+    - Oh noo, really bad time
   _car: {fileID: 543450653677563699}
   _pathSystem: 1
   _zigZagStartIndex: 2

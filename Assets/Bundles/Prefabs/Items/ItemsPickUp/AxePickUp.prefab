@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quantity: 1
   _itemData: {fileID: 11400000, guid: 2a8e717c837d7f748b7eb639f54ca5a6, type: 2}
-  _interactText: "\u0422\u043E\u043F\u043E\u0440"
+  _interactText: Axe
 --- !u!1 &6503484024784416881
 GameObject:
   m_ObjectHideFlags: 0

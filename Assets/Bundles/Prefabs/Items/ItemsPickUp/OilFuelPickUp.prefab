@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quantity: 1
   _itemData: {fileID: 11400000, guid: 91cb99cb20ed0c44f876b8ddddd300a4, type: 2}
-  _interactText: "\u041F\u0430\u043B\u0438\u0432\u043E \u0434\u043B\u044F \u043B\u0430\u043C\u043F\u0438"
+  _interactText: Lamp Oil
 --- !u!136 &5209323148249258875
 CapsuleCollider:
   m_ObjectHideFlags: 0

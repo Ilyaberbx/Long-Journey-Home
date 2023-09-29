@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 
+  Id: DialogueTrigger_372d8898-06c9-4382-bc7d-6f3edb40530a
 --- !u!1 &1673691296022522505
 GameObject:
   m_ObjectHideFlags: 0

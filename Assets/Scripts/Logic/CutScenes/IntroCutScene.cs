@@ -19,7 +19,7 @@ namespace Logic.CutScenes
 
         [SerializeField] private List<Transform> _carWayPoints;
         [SerializeField] private List<CutSceneCameraTransitionData> _cameraTransitions;
-        [SerializeField] private Dialogue _test;
+        [SerializeField] private Dialogue[] _dialogues;
         [SerializeField] private Transform _car;
         [SerializeField] private PathType _pathSystem;
         [SerializeField] private int _zigZagStartIndex;
@@ -98,12 +98,12 @@ namespace Logic.CutScenes
             _sequence = DOTween.Sequence();
             _sequence.AppendCallback(() => MoveCar(_carMovingDuration));
             _sequence.AppendCallback(() => _carLights.ToggleLights(0f, 500000));
-            _sequence.AppendCallback(() => _dialogueService.StartDialogue(_test));
             _sequence.AppendInterval(_carMovingDuration + 2f);
             _sequence.AppendCallback(() => _carLights.ToggleLights(3f, 0f));
             _sequence.AppendInterval(8f);
             _sequence.Append(_carLights.KickstartLights(3f, 2f));
             _sequence.AppendInterval(2f);
+            _sequence.AppendCallback(() => StartDialogue(_dialogues[0]));
             _sequence.Append(_carLights.KickstartLights(2f, 2f));
             _sequence.AppendInterval(3f);
             _sequence.Append(_carLights.KickstartLights(4f, 4f));
@@ -116,6 +116,9 @@ namespace Logic.CutScenes
             _sequence.AppendInterval(_cameraTransitions[1].BlendTime + 3f);
             _sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
+
+        private void StartDialogue(Dialogue dialogue) 
+            => _dialogueService.StartDialogue(dialogue);
 
 
         private Tween OpenDoor()

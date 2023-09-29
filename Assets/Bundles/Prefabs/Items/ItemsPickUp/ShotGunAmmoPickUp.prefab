@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quantity: 1
   _itemData: {fileID: 11400000, guid: cc45d1f53c382084ba1e9521a8b1afee, type: 2}
-  _interactText: Pick up ammo
+  _interactText: Ammo
 --- !u!1001 &4143744882958257309
 PrefabInstance:
   m_ObjectHideFlags: 0
