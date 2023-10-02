@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 3950152820267360752}
-  _speed: 50
+  _speed: 70
   _jumpHeight: 130
   _sprintingCoefficient: 15
 --- !u!114 &6692625439099448067
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 7119355605494549768}
-  _freezeValue: 0.0005
+  _freezeValue: 0.02
   _damage: 1
 --- !u!114 &7853545874161488478
 MonoBehaviour:

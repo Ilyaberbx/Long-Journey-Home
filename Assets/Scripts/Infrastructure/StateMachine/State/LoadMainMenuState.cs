@@ -3,6 +3,7 @@ using Infrastructure.Services.Pause;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.Settings;
 using Logic;
+using Logic.Vignette;
 using UI.Services.Factory;
 using UI.Services.Window;
 using UnityEngine;
@@ -19,10 +20,11 @@ namespace Infrastructure.StateMachine.State
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IPauseService _pauseService;
         private readonly ISettingsService _settingsService;
+        private readonly IVignetteService _vignetteService;
 
         public LoadMainMenuState(IGameStateMachine stateMachine,IWindowService windowService, 
             ISceneLoader sceneLoader,IUIFactory uiFactory, 
-            LoadingCurtain loadingCurtain,IPauseService pauseService,ISettingsService settingsService)
+            LoadingCurtain loadingCurtain,IPauseService pauseService,ISettingsService settingsService,IVignetteService vignetteService)
         {
             _stateMachine = stateMachine;
             _windowService = windowService;
@@ -31,6 +33,7 @@ namespace Infrastructure.StateMachine.State
             _loadingCurtain = loadingCurtain;
             _pauseService = pauseService;
             _settingsService = settingsService;
+            _vignetteService = vignetteService;
         }
 
         public void Enter()
@@ -45,6 +48,7 @@ namespace Infrastructure.StateMachine.State
 
         private async void OnLoaded()
         {
+            _vignetteService.Reset();
             _pauseService.SetPaused(false);
             _pauseService.CanBePaused = false;
             await _settingsService.Init();

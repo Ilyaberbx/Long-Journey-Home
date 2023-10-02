@@ -1,7 +1,8 @@
 using DG.Tweening;
+using Logic.Vignette;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
+using Zenject;
 
 namespace Logic.Animations
 {
@@ -16,18 +17,14 @@ namespace Logic.Animations
         [SerializeField] private int _takeDamageRandomness;
 
         private Sequence _animationSequence;
-        private Vignette _vignette;
+        private IVignetteService _vignetteService;
 
-        private void Awake()
-        {
-            _animationSequence = DOTween.Sequence();
-            
-            if (_profile.TryGet(out Vignette vignette))
-                _vignette = vignette;
+        [Inject]
+        public void Construct(IVignetteService vignetteService) 
+            => _vignetteService = vignetteService;
 
-            if (_vignette != null)
-                _vignette.intensity.value = 0;
-        }
+        private void Awake() 
+            => _animationSequence = DOTween.Sequence();
 
         public void PlayTakeDamage()
             => _animationSequence.Append(transform.DOShakeRotation(_takeDamageDuration, _takeDamageStrenght, 10, _takeDamageRandomness));
@@ -36,6 +33,6 @@ namespace Logic.Animations
             => _animationSequence.Append(transform.DOShakeRotation(_groundedDuration, _groundedStrenght, 10, _groundedRandomness));
 
         public void PlayDeath()
-            => _vignette.intensity.value = 1f;
+            => _vignetteService.PlayDeath();
     }
 }

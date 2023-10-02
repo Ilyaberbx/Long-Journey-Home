@@ -27,7 +27,7 @@ namespace Logic.Player
         {
             if (!CanEquip(item)) return;
 
-            ClearUp();
+            HideEquipment();
             Equip(item);
         }
 
@@ -62,13 +62,23 @@ namespace Logic.Player
             if (value)
                 Equip(_currentItemData);
             else
-                _currentItem.Hide();
+                HideEquipment();
+        }
+
+        public void HideEquipment()
+        {
+            if (_currentItem == null)
+                return;
+            
+            _currentItem.Hide();
+            _attack.ClearUp();
+            _currentItem = null;
         }
 
         public void ClearUp()
         {
-            _currentItem?.Hide();
-            _attack.ClearUp();
+            HideEquipment();
+            _currentItemData = null;
         }
 
         public void HandleCutScene(bool isInCutScene)

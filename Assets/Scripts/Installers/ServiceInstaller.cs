@@ -1,4 +1,3 @@
-using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Achievements;
 using Infrastructure.Services.AssetManagement;
@@ -14,14 +13,18 @@ using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.Settings;
 using Infrastructure.Services.StaticData;
 using Infrastructure.StateMachine;
+using Logic.Vignette;
 using UI.Services.Factory;
 using UI.Services.Window;
+using UnityEngine;
+using UnityEngine.Rendering;
 using Zenject;
 
 namespace Installers
 {
     public class ServiceInstaller : MonoInstaller, ICoroutineRunner
     {
+        [SerializeField] private VolumeProfile _coreProfile;
         public override void InstallBindings()
         {
             BindEventBus();
@@ -37,10 +40,18 @@ namespace Installers
             BindSaveLoad();
             BindPause();
             BindSceneLoader();
+            BindVignetteService();
             BindStateMachine();
             BindSettings();
             BindDialogueService();
         }
+
+        private void BindVignetteService()
+            => Container.BindInterfacesTo<VignetteService>()
+                .AsSingle()
+                .WithArguments(_coreProfile)
+                .NonLazy();
+        
 
         private void BindEventBus()
             => Container.BindInterfacesTo<EventBusService>()

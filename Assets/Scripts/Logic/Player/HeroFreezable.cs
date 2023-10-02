@@ -1,7 +1,9 @@
 ﻿using System;
 using Data;
 using Infrastructure.Services.SaveLoad;
+using Logic.Vignette;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Player
 {
@@ -13,6 +15,7 @@ namespace Logic.Player
         [SerializeField] private float _freezeValue;
         [SerializeField] private int _damage;
         private FreezeState _state;
+        private IVignetteService _vignetteService;
 
         public float MaxFreeze => _state.MaxFreeze;
 
@@ -26,14 +29,25 @@ namespace Logic.Player
             }
         }
 
+        [Inject]
+        public void Construct(IVignetteService vignetteService) 
+            => _vignetteService = vignetteService;
+
+        private void Start() 
+            => _vignetteService.PlayFreeze();
+
         private void Update()
         {
             DecreaseCurrentWarmLevel(_freezeValue);
             OnFreezeChanged?.Invoke();
+            UpdateVignette();
             
             if (IsFroze())
                 TakeDamage();
         }
+
+        private void UpdateVignette() 
+            => _vignetteService.UpdateFreeze(_state.CurrentFreeze, _state.MaxFreeze);
 
         private bool IsFroze() 
             => CurrentFreeze <= 1;
