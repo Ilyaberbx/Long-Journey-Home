@@ -6,7 +6,7 @@ namespace Logic.Vignette
 {
     public class VignetteService : IVignetteService, IInitializable
     {
-        private const string FreezeColorHex = "#092D79";
+        private const string FreezeColorHex = "#050438";
         private readonly VolumeProfile _profile;
         private UnityEngine.Rendering.Universal.Vignette _vignette;
 
