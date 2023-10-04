@@ -4,6 +4,8 @@ namespace Logic.Gravity
 {
     public class Ground : MonoBehaviour
     {
-        //Mark for ground
+        public SurfaceType SurfaceType => _surfaceType;
+        
+        [SerializeField] private SurfaceType _surfaceType;
     }
 }

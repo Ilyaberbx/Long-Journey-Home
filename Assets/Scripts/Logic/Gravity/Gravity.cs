@@ -1,10 +1,13 @@
-﻿using Logic.Animations;
+﻿using System;
+using Logic.Animations;
 using UnityEngine;
 
 namespace Logic.Gravity
 {
     public class Gravity : MonoBehaviour
     {
+        public event Action<SurfaceType> OnGrounded; 
+
         private const float GroundedGravityConst = -2f;
         private const float GravityCoefficientConst = 1.05f;
 
@@ -43,17 +46,23 @@ namespace Logic.Gravity
             {
                 if (check.transform == null) continue;
 
-                if (check.transform.GetComponentInParent<Ground>() == null) continue;
+                Ground ground = check.transform.GetComponentInParent<Ground>();
+                
+                if (ground == null) continue;
                 
                 if (IsBigFall())
                     _cameraAnimator.PlayGrounded();
 
                 _timeInLevitation = 0f;
+                InformGroundSurface(ground);
                 return _isGrounded = true;
             }
 
             return _isGrounded = false;
         }
+
+        private void InformGroundSurface(Ground ground) 
+            => OnGrounded?.Invoke(ground.SurfaceType);
 
         private bool IsBigFall() 
             => !_isGrounded && _timeInLevitation >= _jumpingLevitationTime;

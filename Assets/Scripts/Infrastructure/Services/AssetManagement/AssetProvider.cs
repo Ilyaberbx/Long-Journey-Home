@@ -23,6 +23,19 @@ namespace Infrastructure.Services.AssetManagement
             new Dictionary<string, List<AsyncOperationHandle>>();
 
 
+        public async Task<T[]> Load<T>(AssetReferenceT<T>[] assetReferenceArray) where T : Object
+        {
+            T[] resultArray = new T[assetReferenceArray.Length];
+            
+            for (int i = 0; i < assetReferenceArray.Length; i++)
+            {
+                T result = await Load<T>(assetReferenceArray[i].AssetGUID);
+                resultArray[i] = result;
+            }
+
+            return resultArray;
+        }
+
         public async Task Initialize()
             => await Addressables.InitializeAsync().Task;
 

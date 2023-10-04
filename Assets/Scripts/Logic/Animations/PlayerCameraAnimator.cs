@@ -1,14 +1,12 @@
 using DG.Tweening;
 using Logic.Vignette;
 using UnityEngine;
-using UnityEngine.Rendering;
 using Zenject;
 
 namespace Logic.Animations
 {
     public class PlayerCameraAnimator : MonoBehaviour, ICameraAnimator
     {
-        [SerializeField] private VolumeProfile _profile;
         [SerializeField] private float _groundedDuration;
         [SerializeField] private float _groundedStrenght;
         [SerializeField] private int _groundedRandomness;

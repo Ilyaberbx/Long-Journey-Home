@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using Data;
 using Extensions;
 using Infrastructure.Services.Input;
@@ -13,10 +13,12 @@ namespace Logic.Player
     [RequireComponent(typeof(Gravity.Gravity))]
     public class HeroMover : MonoBehaviour, ISavedProgressWriter
     {
+        public event Action OnJumped;
         private const float GravityConst = -20f;
 
         public bool CanJump { get; set; } = true;
-        
+        public float SprintingCoefficient => _sprintingCoefficient;
+
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpHeight;
@@ -42,6 +44,12 @@ namespace Logic.Player
                 Jump();
         }
 
+        public bool IsMoving()
+            => _characterController.velocity.normalized.magnitude > 0.1f;
+
+        public bool IsSprinting()
+            => _input.IsSprinting();
+
         private void Move()
         {
             Vector3 input = new Vector3(_input.Horizontal, 0, _input.Vertical);
@@ -61,6 +69,7 @@ namespace Logic.Player
             if (!CanJump)
                 return;
 
+            OnJumped?.Invoke();
             Vector3 velocity = _gravity.GetVelocity();
             velocity.y += Mathf.Sqrt(_jumpHeight * (-3.0f * GravityConst));
             _gravity.SetVelocity(velocity);
@@ -96,7 +105,6 @@ namespace Logic.Player
                 positionOnLevel.Positions.Add(transform.position.AsVector3Data());
             }
         }
-
 
         private void WarpPlayerPosition(Vector3Data to)
         {

@@ -10,13 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Duplicate Asset Isolation
+  m_Name: PlayerSounds
   m_EditorClassIdentifier: 
-  m_GroupName: Duplicate Asset Isolation
+  m_GroupName: PlayerSounds
   m_Data:
     m_SerializedData: []
   m_GUID: 2a9481f19240eba4ba8594c75088a62d
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: f4cfeb4fcb1e786418f6dd32e9a44fb6
+    m_Address: SnowStep3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02cb39cd7ec1ca04c9548dcfbe092533
+    m_Address: SnowStep2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 638035aec69d75041849d9d3f61f0678
+    m_Address: SnowStep1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:
