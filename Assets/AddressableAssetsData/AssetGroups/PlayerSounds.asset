@@ -29,6 +29,42 @@ MonoBehaviour:
     m_Address: SnowStep1
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 386d1302e76cd194f965907c23214c8b
+    m_Address: WoodStep (1)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69b2929115c98c14389fae4bdc7180ae
+    m_Address: WoodStep (3)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bde7b1c1bcc113f4f96c5500b6186f3e
+    m_Address: WoodStep (8)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7a8f9820783d31d418d7a072c4eac1aa
+    m_Address: WoodStep (9)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2beccbe72bc26084cbb90099bfba5b06
+    m_Address: WoodStep (7)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 74261a5fa304f4f45b521854ad968b08
+    m_Address: WoodStep (4)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f6c8be0de3972844f848b93aa6983cb0
+    m_Address: WoodStep (5)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0f03c4ecb0540a14aba0010feb4d07e6
+    m_Address: WoodStep (2)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: de72b313857d3704fb965aa81bee07ab
+    m_Address: WoodStep (6)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

@@ -4,7 +4,6 @@
     public enum SurfaceType
     {
         Snow,
-        Wood,
-        Rock,
+        SolidSurface,
     }
 }

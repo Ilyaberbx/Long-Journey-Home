@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!4 &39039969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011861910002, guid: 9f7e5b070b5ac5c48af67b1642c462c0, type: 3}
@@ -1154,6 +1155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1001 &272431873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1237,6 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &284298560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,6 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!4 &315163763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011861910002, guid: 9f7e5b070b5ac5c48af67b1642c462c0, type: 3}
@@ -1713,6 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &340790460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,6 +2422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &534207748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,6 +3190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &669237157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1001 &720973792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3832,6 +3840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &793956167
 GameObject:
   m_ObjectHideFlags: 0
@@ -6344,6 +6353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &1438520134
 GameObject:
   m_ObjectHideFlags: 0
@@ -7057,6 +7067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &1617317897
 GameObject:
   m_ObjectHideFlags: 0
@@ -7301,6 +7312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &1638636435
 GameObject:
   m_ObjectHideFlags: 0
@@ -7667,6 +7679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 0
 --- !u!1 &1761838864
 GameObject:
   m_ObjectHideFlags: 0
@@ -7991,6 +8004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1001 &1823232223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8074,6 +8088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &1824530340
 GameObject:
   m_ObjectHideFlags: 0
@@ -8801,6 +8816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &1967248448
 GameObject:
   m_ObjectHideFlags: 0
@@ -9138,6 +9154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fd69ca24d4e08b5586acad681c67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &2005680215
 GameObject:
   m_ObjectHideFlags: 0

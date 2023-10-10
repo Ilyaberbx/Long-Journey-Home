@@ -700,6 +700,40 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     _surfaceType: 0
+  - stepSoundsReference:
+    - m_AssetGUID: 386d1302e76cd194f965907c23214c8b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 0f03c4ecb0540a14aba0010feb4d07e6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 69b2929115c98c14389fae4bdc7180ae
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 74261a5fa304f4f45b521854ad968b08
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: f6c8be0de3972844f848b93aa6983cb0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: de72b313857d3704fb965aa81bee07ab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 2beccbe72bc26084cbb90099bfba5b06
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 7a8f9820783d31d418d7a072c4eac1aa
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    _surfaceType: 1
 --- !u!82 &5288391581279280756
 AudioSource:
   m_ObjectHideFlags: 0
