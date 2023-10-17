@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Extensions
 {
-    public static class DataExtentions
+    public static class DataExtensions
     {
         public static Vector3Data AsVector3Data(this Vector3 vector3)
             => new Vector3Data(vector3.x, vector3.y, vector3.z);

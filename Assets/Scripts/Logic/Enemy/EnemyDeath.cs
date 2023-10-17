@@ -4,6 +4,7 @@ using DG.Tweening;
 using Infrastructure.Services.Pause;
 using Logic.Animations;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Logic.Enemy

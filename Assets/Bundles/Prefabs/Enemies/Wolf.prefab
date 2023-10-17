@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4316722517864109187}
   - component: {fileID: 6870272667912344486}
   - component: {fileID: 1998144804459665399}
+  - component: {fileID: 413595260046171636}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -343,6 +344,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: -792098324990040463}
   _animator: {fileID: 6906607898896634438}
+--- !u!114 &413595260046171636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4719026145888656666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332f3ae65d3248adbfa00f68a91863ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wrapper:
+    _soundReference:
+      m_AssetGUID: 0b5ffb329bb262943b2aac6d4bfc96c0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  _source: {fileID: 0}
 --- !u!1 &4843683359117029632
 GameObject:
   m_ObjectHideFlags: 0

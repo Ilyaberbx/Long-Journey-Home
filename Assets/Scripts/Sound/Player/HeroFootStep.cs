@@ -1,38 +1,29 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Infrastructure.Services.AssetManagement;
+﻿using Infrastructure.Services.AssetManagement;
 using Logic.Gravity;
 using Logic.Player;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators.Variations;
 using UnityEngine;
-using Zenject;
 
 namespace Sound.Player
 {
     public class HeroFootStep : MonoBehaviour
     {
+        [SerializeField] private SoundOperations _soundOperations;
+        
         [SerializeField] private HeroMover _heroMover;
         [SerializeField] private float _footStepSoundCoolDown;
-        [SerializeField] private AudioSource _footStepSoundSource;
-        [SerializeField] private AudioClip _jumpSound;
         [SerializeField] private Gravity _gravity;
-        [SerializeField] private FootStepReferenceData[] _footStepReferenceData;
-
-        private FootStepSoundData[] _footStepSoundData;
         private float _footStepTicker;
         private float _currentCoolDown;
         private IAssetProvider _assetProvider;
 
-        [Inject]
-        public void Construct(IAssetProvider assetProvider)
-            => _assetProvider = assetProvider;
 
-        private async void Awake()
+        private void Awake()
         {
             _gravity.OnGrounded += PlayFootStepSound;
             _heroMover.OnJumped += PlayJumpSound;
-
             _currentCoolDown = _footStepSoundCoolDown;
-            await LoadAssets();
         }
 
         private void OnDestroy()
@@ -40,18 +31,7 @@ namespace Sound.Player
             _gravity.OnGrounded -= PlayFootStepSound;
             _heroMover.OnJumped -= PlayJumpSound;
         }
-
-        private async Task LoadAssets()
-        {
-            _footStepSoundData = new FootStepSoundData[_footStepReferenceData.Length];
-
-            for (int i = 0; i < _footStepReferenceData.Length; i++)
-            {
-                FootStepReferenceData footStepData = _footStepReferenceData[i];
-                AudioClip[] stepSounds = await _assetProvider.Load<AudioClip>(footStepData.StepSoundsReference);
-                _footStepSoundData[i] = new FootStepSoundData(stepSounds, footStepData.SurfaceType);
-            }
-        }
+        
 
         private void PlayFootStepSound(SurfaceType surface)
         {
@@ -61,18 +41,12 @@ namespace Sound.Player
                 return;
 
             ApplySprintingCoefficient();
-            StopPreviousSound();
-
-            FootStepSoundData stepReferenceData = GetFootStepDataBySurface(surface);
-
-            if (stepReferenceData == null)
-                return;
-
-            AudioClip stepSound = GetRandomStepSound(stepReferenceData);
-
-            Play(stepSound);
+            PlayStepSound(surface);
             Reset();
         }
+
+        private void PlayStepSound(SurfaceType surface) 
+            => _soundOperations.PlaySound<MoveOperatorHandleSurface>(surface);
 
         private void ApplySprintingCoefficient()
         {
@@ -82,34 +56,16 @@ namespace Sound.Player
                 _currentCoolDown = _footStepSoundCoolDown;
         }
 
-        private void PlayJumpSound()
-        {
-            StopPreviousSound();
-            Play(_jumpSound);
-        }
+        private void PlayJumpSound() 
+            => _soundOperations.PlaySound<JumpSoundOperator>();
 
-        private void StopPreviousSound()
-            => _footStepSoundSource.Stop();
 
         private bool IsCooledDown()
             => _footStepTicker >= _currentCoolDown;
 
         private void Reset()
             => _footStepTicker = 0;
-
-
-        private void Play(AudioClip clip)
-        {
-            _footStepSoundSource.pitch = Random.Range(0.8f, 1.2f);
-            _footStepSoundSource.volume = Random.Range(0.8f, 1f);
-            _footStepSoundSource.clip = clip;
-            _footStepSoundSource.Play();
-        }
-
-        private AudioClip GetRandomStepSound(FootStepSoundData stepSoundData)
-            => stepSoundData.StepSounds[Random.Range(0, stepSoundData.StepSounds.Length)];
-
-        private FootStepSoundData GetFootStepDataBySurface(SurfaceType surface)
-            => _footStepSoundData.FirstOrDefault(footStepData => footStepData.SurfaceType == surface);
+        
+        
     }
 }

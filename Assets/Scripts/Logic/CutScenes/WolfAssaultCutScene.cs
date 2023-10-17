@@ -15,9 +15,15 @@ namespace Logic.CutScenes
 {
     public class WolfAssaultCutScene : BaseCutScene
     {
+        [SerializeField] private AudioSource _wolfHowlAudioSource;
+        [SerializeField] private AudioSource _rabbitMagicSource;
+        [SerializeField] private AudioSource _crackingAudioSource;
         [SerializeField] private List<CutSceneCameraTransitionData> _transitionDatas;
         [SerializeField] private List<Transform> _smokeSpawnPoints;
         [SerializeField] private AssetReference _smokeReference;
+        [SerializeField] private AssetReferenceT<AudioClip> _woflHowlReference;
+        [SerializeField] private AssetReferenceT<AudioClip> _cracklingSoundReference;
+        [SerializeField] private AssetReferenceT<AudioClip> _rabbitMagicSoundReference;
         [SerializeField] private AssetReference _magicFxReference;
         [SerializeField] private GameObject _block;
         [SerializeField] private Transform _pillar;
@@ -27,10 +33,14 @@ namespace Logic.CutScenes
         private IAssetProvider _assetProvider;
         private GameObject _smokeFxPrefab;
         private GameObject _magicFxPrefab;
+        private AudioClip _wolfHowlSound;
+        private AudioClip _cracklingSound;
+        private AudioClip _rabbitMagicSound;
         private IDialogueService _dialogueService;
 
         [Inject]
-        public void Construct(ICameraService camerasService, IAssetProvider assetProvider,IDialogueService dialogueService)
+        public void Construct(ICameraService camerasService, IAssetProvider assetProvider,
+            IDialogueService dialogueService)
         {
             _camerasService = camerasService;
             _assetProvider = assetProvider;
@@ -45,6 +55,9 @@ namespace Logic.CutScenes
                 return;
             }
 
+            _rabbitMagicSound = await _assetProvider.Load(_rabbitMagicSoundReference);
+            _wolfHowlSound = await _assetProvider.Load(_woflHowlReference);
+            _cracklingSound = await _assetProvider.Load(_cracklingSoundReference);
             _smokeFxPrefab = await _assetProvider.Load<GameObject>(_smokeReference);
             _magicFxPrefab = await _assetProvider.Load<GameObject>(_magicFxReference);
         }
@@ -60,7 +73,6 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => ZoomCamera(50f));
             _sequence.AppendInterval(5f);
             _sequence.AppendCallback(() => ZoomCamera(66f));
-            _sequence.AppendInterval(1f);
             _sequence.AppendCallback(PlayCracklingSound);
             _sequence.AppendInterval(1f);
             _sequence.AppendCallback(() => ChangeCamera(_transitionDatas[1]));
@@ -71,7 +83,7 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => ShakeCamera(1, 20));
             _sequence.AppendCallback(() => ShowSmokeFx(_smokeSpawnPoints[2]));
             _sequence.AppendCallback(ActivateBlock);
-            _sequence.AppendInterval(1f);
+            _sequence.AppendInterval(4f);
             _sequence.AppendCallback(() => ChangeCamera(_transitionDatas[2]));
             _sequence.AppendInterval(6f);
             _sequence.AppendCallback(PlayRoarSound);
@@ -86,21 +98,29 @@ namespace Logic.CutScenes
 
         private void PlayCracklingSound()
         {
-            
+            _crackingAudioSource.clip = _cracklingSound;
+            _crackingAudioSource.Play();
         }
 
+        private void PlayRabbitDissolve()
+        {
+            _rabbitMagicSource.clip = _rabbitMagicSound;
+            _rabbitMagicSource.Play();
+        }
         private void PlayRoarSound()
         {
-            
+            _wolfHowlAudioSource.clip = _wolfHowlSound;
+            _wolfHowlAudioSource.Play();
         }
 
         private void DissolveRabbit()
         {
             _rabbit.gameObject.SetActive(false);
+            PlayRabbitDissolve();
             ShowMagicFx();
         }
 
-        private void ShowMagicFx() 
+        private void ShowMagicFx()
             => Instantiate(_magicFxPrefab, _rabbit.transform.position, Quaternion.identity);
 
         private void ShakeCamera(float duration, float strength)
@@ -128,6 +148,5 @@ namespace Logic.CutScenes
             _camerasService.Brain.m_DefaultBlend.m_Time = data.BlendTime;
             _camerasService.ChangeCamerasPriority(data.Type);
         }
-        
     }
 }

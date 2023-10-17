@@ -36,6 +36,17 @@ namespace Infrastructure.Services.AssetManagement
             return resultArray;
         }
 
+        public async Task<T> Load<T>(AssetReferenceT<T> assetReference) where T : Object
+        {
+            string key = assetReference.AssetGUID;
+
+            if (_completedCache.TryGetValue(key, out AsyncOperationHandle completedHandle))
+                return completedHandle.Result as T;
+
+            AsyncOperationHandle<T> operationHandle = Addressables.LoadAssetAsync<T>(assetReference);
+            return await RunWithCacheOnComplete(operationHandle, key);
+        }
+
         public async Task Initialize()
             => await Addressables.InitializeAsync().Task;
 
