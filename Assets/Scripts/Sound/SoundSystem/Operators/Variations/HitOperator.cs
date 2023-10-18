@@ -1,6 +1,6 @@
 ﻿namespace Sound.SoundSystem.Operators.Variations
 {
-    public class AttackOperator : RandomPitchOperator
+    public class HitOperator : RandomPitchOperator
     {
     }
 }

@@ -21,6 +21,22 @@ MonoBehaviour:
     m_Address: Wolf Howl 2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6c3a83573a535444ebf74e24c5be511f
+    m_Address: WolfDeath
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bd551d6452632e94a8787ec49f5ab0cf
+    m_Address: WolfStep1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7018ccfd13508b4428fe8cc1b223ce00
+    m_Address: WolfStep2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c9f6078950f1c6c41943c106fe92cd6b
+    m_Address: WolfAttack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

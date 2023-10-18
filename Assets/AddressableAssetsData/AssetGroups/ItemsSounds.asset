@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: ItemsSounds
+  m_EditorClassIdentifier: 
+  m_GroupName: ItemsSounds
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 201d6101ba7451241b2cc74a941c5796
+  m_SerializeEntries:
+  - m_GUID: 968d30ae22d46924a81fce4cd8d03405
+    m_Address: AxeSwing
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9f49d9e964db3e54abc437c17cc91c3e
+    m_Address: AxeFleshHit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1624e9a57439ceb4782fccd9fff145f3, type: 2}
+    - {fileID: 11400000, guid: 687db7acd005cc24b8288bf28bd52871, type: 2}

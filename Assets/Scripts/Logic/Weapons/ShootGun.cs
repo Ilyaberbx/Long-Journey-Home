@@ -6,6 +6,8 @@ using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 using Logic.Inventory.Item;
 using Logic.Player;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators.Variations;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -18,7 +20,7 @@ namespace Logic.Weapons
         public event Action OnDispose;
         int IAmmoUsable.CurrentAmmo => _ammoInMagazine;
         public int MaxAmmo => _magazineCapacity;
-
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private ParticleSystem _hitMarkFx;
         [SerializeField] private ParticleSystem _smokeFx;
         [SerializeField] private ParticleSystem _sparksFx;
@@ -142,12 +144,16 @@ namespace Logic.Weapons
 
         private void OnAttack()
         {
+            PlayAttackSound();
             Hit();
             ShowFx();
             InformAmmoChanged();
             _animator.SetAnimatorSpeed(1);
             _isAttacking = false;
         }
+
+        private void PlayAttackSound() 
+            => _soundOperations.PlaySound<AttackOperator>();
 
         private Vector3 CalculateCastDirection()
             => (-_cachedTransform.right + _randomRayDirection) * 150f;

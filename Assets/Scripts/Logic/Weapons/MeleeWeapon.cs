@@ -2,6 +2,8 @@
 using Logic.Gravity;
 using Logic.Inventory.Item;
 using Logic.Player;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators.Variations;
 using UnityEngine;
 
 namespace Logic.Weapons
@@ -12,6 +14,7 @@ namespace Logic.Weapons
         private const int AttackMinIndex = 1;
         private const int AttackMaxIndex = 3;
 
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private float _hitApplySpeed;
         [SerializeField] private CheckPoint _attackPoint;
         [SerializeField] private int _damage;
@@ -41,8 +44,8 @@ namespace Logic.Weapons
             _isAttacking = true;
         }
 
-        private int CalculateAttackIndex() 
-            => Random.Range(AttackMinIndex,AttackMaxIndex);
+        private int CalculateAttackIndex()
+            => Random.Range(AttackMinIndex, AttackMaxIndex);
 
         public override void Appear()
         {
@@ -55,17 +58,30 @@ namespace Logic.Weapons
 
         private void OnAttack()
         {
-            for (int i = 0; i < Hit(); i++)
+            PlayAttackSound();
+
+            int hits = Hit();
+
+            if (hits > 0)
+                PlayHitSound();
+
+            for (int i = 0; i < hits; i++)
             {
                 ProcessAttack(i);
                 _animator.SetAnimatorSpeed(_hitApplySpeed);
             }
         }
 
-        private void OnAttackEnd() 
+        private void PlayHitSound()
+            => _soundOperations.PlaySound<HitOperator>();
+
+        private void PlayAttackSound()
+            => _soundOperations.PlaySound<AttackOperator>();
+
+        private void OnAttackEnd()
             => _animator.SetAnimatorSpeed(1);
 
-        private void OnCanNextAttack() 
+        private void OnCanNextAttack()
             => _isAttacking = false;
 
         private void ProcessAttack(int index)

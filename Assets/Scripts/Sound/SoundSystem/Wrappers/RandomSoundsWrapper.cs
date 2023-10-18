@@ -13,7 +13,7 @@ namespace Sound.SoundSystem.Wrappers
         
         private AudioClip[] _soundClips;
         
-        public AudioClip GetAudioClip() 
+        public virtual AudioClip GetAudioClip() 
             => _soundClips.Random();
 
         public async Task Initialize(IAssetProvider assets) 

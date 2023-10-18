@@ -1,135 +1,383 @@
 fileFormatVersion: 2
 guid: 729fc52c8da44c541b2d9938a0016c08
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: CG
-    100002: //RootNode
-    100004: Footsteps
-    100006: Head
-    100008: HeadNub
-    100010: Jaw
-    100012: JawNub
-    100014: L Calf
-    100016: L Clavicle
-    100018: L Finger0
-    100020: L Finger0Nub
-    100022: L Foot
-    100024: L Forearm
-    100026: L Hand
-    100028: L HorseLink
-    100030: L Thigh
-    100032: L Toe0
-    100034: L Toe0Nub
-    100036: L UpperArm
-    100038: Neck
-    100040: Pelvis
-    100042: Ponytail1
-    100044: Ponytail1Nub
-    100046: Ponytail2
-    100048: Ponytail2Nub
-    100050: R Calf
-    100052: R Clavicle
-    100054: R Finger0
-    100056: R Finger0Nub
-    100058: R Foot
-    100060: R Forearm
-    100062: R Hand
-    100064: R HorseLink
-    100066: R Thigh
-    100068: R Toe0
-    100070: R Toe0Nub
-    100072: R UpperArm
-    100074: Spine
-    100076: Spine1
-    100078: Spine2
-    100080: Tail
-    100082: Tail1
-    100084: Tail2
-    100086: Tail3
-    100088: Tail4
-    100090: Tail5
-    100092: TailNub
-    100094: Tiger01
-    100096: ye L
-    100098: ye R
-    100100: Eye L
-    100102: Eye R
-    100104: Ear L
-    100106: Ear R
-    100108: L Ear
-    100110: M
-    100112: R Ear
-    100114: Root
-    400000: CG
-    400002: //RootNode
-    400004: Footsteps
-    400006: Head
-    400008: HeadNub
-    400010: Jaw
-    400012: JawNub
-    400014: L Calf
-    400016: L Clavicle
-    400018: L Finger0
-    400020: L Finger0Nub
-    400022: L Foot
-    400024: L Forearm
-    400026: L Hand
-    400028: L HorseLink
-    400030: L Thigh
-    400032: L Toe0
-    400034: L Toe0Nub
-    400036: L UpperArm
-    400038: Neck
-    400040: Pelvis
-    400042: Ponytail1
-    400044: Ponytail1Nub
-    400046: Ponytail2
-    400048: Ponytail2Nub
-    400050: R Calf
-    400052: R Clavicle
-    400054: R Finger0
-    400056: R Finger0Nub
-    400058: R Foot
-    400060: R Forearm
-    400062: R Hand
-    400064: R HorseLink
-    400066: R Thigh
-    400068: R Toe0
-    400070: R Toe0Nub
-    400072: R UpperArm
-    400074: Spine
-    400076: Spine1
-    400078: Spine2
-    400080: Tail
-    400082: Tail1
-    400084: Tail2
-    400086: Tail3
-    400088: Tail4
-    400090: Tail5
-    400092: TailNub
-    400094: Tiger01
-    400096: ye L
-    400098: ye R
-    400100: Eye L
-    400102: Eye R
-    400104: Ear L
-    400106: Ear R
-    400108: L Ear
-    400110: M
-    400112: R Ear
-    400114: Root
-    4300000: Tiger01
-    4300002: M
-    7400000: C_Run
-    7400002: C_Run_Right
-    7400004: C_Run_Left
-    9500000: //RootNode
-    13700000: Tiger01
-    13700002: M
+  serializedVersion: 20300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: CG
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: Footsteps
+  - first:
+      1: 100006
+    second: Head
+  - first:
+      1: 100008
+    second: HeadNub
+  - first:
+      1: 100010
+    second: Jaw
+  - first:
+      1: 100012
+    second: JawNub
+  - first:
+      1: 100014
+    second: L Calf
+  - first:
+      1: 100016
+    second: L Clavicle
+  - first:
+      1: 100018
+    second: L Finger0
+  - first:
+      1: 100020
+    second: L Finger0Nub
+  - first:
+      1: 100022
+    second: L Foot
+  - first:
+      1: 100024
+    second: L Forearm
+  - first:
+      1: 100026
+    second: L Hand
+  - first:
+      1: 100028
+    second: L HorseLink
+  - first:
+      1: 100030
+    second: L Thigh
+  - first:
+      1: 100032
+    second: L Toe0
+  - first:
+      1: 100034
+    second: L Toe0Nub
+  - first:
+      1: 100036
+    second: L UpperArm
+  - first:
+      1: 100038
+    second: Neck
+  - first:
+      1: 100040
+    second: Pelvis
+  - first:
+      1: 100042
+    second: Ponytail1
+  - first:
+      1: 100044
+    second: Ponytail1Nub
+  - first:
+      1: 100046
+    second: Ponytail2
+  - first:
+      1: 100048
+    second: Ponytail2Nub
+  - first:
+      1: 100050
+    second: R Calf
+  - first:
+      1: 100052
+    second: R Clavicle
+  - first:
+      1: 100054
+    second: R Finger0
+  - first:
+      1: 100056
+    second: R Finger0Nub
+  - first:
+      1: 100058
+    second: R Foot
+  - first:
+      1: 100060
+    second: R Forearm
+  - first:
+      1: 100062
+    second: R Hand
+  - first:
+      1: 100064
+    second: R HorseLink
+  - first:
+      1: 100066
+    second: R Thigh
+  - first:
+      1: 100068
+    second: R Toe0
+  - first:
+      1: 100070
+    second: R Toe0Nub
+  - first:
+      1: 100072
+    second: R UpperArm
+  - first:
+      1: 100074
+    second: Spine
+  - first:
+      1: 100076
+    second: Spine1
+  - first:
+      1: 100078
+    second: Spine2
+  - first:
+      1: 100080
+    second: Tail
+  - first:
+      1: 100082
+    second: Tail1
+  - first:
+      1: 100084
+    second: Tail2
+  - first:
+      1: 100086
+    second: Tail3
+  - first:
+      1: 100088
+    second: Tail4
+  - first:
+      1: 100090
+    second: Tail5
+  - first:
+      1: 100092
+    second: TailNub
+  - first:
+      1: 100094
+    second: Tiger01
+  - first:
+      1: 100096
+    second: ye L
+  - first:
+      1: 100098
+    second: ye R
+  - first:
+      1: 100100
+    second: Eye L
+  - first:
+      1: 100102
+    second: Eye R
+  - first:
+      1: 100104
+    second: Ear L
+  - first:
+      1: 100106
+    second: Ear R
+  - first:
+      1: 100108
+    second: L Ear
+  - first:
+      1: 100110
+    second: M
+  - first:
+      1: 100112
+    second: R Ear
+  - first:
+      1: 100114
+    second: Root
+  - first:
+      4: 400000
+    second: CG
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: Footsteps
+  - first:
+      4: 400006
+    second: Head
+  - first:
+      4: 400008
+    second: HeadNub
+  - first:
+      4: 400010
+    second: Jaw
+  - first:
+      4: 400012
+    second: JawNub
+  - first:
+      4: 400014
+    second: L Calf
+  - first:
+      4: 400016
+    second: L Clavicle
+  - first:
+      4: 400018
+    second: L Finger0
+  - first:
+      4: 400020
+    second: L Finger0Nub
+  - first:
+      4: 400022
+    second: L Foot
+  - first:
+      4: 400024
+    second: L Forearm
+  - first:
+      4: 400026
+    second: L Hand
+  - first:
+      4: 400028
+    second: L HorseLink
+  - first:
+      4: 400030
+    second: L Thigh
+  - first:
+      4: 400032
+    second: L Toe0
+  - first:
+      4: 400034
+    second: L Toe0Nub
+  - first:
+      4: 400036
+    second: L UpperArm
+  - first:
+      4: 400038
+    second: Neck
+  - first:
+      4: 400040
+    second: Pelvis
+  - first:
+      4: 400042
+    second: Ponytail1
+  - first:
+      4: 400044
+    second: Ponytail1Nub
+  - first:
+      4: 400046
+    second: Ponytail2
+  - first:
+      4: 400048
+    second: Ponytail2Nub
+  - first:
+      4: 400050
+    second: R Calf
+  - first:
+      4: 400052
+    second: R Clavicle
+  - first:
+      4: 400054
+    second: R Finger0
+  - first:
+      4: 400056
+    second: R Finger0Nub
+  - first:
+      4: 400058
+    second: R Foot
+  - first:
+      4: 400060
+    second: R Forearm
+  - first:
+      4: 400062
+    second: R Hand
+  - first:
+      4: 400064
+    second: R HorseLink
+  - first:
+      4: 400066
+    second: R Thigh
+  - first:
+      4: 400068
+    second: R Toe0
+  - first:
+      4: 400070
+    second: R Toe0Nub
+  - first:
+      4: 400072
+    second: R UpperArm
+  - first:
+      4: 400074
+    second: Spine
+  - first:
+      4: 400076
+    second: Spine1
+  - first:
+      4: 400078
+    second: Spine2
+  - first:
+      4: 400080
+    second: Tail
+  - first:
+      4: 400082
+    second: Tail1
+  - first:
+      4: 400084
+    second: Tail2
+  - first:
+      4: 400086
+    second: Tail3
+  - first:
+      4: 400088
+    second: Tail4
+  - first:
+      4: 400090
+    second: Tail5
+  - first:
+      4: 400092
+    second: TailNub
+  - first:
+      4: 400094
+    second: Tiger01
+  - first:
+      4: 400096
+    second: ye L
+  - first:
+      4: 400098
+    second: ye R
+  - first:
+      4: 400100
+    second: Eye L
+  - first:
+      4: 400102
+    second: Eye R
+  - first:
+      4: 400104
+    second: Ear L
+  - first:
+      4: 400106
+    second: Ear R
+  - first:
+      4: 400108
+    second: L Ear
+  - first:
+      4: 400110
+    second: M
+  - first:
+      4: 400112
+    second: R Ear
+  - first:
+      4: 400114
+    second: Root
+  - first:
+      43: 4300000
+    second: Tiger01
+  - first:
+      43: 4300002
+    second: M
+  - first:
+      74: 7400000
+    second: C_Run
+  - first:
+      74: 7400002
+    second: C_Run_Right
+  - first:
+      74: 7400004
+    second: C_Run_Left
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Tiger01
+  - first:
+      137: 13700002
+    second: M
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -158,6 +406,7 @@ ModelImporter:
     - serializedVersion: 16
       name: C_Run
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 16
       wrapMode: 0
@@ -178,7 +427,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.1900648
+        functionName: OnStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.724879
+        functionName: OnStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -256,6 +519,7 @@ ModelImporter:
     - serializedVersion: 16
       name: C_Run_Right
       takeName: Take 001
+      internalID: 0
       firstFrame: 20
       lastFrame: 36
       wrapMode: 0
@@ -354,6 +618,7 @@ ModelImporter:
     - serializedVersion: 16
       name: C_Run_Left
       takeName: Take 001
+      internalID: 0
       firstFrame: 40
       lastFrame: 56
       wrapMode: 0
@@ -455,21 +720,31 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 0
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: 1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -477,10 +752,13 @@ ModelImporter:
     normalImportMode: 2
     tangentImportMode: 2
     normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 2
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -490,15 +768,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: CG
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9a5a6e2d8587a644b9b2da5d4940b5e3,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9a5a6e2d8587a644b9b2da5d4940b5e3, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

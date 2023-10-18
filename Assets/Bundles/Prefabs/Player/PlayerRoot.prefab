@@ -370,13 +370,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9468d3054b4655bb101190ea364c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundOperations: {fileID: 331989182733773309}
   _interactor: {fileID: 8998662930169183514}
   _health: {fileID: 7119355605494549768}
   _mover: {fileID: 2970240177481772350}
   _attack: {fileID: 1136055281313859481}
   _windowOpener: {fileID: 8258285280771886049}
   _pauseHandler: {fileID: 8728874985912032053}
-  freezable: {fileID: 4137454390573635750}
+  _freezable: {fileID: 4137454390573635750}
 --- !u!114 &7162431190216540211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,6 +650,7 @@ GameObject:
   - component: {fileID: 331989182733773309}
   - component: {fileID: 8084134513114112008}
   - component: {fileID: 7116524385161662169}
+  - component: {fileID: 3013992875599474486}
   m_Layer: 7
   m_Name: SoundOperator
   m_TagString: Untagged
@@ -768,6 +770,25 @@ MonoBehaviour:
         m_EditorAssetChanged: 0
       <Surface>k__BackingField: 1
   _source: {fileID: 5288391581279280756}
+--- !u!114 &3013992875599474486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902765349416720850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a0ee50888146418c26165754674cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wrapper:
+    _soundReference:
+      m_AssetGUID: 76e33b8666ce2a54ab6064f7e14363eb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  _source: {fileID: 5288391581279280756}
 --- !u!1 &5110211065562083204
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5110211065562083204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.5, z: 0}
+  m_LocalPosition: {x: 0, y: -11.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4528144525538570282}

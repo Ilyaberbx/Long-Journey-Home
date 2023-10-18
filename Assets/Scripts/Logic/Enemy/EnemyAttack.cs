@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using DG.Tweening;
 using Infrastructure.Services.Pause;
 using Logic.Animations;
 using Logic.Gravity;
 using Logic.Player;
-using Sound.SoundSystem.Operators;
+using Sound.SoundSystem;
 using Sound.SoundSystem.Operators.Variations;
 using UnityEngine;
 using Zenject;
@@ -17,7 +15,8 @@ namespace Logic.Enemy
     public class EnemyAttack : MonoBehaviour
     {
         private const string PlayerLayer = "Player";
-        
+
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private AgentMoveToPlayer _agent;
         [SerializeField] private BaseEnemyAnimator _animator;
         [SerializeField] private CheckPoint _checkPoint;
@@ -32,7 +31,6 @@ namespace Logic.Enemy
         private bool _isAttacking;
         private int _layerMask;
         private bool _attackIsActive;
-        private Dictionary<Type, ISoundOperator> _soundOperators;
 
         [Inject]
         public void Construct(IPauseService pauseService) 
@@ -45,12 +43,8 @@ namespace Logic.Enemy
             _playerTransform = playerTransform;
         }
 
-        private void Awake()
-        {
-            _layerMask = 1 << LayerMask.NameToLayer(PlayerLayer);
-            _soundOperators = GetComponents<ISoundOperator>()
-                .ToDictionary(k => k.GetType(),value => value);
-        }
+        private void Awake() 
+            => _layerMask = 1 << LayerMask.NameToLayer(PlayerLayer);
 
         private void Update()
         {
@@ -70,10 +64,8 @@ namespace Logic.Enemy
         {
             if (Hit(out Collider collider) && collider.TryGetComponent(out HeroHealth health))
             {
+                _soundOperations.PlaySound<HitOperator>();
                 health.TakeDamage(_damage);
-                
-                if(_soundOperators.TryGetValue(typeof(AttackOperator) , out ISoundOperator value))
-                    value.PlaySound();
             }
         }
 

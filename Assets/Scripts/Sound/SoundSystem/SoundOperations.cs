@@ -11,8 +11,10 @@ namespace Sound.SoundSystem
     {
         private Dictionary<Type, ISoundOperator> _soundOperatorsMap;
         private Dictionary<Type, ISoundOperatorHandleSurface> _soundSurfaceOperatorsMap;
+        
         private void Awake() 
             => Initialize();
+        
         private void Initialize()
         {
             _soundOperatorsMap = GetComponents<ISoundOperator>()

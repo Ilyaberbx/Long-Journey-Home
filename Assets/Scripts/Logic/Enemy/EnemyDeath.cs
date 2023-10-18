@@ -3,8 +3,9 @@ using System.Collections;
 using DG.Tweening;
 using Infrastructure.Services.Pause;
 using Logic.Animations;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators.Variations;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Logic.Enemy
@@ -13,6 +14,7 @@ namespace Logic.Enemy
     {
         public event Action OnDie;
 
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private Collider _hitBox;
         [SerializeField] private AgentMoveToPlayer _agent;
         [SerializeField] private EnemyAttack _attack;
@@ -49,11 +51,16 @@ namespace Logic.Enemy
             _agent.Stop();
             _agent.enabled = false;
             _animator.PlayDeath();
+            
+            PlayDeathSound();
             UnsubscribeComponents();
             StartCoroutine(DestroyingRoutine());
-
+            
             OnDie?.Invoke();
         }
+
+        private void PlayDeathSound() 
+            => _soundOperations.PlaySound<DeathOperator>();
 
         private void UnsubscribeComponents()
         {
