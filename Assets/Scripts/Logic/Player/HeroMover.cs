@@ -1,4 +1,3 @@
-using System;
 using Data;
 using Extensions;
 using Infrastructure.Services.Input;
@@ -13,7 +12,6 @@ namespace Logic.Player
     [RequireComponent(typeof(Gravity.Gravity))]
     public class HeroMover : MonoBehaviour, ISavedProgressWriter
     {
-        public event Action OnJumped;
         private const float GravityConst = -20f;
 
         public bool CanJump { get; set; } = true;
@@ -45,7 +43,7 @@ namespace Logic.Player
         }
 
         public bool IsMoving()
-            => _characterController.velocity.normalized.magnitude > 0.1f;
+            => _characterController.velocity.normalized.magnitude > 0.2f;
 
         public bool IsSprinting()
             => _input.IsSprinting();
@@ -68,8 +66,7 @@ namespace Logic.Player
         {
             if (!CanJump)
                 return;
-
-            OnJumped?.Invoke();
+            
             Vector3 velocity = _gravity.GetVelocity();
             velocity.y += Mathf.Sqrt(_jumpHeight * (-3.0f * GravityConst));
             _gravity.SetVelocity(velocity);

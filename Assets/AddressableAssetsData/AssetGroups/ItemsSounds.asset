@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: AxeFleshHit
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: c176a25778bc3b9468ff7d3fb2eb2600
+    m_Address: LampWorking
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

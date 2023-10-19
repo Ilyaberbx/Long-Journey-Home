@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5788254359508465316}
   - component: {fileID: 2233374431521856841}
   - component: {fileID: 1137503716018354518}
-  - component: {fileID: 2371091413550586197}
   - component: {fileID: 5406044013344782267}
   - component: {fileID: 4270228597552960192}
+  - component: {fileID: 2371091413550586197}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4887ff110844cabae1d33cc22354f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 2371091413550586197}
 --- !u!114 &1137503716018354518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,11 +70,50 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  _source: {fileID: 2371091413550586197}
+  _minVolume: 1
+  _maxVolume: 1
+  _minPitch: 0.8
+  _maxPitch: 1
+--- !u!114 &5406044013344782267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287142930445670173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 731da555bdba4727b54b553c5adb9e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wrapper:
+    _soundReferences:
+    - m_AssetGUID: c9f6078950f1c6c41943c106fe92cd6b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   _minVolume: 0.8
   _maxVolume: 1
-  _minPitch: 0.6
+  _minPitch: 0.8
   _maxPitch: 1
+--- !u!114 &4270228597552960192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287142930445670173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a0ee50888146418c26165754674cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wrapper:
+    _soundReference:
+      m_AssetGUID: 6c3a83573a535444ebf74e24c5be511f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
 --- !u!82 &2371091413550586197
 AudioSource:
   m_ObjectHideFlags: 0
@@ -93,11 +133,11 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0.43
   MinDistance: 1
-  MaxDistance: 159.21983
+  MaxDistance: 250
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -109,6 +149,15 @@ AudioSource:
       value: 1
       inSlope: 0
       outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.13273983
+      value: 0.8597886
+      inSlope: -0.87224245
+      outSlope: -0.87224245
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -130,7 +179,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -167,51 +216,18 @@ AudioSource:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.17335178
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5406044013344782267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287142930445670173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 731da555bdba4727b54b553c5adb9e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wrapper:
-    _soundReferences:
-    - m_AssetGUID: c9f6078950f1c6c41943c106fe92cd6b
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-  _source: {fileID: 2371091413550586197}
-  _minVolume: 0.8
-  _maxVolume: 1
-  _minPitch: 0.6
-  _maxPitch: 1.2
---- !u!114 &4270228597552960192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287142930445670173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50a0ee50888146418c26165754674cb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wrapper:
-    _soundReference:
-      m_AssetGUID: 6c3a83573a535444ebf74e24c5be511f
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-  _source: {fileID: 2371091413550586197}
 --- !u!1 &2518513604526308091
 GameObject:
   m_ObjectHideFlags: 0

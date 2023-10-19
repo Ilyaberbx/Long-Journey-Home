@@ -2,14 +2,18 @@
 using DG.Tweening;
 using Logic.Inventory.Item;
 using Logic.Player;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators;
 using UnityEngine;
 
 namespace Logic.Weapons
 {
-    public class FlashLight : BaseEquippableItem,IFlashLight
+    public class FlashLight : BaseEquippableItem, IFlashLight
     {
+        private const int MinIntensityValue = 10;
         private readonly List<float> _lightsIntensity = new List<float>();
-        
+
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private float _lessValue;
         [SerializeField] private List<Light> _lights;
         [SerializeField] private Transform[] _lightBlooms;
@@ -17,7 +21,7 @@ namespace Logic.Weapons
 
         private Vector3 _cachedScale;
         private IHeroLight _light;
-
+        private bool _isFlaming;
 
         private void Awake()
         {
@@ -27,15 +31,24 @@ namespace Logic.Weapons
                 _lightsIntensity.Add(light.intensity);
         }
 
-        public void Init(IHeroLight light) 
+        public void Init(IHeroLight light)
             => _light = light;
-        
 
-        public override void Appear() 
-            => transform.DOScale(_cachedScale, 0.2f);
+        public override void Appear()
+        {
+            transform.DOScale(_cachedScale, 0.2f);
+            
+            if (NoLightIntensity())
+                return;
+            
+            _soundOperations.PlaySound<LoopSoundOperator>();
+        }
 
-        public override void Hide() 
-            => Destroy(gameObject);
+        public override void Hide()
+        {
+            _soundOperations.Stop();
+            Destroy(gameObject);
+        }
 
         private void Update()
         {
@@ -43,8 +56,22 @@ namespace Logic.Weapons
 
             DecreaseLightIntensity();
             DecreaseLightSize();
-            
+
+            if (NoLightIntensity() && _isFlaming)
+            {
+                _isFlaming = false;
+                _soundOperations.Stop();
+                return;
+            }
+
+            if (_isFlaming || NoLightIntensity()) return;
+
+            _isFlaming = true;
+            _soundOperations.PlaySound<LoopSoundOperator>();
         }
+
+        private bool NoLightIntensity()
+            => _light.CurrentIntensity <= MinIntensityValue;
 
         private void DecreaseLightSize()
         {

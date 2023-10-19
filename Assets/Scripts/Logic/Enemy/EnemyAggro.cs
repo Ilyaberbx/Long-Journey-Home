@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Logic.Common;
 using UnityEngine;
 
 namespace Logic.Enemy

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Logic.Common;
+using UnityEngine;
 
 namespace Logic.Enemy
 {

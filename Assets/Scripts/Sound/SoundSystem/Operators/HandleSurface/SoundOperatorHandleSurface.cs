@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.AssetManagement;
+﻿using System.Threading.Tasks;
+using Infrastructure.Services.AssetManagement;
 using Logic.Gravity;
 using Sound.SoundSystem.Wrappers.SurfaceHandle;
 using UnityEngine;
@@ -10,12 +11,21 @@ namespace Sound.SoundSystem.Operators
         where T : ISoundsWrapperHandleSurface
     {
         [SerializeField] protected T _wrapper;
-        [SerializeField] protected AudioSource _source;
-        
+        protected AudioSource _source;
+        private IAssetProvider _assetProvider;
+
         [Inject]
-        private async void Construct(IAssetProvider assetProvider) 
-            => await _wrapper.Initialize(assetProvider);
-        
+        private async void Construct(IAssetProvider assetProvider)
+        {
+            _assetProvider = assetProvider;
+            await InitializeWrapper(assetProvider);
+        }
+
+        private Task InitializeWrapper(IAssetProvider assetProvider) 
+            => _wrapper.Initialize(assetProvider);
+
         public abstract void PlaySound(SurfaceType surfaceType);
+        public void Initialize(AudioSource source) 
+            => _source = source;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Sound.SoundSystem.Operators
 {
-    public interface ISoundOperatorHandleSurface
+    public interface ISoundOperatorHandleSurface : ISoundOperator
     {
         void PlaySound(SurfaceType surfaceType);
     }

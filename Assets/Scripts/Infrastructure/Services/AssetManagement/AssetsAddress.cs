@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Services.AssetManagement
+﻿using UnityEngine.AddressableAssets;
+
+namespace Infrastructure.Services.AssetManagement
 {
     public static class AssetsAddress
     {
@@ -9,5 +11,6 @@
         public const string LootSpawnPoint = "LootSpawnPoint";
         public const string EyeCurtain = "EyeCurtain";
         public const string DialogueView = "DialogueView";
+        public const string LampSound = "LampWorking";
     }
 }

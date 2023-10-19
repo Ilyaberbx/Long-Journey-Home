@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: MagicSound
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: be85cae7d5cd40c4ab41344fd820fef6
+    m_Address: CampfireSound
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

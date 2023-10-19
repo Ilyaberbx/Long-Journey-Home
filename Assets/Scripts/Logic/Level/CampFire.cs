@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using DG.Tweening;
-using Logic.Enemy;
+using Logic.Common;
 using Logic.Player;
 using Logic.Triggers;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators;
 using UnityEngine;
 
 namespace Logic.Level
 {
     public class CampFire : MonoBehaviour, IInteractable
     {
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private SaveTrigger _saveTrigger;
         [SerializeField] private float _healCoolDown;
         [SerializeField] private int _healValue;
@@ -19,16 +22,16 @@ namespace Logic.Level
         private Coroutine _healingRoutine;
         private bool _isFire;
 
-        private void Awake() 
+        private void Awake()
             => _triggerObserver.OnTriggerExited += _ => StopHealing();
 
-        private void OnDestroy() 
+        private void OnDestroy()
             => _triggerObserver.OnTriggerExited -= _ => StopHealing();
 
         private void StartHealing(Transform player)
         {
             if (!player.TryGetComponent(out IHealth health) || !player.TryGetComponent(out IFreezable freeze)) return;
-            
+
             _isFire = true;
             _saveTrigger.Save();
             _healingRoutine = StartCoroutine(HealingRoutine(health, freeze));
@@ -37,9 +40,9 @@ namespace Logic.Level
         private void StopHealing()
         {
             if (_healingRoutine == null) return;
-            
+
             StopCoroutine(_healingRoutine);
-            DisappearFx();
+            ToggleFire(false);
             _isFire = false;
             _healingRoutine = null;
         }
@@ -63,7 +66,21 @@ namespace Logic.Level
             }
 
             StartHealing(interactor);
-            AppearFx();
+            ToggleFire(true);
+        }
+
+        private void ToggleFire(bool value)
+        {
+            if (value)
+            {
+                _soundOperations.PlaySound<LoopSoundOperator>();
+                AppearFx();
+            }
+            else
+            {
+                _soundOperations.Stop();
+                DisappearFx();
+            }
         }
 
         private void AppearFx()

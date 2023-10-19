@@ -6,7 +6,7 @@ namespace Logic.Gravity
 {
     public class Gravity : MonoBehaviour
     {
-        public event Action<SurfaceType> OnGrounded; 
+        public event Action OnFell; 
 
         private const float GroundedGravityConst = -2f;
         private const float GravityCoefficientConst = 1.05f;
@@ -49,20 +49,20 @@ namespace Logic.Gravity
                 Ground ground = check.transform.GetComponentInParent<Ground>();
                 
                 if (ground == null) continue;
-                
+
                 if (IsBigFall())
+                {
                     _cameraAnimator.PlayGrounded();
+                    OnFell?.Invoke();
+                }
 
                 _timeInLevitation = 0f;
-                InformGroundSurface(ground);
                 return _isGrounded = true;
             }
 
             return _isGrounded = false;
         }
-
-        private void InformGroundSurface(Ground ground) 
-            => OnGrounded?.Invoke(ground.SurfaceType);
+        
 
         private bool IsBigFall() 
             => !_isGrounded && _timeInLevitation >= _jumpingLevitationTime;

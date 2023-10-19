@@ -60,6 +60,7 @@ namespace Infrastructure.Services.Factories
             await _assetProvider.Load<GameObject>(AssetsAddress.HudPath);
             await _assetProvider.Load<GameObject>(AssetsAddress.UIRoot);
             await _assetProvider.Load<GameObject>(AssetsAddress.DialogueView);
+            await _assetProvider.Load<AudioClip>(AssetsAddress.LampSound);
         }
 
         public void CleanUp()

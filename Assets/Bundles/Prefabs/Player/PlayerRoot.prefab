@@ -281,6 +281,7 @@ Transform:
   - {fileID: 3998855522539267470}
   - {fileID: 2328272469543204399}
   - {fileID: 4528144525538570282}
+  - {fileID: 9199531834703695927}
   m_Father: {fileID: 3401435002938043441}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -332,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravity: 300
   _checkingGroundPoint: {fileID: 3933543477306920566}
-  _jumpingLevitationTime: 0.25
+  _jumpingLevitationTime: 0.5
   _characterController: {fileID: 3950152820267360752}
 --- !u!114 &7119355605494549768
 MonoBehaviour:
@@ -638,6 +639,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3543037705115886764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9199531834703695927}
+  - component: {fileID: 1206661875506878359}
+  m_Layer: 7
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9199531834703695927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543037705115886764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -7.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2970240177481772349}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206661875506878359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543037705115886764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94e22c46b7e484691c5eed89dfb0707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rayCastDistance: 15
 --- !u!1 &4902765349416720850
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4887ff110844cabae1d33cc22354f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 5288391581279280756}
 --- !u!114 &8084134513114112008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,11 +744,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wrapper:
     _soundReference:
-      m_AssetGUID: 53479bcf17cb51e4eb2c24c8cfbcdba7
+      m_AssetGUID: 96a7be3d2d19424418185a2a0a8c011f
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  _source: {fileID: 5288391581279280756}
 --- !u!114 &7116524385161662169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,7 +814,6 @@ MonoBehaviour:
         m_SubObjectType: 
         m_EditorAssetChanged: 0
       <Surface>k__BackingField: 1
-  _source: {fileID: 5288391581279280756}
 --- !u!114 &3013992875599474486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +832,6 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  _source: {fileID: 5288391581279280756}
 --- !u!1 &5110211065562083204
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soundOperations: {fileID: 331989182733773309}
   _heroMover: {fileID: 2970240177481772350}
+  _groundObserver: {fileID: 1206661875506878359}
   _footStepSoundCoolDown: 0.7
   _gravity: {fileID: 6692625439099448067}
 --- !u!82 &5288391581279280756
@@ -893,7 +937,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.812
       inSlope: 0
       outSlope: 0
       tangentMode: 0

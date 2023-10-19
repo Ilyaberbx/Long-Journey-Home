@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4887ff110844cabae1d33cc22354f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 1773506327142661258}
 --- !u!82 &1773506327142661258
 AudioSource:
   m_ObjectHideFlags: 0
@@ -160,7 +161,6 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  _source: {fileID: 1773506327142661258}
   _minVolume: 0.7
   _maxVolume: 1
   _minPitch: 0.8
@@ -183,7 +183,6 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  _source: {fileID: 1773506327142661258}
   _minVolume: 1
   _maxVolume: 1
   _minPitch: 0.8

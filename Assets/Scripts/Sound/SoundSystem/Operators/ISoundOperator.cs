@@ -1,8 +1,10 @@
-﻿namespace Sound.SoundSystem.Operators
+﻿using UnityEngine;
+
+namespace Sound.SoundSystem.Operators
 {
 
     public interface ISoundOperator
     {
-        void PlaySound();
+        void Initialize(AudioSource source);
     }
 }

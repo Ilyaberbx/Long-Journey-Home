@@ -4823,7 +4823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!154 &1093893487
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -12189,6 +12189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2dbae78aa149439d2e6c33c40c26b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundOperations: {fileID: 0}
   _saveTrigger: {fileID: 8588820322122971217}
   _healCoolDown: 0.05
   _healValue: 1
