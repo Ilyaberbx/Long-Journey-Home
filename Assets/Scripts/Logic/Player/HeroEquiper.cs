@@ -41,14 +41,15 @@ namespace Logic.Player
                     _equipmentContainer);
 
             _currentItem = equipment;
-            _currentItem.transform.localScale = Vector3.zero;
-            _currentItem.Appear();
-
-            if (equipment.TryGetComponent(out IWeapon weapon))
+            
+            if (_currentItem.TryGetComponent(out IWeapon weapon))
                 _attack.SetWeapon(weapon);
 
-            if (equipment.TryGetComponent(out IFlashLight flashLight))
+            if (_currentItem.TryGetComponent(out IFlashLight flashLight))
                 flashLight.Init(_light);
+            
+            _currentItem.transform.localScale = Vector3.zero;
+            _currentItem.Appear();
         }
         
         private bool CanEquip(EquippableItemData item)

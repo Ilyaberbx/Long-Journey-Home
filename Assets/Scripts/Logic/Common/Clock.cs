@@ -1,11 +1,15 @@
 ﻿using DG.Tweening;
 using Extensions;
+using Logic.Common.Sound;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators;
 using UnityEngine;
 
 namespace Logic.Common
 {
-    public class Alarm : MonoBehaviour
+    public class Clock : MonoBehaviour
     {
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private float _tickRotationValue;
         [SerializeField] private float _minutesTickPerHour;
         [SerializeField] private float _tickCooldown;
@@ -22,6 +26,7 @@ namespace Logic.Common
             _minutesTickPosition++;
 
             TickArrow(_minutesArrowRoot).OnComplete(ApplyArrowRatio);;
+            _soundOperations.PlaySound<ClockSoundOperator>();
             
             if (_minutesTickPosition >= _minutesTickPerHour)
             {

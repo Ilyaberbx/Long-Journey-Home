@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
 using Extensions;
+using Logic.Level.Sound;
 using Logic.Player;
+using Sound.SoundSystem;
 using UnityEngine;
 
 namespace Logic.Level
 {
     public class Closet : MonoBehaviour, IInteractable
     {
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private Collider _closetCollider;
         [SerializeField] private List<ClosetDoorData> _doors;
         [SerializeField] private string _openedText;
@@ -42,6 +45,7 @@ namespace Logic.Level
             _isOpened = true;
             _sequence = DOTween.Sequence();
             _closetCollider.enabled = false;
+            _soundOperations.PlaySound<OpenSoundOperator>();
             
             foreach (ClosetDoorData door in _doors)
                 _sequence.Append(OpenDoor(door));

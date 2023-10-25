@@ -5,8 +5,10 @@ using Infrastructure.Services.PersistentProgress;
 using Logic.DialogueSystem;
 using Logic.Inventory;
 using Logic.Inventory.Item;
+using Logic.Level.Sound;
 using Logic.Player;
 using Logic.Spawners;
+using Sound.SoundSystem;
 using UnityEngine;
 using Zenject;
 
@@ -14,6 +16,7 @@ namespace Logic.Level
 {
     public class Door : MonoBehaviour,IInteractable
     {
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private UniqueId _idGiver;
         [SerializeField] private Collider _interactCollider;
         [SerializeField] private GameObject _key;
@@ -50,7 +53,10 @@ namespace Logic.Level
                         SaveOpenData();
                     }
                     else
+                    {
+                        _soundOperations.PlaySound<NoOpenSoundOperator>();
                         NotifyNoKey(interactor);
+                    }
                 }
             }
             else
@@ -65,6 +71,7 @@ namespace Logic.Level
 
         private void Open()
         {
+            _soundOperations.PlaySound<OpenSoundOperator>();
             OpenDoor();
             _key.SetActive(true);
             _interactCollider.enabled = false;

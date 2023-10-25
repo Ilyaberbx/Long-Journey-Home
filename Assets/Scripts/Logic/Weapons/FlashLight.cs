@@ -53,7 +53,7 @@ namespace Logic.Weapons
         private void Update()
         {
             _light.CurrentIntensity -= _lessValue;
-
+            
             DecreaseLightIntensity();
             DecreaseLightSize();
 

@@ -1070,6 +1070,10 @@ MonoBehaviour:
     m_Address: Packages/com.unity.cinemachine/Presets/Noise/Handheld_wideangle_strong.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4bf6aba7991b81d48a416974d7348018
+    m_Address: Alarm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

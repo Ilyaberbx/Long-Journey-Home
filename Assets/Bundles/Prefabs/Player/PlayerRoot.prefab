@@ -318,7 +318,7 @@ MonoBehaviour:
   _characterController: {fileID: 3950152820267360752}
   _speed: 70
   _jumpHeight: 130
-  _sprintingCoefficient: 1.5
+  _sprintingCoefficient: 15
 --- !u!114 &6692625439099448067
 MonoBehaviour:
   m_ObjectHideFlags: 0
