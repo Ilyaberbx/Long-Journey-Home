@@ -23,23 +23,21 @@ namespace UI.Services.Factory
         private const string AchievementViewKey = "AchievementPopUp";
         private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
-        private readonly DiContainer _container;
+        private readonly IInstantiator _instantiator;
         private Transform _uiRoot;
-        private IPersistentProgressService _progressService;
 
-
-        public UIFactory(IAssetProvider assets, IStaticDataService staticData, DiContainer container)
+        public UIFactory(IAssetProvider assets, IStaticDataService staticData, IInstantiator instantiator)
         {
             _assets = assets;
             _staticData = staticData;
-            _container = container;
+            _instantiator = instantiator;
         }
 
         public async Task<InventoryWindow> CreateInventory()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Inventory);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
-            InventoryWindow window = _container.InstantiatePrefabForComponent<InventoryWindow>(prefab, _uiRoot);
+            InventoryWindow window = _instantiator.InstantiatePrefabForComponent<InventoryWindow>(prefab, _uiRoot);
             return window;
         }
 
@@ -47,7 +45,7 @@ namespace UI.Services.Factory
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.MainMenu);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
-            MenuWindow window = _container.InstantiatePrefabForComponent<MenuWindow>(prefab, _uiRoot);
+            MenuWindow window = _instantiator.InstantiatePrefabForComponent<MenuWindow>(prefab, _uiRoot);
             return window;
         }
 
@@ -55,7 +53,7 @@ namespace UI.Services.Factory
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Settings);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
-            SettingsWindow window = _container.InstantiatePrefabForComponent<SettingsWindow>(prefab, _uiRoot);
+            SettingsWindow window = _instantiator.InstantiatePrefabForComponent<SettingsWindow>(prefab, _uiRoot);
             return window;
         }
 
@@ -63,7 +61,7 @@ namespace UI.Services.Factory
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Pause);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
-            PauseWindow window = _container.InstantiatePrefabForComponent<PauseWindow>(prefab, _uiRoot);
+            PauseWindow window = _instantiator.InstantiatePrefabForComponent<PauseWindow>(prefab, _uiRoot);
             return window;
         }
 
@@ -77,7 +75,7 @@ namespace UI.Services.Factory
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Envelope);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
-            EnvelopeWindow window = _container.InstantiatePrefabForComponent<EnvelopeWindow>(prefab, _uiRoot);
+            EnvelopeWindow window = _instantiator.InstantiatePrefabForComponent<EnvelopeWindow>(prefab, _uiRoot);
             return window;
         }
 
@@ -85,7 +83,7 @@ namespace UI.Services.Factory
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.GameOver);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
-            GameOverWindow window = _container.InstantiatePrefabForComponent<GameOverWindow>(prefab, _uiRoot);
+            GameOverWindow window = _instantiator.InstantiatePrefabForComponent<GameOverWindow>(prefab, _uiRoot);
             return window;
         }
 
@@ -93,14 +91,14 @@ namespace UI.Services.Factory
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Ending);
             GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
-            EndingWindow window = _container.InstantiatePrefabForComponent<EndingWindow>(prefab, _uiRoot);
+            EndingWindow window = _instantiator.InstantiatePrefabForComponent<EndingWindow>(prefab, _uiRoot);
             return window;
         }
 
         public async Task<AchievementView> CreateAchievementView(AchievementType type)
         {
             GameObject prefab = await _assets.Load<GameObject>(AchievementViewKey);
-            AchievementView view = _container.InstantiatePrefabForComponent<AchievementView>(prefab);
+            AchievementView view = _instantiator.InstantiatePrefabForComponent<AchievementView>(prefab);
             AchievementData data = _staticData.GetAchievementData(type);
             AchievementDto dataDto = new AchievementDto() { Icon = data.Icon, Text = data.Text};
             

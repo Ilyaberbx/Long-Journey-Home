@@ -24,6 +24,7 @@ namespace UI.Services.Factory
         Task<EnvelopeWindow> CreateEnvelopeWindow();
         Task<GameOverWindow> CreateGameOverMenu();
         Task<EndingWindow> CreateEndingWindow();
+        
         Task<AchievementView> CreateAchievementView(AchievementType type);
     }
 }

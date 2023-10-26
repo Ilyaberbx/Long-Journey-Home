@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CarSounds
+  m_EditorClassIdentifier: 
+  m_GroupName: CarSounds
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c9be3f815c9c3b34cb348b5934433f96
+  m_SerializeEntries:
+  - m_GUID: 91adec0689d11c94388d43301aeb1c20
+    m_Address: CarClose
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 776e8e5792231594faa927a8d667c8e6
+    m_Address: CarOpen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4e8d51849f9b51f4e8ed1b0807c7d6fc
+    m_Address: CarStartUpFailing2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8aa8ee997ed84794c8b8b2aa4f07732f
+    m_Address: CarStartUpFailing3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f399eda12638a75419b476409c19ed80
+    m_Address: CarStartUpFailing1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4379803ba43968249b157cc24d2ee471
+    m_Address: CarEngineLoop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b76911037c6ed6d4b8cdb5281e00d133
+    m_Address: CarStalling
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 18665cfd198665e41b5b3ff4d92cdd47, type: 2}
+    - {fileID: 11400000, guid: 2b0e06bc04ae15545ba64c559e4fc12d, type: 2}

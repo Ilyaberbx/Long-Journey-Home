@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Extensions;
 using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.MusicService;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Animations;
 using Logic.Camera;
+using Logic.CutScenes.Sound;
 using Logic.DialogueSystem;
+using Logic.Enemy.Sound;
 using Logic.Inventory;
 using Logic.Inventory.Item;
 using Logic.Player;
+using Sound.SoundSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
@@ -31,6 +35,7 @@ namespace Logic.CutScenes
         [SerializeField] private Dialogue _noLadderDialogue;
         [SerializeField] private ItemData _ladderItem;
         [SerializeField] private AssetReference _smokeReference;
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private Transform _firstSmokeSpawnPoint;
         [SerializeField] private Transform _secondSmokeSpawnPoint;
         [SerializeField] private string _transferTo;
@@ -89,6 +94,7 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[1]));
             _sequence.AppendInterval(_camerasTransitionData[1].BlendTime + 0.4f);
             _sequence.AppendCallback(EnableLadder);
+            _sequence.AppendCallback(PlayLadderPutSound);
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[0]));
             _sequence.AppendInterval(_camerasTransitionData[0].BlendTime + 0.4f);
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[2]));
@@ -107,6 +113,8 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => BearRunningSequence(_bearSecondTarget.position));
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[7]));
             _sequence.AppendInterval(2f);
+            _sequence.AppendCallback(PlayCrashingSound);
+            _sequence.AppendCallback(PlayRoarSound);
             _sequence.AppendCallback(FallPlank);
             _sequence.AppendCallback(AnimateBearAttack);
             _sequence.AppendInterval(0.1f);
@@ -124,8 +132,17 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[8]));
             _sequence.AppendInterval(0.7f);
             _sequence.AppendCallback(SaveProgress);
-            _sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string>(_transferTo));
+            _sequence.AppendCallback(() => _stateMachine.Enter<LoadLevelState, string, AmbienceType>(_transferTo, AmbienceType.ForestAmbience));
         }
+
+        private void PlayLadderPutSound() 
+            => _soundOperations.PlaySound<PutLadderOperator>();
+
+        private void PlayCrashingSound() 
+            => _soundOperations.PlaySound<CrashingSoundOperator>();
+        
+        private void PlayRoarSound() 
+            => _soundOperations.PlaySound<RoarOperator>();
 
         private void AnimateBearAttack()
         {
@@ -147,7 +164,9 @@ namespace Logic.CutScenes
 
         private void SaveProgress()
         {
-            _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel = _transferTo;
+            _progressService.Progress.WorldData.PositionOnLevel.CurrentLevel = _transferTo;
+            _progressService.Progress.AmbienceProgress.CurrentAmbience = AmbienceType.ForestAmbience;
+            
             _saveLoad.SavePlayerProgress();
         }
 
@@ -155,7 +174,7 @@ namespace Logic.CutScenes
         {
             _bear.SetActive(true);
             _enemyAnimator.Move(1);
-            return _bear.transform.DOMove(target, 2.5f).SetEase(Ease.Linear);
+            return _bear.transform.DOMove(target, 3f).SetEase(Ease.Linear);
         }
 
         private void EnableLadder()

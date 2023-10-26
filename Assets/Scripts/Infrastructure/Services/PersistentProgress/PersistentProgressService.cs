@@ -7,8 +7,7 @@ namespace Infrastructure.Services.PersistentProgress
     public class PersistentProgressService : IPersistentProgressService
     {
         private const string SceneByDefault = "IntroRoad";
-        public PlayerProgress PlayerProgress { get; set; }
-        
+        public PlayerProgress Progress { get; set; }
         public PlayerProgress DefaultProgress()
         {
             PlayerProgress progress = new PlayerProgress(SceneByDefault);

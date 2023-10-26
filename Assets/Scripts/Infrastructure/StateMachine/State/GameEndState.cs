@@ -27,7 +27,7 @@ namespace Infrastructure.StateMachine.State
             _globalProgressService = globalProgressService;
         }
 
-        public async Task Enter(HeroToggle heroToggle, EndingType ending)
+        public async void Enter(HeroToggle heroToggle, EndingType ending)
         {
             Cursor.lockState = CursorLockMode.Confined;
 
@@ -61,7 +61,6 @@ namespace Infrastructure.StateMachine.State
             => _saveLoadService.CleanUpPlayerProgress();
 
         public void Exit()
-        {
-        }
+        { }
     }
 }

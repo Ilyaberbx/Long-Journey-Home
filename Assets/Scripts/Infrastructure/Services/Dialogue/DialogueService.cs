@@ -56,7 +56,7 @@ namespace Infrastructure.Services.Dialogue
 
         private IEnumerator TypeSentence(string sentence)
         {
-            foreach (var letter in sentence.ToCharArray())
+            foreach (char letter in sentence)
             {
                 OnSentenceTyping?.Invoke(letter);
                 yield return new WaitForSeconds(_typingOneWordDuration);

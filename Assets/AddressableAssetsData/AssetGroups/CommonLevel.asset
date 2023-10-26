@@ -73,6 +73,14 @@ MonoBehaviour:
     m_Address: Female
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 18e981fdedc519e468fafbf4e141f39b
+    m_Address: CarSounds
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2d0fac60c2d4c664fa67b8fe47574436
+    m_Address: PlayMusicTrigger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

@@ -46,7 +46,7 @@ namespace Logic.Player
                 _attack.SetWeapon(weapon);
 
             if (_currentItem.TryGetComponent(out IFlashLight flashLight))
-                flashLight.Init(_light);
+                flashLight.Initialize(_light);
             
             _currentItem.transform.localScale = Vector3.zero;
             _currentItem.Appear();

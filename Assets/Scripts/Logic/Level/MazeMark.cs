@@ -1,10 +1,11 @@
-﻿using DG.Tweening;
+﻿using System;
+using System.Collections.Generic;
+using DG.Tweening;
 using Logic.Player;
 using UnityEngine;
 
 namespace Logic.Level
 {
-
     public class MazeMark : MonoBehaviour, IInteractable
     {
         [SerializeField] private Collider _colliderToEnable;
@@ -14,6 +15,11 @@ namespace Logic.Level
         [SerializeField] private GameObject _selfInteractor;
         [SerializeField] private GameObject _objectToDisable;
         [SerializeField] private GameObject _objectToEnable;
+
+        private IAction[] _actions;
+
+        private void Awake() 
+            => _actions = GetComponentsInChildren<IAction>();
 
         public void Interact(Transform interactor) 
             => HandleInteract();
@@ -37,10 +43,10 @@ namespace Logic.Level
             sequence.AppendInterval(_enabledDuration);
             return sequence;
         }
-
+        
         private void HandleInteract()
         {
-            PlaySound();
+            ExecuteActions();
             DisableMark();
             EnableObjectsSequence().OnComplete(() =>
             {
@@ -52,15 +58,17 @@ namespace Logic.Level
             
         }
 
+        private void ExecuteActions()
+        {
+            foreach (IAction action in _actions)
+                action.Execute();
+        }
+
         private void ToggleColliders()
         {
             _colliderToEnable.enabled = true;
             _colliderToDisable.enabled = false;
         }
-
-        private void PlaySound()
-        {
-            
-        }
+        
     }
 }

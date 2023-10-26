@@ -42,7 +42,8 @@ namespace Infrastructure.Services.Factories
 
 
         public GameFactory(IAssetProvider assetProvider, IStaticDataService staticData
-            , IWindowService windowService, IPauseService pauseService, IPersistentProgressService progressService, DiContainer container)
+            , IWindowService windowService, IPauseService pauseService, IPersistentProgressService progressService,
+            DiContainer container)
         {
             _assetProvider = assetProvider;
             _staticData = staticData;
@@ -61,6 +62,9 @@ namespace Infrastructure.Services.Factories
             await _assetProvider.Load<GameObject>(AssetsAddress.UIRoot);
             await _assetProvider.Load<GameObject>(AssetsAddress.DialogueView);
             await _assetProvider.Load<AudioClip>(AssetsAddress.LampSound);
+            await _assetProvider.Load<AudioClip>(AssetsAddress.WaterSound);
+            await _assetProvider.Load<AudioClip>(AssetsAddress.CarEngineSound);
+            await _assetProvider.Load<AudioClip>(AssetsAddress.RadioSound);
         }
 
         public void CleanUp()
@@ -77,13 +81,13 @@ namespace Infrastructure.Services.Factories
             Transform container)
         {
             GameObject equipItem = InstantiateRegistered(itemPrefab.gameObject, at);
-            
-            if(equipItem.TryGetComponent(out  ISavedProgressReader reader))
-                reader.LoadProgress(_progressService.PlayerProgress);
+
+            if (equipItem.TryGetComponent(out ISavedProgressReader reader))
+                reader.LoadProgress(_progressService.Progress);
 
             if (equipItem.TryGetComponent(out IAmmoUsable ammoShowable))
-                _uiActor.RegisterAmmoShowableObject(ammoShowable); 
-            
+                _uiActor.RegisterAmmoShowableObject(ammoShowable);
+
             equipItem.transform.SetParent(container);
 
             return equipItem.GetComponent<BaseEquippableItem>();
@@ -100,7 +104,7 @@ namespace Infrastructure.Services.Factories
             return _heroGameObject;
         }
 
-        private GameObject GetHeroObjectFromRoot(GameObject heroRoot) 
+        private GameObject GetHeroObjectFromRoot(GameObject heroRoot)
             => heroRoot.transform.GetChild(0).gameObject;
 
         public async Task<GameObject> CreateHud()
@@ -110,7 +114,14 @@ namespace Infrastructure.Services.Factories
             _uiActor = hud.GetComponent<PlayerUIActor>();
             return hud;
         }
-        
+
+        public async Task<HintView> CreateHintView()
+        {
+            GameObject viewPrefab = await _assetProvider.Load<GameObject>(AssetsAddress.HintView);
+            HintView view = InstantiateRegistered(viewPrefab, false).GetComponent<HintView>();
+            return view;
+        }
+
 
         public async Task<DialogueView> CreateDialogueView()
         {
@@ -146,7 +157,8 @@ namespace Infrastructure.Services.Factories
             return enemy;
         }
 
-        public async Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType, bool isRegisterInContainer)
+        public async Task<EnemySpawnPoint> CreateEnemySpawner(Vector3 at, string spawnerId, EnemyType spawnerEnemyType,
+            bool isRegisterInContainer)
         {
             GameObject prefab = await _assetProvider.Load<GameObject>(AssetsAddress.EnemySpawnPoint);
 
@@ -188,15 +200,18 @@ namespace Infrastructure.Services.Factories
             return obj;
         }
 
-        private GameObject InstantiateRegistered(GameObject prefab)
+        private GameObject InstantiateRegistered(GameObject prefab, bool isLocalSpace = true)
         {
             GameObject obj = _container.InstantiatePrefab(prefab);
-            obj.transform.SetParent(_createdObjectsContainer.transform);
+
+            if (isLocalSpace)
+                obj.transform.SetParent(_createdObjectsContainer.transform);
+
             RegisterProgressWatchers(obj);
             RegisterPauseWatchers(obj);
             return obj;
         }
-        
+
         private void RegisterPauseWatchers(GameObject obj)
         {
             foreach (IPauseHandler handler in obj.GetComponentsInChildren<IPauseHandler>())
@@ -213,7 +228,7 @@ namespace Infrastructure.Services.Factories
         {
             if (obj is ISavedProgressWriter writer)
                 ProgressWriters.Add(writer);
-            
+
             ProgressReaders.Add(obj);
         }
     }

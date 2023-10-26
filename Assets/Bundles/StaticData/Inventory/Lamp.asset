@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41f1b01d6ea4d95b0c558f76aa1c03c, type: 3}
   m_Name: Lamp
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 1330d2f3129fcbf48b1975cc5cd76a71, type: 3}
+  Icon: {fileID: 21300000, guid: 26b09aa45d49aff439ae415bac5b8bce, type: 3}
   IsStackable: 0
   Id: 2
   MaxStackSize: 1

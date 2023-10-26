@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 49dfe3176cbcbcb4a9604bf1f2908478
   m_SerializeEntries:
-  - m_GUID: 53479bcf17cb51e4eb2c24c8cfbcdba7
-    m_Address: Wolf Howl 2
+  - m_GUID: cc80f9b5ef9633b4997e87fdb43bb9d8
+    m_Address: WolfHowl
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 6c3a83573a535444ebf74e24c5be511f

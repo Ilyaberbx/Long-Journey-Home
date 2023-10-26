@@ -36,7 +36,7 @@ namespace Logic.Weapons
         private IReloadableWeaponAnimator _animator;
         private IInputService _input;
         private IPersistentProgressService _progressService;
-        private InventoryData InventoryData => _progressService.PlayerProgress.InventoryData;
+        private InventoryData InventoryData => _progressService.Progress.InventoryData;
         private bool _isAttacking;
         private bool _isReloading;
         private int _ammoInMagazine;
@@ -132,11 +132,14 @@ namespace Logic.Weapons
             for (int i = 0; i < noLoadedAmmo; i++)
             {
                 if (TryWithDrawAmmo())
+                {
+                    PlayReloadSound();
                     _ammoInMagazine++;
+                }
                 else
                     break;
             }
-
+            
             InformAmmoChanged();
 
             _isReloading = false;
@@ -154,6 +157,10 @@ namespace Logic.Weapons
 
         private void PlayAttackSound() 
             => _soundOperations.PlaySound<AttackOperator>();
+        
+        private void PlayReloadSound() 
+            => _soundOperations.PlaySound<ReloadOperator>();
+
 
         private Vector3 CalculateCastDirection()
             => (-_cachedTransform.right + _randomRayDirection) * 150f;

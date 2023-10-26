@@ -22,17 +22,20 @@ namespace Logic.Weapons
         private Vector3 _cachedScale;
         private IHeroLight _light;
         private bool _isFlaming;
+        
 
-        private void Awake()
+        public void Initialize(IHeroLight heroLight)
         {
+            _light = heroLight;
+            
             _cachedScale = transform.localScale;
-
+            
+            if (NoLightIntensity())
+                _soundOperations.Pause();
+            
             foreach (Light light in _lights)
                 _lightsIntensity.Add(light.intensity);
         }
-
-        public void Init(IHeroLight light)
-            => _light = light;
 
         public override void Appear()
         {
@@ -60,14 +63,14 @@ namespace Logic.Weapons
             if (NoLightIntensity() && _isFlaming)
             {
                 _isFlaming = false;
-                _soundOperations.Stop();
+                _soundOperations.Pause();
                 return;
             }
 
             if (_isFlaming || NoLightIntensity()) return;
 
             _isFlaming = true;
-            _soundOperations.PlaySound<LoopSoundOperator>();
+            _soundOperations.Resume();
         }
 
         private bool NoLightIntensity()

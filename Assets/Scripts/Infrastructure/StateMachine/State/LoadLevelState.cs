@@ -8,6 +8,8 @@ using Infrastructure.Interfaces;
 using Infrastructure.Services.EventBus;
 using Infrastructure.Services.EventBus.Handlers;
 using Infrastructure.Services.Factories;
+using Infrastructure.Services.Hint;
+using Infrastructure.Services.MusicService;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
@@ -25,7 +27,7 @@ using UnityEngine.SceneManagement;
 
 namespace Infrastructure.StateMachine.State
 {
-    public class LoadLevelState : IPayloadedState<string>
+    public class LoadLevelState : IPayloadedState<string, AmbienceType>
     {
         private const string PovPoint = "POVPoint";
 
@@ -38,12 +40,15 @@ namespace Infrastructure.StateMachine.State
         private readonly IUIFactory _uiFactory;
         private readonly IPauseService _pauseService;
         private readonly IEventBusService _eventBusService;
+        private readonly IMusicService _musicService;
+        private readonly IHintService _hintService;
+        private AmbienceType _ambience;
 
         public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
             LoadingCurtain loadingCurtain,
             IGameFactory gameFactory, IPersistentProgressService persistentProgressService,
             IStaticDataService staticData, IUIFactory uiFactory, IPauseService pauseService,
-            IEventBusService eventBusService)
+            IEventBusService eventBusService, IMusicService musicService, IHintService hintService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -54,10 +59,15 @@ namespace Infrastructure.StateMachine.State
             _uiFactory = uiFactory;
             _pauseService = pauseService;
             _eventBusService = eventBusService;
+            _musicService = musicService;
+            _hintService = hintService;
         }
 
-        public async void Enter(string payLoad)
+
+        public async void Enter(string payLoad, AmbienceType ambience)
         {
+            _ambience = ambience;
+            _musicService.Stop();
             _gameFactory.CleanUp();
             _pauseService.CleanUp();
             _eventBusService.CleanUp();
@@ -76,11 +86,15 @@ namespace Infrastructure.StateMachine.State
 
         private async void OnLoaded()
         {
-            _persistentProgressService.PlayerProgress.IsFirstLoad = false;
+            _persistentProgressService.Progress.IsFirstLoad = false;
             _gameFactory.CreateContainerForCreatedObjects();
             await InitUIRoot();
             await InitGameWorld();
             InformProgressReaders();
+
+            if (_ambience != AmbienceType.None)
+                _musicService.PlayAmbience(_ambience);
+            
             _gameStateMachine.Enter<GameLoopState>();
         }
 
@@ -90,19 +104,23 @@ namespace Infrastructure.StateMachine.State
         private void InformProgressReaders()
         {
             foreach (ISavedProgressReader reader in _gameFactory.ProgressReaders)
-                reader.LoadProgress(_persistentProgressService.PlayerProgress);
+                reader.LoadProgress(_persistentProgressService.Progress);
         }
 
         private async Task InitGameWorld()
         {
             await InitSpawners();
             GameObject player = await InitPlayer();
+            InitMusicService(player.GetComponent<HeroAmbienceSourceContainer>());
             InformPlayerSpawned(player.transform);
             await InitHud(player);
             await InitDialogueView();
             CinemachineVirtualCamera camera = InitCamera();
             InitPlayerInteractWithCamera(player, camera);
         }
+
+        private void InitMusicService(HeroAmbienceSourceContainer ambienceSource)
+            => _musicService.SetAmbienceSource(ambienceSource.Source);
 
         private async Task InitDialogueView()
             => await _gameFactory.CreateDialogueView();

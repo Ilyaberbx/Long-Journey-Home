@@ -11,5 +11,6 @@ namespace Logic.Enemy
 
         private void OnStep() 
             => _soundOperations.PlaySound<MoveOperator>();
+        
     }
 }

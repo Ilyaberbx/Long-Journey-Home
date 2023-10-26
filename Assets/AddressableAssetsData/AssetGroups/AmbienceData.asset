@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AmbienceData
+  m_EditorClassIdentifier: 
+  m_GroupName: AmbienceData
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 0059e302c6cb8bb42a99808aab9b2816
+  m_SerializeEntries:
+  - m_GUID: 6301a9230d27b8948a79d1d4cfc75d69
+    m_Address: AmbienceDataFolder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AmbienceStaticData
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 000645def2ac2ed4d944f0ac9c5e9e61, type: 2}
+    - {fileID: 11400000, guid: 9a98b2d4d85916d41aad079df2476316, type: 2}

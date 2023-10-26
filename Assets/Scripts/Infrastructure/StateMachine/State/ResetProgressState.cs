@@ -22,7 +22,7 @@ namespace Infrastructure.StateMachine.State
         public void Enter(Action onCleaned)
         {
             _saveLoad.CleanUpPlayerProgress();
-            _progressService.PlayerProgress = _progressService.DefaultProgress();
+            _progressService.Progress = _progressService.DefaultProgress();
             onCleaned?.Invoke();
         }
 

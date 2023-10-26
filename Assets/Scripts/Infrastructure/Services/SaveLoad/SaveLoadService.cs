@@ -11,7 +11,8 @@ namespace Infrastructure.Services.SaveLoad
     {
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _persistentProgressService;
-        private const string ProgressKey = "Progress";
+        private const string TemporaryProgress = "TemporaryProgress";
+        private const string VerifiedProgress = "VerifiedProgress";
         private const string SettingsKey = "Settings";
         private const string GlobalProgressKey = "GlobalProgress";
 
@@ -24,13 +25,23 @@ namespace Infrastructure.Services.SaveLoad
         public void SavePlayerProgress()
         {
             foreach (ISavedProgressWriter progressWriter in _gameFactory.ProgressWriters)
-                progressWriter.UpdateProgress(_persistentProgressService.PlayerProgress);
+                progressWriter.UpdateProgress(_persistentProgressService.Progress);
 
-            PlayerPrefs.SetString(ProgressKey, _persistentProgressService.PlayerProgress.ToJson());
+            PlayerPrefs.SetString(TemporaryProgress, _persistentProgressService.Progress.ToJson());
         }
-
+        
         public PlayerProgress LoadPlayerProgress()
-            => PlayerPrefs.GetString(ProgressKey)?.ToDeserialized<PlayerProgress>();
+            => PlayerPrefs.GetString(TemporaryProgress)?.ToDeserialized<PlayerProgress>();
+
+        public void SaveVerifiedProgress() 
+            => PlayerPrefs.SetString(VerifiedProgress, _persistentProgressService.Progress.ToJson());
+
+        public void ResetToVerified()
+        {
+            PlayerProgress progress = PlayerPrefs.GetString(VerifiedProgress)?.ToDeserialized<PlayerProgress>() ?? _persistentProgressService.DefaultProgress();
+            _persistentProgressService.Progress = progress;
+            PlayerPrefs.SetString(TemporaryProgress, progress.ToJson());
+        }
 
         public void SaveSettings(SettingsData settingsData)
             => PlayerPrefs.SetString(SettingsKey, settingsData.ToJson());
@@ -45,6 +56,9 @@ namespace Infrastructure.Services.SaveLoad
             => PlayerPrefs.GetString(GlobalProgressKey)?.ToDeserialized<GlobalPlayerProgress>();
 
         public void CleanUpPlayerProgress()
-            => PlayerPrefs.DeleteKey(ProgressKey);
+        {
+            PlayerPrefs.DeleteKey(TemporaryProgress);
+            PlayerPrefs.DeleteKey(VerifiedProgress);
+        }
     }
 }

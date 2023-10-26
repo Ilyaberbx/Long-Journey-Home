@@ -17,7 +17,7 @@ namespace Sound.SoundSystem
         private async void Awake()
             => await Initialize();
 
-        private async Task Initialize()
+        private Task Initialize()
         {
             INoArgumentSoundOperator[] simpleOperators = GetComponents<INoArgumentSoundOperator>();
             ISoundOperatorHandleSurface[] handleSurfaceOperators = GetComponents<ISoundOperatorHandleSurface>();
@@ -27,6 +27,7 @@ namespace Sound.SoundSystem
 
             _soundSurfaceOperatorsMap = handleSurfaceOperators.ToDictionary(key => key.GetType(), value => value);
             _soundOperatorsMap = simpleOperators.ToDictionary(key => key.GetType(), value => value);
+            return Task.CompletedTask;
         }
 
         public void PlaySound<T>() where T : INoArgumentSoundOperator
@@ -46,7 +47,16 @@ namespace Sound.SoundSystem
         }
 
         public void Stop()
-            => _audioSource.Stop();
+        {
+            _audioSource.clip = null;
+            _audioSource.Stop();
+        }
+
+        public void Pause() 
+            => _audioSource.Pause();
+
+        public void Resume() 
+            => _audioSource.Play();
 
         private void InitializeOperators(ISoundOperator[] operators)
         {

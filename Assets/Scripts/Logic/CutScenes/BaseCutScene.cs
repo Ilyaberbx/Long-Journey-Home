@@ -37,10 +37,10 @@ namespace Logic.CutScenes
             => _pauseService.Register(this);
         
         protected bool IsCutScenePassed()
-            => _progressService.PlayerProgress.CutSceneData.Passed.Contains(_uniqueId.Id);
+            => _progressService.Progress.CutSceneData.Passed.Contains(_uniqueId.Id);
 
         protected void PassCutScene()
-            => _progressService.PlayerProgress.CutSceneData.Passed.Add(_uniqueId.Id);
+            => _progressService.Progress.CutSceneData.Passed.Add(_uniqueId.Id);
 
         public abstract void StartCutScene(Transform player, Action onCutSceneEnded);
 

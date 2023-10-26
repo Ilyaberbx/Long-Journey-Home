@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Extensions;
 using Infrastructure.Services.Dialogue;
+using Infrastructure.Services.MusicService;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Camera;
 using Logic.Car;
+using Logic.CutScenes.Sound;
 using Logic.DialogueSystem;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators;
 using UnityEngine;
 using Zenject;
 
@@ -17,6 +21,8 @@ namespace Logic.CutScenes
     {
         private const string IntroRoadScene = "IntroRoad";
 
+        [SerializeField] private SoundOperations _carSoundOperations;
+        [SerializeField] private SoundOperations _radioSoundOperations;
         [SerializeField] private List<Transform> _carWayPoints;
         [SerializeField] private List<CutSceneCameraTransitionData> _cameraTransitions;
         [SerializeField] private Dialogue[] _dialogues;
@@ -63,11 +69,14 @@ namespace Logic.CutScenes
             if (isPaused)
             {
                 _carMovingTween.timeScale = 0;
-                
+                _carSoundOperations.Pause();
+                _radioSoundOperations.Pause();
                 ResetChangingTimeScaleTween();
                 return;
             }
-
+            
+            _carSoundOperations.Resume();
+            _radioSoundOperations.Resume();
             HandleWayPointTimeScale(_wayPointIndex);
         }
 
@@ -88,26 +97,34 @@ namespace Logic.CutScenes
         }
 
         private void EntryRoadScene()
-        {
-            Debug.Log("End intro");
-            _stateMachine.Enter<LoadLevelState, string>(IntroRoadScene);
-        }
+            => _stateMachine.Enter<LoadLevelState, string, AmbienceType>(IntroRoadScene, AmbienceType.ForestAmbience);
 
         public override void StartCutScene(Transform car, Action onCutSceneEnded)
         {
             _sequence = DOTween.Sequence();
+            _sequence.AppendCallback(PlayRadio);
+            _sequence.AppendCallback(PlayEngineLoopSound);
             _sequence.AppendCallback(() => MoveCar(_carMovingDuration));
             _sequence.AppendCallback(() => _carLights.ToggleLights(0f, 500000));
             _sequence.AppendInterval(_carMovingDuration + 2f);
             _sequence.AppendCallback(() => _carLights.ToggleLights(3f, 0f));
+            _sequence.AppendInterval(0.8f);
+            _sequence.AppendCallback(_radioSoundOperations.Stop);
+            _sequence.AppendCallback(_carSoundOperations.Stop);
+            _sequence.AppendCallback(PlayStallingSound);
             _sequence.AppendInterval(8f);
-            _sequence.Append(_carLights.KickstartLights(3f, 2f));
+            _sequence.AppendInterval(3f);
+            _sequence.AppendCallback(PlayStartUpEngineSound);
+            _sequence.Append(_carLights.KickstartLights(2f, 2f));
             _sequence.AppendInterval(2f);
             _sequence.AppendCallback(() => StartDialogue(_dialogues[0]));
+            _sequence.AppendCallback(PlayStartUpEngineSound);
             _sequence.Append(_carLights.KickstartLights(2f, 2f));
             _sequence.AppendInterval(3f);
-            _sequence.Append(_carLights.KickstartLights(4f, 4f));
+            _sequence.AppendCallback(PlayStartUpEngineSound);
+            _sequence.Append(_carLights.KickstartLights(2f, 2f));
             _sequence.AppendInterval(8f);
+            _sequence.AppendCallback(PlayOpenDoorSound);
             _sequence.Append(OpenDoor());
             _sequence.AppendInterval(4f);
             _sequence.AppendCallback(() => ChangeCamera(_cameraTransitions[0]));
@@ -117,8 +134,23 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
 
-        private void StartDialogue(Dialogue dialogue) 
+        private void PlayRadio()
+            => _radioSoundOperations.PlaySound<LoopSoundOperator>();
+
+        private void PlayStallingSound()
+            => _carSoundOperations.PlaySound<CarStallingSoundOperator>();
+
+        private void PlayEngineLoopSound()
+            => _carSoundOperations.PlaySound<CarEngineLoopSoundOperator>();
+
+        private void PlayStartUpEngineSound()
+            => _carSoundOperations.PlaySound<CarStartUpSoundOperator>();
+
+        private void StartDialogue(Dialogue dialogue)
             => _dialogueService.StartDialogue(dialogue);
+
+        private void PlayOpenDoorSound()
+            => _carSoundOperations.PlaySound<OpenDoorSoundOperator>();
 
 
         private Tween OpenDoor()

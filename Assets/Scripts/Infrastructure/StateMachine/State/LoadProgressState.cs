@@ -1,14 +1,14 @@
 ﻿using Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.GlobalProgress;
+using Infrastructure.Services.MusicService;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 
 namespace Infrastructure.StateMachine.State
 {
-    public class LoadProgressState : IPayloadedState<string>
+    public class LoadProgressState : IPayloadedState<string, AmbienceType>, IState
     {
-        private const string MainMenuKey = "MainMenu";
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IPersistentProgressService _progressService;
         private readonly ISaveLoadService _saveLoadService;
@@ -23,18 +23,18 @@ namespace Infrastructure.StateMachine.State
             _globalProgressService = globalProgressService;
         }
 
-        public void Enter(string scene)
+
+        public void Enter()
         {
             LoadProgressOrInitNew();
-
-            if (IsMenuScene(scene))
-                _gameStateMachine.Enter<LoadMainMenuState>();
-            else
-                _gameStateMachine.Enter<LoadLevelState, string>(scene);
+            _gameStateMachine.Enter<LoadMainMenuState>();
         }
 
-        private bool IsMenuScene(string scene) 
-            => scene == MainMenuKey;
+        public void Enter(string scene, AmbienceType ambience)
+        {
+            LoadProgressOrInitNew();
+            _gameStateMachine.Enter<LoadLevelState, string, AmbienceType>(scene, ambience);
+        }
 
         public void Exit()
         { }
@@ -44,7 +44,7 @@ namespace Infrastructure.StateMachine.State
             _globalProgressService.GlobalPlayerProgress = _saveLoadService.LoadGlobalProgress()
                                                           ?? new GlobalPlayerProgress();
 
-            _progressService.PlayerProgress = _saveLoadService.LoadPlayerProgress()
+            _progressService.Progress = _saveLoadService.LoadPlayerProgress()
                                               ?? _progressService.DefaultProgress();
         }
     }

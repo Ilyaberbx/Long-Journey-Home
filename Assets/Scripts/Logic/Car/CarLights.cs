@@ -26,8 +26,9 @@ namespace Logic.Car
 
         public void ToggleLights(float duration, float value)
         {
+
             foreach (Light light in _frontlights)
-                light.DOIntensity(value, duration).SetEase(Ease.InBounce);
+               light.DOIntensity(value, duration).SetEase(Ease.InBounce);
 
             foreach (Light light in _backlights)
                 light.DOIntensity(value, duration).SetEase(Ease.OutBounce);

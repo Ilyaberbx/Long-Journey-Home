@@ -9,7 +9,7 @@ namespace UI.Elements
     public abstract class WindowBase : MonoBehaviour
     {
         private Action _close;
-        protected PlayerProgress _progress => _progressService.PlayerProgress;
+        protected PlayerProgress _progress => _progressService.Progress;
         private IPersistentProgressService _progressService;
 
         [Inject]

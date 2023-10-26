@@ -8,5 +8,7 @@ namespace Sound.SoundSystem
         void PlaySound<T>() where T : INoArgumentSoundOperator;
         void PlaySound<T>(SurfaceType surface) where T : ISoundOperatorHandleSurface;
         void Stop();
+        void Pause();
+        void Resume();
     }
 }

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MusicSounds
+  m_EditorClassIdentifier: 
+  m_GroupName: MusicSounds
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 117f79713ac68164084afcac5ff16f3e
+  m_SerializeEntries:
+  - m_GUID: 338c0b9c7fe4f8e4eacda4874d03ae3e
+    m_Address: MainMenu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f5506281b1200e7429ef2eb13059c105
+    m_Address: No hope
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e583ae2c50cbc5e4391f7f2431f9696f
+    m_Address: Wife
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 48aef59c0d5be7344ab1a7fb0df4d4da
+    m_Address: Noise
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 268472c0de885684999d299c11f24bf7, type: 2}
+    - {fileID: 11400000, guid: a18d1f2f456b66345b923de54d4ed42e, type: 2}

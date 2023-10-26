@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e4bf772e2a41f78bc1e4aca771cd24, type: 3}
   m_Name: Keys
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 2bb4e96f5d0b02c468932d665a015c54, type: 3}
+  Icon: {fileID: 21300000, guid: a7535e39943dc8447904bfe7a224982e, type: 3}
   IsStackable: 0
   Id: 6
   MaxStackSize: 1

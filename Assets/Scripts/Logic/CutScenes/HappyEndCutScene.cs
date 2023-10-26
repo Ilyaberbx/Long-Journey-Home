@@ -5,7 +5,9 @@ using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Camera;
 using Logic.Car;
+using Logic.CutScenes.Sound;
 using Logic.Player;
+using Sound.SoundSystem;
 using UI.Services.Factory;
 using UnityEngine;
 using Zenject;
@@ -14,6 +16,7 @@ namespace Logic.CutScenes
 {
     public class HappyEndCutScene : BaseCutScene
     {
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private CutSceneCameraTransitionData[] _transitionDatas;
         [SerializeField] private Transform _door;
         [SerializeField] private CarLights _carLights;
@@ -23,7 +26,7 @@ namespace Logic.CutScenes
         private IGameStateMachine _stateMachine;
 
         [Inject]
-        public void Construct(ICameraService cameraService, IUIFactory uiFactory,IGameStateMachine stateMachine)
+        public void Construct(ICameraService cameraService, IUIFactory uiFactory, IGameStateMachine stateMachine)
         {
             _cameraService = cameraService;
             _uiFactory = uiFactory;
@@ -48,23 +51,43 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(DisableTriggers);
             _sequence.AppendCallback(equiper.ClearUp);
             _sequence.AppendCallback(ParentEquipmentToMain(cameraWrapper));
+            _sequence.AppendCallback(PlayOpenDoorSound);
             _sequence.Append(OpenDoor());
             _sequence.AppendCallback(() => ChangeCamera(_transitionDatas[0]));
             _sequence.AppendInterval(_transitionDatas[0].BlendTime + 1.4f);
+            _sequence.AppendCallback(PlayCloseDoorSound);
             _sequence.Append(CloseDoor());
             _sequence.AppendInterval(1.2f);
+            _sequence.AppendCallback(PlayEngineStartUp);
             _sequence.Append(_carLights.KickstartLights(3f, 2f));
             _sequence.AppendInterval(2f);
+            _sequence.AppendCallback(PlayEngineStartUp);
             _sequence.Append(_carLights.KickstartLights(2f, 2f));
             _sequence.AppendInterval(3f);
-            _sequence.Append(_carLights.KickstartLights(4f, 4f));
+            _sequence.AppendCallback(PlayEngineStartUp);
+            _sequence.Append(_carLights.KickstartLights(2f, 2f));
             _sequence.AppendInterval(1f);
+            _sequence.AppendCallback(PlayEngineStartUp);
             _sequence.AppendCallback(() => _carLights.ToggleLights(1f, 500000));
             _sequence.AppendInterval(2f);
-            _sequence.Append(ToggleEyeCurtain(1,1f));
+            _sequence.AppendCallback(PlayEngineLoop);
+            _sequence.AppendInterval(2f);
+            _sequence.Append(ToggleEyeCurtain(1, 1f));
             _sequence.AppendInterval(1f);
             _sequence.AppendCallback(() => EnterEndingState(heroToggle));
         }
+
+        private void PlayEngineLoop()
+            => _soundOperations.PlaySound<CarEngineLoopSoundOperator>();
+
+        private void PlayCloseDoorSound()
+            => _soundOperations.PlaySound<CloseDoorSoundOperator>();
+
+        private void PlayEngineStartUp()
+            => _soundOperations.PlaySound<CarStartUpSoundOperator>();
+
+        private void PlayOpenDoorSound()
+            => _soundOperations.PlaySound<OpenDoorSoundOperator>();
 
         private void EnterEndingState(HeroToggle heroToggle)
             => _stateMachine.Enter<GameEndState, HeroToggle, EndingType>(heroToggle, EndingType.HappyEnd);

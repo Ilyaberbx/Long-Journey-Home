@@ -33,7 +33,7 @@ namespace Logic.Level
             if (!player.TryGetComponent(out IHealth health) || !player.TryGetComponent(out IFreezable freeze)) return;
 
             _isFire = true;
-            _saveTrigger.Save();
+            _saveTrigger.Save(true);
             _healingRoutine = StartCoroutine(HealingRoutine(health, freeze));
         }
 

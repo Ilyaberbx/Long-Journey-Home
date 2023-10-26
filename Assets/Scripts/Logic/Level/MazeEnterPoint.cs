@@ -35,7 +35,7 @@ namespace Logic.Level
             hero.GetComponent<HeroWindowOpener>().enabled = false;
             hero.GetComponent<HeroAttack>().enabled = false;
             hero.GetComponent<HeroLight>().enabled = false;
-            hero.GetComponent<HeroPauseHandler>().enabled = false;
+            hero.GetComponent<HeroPauseHandler>().IsHandlePause = false;
             hero.GetComponent<HeroHudWrapper>().Hide();
             hero.GetComponent<HeroCutsSceneProcessor>().IsCutSceneActive = true;
         }

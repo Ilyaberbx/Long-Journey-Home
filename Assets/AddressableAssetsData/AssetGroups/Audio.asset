@@ -21,10 +21,6 @@ MonoBehaviour:
     m_Address: GlobalMixer
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6e723b74b857bd04a8de5069f2b93e6b
-    m_Address: MenuAmbient
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

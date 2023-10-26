@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: EffectsSounds
+  m_EditorClassIdentifier: 
+  m_GroupName: EffectsSounds
+  m_Data:
+    m_SerializedData: []
+  m_GUID: fb854bb0726533f4a90f9aaffd41239d
+  m_SerializeEntries:
+  - m_GUID: 9f76e16c319eb9f4a9c3e6c5abd6ab7c
+    m_Address: WindowKnocking
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6d3ea0b249735b428ea90721bec3104
+    m_Address: Claws
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 66ae3c8fe510537469aeb7c1d2471b22
+    m_Address: HeartBeat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 32bf3627be0b66840b16afe4df4dccdf
+    m_Address: CrowVoice
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 94ce7529bc856064b968e598576fb551
+    m_Address: BodyFallOnFloor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 324fa11a18f203e48b8f383e7b9ee466
+    m_Address: OldRadio
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cb569ff7eda4d64aa0eac91d9125cce
+    m_Address: BadFinalEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d89f4252c9d5e244fb59e36a1d9084e9
+    m_Address: ManCrying1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f76c212d71b67724f83866010382b390
+    m_Address: ManScream3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2d56597214f8182469c6e65d99b488d1
+    m_Address: MaleScream1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7263bfaabc29ba141bdd2ef01f13ca7c
+    m_Address: ManScream2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ac204a01253fbdc439528dfbb8e361bc, type: 2}
+    - {fileID: 11400000, guid: 288b5d5a3e227f94887264d35fa9a501, type: 2}

@@ -24600,6 +24600,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  _sourceVolume: 0
 --- !u!1 &5935698509893228873
 GameObject:
   m_ObjectHideFlags: 0

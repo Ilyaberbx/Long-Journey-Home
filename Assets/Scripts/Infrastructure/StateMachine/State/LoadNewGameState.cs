@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.Factories;
+using Infrastructure.Services.MusicService;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.SceneManagement;
 using Logic;
-using UI.Elements;
 using UI.Services.Factory;
 using Zenject;
 
@@ -19,12 +19,13 @@ namespace Infrastructure.StateMachine.State
         private readonly ISceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IPauseService _pauseService;
+        private readonly IMusicService _musicService;
 
         [Inject]
         public LoadNewGameState(IGameStateMachine stateMachine
             , IUIFactory uiFactory
             , IGameFactory gameFactory
-            , ISceneLoader sceneLoader, LoadingCurtain loadingCurtain,IPauseService pauseService)
+            , ISceneLoader sceneLoader, LoadingCurtain loadingCurtain,IPauseService pauseService,IMusicService musicService)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
@@ -32,11 +33,14 @@ namespace Infrastructure.StateMachine.State
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
             _pauseService = pauseService;
+            _musicService = musicService;
         }
 
-        public void Enter()
+        public async void Enter()
         {
             _loadingCurtain.Show();
+            _musicService.Stop();
+            await _gameFactory.WarmUp();
             _sceneLoader.Load(IntroLevel, OnLoaded);
         }
 

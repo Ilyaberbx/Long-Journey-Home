@@ -7,7 +7,7 @@ namespace UI.Pause
 {
     public class MainMenuButton : BaseButton
     {
-        private const string MainMenuKey = "MainMenu";
+
         private IGameStateMachine _gameStateMachine;
 
         [Inject]
@@ -17,7 +17,7 @@ namespace UI.Pause
         protected override void Execute()
         {
             DisableButton();
-            _gameStateMachine.Enter<LoadProgressState, string>(MainMenuKey);
+            _gameStateMachine.Enter<LoadProgressState>();
         }
     }
 }

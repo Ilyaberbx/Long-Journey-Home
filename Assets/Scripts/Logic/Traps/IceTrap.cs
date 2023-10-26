@@ -1,12 +1,14 @@
 ﻿using Logic.Common;
-using Logic.Enemy;
 using Logic.Player;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators;
 using UnityEngine;
 
 namespace Logic.Traps
 {
     public class IceTrap : MonoBehaviour
     {
+        [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private int _trapedDamage;
         [SerializeField] private IceFloor _floor;
         [SerializeField] private TriggerObserver _trapTrigger;
@@ -38,6 +40,7 @@ namespace Logic.Traps
             if (!victim.TryGetComponent(out IHealth _))
                 return;
 
+            _soundOperations.PlaySound<SingleSoundOperator>();
             _floor.Shatter();
         }
     }

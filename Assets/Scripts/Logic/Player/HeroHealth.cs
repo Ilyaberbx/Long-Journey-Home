@@ -1,9 +1,9 @@
 ﻿using System;
 using Data;
-using Infrastructure.Interfaces;
 using Infrastructure.Services.SaveLoad;
 using Logic.Animations;
 using UnityEngine;
+using static UnityEngine.Mathf;
 
 namespace Logic.Player
 {
@@ -32,6 +32,9 @@ namespace Logic.Player
                     _state.MaxHP = value;
             }
         }
+        
+        public void Construct(ICameraAnimator animator)
+            => _animator = animator;
 
         public void TakeDamage(int damage, bool withAnimation = true)
         {
@@ -43,21 +46,19 @@ namespace Logic.Player
 
             CurrentHealth = ClampHealthPoints(damage);
         }
+        
 
-        public void Construct(ICameraAnimator animator)
-            => _animator = animator;
+        private int ClampHealthPoints(int damage)
+            => Clamp(CurrentHealth - damage, 0, MaxHp);
 
         public void LoadProgress(PlayerProgress progress)
         {
             _state = progress.HealthState;
-            Debug.Log("Current health: " + _state.CurrentHP);
             OnHealthChanged?.Invoke();
         }
 
         public void UpdateProgress(PlayerProgress progress) 
             => progress.HealthState = _state;
-
-        private int ClampHealthPoints(int damage)
-            => Mathf.Clamp(CurrentHealth - damage, 0, MaxHp);
+        
     }
 }

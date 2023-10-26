@@ -85,6 +85,10 @@ MonoBehaviour:
     m_Address: AchievementPopUp
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ae62f7af5ba020d4f98a50cf57bc4fd8
+    m_Address: HintView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:

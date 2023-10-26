@@ -67,6 +67,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa41b0770cebe444190264219c5560c3, type: 2}
   - {fileID: 11400000, guid: bed1bcf81e92dbd4abbe2f536ad43798, type: 2}
   - {fileID: 11400000, guid: 062884a9997ed774493ab90eae61e3c9, type: 2}
+  - {fileID: 11400000, guid: 691ef6ca64a776f43b3d5d68fabb9404, type: 2}
+  - {fileID: 11400000, guid: e8421f95dbb3a0c46964c4914e487244, type: 2}
+  - {fileID: 11400000, guid: ee86cd05cea887c4c8340f72cfec0a6b, type: 2}
+  - {fileID: 11400000, guid: 06ab3fe9e71249e49b12ee007ac09983, type: 2}
+  - {fileID: 11400000, guid: 9533be7dd803ec14bbe186693236ef81, type: 2}
+  - {fileID: 11400000, guid: f5d443b7e23f69c4b900f1cd4b624810, type: 2}
+  - {fileID: 11400000, guid: ccf049e7003b6db4b86490a0f746b541, type: 2}
+  - {fileID: 11400000, guid: b9463f467bfb9c249a0ca285466e27b9, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -111,6 +119,8 @@ MonoBehaviour:
     - LevelStaticData
     - EnemiesStaticData
     - AchievementsStaticData
+    - MusicStaticData
+    - AmbienceStaticData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 998bd4a3db049c941a098fc44fa03beb, type: 2}

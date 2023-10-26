@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.PersistentProgress;
+﻿using Infrastructure.Services.MusicService;
+using Infrastructure.Services.PersistentProgress;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using UI.Elements;
@@ -12,7 +13,7 @@ namespace UI.Menu
         private IPersistentProgressService _progressService;
 
         [Inject]
-        public void Construct(IGameStateMachine stateMachine,IPersistentProgressService progressService)
+        public void Construct(IGameStateMachine stateMachine, IPersistentProgressService progressService)
         {
             _stateMachine = stateMachine;
             _progressService = progressService;
@@ -21,8 +22,9 @@ namespace UI.Menu
         protected override void Execute()
         {
             DisableButton();
-            string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel;
-            _stateMachine.Enter<LoadLevelState,string>(level);
+            string level = _progressService.Progress.WorldData.PositionOnLevel.CurrentLevel;
+            AmbienceType ambience = _progressService.Progress.AmbienceProgress.CurrentAmbience;
+            _stateMachine.Enter<LoadLevelState, string, AmbienceType>(level, ambience);
         }
     }
 }

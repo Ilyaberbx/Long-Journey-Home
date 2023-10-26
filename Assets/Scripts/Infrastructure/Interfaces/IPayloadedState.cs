@@ -9,6 +9,6 @@ namespace Infrastructure.Interfaces
     
     public interface IPayloadedState<in TPayload, in TVPayload> : IExitableState
     {
-        Task Enter(TPayload tPayLoad, TVPayload tvPayload);
+        void Enter(TPayload tPayLoad, TVPayload tvPayload);
     }
 }

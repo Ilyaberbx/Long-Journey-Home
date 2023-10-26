@@ -7,8 +7,11 @@ using Infrastructure.StateMachine.State;
 using Logic.Animations;
 using Logic.Camera;
 using Logic.Car;
+using Logic.CutScenes.Sound;
 using Logic.DialogueSystem;
 using Logic.Player;
+using Sound.SoundSystem;
+using Sound.SoundSystem.Operators;
 using UI.Services.Factory;
 using UnityEngine;
 using Zenject;
@@ -18,6 +21,8 @@ namespace Logic.CutScenes
 {
     public class BadEndCutScene : BaseCutScene
     {
+        [SerializeField] private SoundOperations _carSoundOperations;
+        [SerializeField] private SoundOperations _badSoundOperations;
         [SerializeField] private Dialogue[] _dialogues;
         [SerializeField] private CutSceneCameraTransitionData[] _transitionDatas;
         [SerializeField] private CarLights _carLights;
@@ -68,15 +73,20 @@ namespace Logic.CutScenes
             HideEquip(player);
             _sequence = DOTween.Sequence();
             _sequence.AppendCallback(DisableTriggers);
+            _sequence.AppendCallback(PlayOpenDoorSound);
             _sequence.Append(OpenDoor());
             _sequence.AppendCallback(() => ChangeCamera(_transitionDatas[0]));
             _sequence.AppendInterval(_transitionDatas[0].BlendTime);
             _sequence.Append(CloseDoor());
+            _sequence.AppendCallback(PlayCloseDoorSound);
             _sequence.AppendInterval(1f);
-            _sequence.Append(_carLights.KickstartLights(3f, 2f));
-            _sequence.Append(_carLights.KickstartLights(3f, 4f));
+            _sequence.AppendCallback(PlayFailEngineStart);
+            _sequence.Append(_carLights.KickstartLights(2f, 2f));
+            _sequence.AppendCallback(PlayFailEngineStart);
+            _sequence.Append(_carLights.KickstartLights(2f, 3f));
             _sequence.AppendCallback(() => StartDialogue(_dialogues[0]));
-            _sequence.Append(_carLights.KickstartLights(1f, 1f));
+            _sequence.AppendCallback(PlayFailEngineStart);
+            _sequence.Append(_carLights.KickstartLights(2f, 1f));
             _sequence.AppendCallback(() => MoveBearTo(_bearWayPoints[0], _bearMovingDurations[0]));
             _sequence.AppendInterval(1f);
             _sequence.AppendCallback(() => ChangeCamera(_transitionDatas[1]));
@@ -84,19 +94,31 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => ChangeCamera(_transitionDatas[2]));
             _sequence.AppendInterval(_transitionDatas[2].BlendTime);
             _sequence.AppendCallback(() => MoveBearTo(_bearWayPoints[1], _bearMovingDurations[1]));
+            _sequence.AppendCallback(PlayFailEngineStart);
             _sequence.Append(_carLights.KickstartLights(2f, 1f));
-            _sequence.Append(_carLights.KickstartLights(3f, 2f));
             _sequence.AppendCallback(() => _bearAnimator.Move(0));
             _sequence.AppendCallback(() => _bear.LookAt(_bearLookPoint.position));
             _sequence.AppendInterval(1f);
             _sequence.AppendCallback(() => ChangeCamera(_transitionDatas[3]));
             _sequence.AppendInterval(_transitionDatas[3].BlendTime - 0.5f);
             _sequence.AppendCallback(() => _bearAnimator.PlayRoar());
-            _sequence.AppendInterval(0.8f);
+            _sequence.AppendCallback(PlayBadEndSound);
             _sequence.Append(ToggleEyeCurtain(1, 0.7f));
             _sequence.AppendInterval(1f);
             _sequence.AppendCallback(() => EnterEndingState(heroToggle));
         }
+
+        private void PlayFailEngineStart()
+            => _carSoundOperations.PlaySound<CarStartUpSoundOperator>();
+
+        private void PlayBadEndSound()
+            => _badSoundOperations.PlaySound<SingleSoundOperator>();
+
+        private void PlayOpenDoorSound()
+            => _carSoundOperations.PlaySound<OpenDoorSoundOperator>();
+
+        private void PlayCloseDoorSound()
+            => _carSoundOperations.PlaySound<CloseDoorSoundOperator>();
 
         private void StartDialogue(Dialogue dialogue)
             => _dialogueService.StartDialogue(dialogue);

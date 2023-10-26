@@ -1,4 +1,6 @@
-﻿using Infrastructure.Interfaces;
+﻿using System.Threading.Tasks;
+using Infrastructure.Interfaces;
+using Infrastructure.Services.MusicService;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.Settings;
@@ -21,10 +23,12 @@ namespace Infrastructure.StateMachine.State
         private readonly IPauseService _pauseService;
         private readonly ISettingsService _settingsService;
         private readonly IVignetteService _vignetteService;
+        private readonly IMusicService _musicService;
 
         public LoadMainMenuState(IGameStateMachine stateMachine,IWindowService windowService, 
             ISceneLoader sceneLoader,IUIFactory uiFactory, 
-            LoadingCurtain loadingCurtain,IPauseService pauseService,ISettingsService settingsService,IVignetteService vignetteService)
+            LoadingCurtain loadingCurtain,IPauseService pauseService,ISettingsService settingsService
+            ,IVignetteService vignetteService,IMusicService musicService)
         {
             _stateMachine = stateMachine;
             _windowService = windowService;
@@ -34,10 +38,12 @@ namespace Infrastructure.StateMachine.State
             _pauseService = pauseService;
             _settingsService = settingsService;
             _vignetteService = vignetteService;
+            _musicService = musicService;
         }
 
         public void Enter()
         {
+            _musicService.Stop();
             _pauseService.CleanUp();
             _loadingCurtain.Show();
             _sceneLoader.Load(MainMenu,OnLoaded);
@@ -48,6 +54,7 @@ namespace Infrastructure.StateMachine.State
 
         private async void OnLoaded()
         {
+            _musicService.PlayMusic(MusicType.MainMenu);
             _vignetteService.Reset();
             _pauseService.SetPaused(false);
             _pauseService.CanBePaused = false;

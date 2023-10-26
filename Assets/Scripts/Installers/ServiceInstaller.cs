@@ -5,6 +5,7 @@ using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.EventBus;
 using Infrastructure.Services.Factories;
 using Infrastructure.Services.GlobalProgress;
+using Infrastructure.Services.Hint;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Pause;
 using Infrastructure.Services.PersistentProgress;
@@ -44,7 +45,13 @@ namespace Installers
             BindStateMachine();
             BindSettings();
             BindDialogueService();
+            BindHintService();
         }
+
+        private void BindHintService()
+            => Container.BindInterfacesTo<HintService>()
+                .AsSingle()
+                .NonLazy();
 
         private void BindVignetteService()
             => Container.BindInterfacesTo<VignetteService>()

@@ -14,6 +14,7 @@ namespace Logic.Player
         [SerializeField] private HeroHealth _health;
         [SerializeField] private float _freezeValue;
         [SerializeField] private int _damage;
+        
         private FreezeState _state;
         private IVignetteService _vignetteService;
 
@@ -49,18 +50,18 @@ namespace Logic.Player
         private void UpdateVignette() 
             => _vignetteService.UpdateFreeze(_state.CurrentFreeze, _state.MaxFreeze);
 
-        private bool IsFroze() 
+        public bool IsFroze() 
             => CurrentFreeze <= 1;
 
         private void TakeDamage() 
             => _health.TakeDamage(_damage,false);
 
-        public void DecreaseCurrentWarmLevel(float value) 
-            => CurrentFreeze = ClampFreezeLevel(value);
-
         private float ClampFreezeLevel(float value) 
             => Mathf.Clamp(CurrentFreeze - value, 0, MaxFreeze);
 
+        public void DecreaseCurrentWarmLevel(float value) 
+            => CurrentFreeze = ClampFreezeLevel(value);
+        
 
         public void LoadProgress(PlayerProgress progress)
         {

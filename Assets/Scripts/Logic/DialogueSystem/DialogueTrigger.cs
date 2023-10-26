@@ -27,10 +27,10 @@ namespace Logic.DialogueSystem
         }
 
         private bool IsPassed() 
-            => _progressService.PlayerProgress.DialogueData.Passed.Contains(_uniqueId.Id);
+            => _progressService.Progress.DialogueData.Passed.Contains(_uniqueId.Id);
 
         private void Pass()
-            => _progressService.PlayerProgress.DialogueData.Passed.Add(_uniqueId.Id);
+            => _progressService.Progress.DialogueData.Passed.Add(_uniqueId.Id);
 
         private void OnDestroy() 
             => _triggerObserver.OnTriggerEntered -= Trigger;

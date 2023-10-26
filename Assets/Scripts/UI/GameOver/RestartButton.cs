@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.PersistentProgress;
+﻿using Infrastructure.Services.MusicService;
+using Infrastructure.Services.PersistentProgress;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using UI.Elements;
@@ -21,8 +22,9 @@ namespace UI.GameOver
         protected override void Execute()
         {
             DisableButton();
-            string level = _progressService.PlayerProgress.WorldData.PositionOnLevel.CurrentLevel;
-            _stateMachine.Enter<LoadProgressState,string>(level);
+            string level = _progressService.Progress.WorldData.PositionOnLevel.CurrentLevel;
+            AmbienceType ambience = _progressService.Progress.AmbienceProgress.CurrentAmbience;
+            _stateMachine.Enter<LoadProgressState, string, AmbienceType>(level, ambience);
         }
     }
 }

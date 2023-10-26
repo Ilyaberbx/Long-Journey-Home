@@ -34,7 +34,7 @@ namespace Logic.Level
 
         private void Start()
         {
-            if (_progressService.PlayerProgress.DoorData.OpenedDoors.Contains(_idGiver.Id)) 
+            if (_progressService.Progress.DoorData.OpenedDoors.Contains(_idGiver.Id)) 
                 Open();
         }
 
@@ -67,7 +67,7 @@ namespace Logic.Level
         }
 
         private void SaveOpenData() 
-            => _progressService.PlayerProgress.DoorData.OpenedDoors.Add(_idGiver.Id);
+            => _progressService.Progress.DoorData.OpenedDoors.Add(_idGiver.Id);
 
         private void Open()
         {

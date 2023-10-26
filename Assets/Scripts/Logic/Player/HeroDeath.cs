@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Infrastructure.Services.EventBus;
 using Infrastructure.Services.Pause;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.StateMachine.State;
 using Logic.Animations;
 using Sound.SoundSystem;
@@ -18,6 +19,7 @@ namespace Logic.Player
     [RequireComponent(typeof(HeroHealth))]
     public class HeroDeath : MonoBehaviour
     {
+        [SerializeField] private HeroFreezable _heroFreezable;
         [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private HeroInteractor _interactor;
         [SerializeField] private HeroHealth _health;
@@ -28,12 +30,16 @@ namespace Logic.Player
         [SerializeField] private HeroFreezable _freezable;
 
         private ICameraAnimator _animator;
-        private bool _isDead;
+        private ISaveLoadService _saveLoadService;
         private IEventBusService _eventBusService;
+        private bool _isDead;
 
         [Inject]
-        public void Construct(IEventBusService eventBusService)
-            => _eventBusService = eventBusService;
+        public void Construct(IEventBusService eventBusService, ISaveLoadService saveLoadService)
+        {
+            _eventBusService = eventBusService;
+            _saveLoadService = saveLoadService;
+        }
 
         public void SetCameraAnimator(ICameraAnimator animator) =>
             _animator = animator;
@@ -49,10 +55,10 @@ namespace Logic.Player
             if (_isDead) return;
 
             if (_health.CurrentHealth <= 0)
-                await Die();
+                Die();
         }
 
-        private async Task Die()
+        private void Die()
         {
             _isDead = true;
             _mover.enabled = false;
@@ -61,8 +67,13 @@ namespace Logic.Player
             _freezable.enabled = false;
             _interactor.enabled = false;
             _windowOpener.enabled = false;
-            PlayDeathSound();
             _animator.PlayDeath();
+
+            if (_heroFreezable.IsFroze())
+                _saveLoadService.ResetToVerified();
+
+
+            PlayDeathSound();
             InformHandlers();
         }
 

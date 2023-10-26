@@ -39,7 +39,7 @@ namespace Infrastructure.Services.EventBus
                     action.Invoke(subscriber as TSubscriber);
             }
             else
-                Debug.LogError("Can't raise events of this type");
+                Debug.Log("Can't raise events of this type");
         }
 
         public void Unsubscribe(IGlobalSubscriber subscriber)

@@ -4,6 +4,6 @@ namespace Logic.Weapons
 {
     public interface IFlashLight
     {
-        void Init(IHeroLight light);
+        void Initialize(IHeroLight light);
     }
 }

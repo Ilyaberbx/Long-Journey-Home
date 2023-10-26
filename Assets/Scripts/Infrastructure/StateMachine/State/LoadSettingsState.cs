@@ -9,12 +9,10 @@ namespace Infrastructure.StateMachine.State
 {
     public class LoadSettingsState : IState
     {
-        private const string MainMenuKey = "MainMenu";
         private readonly IGameStateMachine _gameStateMachine;
         private readonly ISaveLoadService _saveLoadService;
         private readonly ISettingsService _settingsService;
-
-
+        
         public LoadSettingsState(IGameStateMachine gameStateMachine,ISaveLoadService saveLoadService,ISettingsService settingsService)
         {
             _gameStateMachine = gameStateMachine;
@@ -24,7 +22,7 @@ namespace Infrastructure.StateMachine.State
         public void Enter()
         {
             LoadSettingsDataOrInitNew();
-            _gameStateMachine.Enter<LoadProgressState,string>(MainMenuKey);
+            _gameStateMachine.Enter<LoadProgressState>();
         }
 
         public void Exit()

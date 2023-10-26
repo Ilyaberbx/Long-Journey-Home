@@ -5,7 +5,6 @@ using Infrastructure.Services.Pause;
 using UI.Elements;
 using UI.Envelope;
 using UI.Inventory;
-using UI.Pause;
 using UI.Services.Window;
 using UnityEngine;
 using Zenject;

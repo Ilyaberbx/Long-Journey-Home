@@ -1,4 +1,6 @@
-﻿namespace Data
+﻿using Infrastructure.Services.Settings.Audio;
+
+namespace Data
 {
     [System.Serializable]
     public class PlayerProgress
@@ -14,6 +16,7 @@
         public InventoryData InventoryData;
         public DialogueData DialogueData;
         public CutSceneData CutSceneData;
+        public AmbienceProgress AmbienceProgress;
         public bool IsFirstLoad = true;
 
         public PlayerProgress(string initialLevel)
@@ -28,6 +31,7 @@
             CutSceneData = new CutSceneData();
             DialogueData = new DialogueData();
             SaveData = new SaveData();
+            AmbienceProgress = new AmbienceProgress();
             DoorData = new DoorData();
         }
     }

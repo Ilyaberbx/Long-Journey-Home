@@ -7,6 +7,8 @@ namespace Infrastructure.Services.SaveLoad
     {
         void SavePlayerProgress();
         PlayerProgress LoadPlayerProgress();
+        void SaveVerifiedProgress();
+        void ResetToVerified();
         void CleanUpPlayerProgress();
         SettingsData LoadSettings();
         void SaveSettings(SettingsData settingsData);

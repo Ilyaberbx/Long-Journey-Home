@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingCurtainPrefab: {fileID: 6453964606486672618, guid: 5b23c195707a2e5478f6746fe90ecbfa, type: 3}
+  _sourcePrefab: {fileID: 4230323622643352421, guid: 9e974db4f3adc82498a8eac41f02da67, type: 3}
 --- !u!114 &-2701235517337570338
 MonoBehaviour:
   m_ObjectHideFlags: 0

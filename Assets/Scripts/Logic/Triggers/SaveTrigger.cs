@@ -15,7 +15,7 @@ namespace Logic.Triggers
         private IPersistentProgressService _progressService;
 
         [Inject]
-        public void Construct(ISaveLoadService saveLoadService,IPersistentProgressService progressService)
+        public void Construct(ISaveLoadService saveLoadService, IPersistentProgressService progressService)
         {
             _progressService = progressService;
             _saveLoadService = saveLoadService;
@@ -24,23 +24,26 @@ namespace Logic.Triggers
         private void Awake()
             => _isSaved = SaveData().Contains(GetId());
 
-        private List<string> SaveData() 
-            => _progressService.PlayerProgress.SaveData.SaveList;
+        private List<string> SaveData()
+            => _progressService.Progress.SaveData.SaveList;
 
         private void SetSaveData(string id)
             => SaveData().Add(id);
-        private string GetId() 
+
+        private string GetId()
             => _idGiver.Id;
 
-        public void Save()
+        public void Save(bool isVerified)
         {
             if (_isSaved) return;
 
             SetSaveData(_idGiver.Id);
             _saveLoadService.SavePlayerProgress();
+
+            if (isVerified)
+                _saveLoadService.SaveVerifiedProgress();
+
             _isSaved = true;
         }
-        
-        
     }
 }
