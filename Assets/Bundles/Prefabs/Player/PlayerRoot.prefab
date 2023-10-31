@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 7119355605494549768}
-  _freezeValue: 0.005
+  _freezeValue: 0.0015
   _damage: 1
 --- !u!114 &7853545874161488478
 MonoBehaviour:
@@ -435,12 +435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialItems:
-  - Quantity: 5
+  - Quantity: 1
     ItemData: {fileID: 11400000, guid: f4953665e5434b04aa31121a61c22cfd, type: 2}
-  - Quantity: 7
-    ItemData: {fileID: 11400000, guid: 2a8e717c837d7f748b7eb639f54ca5a6, type: 2}
-  - Quantity: 9
-    ItemData: {fileID: 11400000, guid: 91cb99cb20ed0c44f876b8ddddd300a4, type: 2}
 --- !u!114 &4331722270868525863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017724966b0442480faa12317fef3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroCutScene: {fileID: 3903739620445181443}
 --- !u!114 &8258285280771886049
 MonoBehaviour:
   m_ObjectHideFlags: 0

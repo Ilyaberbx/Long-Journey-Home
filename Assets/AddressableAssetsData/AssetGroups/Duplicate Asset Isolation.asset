@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Duplicate Asset Isolation
+  m_EditorClassIdentifier: 
+  m_GroupName: Duplicate Asset Isolation
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f2981ac864807104a947f015332ffd82
+  m_SerializeEntries:
+  - m_GUID: 86c6f42b8a49a4449b39bdbe4d27ffa2
+    m_Address: Assets/Bundles/Scenes/Road/Main Camera Profile.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 06573cc19fb2e4a479092a9b4687b26c
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Prefabs/Vegetation/Tree
+      1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3a3ec579ae0a6cd458d30670586415b5
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Textures/Color Pallet.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eef8afe969073cd4d9cfb6cc540b93aa
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Textures/Pine Tree Branch.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9c0a1cda53d749f40a30a84ed1657377
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Materials/Pine Tree Branch.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b725cacc7387b1f4e991c4bdfcd832c8
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Materials/Color Pallet.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab1a291faed69db41860cdd7b273c28d
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Prefabs/Vegetation/Tree
+      3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b4c91acfc7fe43844b22fb05bc555d63
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Meshes/Trees1Lods.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a4c5aca9a880644d85835cb98a79e9e
+    m_Address: Assets/CreatedModels/Axe/Material.001.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 371f3f0936e07a0459b92cae5742432b
+    m_Address: Assets/CreatedModels/Axe/Axe 1.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 35d16cd66330b3d478844c42dfc1912a
+    m_Address: Assets/Plugins/Low Poly Free Vegetation Kit/Meshes/Trees.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4383d7125a672c9499ebf12a0775b531
+    m_Address: Assets/CreatedModels/Alarm/Material.003.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ec41af33bc158e4e9c47ccf0b5ff5df
+    m_Address: Assets/CreatedModels/Alarm/Material.001.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ca02b6e5348d6164c818d467bff76739
+    m_Address: Assets/CreatedModels/Alarm/alarm.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 88505f2e1218b854899c81a13bfc8381
+    m_Address: Assets/CreatedModels/Alarm/Material.002.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 98d65a9194c37364f864694737ae15f6
+    m_Address: Assets/Plugins/Lowpoly Style/Shared Materials and Textures/MAT_MAIN_ASIA.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22fa8597f3b59ce409bfef2766829448
+    m_Address: Assets/Plugins/Lowpoly Style/Shared FBX Meshes/Items and Decoration/SnowySignpost.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b6208428a0b33444dad9235a2ae0a072, type: 2}
+    - {fileID: 11400000, guid: 47a0ab1e209fa69419485baa0bff53d3, type: 2}

@@ -7,13 +7,13 @@ namespace Logic.Player
     {
         private IHud _hud;
 
-        public void SetHud(IHud hud) 
+        public void SetHud(IHud hud)
             => _hud = hud;
 
-        public void Hide() 
+        public void Hide()
             => _hud.Hide();
 
-        public void Open() 
+        public void Open()
             => _hud.Open();
     }
 }

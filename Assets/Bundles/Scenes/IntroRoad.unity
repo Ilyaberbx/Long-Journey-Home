@@ -3377,15 +3377,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
       propertyPath: _dialogue._sentences.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
       propertyPath: _dialogue._sentences.Array.data[0]
-      value: Damn, i think i am lost hear
+      value: I think i am lost...
       objectReference: {fileID: 0}
     - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
       propertyPath: _dialogue._sentences.Array.data[1]
-      value: 
+      value: I need to go back to the car
       objectReference: {fileID: 0}
     - target: {fileID: 4234007829745937161, guid: 5dc6deccf79b3534ebb5bfa181054c39, type: 3}
       propertyPath: _dialogue._sentences.Array.data[2]

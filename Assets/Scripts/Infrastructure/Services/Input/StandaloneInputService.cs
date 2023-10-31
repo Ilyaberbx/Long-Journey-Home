@@ -41,5 +41,12 @@ namespace Infrastructure.Services.Input
 
         public bool IsReloadButtonPressed()
             => UnityEngine.Input.GetKeyDown(KeyCode.R);
+
+        public bool IsHudButtonPressed()
+            => UnityEngine.Input.GetKeyDown(KeyCode.H);
+
+        public bool IsHudButtonUnpressed()
+            => UnityEngine.Input.GetKeyUp(KeyCode.H);
+
     }
 }

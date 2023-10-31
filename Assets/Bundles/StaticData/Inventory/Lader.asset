@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e4bf772e2a41f78bc1e4aca771cd24, type: 3}
   m_Name: Lader
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: aa082de8f1d26d3428e105ae75b781e9, type: 3}
+  Icon: {fileID: 21300000, guid: fa776bc73fec36e48a62429b6b0d5ad0, type: 3}
   IsStackable: 0
   Id: 7
   MaxStackSize: 1
   Name: Ladder
-  Description: Climbs thing
+  Description: Portable climb for high places

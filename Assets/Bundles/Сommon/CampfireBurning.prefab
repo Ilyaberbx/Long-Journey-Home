@@ -160,6 +160,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  _sourceVolume: 1
 --- !u!1 &9029014139058127578
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7797c88c0b8d49c38288182752e90f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: CampfireBurning_7585e0be-d425-4bf3-bfa9-b42b16d7c7c9
+  Id: CampfireBurning_7a74ee21-5d8e-4b25-bc77-553390b55135
 --- !u!1 &9029168616240721144
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,7 +5178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9026257609175070680
 Transform:
   m_ObjectHideFlags: 0

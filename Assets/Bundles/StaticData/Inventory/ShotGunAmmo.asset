@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a974d8526c4fac9cfb08c3bef541e0, type: 3}
   m_Name: ShotGunAmmo
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 2047a1ca27758504485675578829546c, type: 3}
+  Icon: {fileID: 21300000, guid: 70065a21ea552294ca5acd7062d5e421, type: 3}
   IsStackable: 1
   Id: 5
   MaxStackSize: 8
-  Name: Shotgun ammo
-  Description: Handmade ammo for shotgun
+  Name: Shotgun Ammo
+  Description: Ammo for the shotgun
   _damage: 15

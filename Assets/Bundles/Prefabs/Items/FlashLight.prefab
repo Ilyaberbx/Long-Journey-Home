@@ -24306,7 +24306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundOperations: {fileID: 782764599781362398}
-  _lessValue: 0.06
+  _lessValue: 0.03
   _lights:
   - {fileID: 3498157808929187944}
   - {fileID: 6824727372674079085}

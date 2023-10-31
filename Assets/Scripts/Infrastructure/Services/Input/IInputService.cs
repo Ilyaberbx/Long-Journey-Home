@@ -13,5 +13,7 @@ namespace Infrastructure.Services.Input
         bool IsSprinting();
         bool IsPauseButtonPressed();
         bool IsReloadButtonPressed();
+        bool IsHudButtonPressed();
+        bool IsHudButtonUnpressed();
     }
 }

@@ -17,22 +17,22 @@ MonoBehaviour:
   LootSpawners:
   - Id: House_dd5a3e9a-797e-4084-bed2-2a8f0625bee7
     Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
-    Position: {x: 599.52, y: 52.953, z: 1287.44}
-    Rotation: {x: 0.27065504, y: -0.27065504, z: -0.6532579, w: 0.6532579}
+    Position: {x: 591.16, y: 50.9, z: 1288.3636}
+    Rotation: {x: 0.36831173, y: -0.9148323, z: 0.009265506, w: -0.16535623}
   - Id: House_e7d2d078-29ae-4d29-a1aa-1af942d1e411
     Prefab: {fileID: 5209323148249258876, guid: a0a89e2567d0bb34ca1cf521c5e4f5c8, type: 3}
-    Position: {x: 636.4985, y: 58.95, z: 1385.39}
-    Rotation: {x: -0.5416142, y: -0, z: -0, w: 0.84062725}
+    Position: {x: 636.4985, y: 58.481724, z: 1379.3905}
+    Rotation: {x: -0.37036723, y: -0, z: -0, w: 0.92888546}
   - Id: House_30a26953-f0f4-4c14-81c7-9041c7666a71
     Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
-    Position: {x: 598.61, y: 52.953, z: 1288.47}
-    Rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+    Position: {x: 591.64, y: 51.8, z: 1283.77}
+    Rotation: {x: 0.46822402, y: -0.7337329, z: -0.37382147, w: 0.32040575}
   - Id: House_e76438ad-b5e4-4df1-acba-77c3ecbacef2
     Prefab: {fileID: 8267773133987680113, guid: 83f70ef1ddf59004bb825bce3fef46bb, type: 3}
-    Position: {x: 604.35, y: 55.4, z: 1290.92}
-    Rotation: {x: -0.02520746, y: -0.97444504, z: -0.17046195, w: 0.14409839}
+    Position: {x: 592.21, y: 54.49, z: 1288.11}
+    Rotation: {x: -0.3342112, y: -0.9156862, z: -0.20747627, w: 0.08231226}
   - Id: House_0038da87-f44e-42ef-b2b3-925e45973eb3
     Prefab: {fileID: 7764010429717162071, guid: 0ae0da3eee663184791c6c3f2ecc2551, type: 3}
-    Position: {x: 614.74, y: 80.98, z: 1282.47}
-    Rotation: {x: 0.16153479, y: -0.004723717, z: -0.98643404, w: 0.028846016}
+    Position: {x: 619.99, y: 61.11, z: 1278.13}
+    Rotation: {x: 0.020143494, y: -0.020961553, z: 0.6943292, w: 0.71907014}
   PlayerInitPoint: {x: 1643.2, y: 167.1, z: 2341}

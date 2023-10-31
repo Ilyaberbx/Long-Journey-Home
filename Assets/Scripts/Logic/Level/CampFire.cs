@@ -83,17 +83,11 @@ namespace Logic.Level
             }
         }
 
-        private void AppearFx()
-        {
-            _fxContainer.gameObject.SetActive(true);
-            _fxContainer.DOScale(1f, 1.5f);
-        }
+        private void AppearFx() 
+            =>_fxContainer.gameObject.SetActive(true);
 
-        private void DisappearFx()
-        {
-            _fxContainer.DOScale(1f, 1.5f);
-            _fxContainer.gameObject.SetActive(false);
-        }
+        private void DisappearFx() 
+            => _fxContainer.gameObject.SetActive(false);
 
         public string GetInteractText()
             => _interactHintText;

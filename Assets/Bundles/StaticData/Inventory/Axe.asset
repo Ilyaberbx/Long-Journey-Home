@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41f1b01d6ea4d95b0c558f76aa1c03c, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 484cc83752c1f9e41ad7cf6b506d1fcc, type: 3}
+  Icon: {fileID: 21300000, guid: 64f1acf7c42e7054f9f49ae5f5ae3cbd, type: 3}
   IsStackable: 0
   Id: 1
   MaxStackSize: 1
   Name: Axe
-  Description: Cuts thing
+  Description: Sharp cutting tool for wood and more
   _itemPrefab: {fileID: 712674874826844517, guid: 74168a21e16d1cc40a77f357c388cf5c, type: 3}
   _actionSfx: {fileID: 8300000, guid: 9cb65eb2505fbf443ac876ba177374f9, type: 3}

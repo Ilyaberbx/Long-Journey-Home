@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc18cddeb00e451e95b28e9da1314d49, type: 3}
   m_Name: Oil
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 80ff31f7b9460694fa72512f0c56ac53, type: 3}
+  Icon: {fileID: 21300000, guid: 4f44df5c57cc5504ba4798797694a53c, type: 3}
   IsStackable: 1
   Id: 3
   MaxStackSize: 3
-  Name: Oil Fuel
-  Description: Uses to fill your lamp
+  Name: Lamp Fuel
+  Description: Liquid to power your lamp
   _modifiersData:
   - StatModifier: {fileID: 11400000, guid: 6a108797b56b8e4448dcf71e3fb2b0cf, type: 2}
     Value: 500
