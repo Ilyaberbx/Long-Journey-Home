@@ -23,7 +23,7 @@ namespace Infrastructure.Services.MusicService
             _assetProvider = assetProvider;
         }
 
-        public void SetAmbienceSource(AudioSource source) 
+        public void SetAmbienceSource(AudioSource source)
             => _ambientSource = source;
 
         public async void PlayAmbience(AmbienceType type)
@@ -37,6 +37,7 @@ namespace Infrastructure.Services.MusicService
         {
             AssetReferenceT<AudioClip> clipReference = _staticDataService.GetMusicData(type).Clip;
             AudioClip clip = await _assetProvider.Load(clipReference);
+            Debug.Log("Music played: " + clip.name);
             SmoothDampAudio(_musicSource, clip, MusicSourceVolume);
         }
 
@@ -52,7 +53,7 @@ namespace Infrastructure.Services.MusicService
             StopAmbient();
         }
 
-        private void SmoothDampAudio(AudioSource source, AudioClip clip,float volume)
+        private void SmoothDampAudio(AudioSource source, AudioClip clip, float volume)
         {
             Sequence sequence = DOTween.Sequence();
             sequence.Append(SmoothToggle(source, 0));

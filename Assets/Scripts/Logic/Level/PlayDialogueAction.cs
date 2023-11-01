@@ -6,13 +6,14 @@ using Zenject;
 
 namespace Logic.Level
 {
-    public class PlayDialogueAction : MonoBehaviour, IAction
+    public class PlayDialogueAction : MonoBehaviour, IAction, IStoppableAction
     {
         [SerializeField] private float _delay = 0;
         [SerializeField] private Dialogue _dialogue;
         private IDialogueService _dialogueService;
         private bool _isPlayed;
-        
+        private Coroutine _dialogueRoutine;
+
         [Inject]
         public void Construct(IDialogueService dialogueService) 
             => _dialogueService = dialogueService;
@@ -21,8 +22,16 @@ namespace Logic.Level
         {
             if(_isPlayed)
                 return;
+
+            _dialogueRoutine = StartCoroutine(PlayDialogueRoutine());
+        }
+
+        public void Stop()
+        {
+            if(!_isPlayed || _dialogueRoutine == null)
+                return;
             
-            StartCoroutine(PlayDialogueRoutine());
+            StopCoroutine(_dialogueRoutine);
         }
 
         private IEnumerator PlayDialogueRoutine()

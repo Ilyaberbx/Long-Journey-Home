@@ -70,15 +70,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 19669fb65c44ed1489d3a6caff6c75e2, type: 2}
-  m_sharedMaterial: {fileID: -2906720702923911581, guid: 19669fb65c44ed1489d3a6caff6c75e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -294,4 +294,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3cdda600e31488bb7954e23c1fbb2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 2709034374962314352}
   _text: {fileID: 696856531856257956}

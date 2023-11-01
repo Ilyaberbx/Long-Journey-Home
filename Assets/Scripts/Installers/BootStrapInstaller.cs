@@ -21,8 +21,9 @@ namespace Installers
         
         private void BindMusicService()
         {
-            AudioSource musicSource = Container.InstantiatePrefabForComponent<AudioSource>(_sourcePrefab);
+            AudioSource musicSource = Instantiate(_sourcePrefab);
             musicSource.name = "Music";
+            DontDestroyOnLoad(musicSource);
             
             Container.BindInterfacesTo<MusicService>()
                 .AsSingle()

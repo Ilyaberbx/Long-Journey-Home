@@ -5088,7 +5088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029168617070965762, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9029168617070965762, guid: 61243f14e5d8e8e4f9d800a9d9bc7f73, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8458,8 +8458,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8037212705948057009, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
+      propertyPath: m_Height
+      value: 851.88477
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037212705948057009, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
       propertyPath: m_Radius
-      value: 200
+      value: 425.94238
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037212705948057009, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
+      propertyPath: m_Center.x
+      value: 133.03296
       objectReference: {fileID: 0}
     - target: {fileID: 8037212705948057010, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
       propertyPath: _transferTo
@@ -8495,7 +8503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8037212705948057011, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2720.464
+      value: 2836
       objectReference: {fileID: 0}
     - target: {fileID: 8037212705948057011, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8503,7 +8511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8037212705948057011, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2751.14
+      value: 3080
       objectReference: {fileID: 0}
     - target: {fileID: 8037212705948057011, guid: 61429a1e72095154db59cb1d83ae75e8, type: 3}
       propertyPath: m_LocalRotation.w

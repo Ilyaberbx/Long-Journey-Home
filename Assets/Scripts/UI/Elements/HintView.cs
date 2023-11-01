@@ -9,6 +9,7 @@ namespace UI.Elements
 {
     public class HintView : MonoBehaviour
     {
+        [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private TextMeshProUGUI _text;
         private IHintService _hintService;
 
@@ -30,11 +31,11 @@ namespace UI.Elements
         private Task ShowHint(string value)
         {
             _text.text = value;
-            return _text.DOFade(1, 2).AsyncWaitForCompletion();
+            return _canvasGroup.DOFade(1, 2).AsyncWaitForCompletion();
         }
 
         private Task CloseHint() =>
-            _text.DOFade(0, 2)
+            _canvasGroup.DOFade(0, 2)
                 .OnComplete(ResetText).AsyncWaitForCompletion();
 
         private void ResetText()
