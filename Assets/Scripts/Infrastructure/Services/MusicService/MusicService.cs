@@ -4,6 +4,7 @@ using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.StaticData;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Audio;
 
 namespace Infrastructure.Services.MusicService
 {
@@ -11,18 +12,36 @@ namespace Infrastructure.Services.MusicService
     {
         private const float AmbientSourceVolume = 0.2f;
         private const float MusicSourceVolume = 1f;
+        private const string MusicSourceAddress = "MusicAndAmbienceSource";
         private readonly IStaticDataService _staticDataService;
         private readonly IAssetProvider _assetProvider;
-        private readonly AudioSource _musicSource;
+        private AudioSource _musicSource;
         private AudioSource _ambientSource;
 
-        public MusicService(IStaticDataService staticDataService, AudioSource musicSource, IAssetProvider assetProvider)
+        public MusicService(IStaticDataService staticDataService, IAssetProvider assetProvider)
         {
             _staticDataService = staticDataService;
-            _musicSource = musicSource;
             _assetProvider = assetProvider;
         }
 
+        public async Task Initialize(AudioMixerGroup globalMixer)
+        {
+            Debug.Log(globalMixer.audioMixer);
+            GameObject musicSourceObject = await CreateMusicSource();
+            Object.DontDestroyOnLoad(musicSourceObject);
+            _musicSource = musicSourceObject.GetComponent<AudioSource>();
+            _musicSource.outputAudioMixerGroup = globalMixer;
+            Debug.Log(_musicSource.outputAudioMixerGroup);
+        }
+
+        private async Task<GameObject> CreateMusicSource()
+        {
+            GameObject musicSourcePrefab = await _assetProvider.Load<GameObject>(MusicSourceAddress);
+            GameObject musicSourceObject = Object.Instantiate(musicSourcePrefab);
+            musicSourceObject.name = "Music";
+            return musicSourceObject;
+        }
+        
         public void SetAmbienceSource(AudioSource source)
             => _ambientSource = source;
 

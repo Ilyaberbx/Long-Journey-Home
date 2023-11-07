@@ -113,5 +113,8 @@ namespace Infrastructure.Services.StaticData
             _achievements.TryGetValue(type, out AchievementData config)
                 ? config
                 : null;
+
+        public int GetAchievementsCount() 
+            => _achievements.Count;
     }
 }

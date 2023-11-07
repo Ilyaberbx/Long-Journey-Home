@@ -16,7 +16,7 @@ MonoBehaviour:
   EnemySpawners:
   - Id: SpawnMarker_de5aebs90-c3ae-4974-9232-5ce4ebebe33e
     EnemyType: 0
-    Position: {x: 2884.2, y: 96, z: 1354.1}
+    Position: {x: 2777, y: 96, z: 1389}
     IsRegisterInContainer: 0
   - Id: Bridge_62fe62a5-f9e8-42e3-b3b9-2ca8d40969e3
     EnemyType: 1

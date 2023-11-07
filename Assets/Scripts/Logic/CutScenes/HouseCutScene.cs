@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.MusicService;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.State;
 using Logic.Camera;
+using Logic.DialogueSystem;
 using Logic.Player;
 using Sound.SoundSystem;
 using Sound.SoundSystem.Operators;
@@ -20,21 +22,24 @@ namespace Logic.CutScenes
     {
         [SerializeField] private SoundOperations _soundOperations;
         [SerializeField] private List<CutSceneCameraTransitionData> _camerasTransitionData;
+        [SerializeField] private Dialogue _dialogueToSay;
         [SerializeField] private string _transferTo;
         private ICameraService _cameraService;
         private IUIFactory _uiFactory;
         private CanvasGroup _eyeCurtain;
         private IGameStateMachine _stateMachine;
         private ISaveLoadService _saveLoadService;
+        private IDialogueService _dialogueService;
 
         [Inject]
         public void Construct(ICameraService cameraService, IUIFactory uiFactory, IGameStateMachine stateMachine,
-            ISaveLoadService saveLoadService)
+            ISaveLoadService saveLoadService, IDialogueService dialogueService)
         {
             _cameraService = cameraService;
             _uiFactory = uiFactory;
             _stateMachine = stateMachine;
             _saveLoadService = saveLoadService;
+            _dialogueService = dialogueService;
         }
 
         protected override void OnAwake()
@@ -66,7 +71,9 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[3]));
             _sequence.AppendInterval(_camerasTransitionData[3].BlendTime);
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[4]));
-            _sequence.AppendInterval(_camerasTransitionData[4].BlendTime + 3f);
+            _sequence.AppendInterval(_camerasTransitionData[4].BlendTime);
+            _sequence.AppendCallback(() => Say(_dialogueToSay));
+            _sequence.AppendInterval(3f);
             _sequence.AppendCallback(() => EyeCurtainSequence());
             _sequence.AppendCallback(() => ChangeCamera(_camerasTransitionData[5]));
             _sequence.AppendInterval(1f);
@@ -76,6 +83,9 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() =>
                 _stateMachine.Enter<LoadLevelState, string, AmbienceType>(_transferTo, AmbienceType.None));
         }
+
+        private void Say(Dialogue dialogue) 
+            => _dialogueService.StartDialogue(dialogue);
 
         private TweenCallback ParentEquipmentToMain(HeroCameraWrapper wrapper)
             => wrapper.ParentEquipmentToMainCamera;

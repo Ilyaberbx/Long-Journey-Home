@@ -13,9 +13,18 @@ MonoBehaviour:
   m_Name: AchievementsConfig
   m_EditorClassIdentifier: 
   Config:
-  - Type: 0
-    Icon: {fileID: 21300000, guid: 6054318fc678eef4e97655493b73c580, type: 3}
-    Text: You chose wrong way
   - Type: 1
-    Icon: {fileID: 21300000, guid: 7baba72e51e669f43a2a837ede95e7fc, type: 3}
-    Text: Pisa Popa
+    Icon: {fileID: 21300000, guid: 176d55629cf8ec54c91aced7f9ba252d, type: 3}
+    Text: Hmm.. Weird choose
+  - Type: 2
+    Icon: {fileID: 21300000, guid: 212fea2145128b148b8bc610100a3413, type: 3}
+    Text: That was really bad dream!
+  - Type: 0
+    Icon: {fileID: 21300000, guid: 75529f748b1632642a3eb1358b823f12, type: 3}
+    Text: You are so lucky!
+  - Type: 3
+    Icon: {fileID: 21300000, guid: 42464bb7090ce09498fe398515125d39, type: 3}
+    Text: Sweet home
+  - Type: 4
+    Icon: {fileID: 21300000, guid: b344ddd9575de154ab4e77f4ad74c510, type: 3}
+    Text: Opppss...

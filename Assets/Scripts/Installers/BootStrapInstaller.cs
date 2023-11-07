@@ -18,17 +18,10 @@ namespace Installers
             BindMusicService();
             BindStateFactory();
         }
-        
-        private void BindMusicService()
-        {
-            AudioSource musicSource = Instantiate(_sourcePrefab);
-            musicSource.name = "Music";
-            DontDestroyOnLoad(musicSource);
-            
+
+        private void BindMusicService() =>
             Container.BindInterfacesTo<MusicService>()
-                .AsSingle()
-                .WithArguments(musicSource);
-        }
+                .AsSingle();
 
         private void BindLoadingCurtain()
         {

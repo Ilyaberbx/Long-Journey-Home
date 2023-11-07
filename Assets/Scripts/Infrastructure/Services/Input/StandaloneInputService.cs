@@ -29,7 +29,10 @@ namespace Infrastructure.Services.Input
 
         public bool IsInventoryButtonPressed()
             => UnityEngine.Input.GetKeyDown(KeyCode.I);
-        
+
+        public bool IsSecondInteractButtonPressed()
+            => UnityEngine.Input.GetKeyDown(KeyCode.Tab);
+
         public bool IsJumped()
             => UnityEngine.Input.GetKeyDown(KeyCode.Space);
 
@@ -47,6 +50,5 @@ namespace Infrastructure.Services.Input
 
         public bool IsHudButtonUnpressed()
             => UnityEngine.Input.GetKeyUp(KeyCode.H);
-
     }
 }

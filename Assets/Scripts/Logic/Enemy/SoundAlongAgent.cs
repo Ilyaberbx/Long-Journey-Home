@@ -11,6 +11,9 @@ namespace Logic.Enemy
 
         private void OnStep() 
             => _soundOperations.PlaySound<MoveOperator>();
-        
+
+        private void OnRoared()
+            => Debug.Log("asdasd");
+
     }
 }

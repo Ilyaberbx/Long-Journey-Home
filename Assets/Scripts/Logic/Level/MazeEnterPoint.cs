@@ -1,8 +1,10 @@
 ﻿using Extensions;
+using Infrastructure.Services.Hint;
 using Logic.Common;
 using Logic.Enemy;
 using Logic.Player;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.Level
 {
@@ -11,6 +13,11 @@ namespace Logic.Level
         [SerializeField] private Light _lightToParent;
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private float _lightParentedHeight;
+        private IHintService _hintService;
+
+        [Inject]
+        public void Construct(IHintService hintService) 
+            => _hintService = hintService;
 
         private void Awake() 
             => _triggerObserver.OnTriggerEntered += Entered;
@@ -21,6 +28,7 @@ namespace Logic.Level
             
             DisableComponents(heroFreeze);
             BlendLightToFeet(heroFreeze);
+            _hintService.ShowHint("Interact: E");
         }
 
         private void BlendLightToFeet(HeroFreezable heroFreezable)

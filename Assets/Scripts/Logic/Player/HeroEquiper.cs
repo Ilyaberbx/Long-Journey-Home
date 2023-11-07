@@ -11,6 +11,7 @@ namespace Logic.Player
     public class HeroEquiper : MonoBehaviour, ICutSceneHandler
     {
         public Transform EquipmentContainer => _equipmentContainer;
+        
         [SerializeField] private HeroLight _light;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private Transform _equipmentContainer;

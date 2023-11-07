@@ -15,5 +15,6 @@ namespace Infrastructure.Services.Input
         bool IsReloadButtonPressed();
         bool IsHudButtonPressed();
         bool IsHudButtonUnpressed();
+        bool IsSecondInteractButtonPressed();
     }
 }

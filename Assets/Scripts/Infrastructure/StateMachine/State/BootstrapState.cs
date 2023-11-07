@@ -35,11 +35,12 @@ namespace Infrastructure.StateMachine.State
 
         public async void Enter()
         {
-            await PreWarmUp();
             _pause.CanBePaused = false;
+            await PreWarmUp();
             await InitializeGlobalView();
             _hintService.ShowHint("Movement: WASD,Space");
-            _hintService.ShowHint("Inventory: I");
+            _hintService.ShowHint("Inventory: I,TAB");
+            _hintService.ShowHint("Interact: E");
             _sceneLoader.Load(MainMenu, OnMainMenuLoaded);
         }
 

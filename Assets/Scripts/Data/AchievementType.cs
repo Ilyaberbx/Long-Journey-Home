@@ -2,7 +2,10 @@
 {
     public enum AchievementType
     {
+        EasyWay,
         WrongWay,
         BadDream,
+        SweetHome,
+        IceTrap,
     }
 }

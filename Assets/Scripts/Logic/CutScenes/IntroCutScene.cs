@@ -130,7 +130,10 @@ namespace Logic.CutScenes
             _sequence.AppendCallback(() => ChangeCamera(_cameraTransitions[0]));
             _sequence.AppendInterval(_cameraTransitions[0].BlendTime + 3f);
             _sequence.AppendCallback(() => ChangeCamera(_cameraTransitions[1]));
-            _sequence.AppendInterval(_cameraTransitions[1].BlendTime + 3f);
+            _sequence.AppendInterval(_cameraTransitions[1].BlendTime);
+            _sequence.AppendInterval(1f);
+            _sequence.AppendCallback(() => StartDialogue(_dialogues[1]));
+            _sequence.AppendInterval(4f);
             _sequence.AppendCallback(() => onCutSceneEnded?.Invoke());
         }
 

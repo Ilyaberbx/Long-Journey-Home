@@ -10,7 +10,7 @@ namespace UI.Elements
     {
         private Action _close;
         protected PlayerProgress _progress => _progressService.Progress;
-        private IPersistentProgressService _progressService;
+        protected IPersistentProgressService _progressService;
 
         [Inject]
         public void Construct(IPersistentProgressService progressService)
@@ -29,8 +29,7 @@ namespace UI.Elements
             => CleanUp();
 
         protected virtual void OnAwake()
-        {
-        }
+        { }
 
         public void SubscribeCloseListener(Action onClose)
             => _close = onClose;

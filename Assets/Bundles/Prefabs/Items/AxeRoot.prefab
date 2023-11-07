@@ -317,7 +317,7 @@ MonoBehaviour:
   _hitApplySpeed: 0.3
   _attackPoint: {fileID: 8954463793811037012}
   _damage: 1
-  _attackRadius: 8
+  _attackRadius: 12
   _bloodFx: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
 --- !u!114 &-355366306521151843
 MonoBehaviour:

@@ -14,21 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: IntroRoad
   EnemySpawners: []
-  LootSpawners:
-  - Id: IntroRoad_286026f0-dd58-41b3-b59d-8c1860e2b293
-    Prefab: {fileID: 7150283600269640286, guid: cbae169fc3ae8984082166a237e4cc37, type: 3}
-    Position: {x: -504, y: 35, z: 2398}
-    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  - Id: IntroRoad_0ce1063f-ef53-44ae-b18c-7a1845099ed2
-    Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
-    Position: {x: -664, y: 35, z: 2398}
-    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  - Id: MainScene_57b4c623-54d0-453a-aaf4-b70a4fac7774
-    Prefab: {fileID: 6537928173594174082, guid: aaa57165aee724b40beca4a145a7ae5b, type: 3}
-    Position: {x: -638, y: 35, z: 2309}
-    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  - Id: IntroRoad_0f186903-4cd6-49a2-96c6-704f7c9eb832
-    Prefab: {fileID: 8267773133987680113, guid: 83f70ef1ddf59004bb825bce3fef46bb, type: 3}
-    Position: {x: -601, y: 35, z: 2398}
-    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  LootSpawners: []
   PlayerInitPoint: {x: -333, y: 40.8, z: 1925}

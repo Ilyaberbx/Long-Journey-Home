@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Infrastructure.Services.AssetManagement;
+using Infrastructure.Services.MusicService;
 using Infrastructure.Services.Settings.Screen;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -13,15 +14,20 @@ namespace Infrastructure.Services.Settings
         private const string SoundKey = "SoundVolume";
         private const string MusicKey = "MusicVolume";
         private readonly IAssetProvider _assetProvider;
+        private readonly IMusicService _musicService;
         public SettingsData SettingsData { get; set; }
-        private AudioMixer _audioMixer;
+        private AudioMixerGroup _globalMixer;
 
-        public SettingsService(IAssetProvider assetProvider)
-            => _assetProvider = assetProvider;
+        public SettingsService(IAssetProvider assetProvider,IMusicService musicService)
+        {
+            _assetProvider = assetProvider;
+            _musicService = musicService;
+        }
 
         public async Task Init()
         {
-            _audioMixer = await _assetProvider.Load<AudioMixer>(GlobalMixer);
+            _globalMixer = await _assetProvider.Load<AudioMixerGroup>(GlobalMixer);
+            await _musicService.Initialize(_globalMixer);
             RefreshAllSettings();
         }
 
@@ -65,13 +71,13 @@ namespace Infrastructure.Services.Settings
             => SettingsData.Mouse.Sensitivity = value;
 
         private void RefreshSoundsVolume() 
-            => _audioMixer.SetFloat(SoundKey, SettingsData.Audio.SoundsVolume);
+            => _globalMixer.audioMixer.SetFloat(SoundKey, SettingsData.Audio.SoundsVolume);
 
         private void RefreshGlobalVolume() 
-            => _audioMixer.SetFloat(MasterKey, SettingsData.Audio.GlobalVolume);
+            => _globalMixer.audioMixer.SetFloat(MasterKey, SettingsData.Audio.GlobalVolume);
 
         private void RefreshMusicVolume() 
-            => _audioMixer.SetFloat(MusicKey, SettingsData.Audio.MusicVolume);
+            => _globalMixer.audioMixer.SetFloat(MusicKey, SettingsData.Audio.MusicVolume);
 
 
         private void RefreshQuality()

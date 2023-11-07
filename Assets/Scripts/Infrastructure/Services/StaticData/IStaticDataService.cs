@@ -16,5 +16,6 @@ namespace Infrastructure.Services.StaticData
         MusicData GetMusicData(MusicType type);
         AchievementData GetAchievementData(AchievementType type);
 
+        int GetAchievementsCount();
     }
 }

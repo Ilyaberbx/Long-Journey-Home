@@ -38,7 +38,7 @@ namespace Logic.Player
             if (IsPaused() || _heroCutScene.IsCutSceneActive)
                 return;
 
-            if (_input.IsInventoryButtonPressed())
+            if (_input.IsInventoryButtonPressed() || _input.IsSecondInteractButtonPressed())
                 await OpenInventoryWindow();
         }
 
