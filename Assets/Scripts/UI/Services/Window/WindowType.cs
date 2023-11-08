@@ -9,6 +9,7 @@
         Envelope,
         Settings,
         GameOver,
-        Ending
+        Ending,
+        Tutorial
     }
 }

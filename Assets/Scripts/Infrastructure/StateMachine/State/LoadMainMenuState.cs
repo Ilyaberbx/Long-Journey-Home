@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Infrastructure.Interfaces;
+using Infrastructure.Services.GlobalProgress;
 using Infrastructure.Services.MusicService;
 using Infrastructure.Services.Pause;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.Settings;
 using Logic;
@@ -24,11 +26,14 @@ namespace Infrastructure.StateMachine.State
         private readonly ISettingsService _settingsService;
         private readonly IVignetteService _vignetteService;
         private readonly IMusicService _musicService;
+        private readonly IGlobalProgressService _globalProgressService;
+        private readonly ISaveLoadService _saveLoadService;
 
         public LoadMainMenuState(IGameStateMachine stateMachine,IWindowService windowService, 
             ISceneLoader sceneLoader,IUIFactory uiFactory, 
             LoadingCurtain loadingCurtain,IPauseService pauseService,ISettingsService settingsService
-            ,IVignetteService vignetteService,IMusicService musicService)
+            ,IVignetteService vignetteService,IMusicService musicService,
+            IGlobalProgressService globalProgressService,ISaveLoadService saveLoadService)
         {
             _stateMachine = stateMachine;
             _windowService = windowService;
@@ -39,6 +44,8 @@ namespace Infrastructure.StateMachine.State
             _settingsService = settingsService;
             _vignetteService = vignetteService;
             _musicService = musicService;
+            _globalProgressService = globalProgressService;
+            _saveLoadService = saveLoadService;
         }
 
         public void Enter()
@@ -54,6 +61,7 @@ namespace Infrastructure.StateMachine.State
 
         private async void OnLoaded()
         {
+            
             _musicService.PlayMusic(MusicType.MainMenu);
             _vignetteService.Reset();
             _pauseService.SetPaused(false);
@@ -61,7 +69,18 @@ namespace Infrastructure.StateMachine.State
             await _settingsService.Init();
             await _uiFactory.CreateUIRoot();
             await _windowService.Open(WindowType.MainMenu);
+
+            if (!IsSecondLoad())
+            {
+                _globalProgressService.GlobalPlayerProgress.IsSecondLoad = true;
+                await _windowService.Open(WindowType.Tutorial);
+                _saveLoadService.SaveGlobalProgress(_globalProgressService.GlobalPlayerProgress);
+            }
+            
             _stateMachine.Enter<GameLoopState>();
         }
+        
+        private bool IsSecondLoad() 
+            => _globalProgressService.GlobalPlayerProgress.IsSecondLoad;
     }
 }

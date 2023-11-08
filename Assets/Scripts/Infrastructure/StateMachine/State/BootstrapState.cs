@@ -2,11 +2,14 @@ using System.Threading.Tasks;
 using Infrastructure.Interfaces;
 using Infrastructure.Services.AssetManagement;
 using Infrastructure.Services.Factories;
+using Infrastructure.Services.GlobalProgress;
 using Infrastructure.Services.Hint;
 using Infrastructure.Services.Pause;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SceneManagement;
 using Infrastructure.Services.StaticData;
 using UI.Elements;
+using UI.Services.Window;
 
 namespace Infrastructure.StateMachine.State
 {
@@ -56,7 +59,8 @@ namespace Infrastructure.StateMachine.State
             await _staticData.Load();
         }
 
-        private void OnMainMenuLoaded()
+        private void OnMainMenuLoaded() 
             => _stateMachine.Enter<LoadSettingsState>();
+        
     }
 }

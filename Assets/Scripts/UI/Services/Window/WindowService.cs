@@ -61,6 +61,9 @@ namespace UI.Services.Window
                 case WindowType.Ending:
                     window = await _uiFactory.CreateEndingWindow();
                     break;
+                case WindowType.Tutorial:
+                    window = await _uiFactory.CreateTutorialWindow();
+                    break;
                 default:
                     Debug.LogError("There is no type behaviour for this type: " + windowType);
                     break;

@@ -2593,7 +2593,7 @@ MonoBehaviour:
   _dialogues:
   - _sentences:
     - Oh noo, really not in time
-    - "\rI remember that a forester lives somewhere nearby"
+    - "\rI remember the forester lives somewhere nearby"
   _car: {fileID: 543450653677563699}
   _pathSystem: 1
   _zigZagStartIndex: 2

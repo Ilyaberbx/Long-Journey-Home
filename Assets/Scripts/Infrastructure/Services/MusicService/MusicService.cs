@@ -26,12 +26,10 @@ namespace Infrastructure.Services.MusicService
 
         public async Task Initialize(AudioMixerGroup globalMixer)
         {
-            Debug.Log(globalMixer.audioMixer);
             GameObject musicSourceObject = await CreateMusicSource();
             Object.DontDestroyOnLoad(musicSourceObject);
             _musicSource = musicSourceObject.GetComponent<AudioSource>();
             _musicSource.outputAudioMixerGroup = globalMixer;
-            Debug.Log(_musicSource.outputAudioMixerGroup);
         }
 
         private async Task<GameObject> CreateMusicSource()
@@ -81,7 +79,7 @@ namespace Infrastructure.Services.MusicService
         }
 
         private Tween SmoothToggle(AudioSource source, float value)
-            => source.DOFade(value, 1f);
+            => source.DOFade(value, 3f);
 
         private void ChangeClip(AudioSource source, AudioClip clip)
         {

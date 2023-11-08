@@ -9,6 +9,7 @@ using UI.Inventory;
 using UI.Menu;
 using UI.Pause;
 using UI.Settings;
+using UI.Tutorial;
 using UnityEngine;
 
 namespace UI.Services.Factory
@@ -26,5 +27,6 @@ namespace UI.Services.Factory
         Task<EndingWindow> CreateEndingWindow();
         
         Task<AchievementView> CreateAchievementView(AchievementType type);
+        Task<TutorialWindow> CreateTutorialWindow();
     }
 }

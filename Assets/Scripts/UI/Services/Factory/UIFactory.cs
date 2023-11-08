@@ -12,6 +12,7 @@ using UI.Menu;
 using UI.Pause;
 using UI.Services.Window;
 using UI.Settings;
+using UI.Tutorial;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
@@ -52,7 +53,7 @@ namespace UI.Services.Factory
         public async Task<SettingsWindow> CreateSettingsWindow()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Settings);
-            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            GameObject prefab = await _assets.Load(config.Prefab);
             SettingsWindow window = _instantiator.InstantiatePrefabForComponent<SettingsWindow>(prefab, _uiRoot);
             return window;
         }
@@ -60,7 +61,7 @@ namespace UI.Services.Factory
         public async Task<PauseWindow> CreatePauseMenu()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Pause);
-            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            GameObject prefab = await _assets.Load(config.Prefab);
             PauseWindow window = _instantiator.InstantiatePrefabForComponent<PauseWindow>(prefab, _uiRoot);
             return window;
         }
@@ -74,7 +75,7 @@ namespace UI.Services.Factory
         public async Task<EnvelopeWindow> CreateEnvelopeWindow()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Envelope);
-            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            GameObject prefab = await _assets.Load(config.Prefab);
             EnvelopeWindow window = _instantiator.InstantiatePrefabForComponent<EnvelopeWindow>(prefab, _uiRoot);
             return window;
         }
@@ -90,8 +91,16 @@ namespace UI.Services.Factory
         public async Task<EndingWindow> CreateEndingWindow()
         {
             WindowConfig config = _staticData.GetWindowData(WindowType.Ending);
-            GameObject prefab = await _assets.Load<GameObject>(config.Prefab);
+            GameObject prefab = await _assets.Load(config.Prefab);
             EndingWindow window = _instantiator.InstantiatePrefabForComponent<EndingWindow>(prefab, _uiRoot);
+            return window;
+        }
+
+        public async Task<TutorialWindow> CreateTutorialWindow()
+        {
+            WindowConfig config = _staticData.GetWindowData(WindowType.Tutorial);
+            GameObject prefab = await _assets.Load(config.Prefab);
+            TutorialWindow window = _instantiator.InstantiatePrefabForComponent<TutorialWindow>(prefab, _uiRoot);
             return window;
         }
 

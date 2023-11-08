@@ -65,6 +65,10 @@ MonoBehaviour:
     m_Address: image_2023-11-06_19-50-48
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 75cbece2aaf923046b6edda28938cd2a
+    m_Address: image_2023-11-08_13-15-06
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e9b4fa581cf3d464ab3d046613294c99, type: 2}
   m_SchemaSet:
